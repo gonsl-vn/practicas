@@ -1,5 +1,6 @@
 package com.practicas.practica2b.controller;
 
+import com.practicas.practica2b.exception.UserException;
 import com.practicas.practica2b.model.User;
 import com.practicas.practica2b.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +26,7 @@ public class UserController  {
     public ResponseEntity<List<User>> listarUsuarios() {
         List<User> todosUsuarios = userRepository.listarUsuarios();
         if(todosUsuarios.isEmpty()){
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "no usuarios encontrados");
+            throw new UserException(HttpStatus.NOT_FOUND, "no usuarios encontrados");
         }
         return ResponseEntity.ok(todosUsuarios);
     }
@@ -33,13 +34,13 @@ public class UserController  {
     @GetMapping("/{dni}")
     public ResponseEntity<User> listarUsuariosPorDni(@PathVariable String dni) {
         if(dni == null || dni.isEmpty() || dni.length() != 9){
-            throw new ResponseStatusException(HttpStatus.NO_CONTENT, "dni nulo");
+            throw new UserException(HttpStatus.NOT_FOUND, "dni nulo");
         }
         Optional<User> usuarioConDni = userRepository.listarUsuariosPorDni(dni);
         if(usuarioConDni.isPresent()){
             return ResponseEntity.ok(usuarioConDni.get());
         }
-        throw new ResponseStatusException(HttpStatus.NOT_FOUND, "no existe ese usuario");
+        throw new UserException(HttpStatus.NOT_FOUND, "no existe ese usuario");
     }
 
     @PostMapping("/actualizarUsuario/{dni}")
