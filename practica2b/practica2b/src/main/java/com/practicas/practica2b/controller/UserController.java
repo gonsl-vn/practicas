@@ -47,7 +47,7 @@ public class UserController  {
     public ResponseEntity<User> añadirUsuario(@RequestBody User user) {
         if(user == null ||user.getDni() == null || user.getName() == null
                 || user.getSurname() == null || user.getDni().length() != 9){
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "usuario nulo");
+            throw new UserException(HttpStatus.BAD_REQUEST, "usuario nulo");
         }
         userRepository.añadirUsuario(user);
         return ResponseEntity.ok(user);
@@ -56,13 +56,13 @@ public class UserController  {
     @DeleteMapping("/borrarUsuario/{dni}")
     public ResponseEntity<User> borrarUsuarioPorDni(@PathVariable String dni) {
         if(dni == null || dni.isEmpty()){
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "dni nulo");
+            throw new UserException(HttpStatus.BAD_REQUEST, "dni nulo");
         }
         boolean borrado = userRepository.borrarUsuarioPorDni(dni);
         if(borrado){
             return ResponseEntity.ok().build();
         }
-        throw new ResponseStatusException(HttpStatus.NOT_FOUND, "no existe ese usuario");
+        throw new UserException(HttpStatus.NOT_FOUND, "no existe ese usuario");
     }
 
     @PutMapping("/modificarUsuario/{dni}")
@@ -71,7 +71,7 @@ public class UserController  {
         if(usuarioAModificar.isPresent()){
             return ResponseEntity.ok(usuarioAModificar.get());
         }
-        throw new ResponseStatusException(HttpStatus.NOT_FOUND, "no existe ese usuario");
+        throw new UserException(HttpStatus.NOT_FOUND, "no existe ese usuario");
     }
 
 }
