@@ -1,2 +1,0 @@
-INSERT INTO usuarios (dni, name, surname, age) VALUES ("12345678A", "nombreEjemplo1", "apellidoEjemplo1", 22)
-INSERT INTO usuarios (dni, name, surname, age) VALUES ("87654321B", "nombreEjemplo2", "apellidoEjemplo2", 33)
