@@ -1,0 +1,238 @@
+2025-02-27 13:22:33.959230+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "create global temporary table HTE_peliculas(id integer, productora_id integer, rn_ integer not null, [*]year integer, director_id varchar(255), title varchar(255), primary key (rn_)) TRANSACTIONAL"; se esperaba "identifier"
+Syntax error in SQL statement "create global temporary table HTE_peliculas(id integer, productora_id integer, rn_ integer not null, [*]year integer, director_id varchar(255), title varchar(255), primary key (rn_)) TRANSACTIONAL"; expected "identifier"; SQL statement:
+create global temporary table HTE_peliculas(id integer, productora_id integer, rn_ integer not null, year integer, director_id varchar(255), title varchar(255), primary key (rn_)) TRANSACTIONAL [42001-232]
+2025-02-27 13:22:33.964033+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "create global temporary table HTE_series(id integer, productora_id integer, rn_ integer not null, [*]year integer, director_id varchar(255), title varchar(255), primary key (rn_)) TRANSACTIONAL"; se esperaba "identifier"
+Syntax error in SQL statement "create global temporary table HTE_series(id integer, productora_id integer, rn_ integer not null, [*]year integer, director_id varchar(255), title varchar(255), primary key (rn_)) TRANSACTIONAL"; expected "identifier"; SQL statement:
+create global temporary table HTE_series(id integer, productora_id integer, rn_ integer not null, year integer, director_id varchar(255), title varchar(255), primary key (rn_)) TRANSACTIONAL [42001-232]
+2025-02-27 13:22:34.234313+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "create table peliculas (id integer not null, title varchar(255) not null, [*]year integer not null, director_id varchar(255), productora_id integer, primary key (id))"; se esperaba "identifier"
+Syntax error in SQL statement "create table peliculas (id integer not null, title varchar(255) not null, [*]year integer not null, director_id varchar(255), productora_id integer, primary key (id))"; expected "identifier"; SQL statement:
+create table peliculas (id integer not null, title varchar(255) not null, year integer not null, director_id varchar(255), productora_id integer, primary key (id)) [42001-232]
+2025-02-27 13:22:34.243836+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "create table series (id integer not null, title varchar(255) not null, [*]year integer not null, director_id varchar(255), productora_id integer, primary key (id))"; se esperaba "identifier"
+Syntax error in SQL statement "create table series (id integer not null, title varchar(255) not null, [*]year integer not null, director_id varchar(255), productora_id integer, primary key (id))"; expected "identifier"; SQL statement:
+create table series (id integer not null, title varchar(255) not null, year integer not null, director_id varchar(255), productora_id integer, primary key (id)) [42001-232]
+2025-02-27 13:22:34.260708+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "PELICULAS" no encontrada
+Table "PELICULAS" not found; SQL statement:
+alter table if exists actores_de_pelicula add constraint FKbptas6i9000uskc7ey40pdhlt foreign key (pelicula_id) references peliculas [42102-232]
+2025-02-27 13:22:34.264706+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "SERIES" no encontrada
+Table "SERIES" not found; SQL statement:
+alter table if exists actores_de_serie add constraint FKm7q0n1l1aa8f1smvficgxi42b foreign key (serie_id) references series [42102-232]
+2025-02-27 13:25:14.037910+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "create global temporary table HTE_peliculas(id integer, productora_id integer, rn_ integer not null, [*]year integer, director_id varchar(255), title varchar(255), primary key (rn_)) TRANSACTIONAL"; se esperaba "identifier"
+Syntax error in SQL statement "create global temporary table HTE_peliculas(id integer, productora_id integer, rn_ integer not null, [*]year integer, director_id varchar(255), title varchar(255), primary key (rn_)) TRANSACTIONAL"; expected "identifier"; SQL statement:
+create global temporary table HTE_peliculas(id integer, productora_id integer, rn_ integer not null, year integer, director_id varchar(255), title varchar(255), primary key (rn_)) TRANSACTIONAL [42001-232]
+2025-02-27 13:25:14.046287+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "create global temporary table HTE_series(id integer, productora_id integer, rn_ integer not null, [*]year integer, director_id varchar(255), title varchar(255), primary key (rn_)) TRANSACTIONAL"; se esperaba "identifier"
+Syntax error in SQL statement "create global temporary table HTE_series(id integer, productora_id integer, rn_ integer not null, [*]year integer, director_id varchar(255), title varchar(255), primary key (rn_)) TRANSACTIONAL"; expected "identifier"; SQL statement:
+create global temporary table HTE_series(id integer, productora_id integer, rn_ integer not null, year integer, director_id varchar(255), title varchar(255), primary key (rn_)) TRANSACTIONAL [42001-232]
+2025-02-27 13:25:14.308809+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "create table peliculas (id integer not null, title varchar(255) not null, [*]year integer not null, director_id varchar(255), productora_id integer, primary key (id))"; se esperaba "identifier"
+Syntax error in SQL statement "create table peliculas (id integer not null, title varchar(255) not null, [*]year integer not null, director_id varchar(255), productora_id integer, primary key (id))"; expected "identifier"; SQL statement:
+create table peliculas (id integer not null, title varchar(255) not null, year integer not null, director_id varchar(255), productora_id integer, primary key (id)) [42001-232]
+2025-02-27 13:25:14.314838+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "create table series (id integer not null, title varchar(255) not null, [*]year integer not null, director_id varchar(255), productora_id integer, primary key (id))"; se esperaba "identifier"
+Syntax error in SQL statement "create table series (id integer not null, title varchar(255) not null, [*]year integer not null, director_id varchar(255), productora_id integer, primary key (id))"; expected "identifier"; SQL statement:
+create table series (id integer not null, title varchar(255) not null, year integer not null, director_id varchar(255), productora_id integer, primary key (id)) [42001-232]
+2025-02-27 13:25:14.326868+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "PELICULAS" no encontrada
+Table "PELICULAS" not found; SQL statement:
+alter table if exists actores_de_pelicula add constraint FKbptas6i9000uskc7ey40pdhlt foreign key (pelicula_id) references peliculas [42102-232]
+2025-02-27 13:25:14.330382+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "SERIES" no encontrada
+Table "SERIES" not found; SQL statement:
+alter table if exists actores_de_serie add constraint FKm7q0n1l1aa8f1smvficgxi42b foreign key (serie_id) references series [42102-232]
+2025-02-27 13:27:06.086392+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "create global temporary table HTE_peliculas(id integer, productora_id integer, rn_ integer not null, [*]year integer, director_id varchar(255), title varchar(255), primary key (rn_)) TRANSACTIONAL"; se esperaba "identifier"
+Syntax error in SQL statement "create global temporary table HTE_peliculas(id integer, productora_id integer, rn_ integer not null, [*]year integer, director_id varchar(255), title varchar(255), primary key (rn_)) TRANSACTIONAL"; expected "identifier"; SQL statement:
+create global temporary table HTE_peliculas(id integer, productora_id integer, rn_ integer not null, year integer, director_id varchar(255), title varchar(255), primary key (rn_)) TRANSACTIONAL [42001-232]
+2025-02-27 13:27:06.094910+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "create global temporary table HTE_series(id integer, productora_id integer, rn_ integer not null, [*]year integer, director_id varchar(255), title varchar(255), primary key (rn_)) TRANSACTIONAL"; se esperaba "identifier"
+Syntax error in SQL statement "create global temporary table HTE_series(id integer, productora_id integer, rn_ integer not null, [*]year integer, director_id varchar(255), title varchar(255), primary key (rn_)) TRANSACTIONAL"; expected "identifier"; SQL statement:
+create global temporary table HTE_series(id integer, productora_id integer, rn_ integer not null, year integer, director_id varchar(255), title varchar(255), primary key (rn_)) TRANSACTIONAL [42001-232]
+2025-02-27 13:27:06.318551+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "create table peliculas (id integer not null, title varchar(255) not null, [*]year integer not null, director_id varchar(255), productora_id integer, primary key (id))"; se esperaba "identifier"
+Syntax error in SQL statement "create table peliculas (id integer not null, title varchar(255) not null, [*]year integer not null, director_id varchar(255), productora_id integer, primary key (id))"; expected "identifier"; SQL statement:
+create table peliculas (id integer not null, title varchar(255) not null, year integer not null, director_id varchar(255), productora_id integer, primary key (id)) [42001-232]
+2025-02-27 13:27:06.327094+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "create table series (id integer not null, title varchar(255) not null, [*]year integer not null, director_id varchar(255), productora_id integer, primary key (id))"; se esperaba "identifier"
+Syntax error in SQL statement "create table series (id integer not null, title varchar(255) not null, [*]year integer not null, director_id varchar(255), productora_id integer, primary key (id))"; expected "identifier"; SQL statement:
+create table series (id integer not null, title varchar(255) not null, year integer not null, director_id varchar(255), productora_id integer, primary key (id)) [42001-232]
+2025-02-27 13:27:06.341937+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "PELICULAS" no encontrada
+Table "PELICULAS" not found; SQL statement:
+alter table if exists actores_de_pelicula add constraint FKbptas6i9000uskc7ey40pdhlt foreign key (pelicula_id) references peliculas [42102-232]
+2025-02-27 13:27:06.345136+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "SERIES" no encontrada
+Table "SERIES" not found; SQL statement:
+alter table if exists actores_de_serie add constraint FKm7q0n1l1aa8f1smvficgxi42b foreign key (serie_id) references series [42102-232]
+2025-02-27 13:29:45.326672+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "create global temporary table HTE_peliculas(id integer, productora_id integer, rn_ integer not null, [*]year integer, director_id varchar(255), title varchar(255), primary key (rn_)) TRANSACTIONAL"; se esperaba "identifier"
+Syntax error in SQL statement "create global temporary table HTE_peliculas(id integer, productora_id integer, rn_ integer not null, [*]year integer, director_id varchar(255), title varchar(255), primary key (rn_)) TRANSACTIONAL"; expected "identifier"; SQL statement:
+create global temporary table HTE_peliculas(id integer, productora_id integer, rn_ integer not null, year integer, director_id varchar(255), title varchar(255), primary key (rn_)) TRANSACTIONAL [42001-232]
+2025-02-27 13:29:45.334188+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "create global temporary table HTE_series(id integer, productora_id integer, rn_ integer not null, [*]year integer, director_id varchar(255), title varchar(255), primary key (rn_)) TRANSACTIONAL"; se esperaba "identifier"
+Syntax error in SQL statement "create global temporary table HTE_series(id integer, productora_id integer, rn_ integer not null, [*]year integer, director_id varchar(255), title varchar(255), primary key (rn_)) TRANSACTIONAL"; expected "identifier"; SQL statement:
+create global temporary table HTE_series(id integer, productora_id integer, rn_ integer not null, year integer, director_id varchar(255), title varchar(255), primary key (rn_)) TRANSACTIONAL [42001-232]
+2025-02-27 13:29:45.611540+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "create table peliculas (id integer not null, title varchar(255) not null, [*]year integer not null, director_id varchar(255), productora_id integer, primary key (id))"; se esperaba "identifier"
+Syntax error in SQL statement "create table peliculas (id integer not null, title varchar(255) not null, [*]year integer not null, director_id varchar(255), productora_id integer, primary key (id))"; expected "identifier"; SQL statement:
+create table peliculas (id integer not null, title varchar(255) not null, year integer not null, director_id varchar(255), productora_id integer, primary key (id)) [42001-232]
+2025-02-27 13:29:45.617540+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "create table series (id integer not null, title varchar(255) not null, [*]year integer not null, director_id varchar(255), productora_id integer, primary key (id))"; se esperaba "identifier"
+Syntax error in SQL statement "create table series (id integer not null, title varchar(255) not null, [*]year integer not null, director_id varchar(255), productora_id integer, primary key (id))"; expected "identifier"; SQL statement:
+create table series (id integer not null, title varchar(255) not null, year integer not null, director_id varchar(255), productora_id integer, primary key (id)) [42001-232]
+2025-02-27 13:29:45.635113+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "PELICULAS" no encontrada
+Table "PELICULAS" not found; SQL statement:
+alter table if exists actores_de_pelicula add constraint FKbptas6i9000uskc7ey40pdhlt foreign key (pelicula_id) references peliculas [42102-232]
+2025-02-27 13:29:45.637111+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "SERIES" no encontrada
+Table "SERIES" not found; SQL statement:
+alter table if exists actores_de_serie add constraint FKm7q0n1l1aa8f1smvficgxi42b foreign key (serie_id) references series [42102-232]
+2025-02-27 13:31:15.521812+01:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "SELECT * FROM ACTORES ACTORES [*]ACTORES_DE_PELICULA DNI ACTORES_DE_PELICULA DIRECTORES ACTORES SURNADIRECTORES DIRECTORES DIRECTORES ME SURNAME SURNAME SURNAME"
+Syntax error in SQL statement "SELECT * FROM ACTORES ACTORES [*]ACTORES_DE_PELICULA DNI ACTORES_DE_PELICULA DIRECTORES ACTORES SURNADIRECTORES DIRECTORES DIRECTORES ME SURNAME SURNAME SURNAME"; SQL statement:
+SELECT * FROM ACTORES ACTORES ACTORES_DE_PELICULA DNI ACTORES_DE_PELICULA DIRECTORES ACTORES SURNADIRECTORES DIRECTORES DIRECTORES ME SURNAME SURNAME SURNAME [42000-232]
+2025-02-27 13:31:18.197882+01:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "SELECT * FROM ACTORES ACTORES [*]ACTORES_DE_PELICULA DNI ACTORES_DE_PELICULA DIRECTORES ACTORES SURNADIRECTORES DIRECTORES DIRECTORES ACTORES ME SURNAME SURNAME SURNAME"
+Syntax error in SQL statement "SELECT * FROM ACTORES ACTORES [*]ACTORES_DE_PELICULA DNI ACTORES_DE_PELICULA DIRECTORES ACTORES SURNADIRECTORES DIRECTORES DIRECTORES ACTORES ME SURNAME SURNAME SURNAME"; SQL statement:
+SELECT * FROM ACTORES ACTORES ACTORES_DE_PELICULA DNI ACTORES_DE_PELICULA DIRECTORES ACTORES SURNADIRECTORES DIRECTORES DIRECTORES ACTORES ME SURNAME SURNAME SURNAME [42000-232]
+2025-02-27 13:31:19.038345+01:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "SELECT * FROM ACTORES ACTORES [*]ACTORES_DE_PELICULA DNI ACTORES_DE_PELICULA DIRECTORES ACTORES SURNADIRECTORES DIRECTORES DIRECTORES ACTORES ME SURNAME SURNAME SURNAME"
+Syntax error in SQL statement "SELECT * FROM ACTORES ACTORES [*]ACTORES_DE_PELICULA DNI ACTORES_DE_PELICULA DIRECTORES ACTORES SURNADIRECTORES DIRECTORES DIRECTORES ACTORES ME SURNAME SURNAME SURNAME"; SQL statement:
+SELECT * FROM ACTORES ACTORES ACTORES_DE_PELICULA DNI ACTORES_DE_PELICULA DIRECTORES ACTORES SURNADIRECTORES DIRECTORES DIRECTORES ACTORES ME SURNAME SURNAME SURNAME [42000-232]
+2025-02-27 13:34:03.873785+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "create global temporary table HTE_peliculas(id integer, productora_id integer, rn_ integer not null, [*]year integer, director_id varchar(255), title varchar(255), primary key (rn_)) TRANSACTIONAL"; se esperaba "identifier"
+Syntax error in SQL statement "create global temporary table HTE_peliculas(id integer, productora_id integer, rn_ integer not null, [*]year integer, director_id varchar(255), title varchar(255), primary key (rn_)) TRANSACTIONAL"; expected "identifier"; SQL statement:
+create global temporary table HTE_peliculas(id integer, productora_id integer, rn_ integer not null, year integer, director_id varchar(255), title varchar(255), primary key (rn_)) TRANSACTIONAL [42001-232]
+2025-02-27 13:34:03.883830+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "create global temporary table HTE_series(id integer, productora_id integer, rn_ integer not null, [*]year integer, director_id varchar(255), title varchar(255), primary key (rn_)) TRANSACTIONAL"; se esperaba "identifier"
+Syntax error in SQL statement "create global temporary table HTE_series(id integer, productora_id integer, rn_ integer not null, [*]year integer, director_id varchar(255), title varchar(255), primary key (rn_)) TRANSACTIONAL"; expected "identifier"; SQL statement:
+create global temporary table HTE_series(id integer, productora_id integer, rn_ integer not null, year integer, director_id varchar(255), title varchar(255), primary key (rn_)) TRANSACTIONAL [42001-232]
+2025-02-27 13:34:04.214602+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "create table peliculas (id integer not null, title varchar(255) not null, [*]year integer not null, director_id varchar(255), productora_id integer, primary key (id))"; se esperaba "identifier"
+Syntax error in SQL statement "create table peliculas (id integer not null, title varchar(255) not null, [*]year integer not null, director_id varchar(255), productora_id integer, primary key (id))"; expected "identifier"; SQL statement:
+create table peliculas (id integer not null, title varchar(255) not null, year integer not null, director_id varchar(255), productora_id integer, primary key (id)) [42001-232]
+2025-02-27 13:34:04.224126+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "create table series (id integer not null, title varchar(255) not null, [*]year integer not null, director_id varchar(255), productora_id integer, primary key (id))"; se esperaba "identifier"
+Syntax error in SQL statement "create table series (id integer not null, title varchar(255) not null, [*]year integer not null, director_id varchar(255), productora_id integer, primary key (id))"; expected "identifier"; SQL statement:
+create table series (id integer not null, title varchar(255) not null, year integer not null, director_id varchar(255), productora_id integer, primary key (id)) [42001-232]
+2025-02-27 13:34:04.244213+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "PELICULAS" no encontrada
+Table "PELICULAS" not found; SQL statement:
+alter table if exists actores_de_pelicula add constraint FKbptas6i9000uskc7ey40pdhlt foreign key (pelicula_id) references peliculas [42102-232]
+2025-02-27 13:34:04.249224+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "SERIES" no encontrada
+Table "SERIES" not found; SQL statement:
+alter table if exists actores_de_serie add constraint FKm7q0n1l1aa8f1smvficgxi42b foreign key (serie_id) references series [42102-232]
+2025-02-27 13:36:58.540082+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "create global temporary table HTE_peliculas(id integer, productora_id integer, rn_ integer not null, [*]year integer, director_id varchar(255), title varchar(255), primary key (rn_)) TRANSACTIONAL"; se esperaba "identifier"
+Syntax error in SQL statement "create global temporary table HTE_peliculas(id integer, productora_id integer, rn_ integer not null, [*]year integer, director_id varchar(255), title varchar(255), primary key (rn_)) TRANSACTIONAL"; expected "identifier"; SQL statement:
+create global temporary table HTE_peliculas(id integer, productora_id integer, rn_ integer not null, year integer, director_id varchar(255), title varchar(255), primary key (rn_)) TRANSACTIONAL [42001-232]
+2025-02-27 13:36:58.547596+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "create global temporary table HTE_series(id integer, productora_id integer, rn_ integer not null, [*]year integer, director_id varchar(255), title varchar(255), primary key (rn_)) TRANSACTIONAL"; se esperaba "identifier"
+Syntax error in SQL statement "create global temporary table HTE_series(id integer, productora_id integer, rn_ integer not null, [*]year integer, director_id varchar(255), title varchar(255), primary key (rn_)) TRANSACTIONAL"; expected "identifier"; SQL statement:
+create global temporary table HTE_series(id integer, productora_id integer, rn_ integer not null, year integer, director_id varchar(255), title varchar(255), primary key (rn_)) TRANSACTIONAL [42001-232]
+2025-02-27 13:36:58.777706+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "create table peliculas (id integer not null, title varchar(255) not null, [*]year integer not null, director_id varchar(255), productora_id integer, primary key (id))"; se esperaba "identifier"
+Syntax error in SQL statement "create table peliculas (id integer not null, title varchar(255) not null, [*]year integer not null, director_id varchar(255), productora_id integer, primary key (id))"; expected "identifier"; SQL statement:
+create table peliculas (id integer not null, title varchar(255) not null, year integer not null, director_id varchar(255), productora_id integer, primary key (id)) [42001-232]
+2025-02-27 13:36:58.783696+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "create table series (id integer not null, title varchar(255) not null, [*]year integer not null, director_id varchar(255), productora_id integer, primary key (id))"; se esperaba "identifier"
+Syntax error in SQL statement "create table series (id integer not null, title varchar(255) not null, [*]year integer not null, director_id varchar(255), productora_id integer, primary key (id))"; expected "identifier"; SQL statement:
+create table series (id integer not null, title varchar(255) not null, year integer not null, director_id varchar(255), productora_id integer, primary key (id)) [42001-232]
+2025-02-27 13:36:58.801285+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "PELICULAS" no encontrada
+Table "PELICULAS" not found; SQL statement:
+alter table if exists actores_de_pelicula add constraint FKbptas6i9000uskc7ey40pdhlt foreign key (pelicula_id) references peliculas [42102-232]
+2025-02-27 13:36:58.805903+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "SERIES" no encontrada
+Table "SERIES" not found; SQL statement:
+alter table if exists actores_de_serie add constraint FKm7q0n1l1aa8f1smvficgxi42b foreign key (serie_id) references series [42102-232]
+2025-02-27 13:41:37.797068+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "create global temporary table HTE_peliculas(id integer, productora_id integer, rn_ integer not null, [*]year integer, director_id varchar(255), title varchar(255), primary key (rn_)) TRANSACTIONAL"; se esperaba "identifier"
+Syntax error in SQL statement "create global temporary table HTE_peliculas(id integer, productora_id integer, rn_ integer not null, [*]year integer, director_id varchar(255), title varchar(255), primary key (rn_)) TRANSACTIONAL"; expected "identifier"; SQL statement:
+create global temporary table HTE_peliculas(id integer, productora_id integer, rn_ integer not null, year integer, director_id varchar(255), title varchar(255), primary key (rn_)) TRANSACTIONAL [42001-232]
+2025-02-27 13:41:37.803525+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "create global temporary table HTE_series(id integer, productora_id integer, rn_ integer not null, [*]year integer, director_id varchar(255), title varchar(255), primary key (rn_)) TRANSACTIONAL"; se esperaba "identifier"
+Syntax error in SQL statement "create global temporary table HTE_series(id integer, productora_id integer, rn_ integer not null, [*]year integer, director_id varchar(255), title varchar(255), primary key (rn_)) TRANSACTIONAL"; expected "identifier"; SQL statement:
+create global temporary table HTE_series(id integer, productora_id integer, rn_ integer not null, year integer, director_id varchar(255), title varchar(255), primary key (rn_)) TRANSACTIONAL [42001-232]
+2025-02-27 13:41:38.049690+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "create table peliculas (id integer not null, title varchar(255) not null, [*]year integer not null, director_id varchar(255), productora_id integer, primary key (id))"; se esperaba "identifier"
+Syntax error in SQL statement "create table peliculas (id integer not null, title varchar(255) not null, [*]year integer not null, director_id varchar(255), productora_id integer, primary key (id))"; expected "identifier"; SQL statement:
+create table peliculas (id integer not null, title varchar(255) not null, year integer not null, director_id varchar(255), productora_id integer, primary key (id)) [42001-232]
+2025-02-27 13:41:38.055670+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "create table series (id integer not null, title varchar(255) not null, [*]year integer not null, director_id varchar(255), productora_id integer, primary key (id))"; se esperaba "identifier"
+Syntax error in SQL statement "create table series (id integer not null, title varchar(255) not null, [*]year integer not null, director_id varchar(255), productora_id integer, primary key (id))"; expected "identifier"; SQL statement:
+create table series (id integer not null, title varchar(255) not null, year integer not null, director_id varchar(255), productora_id integer, primary key (id)) [42001-232]
+2025-02-27 13:41:38.068759+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "PELICULAS" no encontrada
+Table "PELICULAS" not found; SQL statement:
+alter table if exists actores_de_pelicula add constraint FKbptas6i9000uskc7ey40pdhlt foreign key (pelicula_id) references peliculas [42102-232]
+2025-02-27 13:41:38.072760+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "SERIES" no encontrada
+Table "SERIES" not found; SQL statement:
+alter table if exists actores_de_serie add constraint FKm7q0n1l1aa8f1smvficgxi42b foreign key (serie_id) references series [42102-232]
+2025-02-27 13:41:52.800891+01:00 database: wrong user or password; user: "USUARIO"
+org.h2.message.DbException: Nombre de usuario ó password incorrecto
+Wrong user name or password [28000-232]
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.message.DbException.get(DbException.java:188)
+	at org.h2.engine.Engine.openSession(Engine.java:154)
+	at org.h2.engine.Engine.openSession(Engine.java:222)
+	at org.h2.engine.Engine.createSession(Engine.java:201)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:344)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:124)
+	at org.h2.util.JdbcUtils.getConnection(JdbcUtils.java:291)
+	at org.h2.server.web.WebServer.getConnection(WebServer.java:811)
+	at org.h2.server.web.WebApp.login(WebApp.java:1038)
+	at org.h2.server.web.WebApp.process(WebApp.java:226)
+	at org.h2.server.web.WebApp.processRequest(WebApp.java:176)
+	at org.h2.server.web.JakartaWebServlet.doGet(JakartaWebServlet.java:129)
+	at org.h2.server.web.JakartaWebServlet.doPost(JakartaWebServlet.java:166)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:397)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1743)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:1575)
+Caused by: org.h2.jdbc.JdbcSQLInvalidAuthorizationSpecException: Nombre de usuario ó password incorrecto
+Wrong user name or password [28000-232]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:522)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	... 50 more
