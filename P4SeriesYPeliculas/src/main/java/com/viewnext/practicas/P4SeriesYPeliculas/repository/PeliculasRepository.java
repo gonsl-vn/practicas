@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface PeliculasRepository extends JpaRepository<PeliculasModel, String> {
     PeliculasModel findByTitle(String title);
-    PeliculasModel findByDirectorName(String directorName);
+   // PeliculasModel findByDirectorName(String directorName);
 }

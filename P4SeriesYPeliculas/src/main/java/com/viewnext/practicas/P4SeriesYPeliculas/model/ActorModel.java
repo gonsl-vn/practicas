@@ -1,17 +1,15 @@
 package com.viewnext.practicas.P4SeriesYPeliculas.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import jakarta.persistence.*;
+import lombok.*;
+
+import java.util.List;
 
 @Getter
 @Setter
 @AllArgsConstructor
+@Data
 @NoArgsConstructor
 @Entity
 @Table(name="actores")
@@ -28,5 +26,8 @@ public class ActorModel {
     @Column(nullable = false)
     private String nationality;
 
+    //@JsonBackReference
+    @ManyToMany(mappedBy = "actores")
+    private List<PeliculasModel> peliculas;
 
 }

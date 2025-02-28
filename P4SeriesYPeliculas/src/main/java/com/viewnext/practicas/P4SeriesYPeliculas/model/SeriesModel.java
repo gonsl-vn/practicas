@@ -22,20 +22,21 @@ public class SeriesModel {
     @Column(nullable = false)
     private String title;
     @Column(nullable = false)
-    private Integer year;
+    private Integer creationYear;
 
     @ManyToOne
-    @JoinColumn(name = "directorId")
+    @JoinColumn(name = "director_dni", referencedColumnName = "dni")
     private DirectorModel director;
 
     @ManyToOne
-    @JoinColumn(name="productoraId")
+    @JoinColumn(name="productora_id")
     private ProductoraModel productora;
 
     @ManyToMany
-    @JoinTable(name = "actoresDeSerie",
-    joinColumns = @JoinColumn(name = "serieId"),
-    inverseJoinColumns = @JoinColumn(name = "actorId"))
+    @JoinTable(name = "actores_de_serie",
+    joinColumns = @JoinColumn(name = "serie_id"),
+    inverseJoinColumns = @JoinColumn(name = "actor_dni",
+            referencedColumnName = "dni"))
     private List<ActorModel> actores;
 
 
