@@ -29,5 +29,7 @@ public class ActorModel {
     //@JsonBackReference
     @ManyToMany(mappedBy = "actores")
     private List<PeliculasModel> peliculas;
+    @ManyToMany(mappedBy = "actores")
+    private List<SeriesModel> series;
 
 }

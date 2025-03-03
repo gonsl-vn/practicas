@@ -5,11 +5,13 @@ import com.viewnext.practicas.P4SeriesYPeliculas.exception.ResourceNotFoundExcep
 import com.viewnext.practicas.P4SeriesYPeliculas.model.ActorModel;
 import com.viewnext.practicas.P4SeriesYPeliculas.model.PeliculasModel;
 import com.viewnext.practicas.P4SeriesYPeliculas.model.entity.ActorEntity;
+import com.viewnext.practicas.P4SeriesYPeliculas.repository.ActorCriteriaRepository;
 import com.viewnext.practicas.P4SeriesYPeliculas.repository.ActorRespository;
 import com.viewnext.practicas.P4SeriesYPeliculas.repository.PeliculasRepository;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.criteria.*;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -22,20 +24,26 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
+@RequiredArgsConstructor
 public class ActorService {
 
     @PersistenceContext
     private EntityManager em;
 
+
+
     @Autowired
     private ActorRespository actorRespository;
     private PeliculasRepository peliculasRepository;
+    private final ActorCriteriaRepository actorCriteriaRepository;
 
     public ActorEntity convertirAModelo(ActorModel actorModel) {
         List<String> peliculas = actorModel.getPeliculas().stream().
                 map(p -> p.getTitle()).collect(Collectors.toList());
+        List<String> series= actorModel.getSeries().stream().map(
+                s-> s.getTitle()).collect(Collectors.toList());
         return new ActorEntity(actorModel.getName(),actorModel.getSurname(),
-                actorModel.getAge(),actorModel.getNationality(),peliculas);
+                actorModel.getAge(),actorModel.getNationality(),peliculas, series);
     }
 
     public List<ActorEntity> listarActores(){
@@ -75,6 +83,15 @@ public class ActorService {
             return actorRespository.save(actor);
         }throw new ResourceNotFoundException("el usuario no existe");
     }
+
+    public List<ActorEntity> buscarActorPorVariosParam(String name, String surname,
+            Integer age, String nationality, String peliTitle, String serieTitle){
+        List<ActorModel> actores = actorCriteriaRepository.buscarActoresPorCriteria(name,
+                surname, age, nationality, peliTitle, serieTitle);
+        return actores.stream().map(a->convertirAModelo(a))
+                .collect(Collectors.toList());
+    }
+
     /*public Page<ActorModel> obtenerActoresPorPeliculasEnOrden(Integer peliculaId,
             int page){
         Pageable pageable = (Pageable) PageRequest.of(page, 10,

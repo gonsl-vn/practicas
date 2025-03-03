@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -21,4 +23,10 @@ public class ProductoraModel {
     private String name;
     @Column(nullable = false)
     private Integer foundedInYear;
+
+    @OneToMany(mappedBy = "productora")
+    private List<PeliculasModel> peliculas;
+
+    @OneToMany(mappedBy = "productora")
+    private List<SeriesModel> series;
 }

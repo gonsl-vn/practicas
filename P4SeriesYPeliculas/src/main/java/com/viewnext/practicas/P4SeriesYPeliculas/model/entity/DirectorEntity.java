@@ -17,4 +17,5 @@ public class DirectorEntity {
     private Integer age;
     private String nationality;
     private List<String> peliculas;
+    private List<String> series;
 }

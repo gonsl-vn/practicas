@@ -24,6 +24,18 @@ public class ActorController {
     public ResponseEntity<List<ActorEntity>> findAll() {
         return ResponseEntity.ok(actorService.listarActores());
     }
+    @GetMapping("/buscaPorParametros")
+    public ResponseEntity<List<ActorEntity>> buscarPorParametros(
+            @RequestParam(required = false) String name,
+            @RequestParam(required = false) String surname,
+            @RequestParam(required = false) Integer actorAge,
+            @RequestParam(required = false) String nationality,
+            @RequestParam(required = false) String peliTitle,
+            @RequestParam(required = false) String serieTitle
+    ){
+        return ResponseEntity.ok(actorService.buscarActorPorVariosParam(name, surname,
+                actorAge, nationality, peliTitle, serieTitle));
+    }
 
     @GetMapping("/{id}/actoresPorPeliculaId")
     public ResponseEntity<List<ActorEntity>>

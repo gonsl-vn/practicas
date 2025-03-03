@@ -19,4 +19,5 @@ public class ActorEntity {
     private Integer age;
     private String nationality;
     private List<String> peliculas;
+    private List<String> series;
 }
