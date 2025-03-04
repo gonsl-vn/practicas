@@ -19,7 +19,9 @@ public class ActorCriteriaRepository {
 
 
     public List<ActorModel> buscarActoresPorCriteria (
+
             String name,
+            String dni,
             String surname,
             Integer actorAge,
             String nationality,
@@ -31,10 +33,17 @@ public class ActorCriteriaRepository {
         CriteriaBuilder cb = em.getCriteriaBuilder();
         CriteriaQuery<ActorModel> cq = cb.createQuery(ActorModel.class);
         Root<ActorModel> root = cq.from(ActorModel.class);
+
         if(name != null && !name.isEmpty()){
             predicates.add(cb.like(cb.lower(root.get("name")),
                     "%" + name.toLowerCase() + "%"));
         }
+
+        if(dni!=null && !dni.isEmpty()){
+            predicates.add(cb.like(root.get("dni"), "%" + dni + "%"));
+        }
+
+
         if(surname != null && !surname.isEmpty()){
             predicates.add(cb.like(cb.lower(root.get("surname")),
                     "%" + surname.toLowerCase() + "%"));

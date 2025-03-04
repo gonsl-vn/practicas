@@ -23,6 +23,7 @@ public class PeliculasModel {
     @Column(nullable = false)
     private Integer creationYear;
 
+
     @ManyToOne
     @JoinColumn(name = "director_dni", referencedColumnName = "dni")
     private DirectorModel director;
@@ -31,7 +32,7 @@ public class PeliculasModel {
     @JoinColumn(name="productora_id")
     private ProductoraModel productora;
 
-    //@JsonManagedReference
+   // @JsonManagedReference
     @ManyToMany
     @JoinTable(name = "actores_de_pelicula",
             joinColumns = @JoinColumn(name = "pelicula_id"),

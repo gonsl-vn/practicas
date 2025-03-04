@@ -4,8 +4,12 @@ import com.viewnext.practicas.P4SeriesYPeliculas.exception.ResourceAlreadyExists
 import com.viewnext.practicas.P4SeriesYPeliculas.exception.ResourceNotFoundException;
 import com.viewnext.practicas.P4SeriesYPeliculas.model.PeliculasModel;
 import com.viewnext.practicas.P4SeriesYPeliculas.model.entity.PeliculasEntity;
+import com.viewnext.practicas.P4SeriesYPeliculas.repository.PeliculaCriteriaRepository;
 import com.viewnext.practicas.P4SeriesYPeliculas.repository.PeliculasRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,6 +19,8 @@ import java.util.stream.Collectors;
 public class PeliculasService {
     @Autowired
     PeliculasRepository peliculasRepository;
+    @Autowired
+    private PeliculaCriteriaRepository peliculaCriteriaRepository;
 
     public PeliculasEntity convertirAModelo(PeliculasModel peliculasModel) {
         List<String> actores = peliculasModel.getActores().stream()
@@ -55,6 +61,25 @@ public class PeliculasService {
             peliEncontrada.setProductora(peliculasModel.getProductora());
             peliEncontrada.setActores(peliculasModel.getActores());
         }throw new ResourceNotFoundException("La peli no existe");
+    }
+
+    public Page<PeliculasEntity> buscaPorParametros(String title,
+            Integer creationYear, String productoraTitle, String directorName,
+            String actorName, Pageable pageable) {
+        List<PeliculasModel> peliculas = peliculaCriteriaRepository
+                .buscarPeliculasPorCriteria(title,
+                        creationYear, productoraTitle, directorName, actorName);
+        List<PeliculasEntity> peliculasEnModelo = peliculas.stream().map(
+                p->convertirAModelo(p)).collect(Collectors.toList());
+
+        int numPeliculas = peliculas.size();
+        int start = (int) pageable.getOffset();
+        int end = Math.min(start + pageable.getPageSize(), numPeliculas);
+
+        List<PeliculasEntity> peliculasPaginadas =
+                peliculasEnModelo.subList(start, end);
+
+        return new PageImpl<>(peliculasPaginadas, pageable, numPeliculas);
     }
 
 }

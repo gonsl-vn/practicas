@@ -44,7 +44,7 @@ public class SeriesCriteriaRepository {
                     "%" + actorName.toLowerCase() + "%"));
         }
 
-        Join<SeriesModel, DirectorModel> directorJoin = root.join("series",
+        Join<SeriesModel, DirectorModel> directorJoin = root.join("director",
                 JoinType.LEFT);
         if (directorName != null && !directorName.isEmpty()) {
             predicates.add(cb.like(cb.lower(directorJoin.get("name")),
@@ -60,7 +60,7 @@ public class SeriesCriteriaRepository {
 
         if (predicates.size() > 0) {
             cq.select(root).where(cb.or(predicates.toArray(new Predicate[predicates.size()])))
-                    .orderBy(cb.asc(root.get("name")));
+                    .orderBy(cb.asc(root.get("title")));
         } else {
             return new ArrayList<>();
         }

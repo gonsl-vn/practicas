@@ -18,6 +18,7 @@ public class DirectorCriteriaRepository {
     private EntityManager em;
 
     public List<DirectorModel> buscarDirectoresPorCriteria (
+            String dni,
             String name,
             String surname,
             Integer directorAge,
@@ -30,6 +31,11 @@ public class DirectorCriteriaRepository {
         CriteriaBuilder cb = em.getCriteriaBuilder();
         CriteriaQuery<DirectorModel> cq = cb.createQuery(DirectorModel.class);
         Root<DirectorModel> root = cq.from(DirectorModel.class);
+
+        if(dni !=null && !dni.isEmpty()){
+            predicates.add(cb.like(root.get("dni"), "%" + dni + "%"));
+        }
+
         if (name != null && !name.isEmpty()) {
             predicates.add(cb.like(cb.lower(root.get("name")), "%" + name.toLowerCase() + "%"));
         }

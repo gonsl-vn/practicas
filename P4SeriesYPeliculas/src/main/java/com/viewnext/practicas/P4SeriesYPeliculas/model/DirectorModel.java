@@ -1,5 +1,6 @@
 package com.viewnext.practicas.P4SeriesYPeliculas.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -28,6 +29,7 @@ public class DirectorModel {
     @Column(nullable = false)
     private String nationality;
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "director")
     private List<PeliculasModel> peliculas;
 

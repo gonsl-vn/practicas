@@ -15,22 +15,66 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/directores")
+@RequestMapping("/API")
 public class DirectorController {
 
     @Autowired
     private DirectorService directorService;
 
-    @GetMapping
+    @GetMapping("/user/directores")
     public ResponseEntity<List<DirectorEntity>> listarDirectores(){
         return ResponseEntity.ok(directorService.listarDirectores());
     }
-    @GetMapping("/{dni}")
+    @GetMapping("/user/directores/{dni}")
     public ResponseEntity<DirectorEntity> getDirectorPorId(@PathVariable String dni){
         return ResponseEntity.ok(directorService.buscarDirectorPorDni(dni));
 
     }
-    @GetMapping("/buscarPorParametros")
+    @GetMapping("/user/directores/buscaPorParametros")
+    public ResponseEntity<Page<DirectorEntity>> pruebaBusqueda(
+            @RequestParam(required = false) String dni,
+            @RequestParam(required = false) String name,
+            @RequestParam(required = false) String surname,
+            @RequestParam(required = false) Integer directorAge,
+            @RequestParam(required = false) String nationality,
+            @RequestParam(required = false) String peliTitle,
+            @RequestParam(required = false) String serieTitle,
+            @RequestParam(defaultValue = "2") int size,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "name") String sortBy,
+            @RequestParam(defaultValue = "asc") String order
+    ){
+        Sort sort = order.equalsIgnoreCase("desc")?
+                Sort.by(sortBy).descending() : Sort.by(sortBy).ascending();
+        Pageable pageable = PageRequest.of(page, size, sort);
+
+        return ResponseEntity.ok(directorService.pruebaBusqueda( dni, name,
+                surname, directorAge, nationality, peliTitle, serieTitle, pageable));
+    }
+    @GetMapping("/admin/directores/buscaPorParametros")
+    public ResponseEntity<Page<DirectorEntity>> pruebaBusquedaAdmin(
+            @RequestParam(required = false) String dni,
+            @RequestParam(required = false) String name,
+            @RequestParam(required = false) String surname,
+            @RequestParam(required = false) Integer directorAge,
+            @RequestParam(required = false) String nationality,
+            @RequestParam(required = false) String peliTitle,
+            @RequestParam(required = false) String serieTitle,
+            @RequestParam(defaultValue = "2") int size,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "name") String sortBy,
+            @RequestParam(defaultValue = "asc") String order
+    ){
+        Sort sort = order.equalsIgnoreCase("desc")?
+                Sort.by(sortBy).descending() : Sort.by(sortBy).ascending();
+        Pageable pageable = PageRequest.of(page, size, sort);
+
+        return ResponseEntity.ok(directorService.pruebaBusqueda( dni, name,
+                surname, directorAge, nationality, peliTitle, serieTitle, pageable));
+    }
+
+
+   /* @GetMapping("/buscarPorParametros")
     public Page<DirectorEntity> buscarDirectorPorParametros(
             @RequestParam(required = false) String name,
             @RequestParam(required = false) String surname,
@@ -52,19 +96,19 @@ public class DirectorController {
         return directorService.buscarDirectorPorParametros(name,
                 surname, directorAge, nationality, peliTitle,
                 serieTitle, pageable);
-    }
+    }*/
 
-    @PostMapping("/post/{dni}")
+    @PostMapping("/admin/directores/post/{dni}")
     public ResponseEntity<DirectorModel> postDirector(@PathVariable String dni,
             @RequestBody DirectorModel directorModel){
         return ResponseEntity.ok(directorService.addDirector(directorModel));
     }
-    @PutMapping("/put/{dni}")
+    @PutMapping("/admin/directores/put/{dni}")
     public ResponseEntity<DirectorModel> putDirector(@PathVariable String dni,
             @RequestBody DirectorModel directorModel){
         return ResponseEntity.ok(directorService.editDirector(directorModel));
     }
-    @DeleteMapping("/delete/{dni}")
+    @DeleteMapping("/admin/directores/delete/{dni}")
     public ResponseEntity<DirectorModel> deleteDirector(@PathVariable String dni){
         return ResponseEntity.ok(directorService.deleteDirector(dni));
     }

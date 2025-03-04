@@ -5,6 +5,7 @@ import com.viewnext.practicas.P4SeriesYPeliculas.exception.ResourceNotFoundExcep
 import com.viewnext.practicas.P4SeriesYPeliculas.model.ActorModel;
 import com.viewnext.practicas.P4SeriesYPeliculas.model.PeliculasModel;
 import com.viewnext.practicas.P4SeriesYPeliculas.model.entity.ActorEntity;
+import com.viewnext.practicas.P4SeriesYPeliculas.model.privado.ActorPrivado;
 import com.viewnext.practicas.P4SeriesYPeliculas.repository.ActorCriteriaRepository;
 import com.viewnext.practicas.P4SeriesYPeliculas.repository.ActorRespository;
 import com.viewnext.practicas.P4SeriesYPeliculas.repository.PeliculasRepository;
@@ -13,10 +14,7 @@ import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.criteria.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 
 
@@ -43,6 +41,15 @@ public class ActorService {
         List<String> series= actorModel.getSeries().stream().map(
                 s-> s.getTitle()).collect(Collectors.toList());
         return new ActorEntity(actorModel.getName(),actorModel.getSurname(),
+                actorModel.getAge(),actorModel.getNationality(),peliculas, series);
+    }
+
+    public ActorPrivado convertirAPrivado(ActorModel actorModel) {
+        List<String> peliculas = actorModel.getPeliculas().stream().
+                map(p -> p.getTitle()).collect(Collectors.toList());
+        List<String> series= actorModel.getSeries().stream().map(
+                s-> s.getTitle()).collect(Collectors.toList());
+        return new ActorPrivado(actorModel.getDni(), actorModel.getName(),actorModel.getSurname(),
                 actorModel.getAge(),actorModel.getNationality(),peliculas, series);
     }
 
@@ -84,12 +91,36 @@ public class ActorService {
         }throw new ResourceNotFoundException("el usuario no existe");
     }
 
-    public List<ActorEntity> buscarActorPorVariosParam(String name, String surname,
-            Integer age, String nationality, String peliTitle, String serieTitle){
-        List<ActorModel> actores = actorCriteriaRepository.buscarActoresPorCriteria(name,
+    public Page<ActorEntity> buscarActorPorVariosParam(String name,
+            String dni, String surname,
+            Integer age, String nationality, String peliTitle, String serieTitle,
+            Pageable pageable){
+        List<ActorModel> actores = actorCriteriaRepository
+                .buscarActoresPorCriteria(name, dni,
                 surname, age, nationality, peliTitle, serieTitle);
-        return actores.stream().map(a->convertirAModelo(a))
+        List<ActorEntity> actoresEnModelo = actores.stream().map(a->convertirAModelo(a))
                 .collect(Collectors.toList());
+        int numActores = actoresEnModelo.size();
+        int start = (int) pageable.getOffset();
+        int end = Math.min(start + pageable.getPageSize(), numActores);
+        List<ActorEntity> actoresPaginados = actoresEnModelo.subList(start, end);
+        return new PageImpl<>(actoresPaginados, pageable, numActores);
+    }
+    public Page<ActorPrivado> buscarActorPorVariosParamAdmin(String name,
+            String dni, String surname,
+            Integer age, String nationality, String peliTitle, String serieTitle,
+            Pageable pageable){
+        List<ActorModel> actores = actorCriteriaRepository
+                .buscarActoresPorCriteria(name, dni,
+                        surname, age, nationality, peliTitle, serieTitle);
+        List<ActorPrivado> actoresEnPrivado = actores.stream()
+                .map(a->convertirAPrivado(a)).collect(Collectors.toList());
+
+        int numActores = actoresEnPrivado.size();
+        int start = (int) pageable.getOffset();
+        int end = Math.min(start + pageable.getPageSize(), numActores);
+        List<ActorPrivado> actoresPaginados = actoresEnPrivado.subList(start, end);
+        return new PageImpl<>(actoresPaginados, pageable, numActores);
     }
 
     /*public Page<ActorModel> obtenerActoresPorPeliculasEnOrden(Integer peliculaId,

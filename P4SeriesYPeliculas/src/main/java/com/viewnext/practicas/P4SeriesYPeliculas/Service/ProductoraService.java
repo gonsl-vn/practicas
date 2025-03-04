@@ -2,10 +2,17 @@ package com.viewnext.practicas.P4SeriesYPeliculas.Service;
 
 import com.viewnext.practicas.P4SeriesYPeliculas.exception.ResourceAlreadyExistsException;
 import com.viewnext.practicas.P4SeriesYPeliculas.exception.ResourceNotFoundException;
+import com.viewnext.practicas.P4SeriesYPeliculas.model.DirectorModel;
 import com.viewnext.practicas.P4SeriesYPeliculas.model.ProductoraModel;
+import com.viewnext.practicas.P4SeriesYPeliculas.model.entity.DirectorEntity;
 import com.viewnext.practicas.P4SeriesYPeliculas.model.entity.ProductoraEntity;
+import com.viewnext.practicas.P4SeriesYPeliculas.repository.PeliculaCriteriaRepository;
+import com.viewnext.practicas.P4SeriesYPeliculas.repository.ProductoraCriteriaRepository;
 import com.viewnext.practicas.P4SeriesYPeliculas.repository.ProductoraRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,6 +22,10 @@ import java.util.stream.Collectors;
 public class ProductoraService {
     @Autowired
     private ProductoraRepository productoraRepository;
+    @Autowired
+    private PeliculaCriteriaRepository peliculaCriteriaRepository;
+    @Autowired
+    private ProductoraCriteriaRepository productoraCriteriaRepository;
 
     public ProductoraEntity convertirAModelo(ProductoraModel productoraModel) {
         List<String> peliculas = productoraModel.getPeliculas().stream()
@@ -53,6 +64,22 @@ public class ProductoraService {
             productoraEncontrada.setPeliculas(productoraModel.getPeliculas());
             return productoraRepository.save(productoraEncontrada);
         }throw new ResourceNotFoundException("No existe esa productora");
+    }
+
+    public Page<ProductoraEntity> buscarProductoraPorParametros(String name,
+             Integer foundedInYear, String peliTitle,
+            String serieTitle, Pageable pageable){
+        List<ProductoraModel> productoras = productoraCriteriaRepository.buscarProductoraPorCriteria(
+                name, foundedInYear, peliTitle, serieTitle);
+
+        List<ProductoraEntity> productorasEnModelo = productoras.stream()
+                .map(d->convertirAModelo(d)).collect(Collectors.toList());
+
+        int numProductoras= productorasEnModelo.size();
+        int start = (int) pageable.getOffset();
+        int end = Math.min(start + pageable.getPageSize(), numProductoras);
+        List<ProductoraEntity> productorasPaginadas = productorasEnModelo.subList(start, end);
+        return new PageImpl<>(productorasPaginadas, pageable, numProductoras);
     }
 
 }

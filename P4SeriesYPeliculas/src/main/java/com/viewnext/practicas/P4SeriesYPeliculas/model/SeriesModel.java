@@ -1,5 +1,6 @@
 package com.viewnext.practicas.P4SeriesYPeliculas.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -32,6 +33,7 @@ public class SeriesModel {
     @JoinColumn(name="productora_id")
     private ProductoraModel productora;
 
+    @JsonManagedReference
     @ManyToMany
     @JoinTable(name = "actores_de_serie",
     joinColumns = @JoinColumn(name = "serie_id"),

@@ -26,9 +26,10 @@ public class ActorModel {
     @Column(nullable = false)
     private String nationality;
 
-    //@JsonBackReference
+
     @ManyToMany(mappedBy = "actores")
     private List<PeliculasModel> peliculas;
+
     @ManyToMany(mappedBy = "actores")
     private List<SeriesModel> series;
 
