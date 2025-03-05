@@ -34,15 +34,48 @@ public class UserServices {
         return usersRepository.findByDni(dni);
     }
 
-    public Usuario guardarUsuario(Usuario usuario) {
-        return usersRepository.save(usuario);
+    public void guardarUsuario(Usuario usuario) {
+        usersRepository.save(usuario);
+    }
+
+    public void actualizarUsuario(String dni, Usuario usuarioActualizado) {
+        usersRepository.actualizarUsuario(dni, usuarioActualizado);
     }
 
     public void eliminarUsuario(String dni) {
         usersRepository.deleteById(dni);
     }
 
-    public void actualizarUsuario(String dni, Usuario usuarioActualizado) {
-        usersRepository.actualizarUsuario(dni, usuarioActualizado);
+    //Llamadas Nativas
+
+    public List<Usuario> listarUsuariosNativo() {
+        return usersRepository.listarUsuariosNativo();
     }
+
+    public Optional<Usuario> buscarPorNombreNativo(String name) {
+        return usersRepository.buscarPorNombreNativo(name);
+    }
+
+    public Optional<Usuario> buscarPorDniNativo(String dni) {
+        return usersRepository.buscarPorDniNativo(dni);
+    }
+
+    public Optional<Usuario> buscarPorEdadNativo(int age) {
+        return usersRepository.buscarPorEdadNativo(age);
+    }
+
+    public void insertarUsuarioNativo(Usuario usuario) {
+        usersRepository.insertarUsuarioNativo(usuario.getDni(), usuario.getName(), usuario.getSurname(),
+                usuario.getAge());
+    }
+
+    public void modificarUsuarioNativo(String dni, Usuario usuarioActualizado) {
+        usersRepository.modificarUsuarioNativo(dni, usuarioActualizado.getName(), usuarioActualizado.getSurname(),
+                usuarioActualizado.getAge());
+    }
+
+    public void borrarUsuarioNativo(String dni) {
+        usersRepository.borrarUsuarioNativo(dni);
+    }
+
 }
