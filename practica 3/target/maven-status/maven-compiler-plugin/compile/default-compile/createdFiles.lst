@@ -1,6 +1,0 @@
-com\viewnext\practica2\models\Usuario.class
-com\viewnext\practica2\controller\UsuarioController.class
-com\viewnext\practica2\repository\UsersRepository.class
-com\viewnext\practica2\exceptions\InvalidUserException.class
-com\viewnext\practica2\Practica2Application.class
-com\viewnext\practica2\services\UserServices.class
