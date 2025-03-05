@@ -1,0 +1,33 @@
+spring:
+  application:
+    name: practica3  # Nombre de la aplicación
+
+  datasource:
+    url: jdbc:h2:file:./data/usuarios;AUTO_RECONNECT=TRUE
+    username: admin
+    password: admin
+    driverClassName: org.h2.Driver
+
+  h2:
+    console:
+      enabled: true  # Habilita la consola de H2
+      path: /h2-console
+      settings:
+        trace: false
+        web-allow-others: false
+
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    show-sql: true
+    logging:
+      level:
+        org.hibernate.SQL: DEBUG  # Muestra las consultas ejecutadas
+        org.hibernate.type.descriptor.sql.BasicBinder: TRACE  # Muestra los valores de los parámetros en las consultas
+    hibernate:
+      ddl-auto: update  # Mantiene la estructura de la BD sin borrar datos
+
+logging:
+  level:
+    root: ERROR
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
