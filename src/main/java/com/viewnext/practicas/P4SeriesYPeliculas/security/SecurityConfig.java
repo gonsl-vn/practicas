@@ -1,3 +1,4 @@
+
 package com.viewnext.practicas.P4SeriesYPeliculas.security;
 
 import org.springframework.context.annotation.Bean;
@@ -31,13 +32,13 @@ public class SecurityConfig {
     public UserDetailsService userDetailsService() {
         UserDetails user = User.withDefaultPasswordEncoder()
                 .username("user")
-                .password("contraseña")
+                .password("password")
                 .roles("USER")
                 .build();
 
         UserDetails admin = User.withDefaultPasswordEncoder()
                 .username("admin")
-                .password("contraseña")
+                .password("password")
                 .roles("ADMIN")
                 .build();
         return new InMemoryUserDetailsManager(user,admin);

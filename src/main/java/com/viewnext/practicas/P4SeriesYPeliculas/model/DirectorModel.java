@@ -29,9 +29,10 @@ public class DirectorModel {
     @Column(nullable = false)
     private String nationality;
 
-    @JsonManagedReference
+
     @OneToMany(mappedBy = "director")
     private List<PeliculasModel> peliculas;
+
 
     @OneToMany(mappedBy = "director")
     private List<SeriesModel> series;

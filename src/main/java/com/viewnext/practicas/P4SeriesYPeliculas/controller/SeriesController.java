@@ -52,8 +52,8 @@ public class SeriesController {
         return ResponseEntity.status(HttpStatus.CREATED).body(seriesService.addSeries(series));
     }
     @DeleteMapping("/delete/{title}")
-    public ResponseEntity<SeriesModel> deleteSeries(@PathVariable String title) {
-        return ResponseEntity.ok(seriesService.deleteSeries(title));
+    public void deleteSeries(@PathVariable String title) {
+       seriesService.deleteSeries(title);
     }
     @PutMapping("/put")
     public ResponseEntity<SeriesModel> putSeries(@RequestBody SeriesModel series) {

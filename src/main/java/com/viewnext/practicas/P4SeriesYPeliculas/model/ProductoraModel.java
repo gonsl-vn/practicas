@@ -1,5 +1,6 @@
 package com.viewnext.practicas.P4SeriesYPeliculas.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -23,6 +24,7 @@ public class ProductoraModel {
     private String name;
     @Column(nullable = false)
     private Integer foundedInYear;
+
 
     @OneToMany(mappedBy = "productora")
     private List<PeliculasModel> peliculas;

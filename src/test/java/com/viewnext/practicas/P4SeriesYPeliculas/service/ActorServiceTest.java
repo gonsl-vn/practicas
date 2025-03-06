@@ -65,10 +65,10 @@ public class ActorServiceTest {
     public void testBuscadorActores(){
         when(actorCriteriaRepository.buscarActoresPorCriteria(actor1.getName(),
                 actor1.getDni(), actor1.getSurname(), actor1.getAge(),
-                actor1.getNationality(), pelicula2.getTitle(), serie1.getTitle()));
+                actor1.getNationality(), pelicula2.getTitle(), serie1.getTitle())).thenReturn(List.of(actor1));
         Pageable pageable = PageRequest.of(0, 2, Sort.by("name").ascending());
 
-        Page<ActorEntity> result = actorService.buscarActorPorVariosParam("11111111Z", "actorN1", "actorS1", 33,
+        Page<ActorEntity> result = actorService.buscarActorPorVariosParam( "actorN1", "11111111Z", "actorS1", 33,
                 "español", pelicula2.getTitle(), serie1.getTitle(), pageable);
         assertNotNull(result);
         assertEquals(1, result.getTotalElements());

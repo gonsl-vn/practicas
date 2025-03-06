@@ -1,6 +1,6 @@
 package com.viewnext.practicas.P4SeriesYPeliculas.model;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.*;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -15,6 +15,7 @@ import java.util.List;
 @NoArgsConstructor
 @Entity
 @Table(name = "series")
+
 public class SeriesModel {
 
     @Id
@@ -25,15 +26,19 @@ public class SeriesModel {
     @Column(nullable = false)
     private Integer creationYear;
 
+    //@JsonBackReference("director-serie")
     @ManyToOne
     @JoinColumn(name = "director_dni", referencedColumnName = "dni")
     private DirectorModel director;
+
 
     @ManyToOne
     @JoinColumn(name="productora_id")
     private ProductoraModel productora;
 
-    @JsonManagedReference
+
+    //@JsonManagedReference("actores-serie")
+
     @ManyToMany
     @JoinTable(name = "actores_de_serie",
     joinColumns = @JoinColumn(name = "serie_id"),

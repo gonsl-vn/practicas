@@ -28,9 +28,11 @@ public class PeliculasService {
 
         return new PeliculasEntity(peliculasModel.getTitle(),
                 peliculasModel.getCreationYear(),
+                peliculasModel.getDirector()!=null?
                 peliculasModel.getDirector().getName() + " " +
-                peliculasModel.getDirector().getSurname(),
-                peliculasModel.getProductora().getName(),
+                peliculasModel.getDirector().getSurname():null,
+                peliculasModel.getProductora()!=null?
+                peliculasModel.getProductora().getName():null,
                 actores);
     }
     public List<PeliculasEntity> listarPeliculas() {
@@ -44,9 +46,9 @@ public class PeliculasService {
            return peliculasRepository.save(peliculasModel);
         }throw new ResourceAlreadyExistsException("La peli ya existe");
     }
-    public String deletePelicula(Integer id) {
-        PeliculasModel peliEncontrada = peliculasRepository.findById(id);
-        if(peliEncontrada==null) {
+    public String deletePelicula(String title) {
+        PeliculasModel peliEncontrada = peliculasRepository.findByTitle(title);
+        if(peliEncontrada!=null) {
             peliculasRepository.delete(peliEncontrada);
             return "Pelicula eliminada";
         }throw new ResourceNotFoundException("La peli no existe");

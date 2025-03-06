@@ -88,8 +88,8 @@ public class ActorController {
                 ResponseEntity.noContent().build():ResponseEntity.ok(actoresPorPeli);
     }
 
-    @PostMapping("/admin/actores/post/{dni}")
-    public ResponseEntity<ActorModel> postActor(@PathVariable String dni,
+    @PostMapping("/admin/actores/post")
+    public ResponseEntity<ActorModel> postActor(
             @RequestBody ActorModel actor) {
         return ResponseEntity.ok(actorService.addActor(actor));
     }

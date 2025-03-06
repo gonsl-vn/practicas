@@ -1,6 +1,7 @@
 package com.viewnext.practicas.P4SeriesYPeliculas.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -29,6 +30,7 @@ public class ActorModel {
 
     @ManyToMany(mappedBy = "actores")
     private List<PeliculasModel> peliculas;
+
 
     @ManyToMany(mappedBy = "actores")
     private List<SeriesModel> series;

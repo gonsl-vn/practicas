@@ -28,9 +28,10 @@ public class SeriesService {
         List<String> actores = serie.getActores().stream().map(a->
                 (a.getName() + " " + a.getSurname())).collect(Collectors.toList());
         return new SeriesEntity(serie.getTitle(),serie.getCreationYear(),
-                actores, (serie.getDirector().getName() + " " +
-                serie.getDirector().getSurname())
-                , serie.getProductora().getName());
+                actores,
+                serie.getDirector()!=null? serie.getDirector().getName() + " " +
+                serie.getDirector().getSurname():null
+                ,serie.getProductora()!=null? serie.getProductora().getName():null);
     }
 
     public List<SeriesEntity> listarSeries(){
@@ -40,10 +41,10 @@ public class SeriesService {
     public SeriesModel addSeries(SeriesModel serie){
         SeriesModel serieEncontrada = seriesRepository.findByTitle(serie.getTitle());
         if(serieEncontrada == null){
-            seriesRepository.save(serie);
+           return seriesRepository.save(serie);
         }throw new ResourceAlreadyExistsException("Ya existe esa serie");
     }
-    public SeriesModel deleteSeries(String title){
+    public  void deleteSeries(String title){
         SeriesModel serieEncontrada = seriesRepository.findByTitle(title);
         if(serieEncontrada != null){
              seriesRepository.delete(serieEncontrada);
@@ -57,7 +58,7 @@ public class SeriesService {
             serieEncontrada.setActores(serie.getActores());
             serieEncontrada.setDirector(serie.getDirector());
             serieEncontrada.setProductora(serie.getProductora());
-            seriesRepository.save(serieEncontrada);
+            return seriesRepository.save(serieEncontrada);
         }throw new ResourceNotFoundException("No existe esa serie, creala mejor");
 
     }

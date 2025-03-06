@@ -62,6 +62,7 @@ public class DirectorService {
         if(!userClient.existeUsuario(director.getDni())){
             throw new ResourceNotFoundException("No existe el usuario" +
                     "con ese dni");
+
         }
         //DirectorModel directorEncontrado = directorRepository.findByDni(director.getDni());
         if(directorRepository.findByDni(director.getDni()) == null){

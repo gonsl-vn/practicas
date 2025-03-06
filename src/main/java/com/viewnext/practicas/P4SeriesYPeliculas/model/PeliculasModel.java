@@ -1,5 +1,7 @@
 package com.viewnext.practicas.P4SeriesYPeliculas.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
@@ -23,16 +25,20 @@ public class PeliculasModel {
     @Column(nullable = false)
     private Integer creationYear;
 
-
+    //@JsonBackReference("director-pelicula")
     @ManyToOne
     @JoinColumn(name = "director_dni", referencedColumnName = "dni")
     private DirectorModel director;
+
+    //@JsonBackReference("productora-pelicula")
 
     @ManyToOne
     @JoinColumn(name="productora_id")
     private ProductoraModel productora;
 
-   // @JsonManagedReference
+
+    //@JsonManagedReference
+
     @ManyToMany
     @JoinTable(name = "actores_de_pelicula",
             joinColumns = @JoinColumn(name = "pelicula_id"),

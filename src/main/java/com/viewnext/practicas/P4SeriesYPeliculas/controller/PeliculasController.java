@@ -52,18 +52,18 @@ public class PeliculasController {
     public ResponseEntity<PeliculasEntity> getPeliculasPorId(@PathVariable String dni){
         return ResponseEntity.ok(peliculasService.buscarPeliculaPorDni(dni));
     }*/
-    @PostMapping("/post/{id}")
-    public ResponseEntity<PeliculasModel> postDirector(@PathVariable Integer id,
+    @PostMapping("/post")
+    public ResponseEntity<PeliculasModel> postPelicula(
             @RequestBody PeliculasModel peliculasModel){
         return ResponseEntity.ok(peliculasService.addPelicula(peliculasModel));
     }
-    @PutMapping("/put/{id}")
-    public ResponseEntity<PeliculasModel> putPelicula(@PathVariable Integer id,
+    @PutMapping("/put")
+    public ResponseEntity<PeliculasModel> putPelicula(
             @RequestBody PeliculasModel peliculasModel){
         return ResponseEntity.ok(peliculasService.editPelicula(peliculasModel));
     }
-    @DeleteMapping("/delete/{id}")
-    public ResponseEntity<String> deleteDirector(@PathVariable Integer id){
-        return ResponseEntity.ok(peliculasService.deletePelicula(id));
+    @DeleteMapping("/delete/{title}")
+    public ResponseEntity<String> deletePelicula(@PathVariable String title){
+        return ResponseEntity.ok(peliculasService.deletePelicula(title));
     }
 }
