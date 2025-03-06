@@ -39,7 +39,13 @@ public class UserServices {
     }
 
     public void actualizarUsuario(String dni, Usuario usuarioActualizado) {
-        usersRepository.actualizarUsuario(dni, usuarioActualizado);
+        usersRepository.findByDni(dni).ifPresent(usuario -> {
+            usuario.setName(usuarioActualizado.getName());
+            usuario.setSurname(usuarioActualizado.getSurname());
+            usuario.setAge(usuarioActualizado.getAge());
+            usersRepository.save(usuario);
+        });
+
     }
 
     public void eliminarUsuario(String dni) {

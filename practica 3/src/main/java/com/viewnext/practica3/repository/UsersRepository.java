@@ -24,15 +24,6 @@ public interface UsersRepository extends JpaRepository<Usuario, String> {
 
     Optional<Usuario> findByDni(String dni);
 
-    public default void actualizarUsuario(String dni, Usuario usuarioActualizado) {
-        findByDni(dni).ifPresent(usuario -> {
-            usuario.setName(usuarioActualizado.getName());
-            usuario.setSurname(usuarioActualizado.getSurname());
-            usuario.setAge(usuarioActualizado.getAge());
-            save(usuario); // Aquí se guarda correctamente el usuario actualizado
-        });
-    }
-
     //Query Nativas -> @Query
 
     @Query(nativeQuery = true, value = "select * from Usuario")

@@ -28,12 +28,14 @@ class UserServicesTest {
     private Usuario usuarioMock;
     private Usuario usuario1;
     private Usuario usuario2;
+    private Usuario usuarioActualizado;
 
     @BeforeEach
     void setUp() {
         usuarioMock = new Usuario("Javier", "8821495Yi*", "Arias Rodriguez", 22);
         usuario1 = new Usuario("Juan", "12345678A", "Pérez", 30);
         usuario2 = new Usuario("María", "87654321B", "López", 25);
+        usuarioActualizado = new Usuario("Jorge", "15954389S", "Mark", 50);
     }
 
     @Test
@@ -107,13 +109,31 @@ class UserServicesTest {
     }
 
     @Test
+    void testActualizarUsuario() {
+
+        Usuario usuarioMock = new Usuario("Javier", "8821495Yi*", "Arias Rodriguez", 22);
+        Usuario usuarioActualizado = new Usuario("Javi", "8821495Yi*", "Rodríguez", 23);
+
+        when(usersRepository.findByDni(usuarioMock.getDni())).thenReturn(Optional.of(usuarioMock));
+        when(usersRepository.save(any(Usuario.class))).thenReturn(null);
+
+        userServices.actualizarUsuario(usuarioMock.getDni(), usuarioActualizado);
+
+        assertEquals("Javi", usuarioMock.getName());
+        assertEquals("Rodríguez", usuarioMock.getSurname());
+        assertEquals(23, usuarioMock.getAge());
+
+        verify(usersRepository, times(1)).findByDni(usuarioMock.getDni());
+        verify(usersRepository, times(1)).save(usuarioMock);
+    }
+
+    @Test
     void testEliminarUsuario() {
         userServices.eliminarUsuario("8821495Yi*");
 
         verify(usersRepository, times(1)).deleteById("8821495Yi*");
     }
 
-    // 1️⃣ Test de listarUsuariosNativo()
     @Test
     void testListarUsuariosNativo() {
         when(usersRepository.listarUsuariosNativo()).thenReturn(Arrays.asList(usuarioMock, usuario1, usuario2));
@@ -126,7 +146,6 @@ class UserServicesTest {
         verify(usersRepository, times(1)).listarUsuariosNativo();
     }
 
-    // 2️⃣ Test de buscarPorNombreNativo()
     @Test
     void testBuscarPorNombreNativo() {
         when(usersRepository.buscarPorNombreNativo("Javier")).thenReturn(Optional.of(usuarioMock));
@@ -139,7 +158,6 @@ class UserServicesTest {
         verify(usersRepository, times(1)).buscarPorNombreNativo("Javier");
     }
 
-    // 3️⃣ Test de buscarPorDniNativo()
     @Test
     void testBuscarPorDniNativo() {
         when(usersRepository.buscarPorDniNativo("8821495Yi*")).thenReturn(Optional.of(usuarioMock));
@@ -152,7 +170,6 @@ class UserServicesTest {
         verify(usersRepository, times(1)).buscarPorDniNativo("8821495Yi*");
     }
 
-    // 4️⃣ Test de buscarPorEdadNativo()
     @Test
     void testBuscarPorEdadNativo() {
         when(usersRepository.buscarPorEdadNativo(22)).thenReturn(Optional.of(usuarioMock));
@@ -165,7 +182,6 @@ class UserServicesTest {
         verify(usersRepository, times(1)).buscarPorEdadNativo(22);
     }
 
-    // 5️⃣ Test de insertarUsuarioNativo()
     @Test
     void testInsertarUsuarioNativo() {
         doNothing().when(usersRepository)
@@ -178,7 +194,6 @@ class UserServicesTest {
                 usuarioMock.getSurname(), usuarioMock.getAge());
     }
 
-    // 7️⃣ Test de borrarUsuarioNativo()
     @Test
     void testBorrarUsuarioNativo() {
         doNothing().when(usersRepository).borrarUsuarioNativo("8821495Yi*");
