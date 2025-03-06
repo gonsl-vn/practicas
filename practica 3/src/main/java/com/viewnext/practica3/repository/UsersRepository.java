@@ -50,7 +50,9 @@ public interface UsersRepository extends JpaRepository<Usuario, String> {
     @Transactional
     @Query(nativeQuery = true, value = "UPDATE usuario SET nombre = ?2, surname = ?3, age = ?4 WHERE dni = ?1;")
     void modificarUsuarioNativo(String dni, String nombre, String surname, int age);
-
+    
+    @Modifying
+    @Transactional
     @Query(nativeQuery = true, value = "DELETE FROM usuario WHERE dni = ?1")
     void borrarUsuarioNativo(String dni);
 

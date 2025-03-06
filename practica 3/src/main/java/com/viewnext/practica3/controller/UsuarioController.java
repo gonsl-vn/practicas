@@ -37,7 +37,7 @@ public class UsuarioController {
     }
 
     @PutMapping("/{dni}")
-    public ResponseEntity<Usuario> actualizarUsuario(@PathVariable String dni, Usuario usuario) {
+    public ResponseEntity<Usuario> actualizarUsuario(@PathVariable String dni, @RequestBody Usuario usuario) {
         userServices.actualizarUsuario(dni, usuario);
         return ResponseEntity.ok(usuario);
     }
@@ -67,7 +67,7 @@ public class UsuarioController {
     }
 
     @PutMapping("/nativa/{dni}")
-    public ResponseEntity<Usuario> actualizarUsuarioNativo(@PathVariable String dni, Usuario usuario) {
+    public ResponseEntity<Usuario> actualizarUsuarioNativo(@PathVariable String dni, @RequestBody Usuario usuario) {
         userServices.modificarUsuarioNativo(dni, usuario);
         return ResponseEntity.ok(usuario);
     }
