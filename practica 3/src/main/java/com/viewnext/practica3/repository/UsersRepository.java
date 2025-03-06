@@ -14,24 +14,23 @@ import java.util.Optional;
 public interface UsersRepository extends JpaRepository<Usuario, String> {
 
     // Buscar usuario por nombre
-    Optional<Usuario> findByName(String name);
+    Usuario findByName(String name);
 
     // Buscar usuario por apellido
-    Optional<Usuario> findBySurname(String surname);
+    Usuario findBySurname(String surname);
 
     // Buscar usuario por edad
-    Optional<Usuario> findByAge(int age);
+    Usuario findByAge(int age);
 
     Optional<Usuario> findByDni(String dni);
 
     public default void actualizarUsuario(String dni, Usuario usuarioActualizado) {
-        findByDni(dni) // Busca si el usuario existe
-                .map(usuario -> {
-                    usuario.setName(usuarioActualizado.getName());
-                    usuario.setSurname(usuarioActualizado.getSurname());
-                    usuario.setAge(usuarioActualizado.getAge());
-                    return save(usuario); // JPA detecta que el usuario ya existe y lo actualiza
-                });
+        findByDni(dni).ifPresent(usuario -> {
+            usuario.setName(usuarioActualizado.getName());
+            usuario.setSurname(usuarioActualizado.getSurname());
+            usuario.setAge(usuarioActualizado.getAge());
+            save(usuario); // Aquí se guarda correctamente el usuario actualizado
+        });
     }
 
     //Query Nativas -> @Query
@@ -53,13 +52,13 @@ public interface UsersRepository extends JpaRepository<Usuario, String> {
 
     @Modifying
     @Transactional
-    @Query(nativeQuery = true, value = "INSERT INTO usuario (dni, nombre, surname, age) VALUES ('?1', '?2', '?3',?4 );")
+    @Query(nativeQuery = true, value = "INSERT INTO usuario (dni, nombre, surname, age) VALUES (?1, ?2, ?3,?4 );")
     void insertarUsuarioNativo(String dni, String nombre, String surname, int age);
 
     @Modifying
     @Transactional
     @Query(nativeQuery = true, value = "UPDATE usuario SET nombre = ?2, surname = ?3, age = ?4 WHERE dni = ?1;")
-    Optional<Usuario> modificarUsuarioNativo(String dni, String nombre, String surname, int age);
+    void modificarUsuarioNativo(String dni, String nombre, String surname, int age);
 
     @Query(nativeQuery = true, value = "DELETE FROM usuario WHERE dni = ?1")
     void borrarUsuarioNativo(String dni);

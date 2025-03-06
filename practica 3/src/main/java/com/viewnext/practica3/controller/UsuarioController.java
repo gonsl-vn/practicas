@@ -48,4 +48,34 @@ public class UsuarioController {
         return ResponseEntity.ok().build();
     }
 
+    //Metodos Nativos
+
+    @GetMapping("/nativa")
+    public ResponseEntity<List<Usuario>> listarUsuariosNativa() {
+        return ResponseEntity.ok(userServices.listarUsuariosNativo());
+    }
+
+    @GetMapping("/nativa/{dni}")
+    public ResponseEntity<Optional<Usuario>> listarUsuarioPorDniNativa(@PathVariable String dni) {
+        return ResponseEntity.ok(userServices.buscarPorDniNativo(dni));
+    }
+
+    @PostMapping("/nativa")
+    public ResponseEntity<Usuario> agregarUsuarioNativo(@RequestBody Usuario usuario) {
+        userServices.insertarUsuarioNativo(usuario);
+        return ResponseEntity.ok(usuario);
+    }
+
+    @PutMapping("/nativa/{dni}")
+    public ResponseEntity<Usuario> actualizarUsuarioNativo(@PathVariable String dni, Usuario usuario) {
+        userServices.modificarUsuarioNativo(dni, usuario);
+        return ResponseEntity.ok(usuario);
+    }
+
+    @DeleteMapping("/nativa/{dni}")
+    public ResponseEntity<Void> borrarUsuarioPorDniNativo(@PathVariable String dni) {
+        userServices.borrarUsuarioNativo(dni);
+        return ResponseEntity.ok().build();
+    }
+
 }

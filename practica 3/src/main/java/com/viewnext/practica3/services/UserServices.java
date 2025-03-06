@@ -18,15 +18,15 @@ public class UserServices {
         return usersRepository.findAll();
     }
 
-    public Optional<Usuario> buscarPorNombre(String name) {
+    public Usuario buscarPorNombre(String name) {
         return usersRepository.findByName(name);
     }
 
-    public Optional<Usuario> buscarPorApellido(String surname) {
+    public Usuario buscarPorApellido(String surname) {
         return usersRepository.findBySurname(surname);
     }
 
-    public Optional<Usuario> buscarPorEdad(int age) {
+    public Usuario buscarPorEdad(int age) {
         return usersRepository.findByAge(age);
     }
 
