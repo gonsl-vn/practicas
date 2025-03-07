@@ -9,7 +9,8 @@ import java.util.Optional;
 @Repository
 public interface SerieRepository extends JpaRepository<Serie, Integer> {
 
-    Optional<Serie> findByNombre(String nombre);
+    Optional<Serie> findByTitulo(String titulo);
 
     Optional<Serie> findByIdSerie(int idSerie);
 }
+/**/

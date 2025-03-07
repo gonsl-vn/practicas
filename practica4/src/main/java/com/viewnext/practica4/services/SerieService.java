@@ -19,11 +19,31 @@ public class SerieService {
         return serieRepository.findAll();
     }
 
-    public Optional<Serie> obtenerSeriePorNombre(String nombre) {
-        return serieRepository.findByNombre(nombre);
+    public Optional<Serie> obtenerSeriePorTitulo(String titulo) {
+        return serieRepository.findByTitulo(titulo);
     }
 
     public Optional<Serie> obtenerSeriePorId(int idSerie) {
         return serieRepository.findByIdSerie(idSerie);
     }
+
+    public void insertarSerie(Serie serie) {
+        serieRepository.save(serie);
+    }
+
+    public void eliminarSerie(int idSerie) {
+        serieRepository.delete(serieRepository.findByIdSerie(idSerie).get());
+    }
+
+    public Serie actualizarSerie(int idSerie, Serie serieActualizada) {
+        return serieRepository.findById(idSerie).map(serieAntigua -> {
+            serieAntigua.setTitulo(serieActualizada.getTitulo());
+            serieAntigua.setAno(serieActualizada.getAno());
+            serieAntigua.setDirector(serieActualizada.getDirector());
+            serieAntigua.setProductora(serieActualizada.getProductora());
+            serieAntigua.setActores(serieActualizada.getActores()); // Lista de actores actualizada
+            return serieRepository.save(serieAntigua);
+        }).orElseThrow(() -> new RuntimeException("Serie no encontrada con ID: " + idSerie));
+    }
+
 }

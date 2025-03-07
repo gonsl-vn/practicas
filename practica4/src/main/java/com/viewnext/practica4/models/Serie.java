@@ -1,13 +1,12 @@
 package com.viewnext.practica4.models;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -19,22 +18,23 @@ public class Serie {
     @Column(name = "IdSerie", unique = true, nullable = false)
     private int idSerie;
 
-    @Column(name = "Titulo")
+    @Column(name = "Titulo", nullable = false)
     private String titulo;
 
-    @Column(name = "Año")
+    @Column(name = "Año", nullable = false)
     private LocalDate ano;
 
-    @Id
-    @Column(name = "IdDirector", unique = true, nullable = false)
-    private int idDirector;
+    @ManyToOne
+    @JoinColumn(name = "IdDirector", referencedColumnName = "IdDirector")
+    private Director director;
 
-    @Id
-    @Column(name = "IdProductora", unique = true, nullable = false)
-    private int idProductora;
+    @ManyToOne
+    @JoinColumn(name = "IdProductora", referencedColumnName = "IdProductora")
+    private Productora productora;
 
-    @Id
-    @Column(name = "IdActor", unique = true, nullable = false)
-    private int idActor;
+    @ManyToMany
+    @JoinTable(name = "serie_actores", joinColumns = @JoinColumn(name = "idSerie"),
+            inverseJoinColumns = @JoinColumn(name = "idActor"))
+    private List<Actor> actores;
 
 }

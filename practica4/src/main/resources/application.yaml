@@ -24,6 +24,6 @@ spring:
 
 logging:
   level:
-    root: ERROR
+    root: INFO
     org.hibernate.SQL: DEBUG  # Muestra las consultas SQL
     org.hibernate.type.descriptor.sql.BasicBinder: TRACE  # Muestra los valores de los parámetros en las consultas

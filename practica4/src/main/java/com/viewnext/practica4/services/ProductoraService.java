@@ -26,4 +26,20 @@ public class ProductoraService {
     public Optional<Productora> obtenerProductoraPorId(int idProductora) {
         return productoraRepository.findByIdProductora(idProductora);
     }
+
+    public void insertarProductora(Productora productora) {
+        productoraRepository.save(productora);
+    }
+
+    public void eliminarProductora(int idProductora) {
+        productoraRepository.delete(productoraRepository.findByIdProductora(idProductora).get());
+    }
+
+    public Productora actualizarProductora(int idProductora, Productora productoraActualizado) {
+        return productoraRepository.findByIdProductora(idProductora).map(productoraAntiguo -> {
+            productoraAntiguo.setNombre(productoraActualizado.getNombre());
+            productoraAntiguo.setAnoFundacion(productoraActualizado.getAnoFundacion());
+            return productoraRepository.save(productoraAntiguo); // Se guarda en la BD
+        }).orElseThrow(() -> new RuntimeException("Productora no encontrado con ID: " + idProductora));
+    }
 }

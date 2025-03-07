@@ -27,4 +27,22 @@ public class DirectorService {
         return directorRepository.findByIdDirector(idDirector);
     }
 
+    public void insertarDirector(Director director) {
+        directorRepository.save(director);
+    }
+
+    public void eliminarDirector(int idDirector) {
+        directorRepository.delete(directorRepository.findByIdDirector(idDirector).get());
+    }
+
+    public Director actualizarDirector(int idDirector, Director directorActualizado) {
+        return directorRepository.findByIdDirector(idDirector).map(directorAntiguo -> {
+            directorAntiguo.setNombre(directorActualizado.getNombre());
+            directorAntiguo.setApellido(directorActualizado.getApellido());
+            directorAntiguo.setEdad(directorActualizado.getEdad());
+            directorAntiguo.setNacionalidad(directorActualizado.getNacionalidad());
+            return directorRepository.save(directorAntiguo); // Se guarda en la BD
+        }).orElseThrow(() -> new RuntimeException("Director no encontrado con ID: " + idDirector));
+    }
+
 }
