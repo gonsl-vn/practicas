@@ -2,7 +2,6 @@ package com.viewnext.practica3.controller;
 
 import com.viewnext.practica3.models.Usuario;
 import com.viewnext.practica3.services.UserServices;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,8 +12,7 @@ import java.util.Optional;
 @RequestMapping("/api/usuarios")
 public class UsuarioController {
 
-    @Autowired
-    private UserServices userServices;
+    private final UserServices userServices;
 
     public UsuarioController(UserServices userServices) {
         this.userServices = userServices;
