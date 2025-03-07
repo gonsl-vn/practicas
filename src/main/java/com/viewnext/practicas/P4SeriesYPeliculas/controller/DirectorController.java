@@ -52,7 +52,7 @@ public class DirectorController {
         return ResponseEntity.ok(directorService.pruebaBusqueda( dni, name,
                 surname, directorAge, nationality, peliTitle, serieTitle, pageable));
     }
-    @GetMapping("/admin/directores/buscaPorParametros")
+    @GetMapping("/admin/directores/buscaPorParametrosAdmin")
     public ResponseEntity<Page<DirectorPrivado>> pruebaBusquedaAdmin(
             @RequestParam(required = false) String dni,
             @RequestParam(required = false) String name,
