@@ -17,17 +17,17 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/peliculas")
+@RequestMapping("/API")
 public class PeliculasController {
     @Autowired
     private PeliculasService peliculasService;
 
-    @GetMapping
+    @GetMapping("/user/peliculas")
     public ResponseEntity<List<PeliculasEntity>> listarPeliculas(){
         return ResponseEntity.ok(peliculasService.listarPeliculas());
     }
 
-    @GetMapping("/buscaPorParametros")
+    @GetMapping("/admin/peliculas/buscaPorParametros")
     public ResponseEntity<Page<PeliculasEntity>> pruebaBusqueda(
             @RequestParam(required = false) String title,
             @RequestParam(required = false) Integer creationYear,
@@ -52,17 +52,17 @@ public class PeliculasController {
     public ResponseEntity<PeliculasEntity> getPeliculasPorId(@PathVariable String dni){
         return ResponseEntity.ok(peliculasService.buscarPeliculaPorDni(dni));
     }*/
-    @PostMapping("/post")
+    @PostMapping("/admin/peliculas/post")
     public ResponseEntity<PeliculasModel> postPelicula(
             @RequestBody PeliculasModel peliculasModel){
         return ResponseEntity.ok(peliculasService.addPelicula(peliculasModel));
     }
-    @PutMapping("/put/{title}")
+    @PutMapping("/admin/peliculas/put/{title}")
     public ResponseEntity<PeliculasModel> putPelicula(@PathVariable String title,
             @RequestBody PeliculasModel peliculasModel){
         return ResponseEntity.ok(peliculasService.editPelicula(title, peliculasModel));
     }
-    @DeleteMapping("/delete/{title}")
+    @DeleteMapping("/admin/peliculas/delete/{title}")
     public ResponseEntity<String> deletePelicula(@PathVariable String title){
         return ResponseEntity.ok(peliculasService.deletePelicula(title));
     }

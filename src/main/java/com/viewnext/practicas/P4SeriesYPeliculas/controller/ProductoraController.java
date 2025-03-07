@@ -15,21 +15,21 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/productora")
+@RequestMapping("/API")
 public class ProductoraController {
     @Autowired
     private ProductoraService productoraService;
 
-    @GetMapping
+    @GetMapping("/user/productoras")
     public List<ProductoraEntity> listarProductoras(){
         return productoraService.listarProductoras();
     }
-    @PostMapping("/post")
+    @PostMapping("/admin/productoras/post")
     public ResponseEntity<ProductoraModel> crearProductora(@RequestBody ProductoraModel productora){
         return ResponseEntity.ok(productoraService.addProductora(productora));
     }
 
-    @GetMapping("/buscaPorParametros")
+    @GetMapping("/admin/productoras/buscaPorParametros")
     public ResponseEntity<Page<ProductoraEntity>> buscarPorParametros(
             @RequestParam(required = false) String name,
             @RequestParam(required = false) Integer foundedInYear,
@@ -48,12 +48,12 @@ public class ProductoraController {
                 foundedInYear, peliTitle, serieTitle, pageable));
     }
 
-    @DeleteMapping("/delete/{name}")
+    @DeleteMapping("/admin/productoras/delete/{name}")
     public ResponseEntity<String> eliminarProductora(
             @PathVariable String name){
         return ResponseEntity.ok(productoraService.deleteProductora(name));
     }
-    @PutMapping("/put/{name}")
+    @PutMapping("/admin/productoras/put/{name}")
     public ResponseEntity<ProductoraModel> actualizarProductora(@PathVariable String name,
             @RequestBody ProductoraModel productora){
         return ResponseEntity.ok(productoraService.updateProductora(name, productora));

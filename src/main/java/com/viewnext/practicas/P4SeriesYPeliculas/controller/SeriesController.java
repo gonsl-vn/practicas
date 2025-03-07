@@ -16,17 +16,17 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/series")
+@RequestMapping("/API")
 public class SeriesController {
     @Autowired
     private SeriesService seriesService;
 
-    @GetMapping
+    @GetMapping("/user/series")
     public List<SeriesEntity> getAllSeries() {
         return seriesService.listarSeries();
     }
 
-    @GetMapping("/buscaPorParametros")
+    @GetMapping("/admin/series/buscaPorParametros")
     public ResponseEntity<Page<SeriesEntity>> pruebaBusqueda(
             @RequestParam(required = false) String title,
             @RequestParam(required = false) Integer creationYear,
@@ -46,16 +46,16 @@ public class SeriesController {
                 creationYear, productoraTitle, directorName, actorName, pageable));
     }
 
-    @PostMapping("/post")
+    @PostMapping("/admin/series/post")
     public ResponseEntity<SeriesModel> postSeries(
             @RequestBody SeriesModel series) {
         return ResponseEntity.status(HttpStatus.CREATED).body(seriesService.addSeries(series));
     }
-    @DeleteMapping("/delete/{title}")
+    @DeleteMapping("/admin/series/delete/{title}")
     public ResponseEntity<String> deleteSeries(@PathVariable String title) {
        return ResponseEntity.ok(seriesService.deleteSeries(title));
     }
-    @PutMapping("/put/{title}")
+    @PutMapping("/admin/series/put/{title}")
     public ResponseEntity<SeriesModel> putSeries(@PathVariable String title,
             @RequestBody SeriesModel series) {
         return ResponseEntity.ok(seriesService.editSeries(title, series));

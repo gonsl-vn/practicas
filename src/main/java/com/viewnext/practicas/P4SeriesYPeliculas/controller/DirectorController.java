@@ -4,6 +4,7 @@ import com.viewnext.practicas.P4SeriesYPeliculas.Service.DirectorService;
 import com.viewnext.practicas.P4SeriesYPeliculas.model.DirectorModel;
 import com.viewnext.practicas.P4SeriesYPeliculas.model.entity.ActorEntity;
 import com.viewnext.practicas.P4SeriesYPeliculas.model.entity.DirectorEntity;
+import com.viewnext.practicas.P4SeriesYPeliculas.model.privado.DirectorPrivado;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -52,7 +53,7 @@ public class DirectorController {
                 surname, directorAge, nationality, peliTitle, serieTitle, pageable));
     }
     @GetMapping("/admin/directores/buscaPorParametros")
-    public ResponseEntity<Page<DirectorEntity>> pruebaBusquedaAdmin(
+    public ResponseEntity<Page<DirectorPrivado>> pruebaBusquedaAdmin(
             @RequestParam(required = false) String dni,
             @RequestParam(required = false) String name,
             @RequestParam(required = false) String surname,
@@ -69,7 +70,7 @@ public class DirectorController {
                 Sort.by(sortBy).descending() : Sort.by(sortBy).ascending();
         Pageable pageable = PageRequest.of(page, size, sort);
 
-        return ResponseEntity.ok(directorService.pruebaBusqueda( dni, name,
+        return ResponseEntity.ok(directorService.pruebaBusquedaAdmin( dni, name,
                 surname, directorAge, nationality, peliTitle, serieTitle, pageable));
     }
 
