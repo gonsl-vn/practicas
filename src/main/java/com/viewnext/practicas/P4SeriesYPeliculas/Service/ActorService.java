@@ -25,19 +25,32 @@ import java.util.stream.Collectors;
 @Service
 @RequiredArgsConstructor
 public class ActorService {
+    private ActorRespository actorRespository;
+    private PeliculasRepository peliculasRepository;
+    private ActorCriteriaRepository actorCriteriaRepository;
+    private UserClient userClient;
 
     @PersistenceContext
     private EntityManager em;
 
+    public ActorService(ActorRespository actorRespository,
+            PeliculasRepository peliculasRepository,
+            ActorCriteriaRepository actorCriteriaRepository,
+            UserClient userClient) {
+        this.peliculasRepository = peliculasRepository;
+        this.actorRespository = actorRespository;
+        this.actorCriteriaRepository = actorCriteriaRepository;
+        this.userClient = userClient;
+    }
 
-
+/*
     @Autowired
     private ActorRespository actorRespository;
     private PeliculasRepository peliculasRepository;
     private final ActorCriteriaRepository actorCriteriaRepository;
     @Autowired
     private UserClient userClient;
-
+*/
     public ActorEntity convertirAModelo(ActorModel actorModel) {
         List<String> peliculas = actorModel.getPeliculas().stream().
                 map(p -> p.getTitle()).collect(Collectors.toList());
@@ -86,15 +99,18 @@ public class ActorService {
           return  actorRespository.save(actor);
         }throw new ResourceAlreadyExistsException("el actor ya existe");
     }
-    public void deleteActor(String dni){
+    public String deleteActor(String dni){
         if(actorRespository.findByDni(dni)!=null){
             actorRespository.delete(actorRespository.findByDni(dni));
+            return "El actor se ha borrado";
         } throw new ResourceNotFoundException("el actor no existe");
     }
-    public ActorModel modificarActor(ActorModel actor){
-        if(actorRespository.findByDni(actor.getDni())!=null){
-            actorRespository.delete(actorRespository.findByDni(actor.getDni()));
-            return actorRespository.save(actor);
+    public ActorModel modificarActor(String dni,ActorModel actor){
+        if(actorRespository.findByDni(dni)!=null){
+            actorRespository.delete(actorRespository.findByDni(dni));
+            ActorModel actorActualizado =  actorRespository.save(actor);
+            actorActualizado.setDni(dni);
+            return actorActualizado;
         }throw new ResourceNotFoundException("el usuario no existe");
     }
 

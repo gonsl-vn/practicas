@@ -44,21 +44,22 @@ public class SeriesService {
            return seriesRepository.save(serie);
         }throw new ResourceAlreadyExistsException("Ya existe esa serie");
     }
-    public  void deleteSeries(String title){
+    public  String deleteSeries(String title){
         SeriesModel serieEncontrada = seriesRepository.findByTitle(title);
         if(serieEncontrada != null){
              seriesRepository.delete(serieEncontrada);
+             return "Serie eliminada";
         }throw new ResourceNotFoundException("No existe esa serie");
     }
-    public SeriesModel editSeries(SeriesModel serie){
-        SeriesModel serieEncontrada = seriesRepository.findByTitle(serie.getTitle());
+    public SeriesModel editSeries(String title, SeriesModel serie){
+        SeriesModel serieEncontrada = seriesRepository.findByTitle(title);
         if(serieEncontrada!=null){
             serieEncontrada.setTitle(serie.getTitle());
             serieEncontrada.setCreationYear(serie.getCreationYear());
             serieEncontrada.setActores(serie.getActores());
             serieEncontrada.setDirector(serie.getDirector());
             serieEncontrada.setProductora(serie.getProductora());
-            return seriesRepository.save(serieEncontrada);
+            return serieEncontrada;
         }throw new ResourceNotFoundException("No existe esa serie, creala mejor");
 
     }

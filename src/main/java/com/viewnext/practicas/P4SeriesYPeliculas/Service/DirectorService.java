@@ -69,10 +69,11 @@ public class DirectorService {
             return directorRepository.save(director);
         } throw new ResourceAlreadyExistsException("El director ya existe");
     }
-    public DirectorModel deleteDirector(String dni){
+    public String deleteDirector(String dni){
         DirectorModel directorEncontrado = directorRepository.findByDni(dni);
         if(directorEncontrado != null){
             directorRepository.delete(directorEncontrado);
+            return "Director Eliminado";
         }throw new ResourceNotFoundException("El director no existe");
     }
     public DirectorModel editDirector(DirectorModel director){

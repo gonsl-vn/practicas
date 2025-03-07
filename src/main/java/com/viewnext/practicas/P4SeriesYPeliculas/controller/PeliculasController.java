@@ -57,10 +57,10 @@ public class PeliculasController {
             @RequestBody PeliculasModel peliculasModel){
         return ResponseEntity.ok(peliculasService.addPelicula(peliculasModel));
     }
-    @PutMapping("/put")
-    public ResponseEntity<PeliculasModel> putPelicula(
+    @PutMapping("/put/{title}")
+    public ResponseEntity<PeliculasModel> putPelicula(@PathVariable String title,
             @RequestBody PeliculasModel peliculasModel){
-        return ResponseEntity.ok(peliculasService.editPelicula(peliculasModel));
+        return ResponseEntity.ok(peliculasService.editPelicula(title, peliculasModel));
     }
     @DeleteMapping("/delete/{title}")
     public ResponseEntity<String> deletePelicula(@PathVariable String title){

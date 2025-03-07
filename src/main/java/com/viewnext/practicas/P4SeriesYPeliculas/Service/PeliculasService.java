@@ -17,11 +17,20 @@ import java.util.stream.Collectors;
 
 @Service
 public class PeliculasService {
-    @Autowired
+    private final PeliculasRepository peliculasRepository;
+    private final PeliculaCriteriaRepository peliculaCriteriaRepository;
+
+    public PeliculasService(PeliculasRepository peliculasRepository,
+            PeliculaCriteriaRepository peliculaCriteriaRepository) {
+        this.peliculasRepository = peliculasRepository;
+        this.peliculaCriteriaRepository = peliculaCriteriaRepository;
+    }
+
+   /* @Autowired
     PeliculasRepository peliculasRepository;
     @Autowired
     private PeliculaCriteriaRepository peliculaCriteriaRepository;
-
+*/
     public PeliculasEntity convertirAModelo(PeliculasModel peliculasModel) {
         List<String> actores = peliculasModel.getActores().stream()
                 .map(a->(a.getName() +" " + a.getSurname())).collect(Collectors.toList());
@@ -53,15 +62,16 @@ public class PeliculasService {
             return "Pelicula eliminada";
         }throw new ResourceNotFoundException("La peli no existe");
     }
-    public PeliculasModel editPelicula(PeliculasModel peliculasModel) {
+    public PeliculasModel editPelicula(String title,PeliculasModel peliculasModel) {
         PeliculasModel peliEncontrada = peliculasRepository.
-                findById(peliculasModel.getId());
+                findByTitle(title);
         if(peliEncontrada!=null) {
             peliEncontrada.setTitle(peliculasModel.getTitle());
             peliEncontrada.setCreationYear(peliculasModel.getCreationYear());
             peliEncontrada.setDirector(peliculasModel.getDirector());
             peliEncontrada.setProductora(peliculasModel.getProductora());
             peliEncontrada.setActores(peliculasModel.getActores());
+            return peliEncontrada;
         }throw new ResourceNotFoundException("La peli no existe");
     }
 

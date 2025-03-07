@@ -97,11 +97,12 @@ public class ActorController {
     @PutMapping("/admin/actores/put/{dni}")
     public ResponseEntity<ActorModel> putActor(@PathVariable String dni,
             @RequestBody ActorModel actor) {
-        return ResponseEntity.ok(actorService.modificarActor(actor));
+        return ResponseEntity.ok(actorService.modificarActor(dni, actor));
     }
     @DeleteMapping("/admin/actores/delete/{dni}")
-    public void deleteActor(@PathVariable String dni) {
-        actorService.deleteActor(dni);
+    public ResponseEntity<String> deleteActor(@PathVariable String dni) {
+
+      return  ResponseEntity.ok(actorService.deleteActor(dni));
     }
    /* @GetMapping("/{id}/OrdenAscendente")
     public ResponseEntity<Page<ActorModel>> obtenerActoresPorNombreOrdenados(

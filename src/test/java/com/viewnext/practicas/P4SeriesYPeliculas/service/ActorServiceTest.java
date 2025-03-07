@@ -2,12 +2,14 @@ package com.viewnext.practicas.P4SeriesYPeliculas.service;
 
 import com.viewnext.practicas.P4SeriesYPeliculas.Service.ActorService;
 import com.viewnext.practicas.P4SeriesYPeliculas.Service.DirectorService;
+import com.viewnext.practicas.P4SeriesYPeliculas.clients.UserClient;
 import com.viewnext.practicas.P4SeriesYPeliculas.model.ActorModel;
 import com.viewnext.practicas.P4SeriesYPeliculas.model.DirectorModel;
 import com.viewnext.practicas.P4SeriesYPeliculas.model.PeliculasModel;
 import com.viewnext.practicas.P4SeriesYPeliculas.model.SeriesModel;
 import com.viewnext.practicas.P4SeriesYPeliculas.model.entity.ActorEntity;
 import com.viewnext.practicas.P4SeriesYPeliculas.repository.ActorCriteriaRepository;
+import com.viewnext.practicas.P4SeriesYPeliculas.repository.ActorRespository;
 import org.aspectj.lang.annotation.Before;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -22,14 +24,20 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.mockito.Mockito.when;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.*;
 
 public class ActorServiceTest {
 
     @Mock
     private ActorCriteriaRepository actorCriteriaRepository;
+
+    @Mock
+    private ActorRespository actorRespository;
+
+    @Mock
+    private UserClient userClient;
 
     @InjectMocks
     private ActorService actorService;
@@ -46,7 +54,7 @@ public class ActorServiceTest {
 
     @BeforeEach
     public void setUp() {
-        MockitoAnnotations.initMocks(this);
+        MockitoAnnotations.openMocks(this);
         director1 = new DirectorModel("55555555F", "alvaro", "alvarez", 20, "serbio", null, null);
         director2 = new DirectorModel("44444444G", "Enrique", "Enriquez", 30, "italiano", null, null);
         pelicula2 = new PeliculasModel(30, "peliTest2", 2024, director1, null, null);
@@ -74,5 +82,35 @@ public class ActorServiceTest {
         assertEquals(1, result.getTotalElements());
         assertEquals(1, result.getContent().size());
 
+    }
+    @Test
+    public  void actores_addActorTest(){
+        when(actorRespository.save(any(ActorModel.class))).thenReturn(actor1);
+        when(userClient.existeUsuario(anyString())).thenReturn(true);
+        ActorModel result = actorService.addActor(actor1);
+
+        assertNotNull(result);
+        assertEquals(actor1, result);
+    }
+
+    @Test
+    public void actores_deleteActorTest(){
+        when(actorRespository.findByDni("11111111Z")).thenReturn(actor1);
+        doNothing().when(actorRespository).delete(actor1);
+
+        assertDoesNotThrow(()-> actorService.deleteActor(actor1.getDni()));
+        verify(actorRespository, times(1)).delete(actor1);
+    }
+
+    @Test
+    public void actores_updateActorTest(){
+        when(actorRespository.findByDni("11111111Z")).thenReturn(actor1);
+        when(actorRespository.save(any(ActorModel.class))).thenReturn(actor2);
+        doNothing().when(actorRespository).delete(actor1);
+
+        ActorModel result = actorService.modificarActor("11111111Z",actor2);
+        assertNotNull(result);
+        assertEquals(actor2, result);
+        assertEquals("11111111Z", result.getDni());
     }
 }

@@ -1,11 +1,13 @@
 package com.viewnext.practicas.P4SeriesYPeliculas.service;
 
 import com.viewnext.practicas.P4SeriesYPeliculas.Service.DirectorService;
+import com.viewnext.practicas.P4SeriesYPeliculas.clients.UserClient;
 import com.viewnext.practicas.P4SeriesYPeliculas.model.DirectorModel;
 import com.viewnext.practicas.P4SeriesYPeliculas.model.PeliculasModel;
 import com.viewnext.practicas.P4SeriesYPeliculas.model.SeriesModel;
 import com.viewnext.practicas.P4SeriesYPeliculas.model.entity.DirectorEntity;
 import com.viewnext.practicas.P4SeriesYPeliculas.repository.DirectorCriteriaRepository;
+import com.viewnext.practicas.P4SeriesYPeliculas.repository.DirectorRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -16,14 +18,21 @@ import org.springframework.data.domain.*;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.mockito.Mockito.when;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.Mockito.*;
 
- class DirectorServiceTest {
+class DirectorServiceTest {
 
     @Mock
     private DirectorCriteriaRepository directorCriteriaRepository;
+
+    @Mock
+    private DirectorRepository directorRepository;
+
+    @Mock
+    private UserClient userClient;
 
     @InjectMocks
     private DirectorService directorService;
@@ -58,6 +67,25 @@ import static org.mockito.Mockito.when;
             assertEquals(1, result.getTotalElements());
             assertEquals(1, result.getContent().size());
             assertEquals("alvaro", result.getContent().get(0).getName());
+        }
+        @Test
+        public void director_addDirectorTest(){
+            when(directorRepository.save(any(DirectorModel.class))).thenReturn(director1);
+            when(userClient.existeUsuario(anyString())).thenReturn(true);
+
+            DirectorModel result = directorService.addDirector(director1);
+
+            assertNotNull(result);
+             assertEquals(director1, result);
+        }
+
+        @Test
+        public void director_deleteDirectorTest(){
+            when(directorRepository.findByDni("55555555F")).thenReturn(director1);
+            doNothing().when(directorRepository).delete(director1);
+
+            assertDoesNotThrow(()-> directorService.deleteDirector(director1.getDni()));
+            verify(directorRepository, times(1)).delete(director1);
         }
 
 }

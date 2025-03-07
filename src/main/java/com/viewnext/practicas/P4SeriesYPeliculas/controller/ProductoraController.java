@@ -48,14 +48,14 @@ public class ProductoraController {
                 foundedInYear, peliTitle, serieTitle, pageable));
     }
 
-    @DeleteMapping("/delete/{id}")
-    public ResponseEntity<ProductoraModel> eliminarProductora(
-            @PathVariable Integer id){
-        return ResponseEntity.ok(productoraService.deleteProductora(id));
+    @DeleteMapping("/delete/{name}")
+    public ResponseEntity<String> eliminarProductora(
+            @PathVariable String name){
+        return ResponseEntity.ok(productoraService.deleteProductora(name));
     }
-    @PutMapping("/put")
-    public ResponseEntity<ProductoraModel> actualizarProductora(
+    @PutMapping("/put/{name}")
+    public ResponseEntity<ProductoraModel> actualizarProductora(@PathVariable String name,
             @RequestBody ProductoraModel productora){
-        return ResponseEntity.ok(productoraService.updateProductora(productora));
+        return ResponseEntity.ok(productoraService.updateProductora(name, productora));
     }
 }

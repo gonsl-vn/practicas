@@ -109,7 +109,7 @@ public class DirectorController {
         return ResponseEntity.ok(directorService.editDirector(directorModel));
     }
     @DeleteMapping("/admin/directores/delete/{dni}")
-    public ResponseEntity<DirectorModel> deleteDirector(@PathVariable String dni){
+    public ResponseEntity<String> deleteDirector(@PathVariable String dni){
         return ResponseEntity.ok(directorService.deleteDirector(dni));
     }
 }

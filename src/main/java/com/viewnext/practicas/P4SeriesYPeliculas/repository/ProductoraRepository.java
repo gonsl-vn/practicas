@@ -10,6 +10,8 @@ import java.util.List;
 public interface ProductoraRepository extends JpaRepository<ProductoraModel, String> {
     List<ProductoraModel> findAllByOrderByNameAsc();
     ProductoraModel findById(Integer id);
+
+    ProductoraModel findByName(String name);
     // ProductoraModel findByNombre(String nombre);
     //ProductoraModel findByDirector(String director);
 

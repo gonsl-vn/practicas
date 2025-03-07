@@ -47,22 +47,24 @@ public class ProductoraService {
             return productoraRepository.save(productoraModel);
         }throw new ResourceAlreadyExistsException("La productora ya existe");
     }
-    public ProductoraModel deleteProductora(Integer id) {
+    public String deleteProductora(String name) {
         ProductoraModel productoraEncontrada = productoraRepository
-                .findById(id);
+                .findByName(name);
         if(productoraEncontrada!=null){
             productoraRepository.delete(productoraEncontrada);
+            return "Productora eliminada";
         }throw new ResourceNotFoundException("No existe esa productora");
     }
-    public ProductoraModel updateProductora(ProductoraModel productoraModel) {
+    public ProductoraModel updateProductora(String name, ProductoraModel productoraModel) {
         ProductoraModel productoraEncontrada = productoraRepository
-                .findById(productoraModel.getId());
-        if(productoraEncontrada==null){
+                .findByName(name);
+        if(productoraEncontrada!=null){
             productoraEncontrada.setName(productoraModel.getName());
             productoraEncontrada.setFoundedInYear(productoraModel.getFoundedInYear());
             productoraEncontrada.setSeries(productoraModel.getSeries());
             productoraEncontrada.setPeliculas(productoraModel.getPeliculas());
-            return productoraRepository.save(productoraEncontrada);
+
+             return productoraEncontrada;
         }throw new ResourceNotFoundException("No existe esa productora");
     }
 

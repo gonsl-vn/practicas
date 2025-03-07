@@ -4,6 +4,7 @@ import com.viewnext.practicas.P4SeriesYPeliculas.Service.ProductoraService;
 import com.viewnext.practicas.P4SeriesYPeliculas.model.*;
 import com.viewnext.practicas.P4SeriesYPeliculas.model.entity.ProductoraEntity;
 import com.viewnext.practicas.P4SeriesYPeliculas.repository.ProductoraCriteriaRepository;
+import com.viewnext.practicas.P4SeriesYPeliculas.repository.ProductoraRepository;
 import org.hibernate.Internal;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -17,13 +18,15 @@ import org.springframework.data.domain.Sort;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.mockito.Mockito.when;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
 public class ProductoraServiceTest {
     @Mock
     private ProductoraCriteriaRepository productoraCriteriaRepository;
+
+    @Mock
+    private ProductoraRepository productoraRepository;
 
     @InjectMocks
     private ProductoraService productoraService;
@@ -47,8 +50,8 @@ public class ProductoraServiceTest {
         actor2 = new ActorModel("77777777J", "actoron", "actorano", 35, "aleman", null, null );
 
         productora1 = new ProductoraModel(31, "productoraTest1", 2025, null, null);
-        productora2 = new ProductoraModel(32, "productoraTest1", 2025, null, null);
-        productora3 = new ProductoraModel(33, "productoraTest1", 2025, null, null);
+        productora2 = new ProductoraModel(32, "productoraTest2", 2022, null, null);
+        productora3 = new ProductoraModel(33, "productoraTest3", 2023, null, null);
 
         director1 = new DirectorModel("55555555F", "alvaro", "alvarez", 20, "serbio", null, null);
         director2 = new DirectorModel("44444444G", "Enrique", "Enriquez", 30, "italiano", null, null);
@@ -89,7 +92,37 @@ public class ProductoraServiceTest {
         assertEquals(1, result.getTotalElements());
         assertEquals(1, result.getContent().size());
         assertEquals(productora1.getName(), result.getContent().get(0).getName());
-    }/*
+    }
+    @Test
+    public void productora_addProductoraTest(){
+        when(productoraRepository.save(productora1)).thenReturn(productora1);
+
+        ProductoraModel result = productoraService.addProductora(productora1);
+
+        assertNotNull(result);
+        assertEquals(productora1.getName(), result.getName());
+        assertEquals(productora1.getFoundedInYear(), result.getFoundedInYear());
+    }
+
+    @Test
+    public void productora_deleteProductoraTest(){
+        when(productoraRepository.findByName("productoraTest1")).thenReturn(productora1);
+        doNothing().when(productoraRepository).delete(productora1);
+
+        assertDoesNotThrow(()-> productoraService.deleteProductora(productora1.getName()));
+        verify(productoraRepository, times(1)).delete(productora1);
+    }
+
+    @Test
+    public void productora_updateProductoraTest(){
+        when(productoraRepository.findByName("productoraTest2")).thenReturn(productora2);
+
+        ProductoraModel result = productoraService.updateProductora("productoraTest2", productora3);
+        assertNotNull(result);
+        assertEquals(productora3.getName(), result.getName());
+        assertEquals(productora2.getId(), result.getId());
+    }
+    /*
     @Test
     public void testPaginacion(){
         Pageable pageable = PageRequest.of(0, 1, Sort.by("name").ascending());

@@ -52,11 +52,12 @@ public class SeriesController {
         return ResponseEntity.status(HttpStatus.CREATED).body(seriesService.addSeries(series));
     }
     @DeleteMapping("/delete/{title}")
-    public void deleteSeries(@PathVariable String title) {
-       seriesService.deleteSeries(title);
+    public ResponseEntity<String> deleteSeries(@PathVariable String title) {
+       return ResponseEntity.ok(seriesService.deleteSeries(title));
     }
-    @PutMapping("/put")
-    public ResponseEntity<SeriesModel> putSeries(@RequestBody SeriesModel series) {
-        return ResponseEntity.ok(seriesService.editSeries(series));
+    @PutMapping("/put/{title}")
+    public ResponseEntity<SeriesModel> putSeries(@PathVariable String title,
+            @RequestBody SeriesModel series) {
+        return ResponseEntity.ok(seriesService.editSeries(title, series));
     }
 }
