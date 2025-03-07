@@ -13,4 +13,3 @@ public interface SerieRepository extends JpaRepository<Serie, Integer> {
 
     Optional<Serie> findByIdSerie(int idSerie);
 }
-/**/
