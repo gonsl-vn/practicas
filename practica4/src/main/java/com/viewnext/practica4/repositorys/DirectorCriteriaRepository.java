@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public class DirectorCriteriaRepository {
@@ -39,7 +40,7 @@ public class DirectorCriteriaRepository {
     /**
      * Busca un director por su ID.
      */
-    public Director buscarDirector(int id) {
+    public Optional<Director> buscarDirector(int id) {
         CriteriaBuilder cb = entityManager.getCriteriaBuilder();
         CriteriaQuery<Director> query = cb.createQuery(Director.class);
         Root<Director> director = query.from(Director.class);
@@ -47,7 +48,7 @@ public class DirectorCriteriaRepository {
         Predicate predicate = cb.equal(director.get("idDirector"), id);
         query.where(predicate);
 
-        return entityManager.createQuery(query).getSingleResult();
+        return Optional.ofNullable(entityManager.createQuery(query).getSingleResult());
     }
 
     /**

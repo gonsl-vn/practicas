@@ -1,6 +1,7 @@
 package com.viewnext.practica4.services;
 
 import com.viewnext.practica4.models.Actor;
+import com.viewnext.practica4.repositorys.ActorCriteriaRepository;
 import com.viewnext.practica4.repositorys.ActorRepository;
 import org.springframework.stereotype.Service;
 
@@ -11,17 +12,15 @@ import java.util.Optional;
 public class ActorService {
 
     private final ActorRepository actorRepository;
+    private final ActorCriteriaRepository actorCriteriaRepository;
 
-    public ActorService(ActorRepository actorRepository) {
+    public ActorService(ActorRepository actorRepository, ActorCriteriaRepository actorCriteriaRepository) {
         this.actorRepository = actorRepository;
+        this.actorCriteriaRepository = actorCriteriaRepository;
     }
 
     public List<Actor> obtenerActores() {
         return actorRepository.findAll();
-    }
-
-    public Optional<Actor> obtenerActorPorNombre(String nombre) {
-        return actorRepository.findByNombre(nombre);
     }
 
     public Optional<Actor> obtenerActorPorId(int idActor) {
@@ -44,6 +43,28 @@ public class ActorService {
             actorAntiguo.setNacionalidad(actorActualizado.getNacionalidad());
             return actorRepository.save(actorAntiguo); // Se guarda en la BD
         }).orElseThrow(() -> new RuntimeException("Actor no encontrado con ID: " + idActor));
+    }
+
+    // CRITERIA
+
+    public List<Actor> obtenerActoresCriteria() {
+        return actorCriteriaRepository.listarActores();
+    }
+
+    public Optional<Actor> obtenerActorPorIdCriteria(int idActor) {
+        return actorCriteriaRepository.buscarActor(idActor);
+    }
+
+    public void insertarActorCriteria(Actor actor) {
+        actorCriteriaRepository.insertarActor(actor);
+    }
+
+    public void eliminarActorCriteria(int idActor) {
+        actorCriteriaRepository.borrarActorPorId(idActor);
+    }
+
+    public void actualizarActorCriteria(int idActor, Actor actorActualizado) {
+        actorCriteriaRepository.actualizarActor(idActor, actorActualizado);
     }
 
 }

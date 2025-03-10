@@ -1,6 +1,7 @@
 package com.viewnext.practica4.services;
 
 import com.viewnext.practica4.models.Director;
+import com.viewnext.practica4.repositorys.DirectorCriteriaRepository;
 import com.viewnext.practica4.repositorys.DirectorRepository;
 import org.springframework.stereotype.Service;
 
@@ -10,9 +11,12 @@ import java.util.Optional;
 @Service
 public class DirectorService {
     private final DirectorRepository directorRepository;
+    private final DirectorCriteriaRepository directorCriteriaRepository;
 
-    public DirectorService(DirectorRepository directorRepository) {
+    public DirectorService(DirectorRepository directorRepository,
+            DirectorCriteriaRepository directorCriteriaRepository) {
         this.directorRepository = directorRepository;
+        this.directorCriteriaRepository = directorCriteriaRepository;
     }
 
     public List<Director> obtenerDirectores() {
@@ -45,4 +49,25 @@ public class DirectorService {
         }).orElseThrow(() -> new RuntimeException("Director no encontrado con ID: " + idDirector));
     }
 
+    //CRITERIA
+
+    public List<Director> obtenerDirectoresCriteria() {
+        return directorCriteriaRepository.listarDirectores();
+    }
+
+    public Optional<Director> obtenerDirectorPorIdCriteria(int idDirector) {
+        return directorCriteriaRepository.buscarDirector(idDirector);
+    }
+
+    public void insertarDirectorCriteria(Director director) {
+        directorCriteriaRepository.insertarDirector(director);
+    }
+
+    public void eliminarDirectorCriteria(int idDirector) {
+        directorCriteriaRepository.borrarDirectorPorId(idDirector);
+    }
+
+    public void actualizarActorCriteria(int idActor, Director directorActualizado) {
+        directorCriteriaRepository.actualizarDirector(idActor, directorActualizado);
+    }
 }

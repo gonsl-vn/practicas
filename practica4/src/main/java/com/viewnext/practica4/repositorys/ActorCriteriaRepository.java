@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public class ActorCriteriaRepository {
@@ -28,7 +29,7 @@ public class ActorCriteriaRepository {
         return entityManager.createQuery(query).getResultList();
     }
 
-    public Actor buscarActor(int id) {
+    public Optional<Actor> buscarActor(int id) {
         CriteriaBuilder cb = entityManager.getCriteriaBuilder();
 
         CriteriaQuery<Actor> query = cb.createQuery(Actor.class);
@@ -37,7 +38,7 @@ public class ActorCriteriaRepository {
         Predicate predicate = cb.equal(actor.get("IdActor"), id);
         query.where(predicate);
 
-        return entityManager.createQuery(query).getSingleResult();
+        return Optional.ofNullable(entityManager.createQuery(query).getSingleResult());
 
     }
 
