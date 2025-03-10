@@ -23,10 +23,6 @@ public class DirectorService {
         return directorRepository.findAll();
     }
 
-    public Optional<Director> obtenerDirectorPorNombre(String nombre) {
-        return directorRepository.findByNombre(nombre);
-    }
-
     public Optional<Director> obtenerDirectorPorId(int idDirector) {
         return directorRepository.findByIdDirector(idDirector);
     }
@@ -67,7 +63,7 @@ public class DirectorService {
         directorCriteriaRepository.borrarDirectorPorId(idDirector);
     }
 
-    public void actualizarActorCriteria(int idActor, Director directorActualizado) {
-        directorCriteriaRepository.actualizarDirector(idActor, directorActualizado);
+    public void actualizarActorCriteria(int idActor, Director actorActualizado) {
+        directorCriteriaRepository.actualizarDirector(idActor, actorActualizado);
     }
 }

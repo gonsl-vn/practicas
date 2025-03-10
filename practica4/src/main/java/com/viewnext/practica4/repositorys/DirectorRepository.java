@@ -9,7 +9,5 @@ import java.util.Optional;
 @Repository
 public interface DirectorRepository extends JpaRepository<Director, Integer> {
 
-    Optional<Director> findByNombre(String nombre);
-
     Optional<Director> findByIdDirector(int idDirector);
 }
