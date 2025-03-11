@@ -25,10 +25,6 @@ public class SerieService {
         return serieRepository.findAll();
     }
 
-    public Optional<Serie> obtenerSeriePorTitulo(String titulo) {
-        return serieRepository.findByTitulo(titulo);
-    }
-
     public Optional<Serie> obtenerSeriePorId(int idSerie) {
         return serieRepository.findById(idSerie);
     }

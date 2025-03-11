@@ -24,7 +24,7 @@ public class DirectorService {
     }
 
     public Optional<Director> obtenerDirectorPorId(int idDirector) {
-        return directorRepository.findByIdDirector(idDirector);
+        return directorRepository.findById(idDirector);
     }
 
     public void insertarDirector(Director director) {
@@ -32,11 +32,11 @@ public class DirectorService {
     }
 
     public void eliminarDirector(int idDirector) {
-        directorRepository.delete(directorRepository.findByIdDirector(idDirector).get());
+        directorRepository.delete(directorRepository.findById(idDirector).get());
     }
 
     public Director actualizarDirector(int idDirector, Director directorActualizado) {
-        return directorRepository.findByIdDirector(idDirector).map(directorAntiguo -> {
+        return directorRepository.findById(idDirector).map(directorAntiguo -> {
             directorAntiguo.setNombre(directorActualizado.getNombre());
             directorAntiguo.setApellido(directorActualizado.getApellido());
             directorAntiguo.setEdad(directorActualizado.getEdad());

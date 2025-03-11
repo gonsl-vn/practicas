@@ -233,6 +233,29 @@ public class ProductoraServiceTest {
         verify(productoraCriteriaRepository, times(1)).buscarProductora(999);
     }
 
+    @Test
+    void testInsertarProductoraCriteria() {
+        Productora nuevaProductora = new Productora(4, "Netflix Studios", LocalDate.of(2010, 3, 1));
+
+        productoraService.insertarProductoraCriteria(nuevaProductora);
+
+        verify(productoraCriteriaRepository, times(1)).insertarProductora(nuevaProductora);
+    }
+
+    @Test
+    void testInsertarProductoraCriteriaKO() {
+        Productora nuevaProductora = new Productora(4, "", LocalDate.of(2010, 3, 1));
+
+        doThrow(new IllegalArgumentException("No se puede guardar el director")).when(productoraCriteriaRepository)
+                .insertarProductora(nuevaProductora);
+
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            productoraService.insertarProductoraCriteria(nuevaProductora);
+        });
+
+        assertEquals("No se puede guardar el director", exception.getMessage());
+    }
+
     // --------------------------------------------------
 
     @Test

@@ -44,9 +44,9 @@ public class DirectorServiceTest {
 
         // Simular respuestas del repositorio con Mockito
         when(directorRepository.findAll()).thenReturn(Arrays.asList(director1, director2, director3));
-        when(directorRepository.findByIdDirector(200)).thenReturn(Optional.of(director1));
-        when(directorRepository.findByIdDirector(201)).thenReturn(Optional.of(director2));
-        when(directorRepository.findByIdDirector(202)).thenReturn(Optional.of(director3));
+        when(directorRepository.findById(200)).thenReturn(Optional.of(director1));
+        when(directorRepository.findById(201)).thenReturn(Optional.of(director2));
+        when(directorRepository.findById(202)).thenReturn(Optional.of(director3));
         when(directorRepository.save(any(Director.class))).thenAnswer(invocation -> invocation.getArgument(0));
 
         when(directorService.obtenerDirectorPorId(200)).thenReturn(Optional.of(director1));
@@ -96,27 +96,27 @@ public class DirectorServiceTest {
         assertTrue(director.isPresent());
         assertEquals("Steven", director.get().getNombre());
 
-        verify(directorRepository, times(1)).findByIdDirector(200);
+        verify(directorRepository, times(1)).findById(200);
     }
 
     @Test
     void testObtenerDirectorPorIdKO() {
-        when(directorRepository.findByIdDirector(200)).thenReturn(Optional.empty());
+        when(directorRepository.findById(200)).thenReturn(Optional.empty());
 
         Optional<Director> director = directorService.obtenerDirectorPorId(200);
 
         assertFalse(director.isPresent());
-        verify(directorRepository, times(1)).findByIdDirector(200);
+        verify(directorRepository, times(1)).findById(200);
     }
 
     // --------------------------------------------------
 
     @Test
     void testInsertarDirector() {
-        Director nuevoDirector = new Director(203, "James", "Cameron", 69, "Canadá");
+        Director nuevoDirector = new Director(202, "James", "Cameron", 69, "Canadá");
 
         directorService.insertarDirector(nuevoDirector);
-
+        assertTrue(directorRepository.findById(202).isPresent());
         verify(directorRepository, times(1)).save(nuevoDirector);
     }
 
@@ -140,7 +140,7 @@ public class DirectorServiceTest {
     void testActualizarDirector() {
         Director directorActualizado = new Director(200, "Steven", "Spielberg", 78, "EE.UU");
 
-        when(directorRepository.findByIdDirector(200)).thenReturn(Optional.of(director1));
+        when(directorRepository.findById(200)).thenReturn(Optional.of(director1));
         when(directorRepository.save(any(Director.class))).thenAnswer(invocation -> invocation.getArgument(0));
 
         Director resultado = directorService.actualizarDirector(200, directorActualizado);
@@ -148,7 +148,7 @@ public class DirectorServiceTest {
         assertNotNull(resultado);
         assertEquals("Steven", resultado.getNombre());
 
-        verify(directorRepository, times(1)).findByIdDirector(200);
+        verify(directorRepository, times(1)).findById(200);
         verify(directorRepository, times(1)).save(any(Director.class));
     }
 
@@ -156,7 +156,7 @@ public class DirectorServiceTest {
     void testActualizarDirectorKO() {
         Director directorActualizado = new Director(200, "", "Spielberg", 78, "EE.UU");
 
-        when(directorRepository.findByIdDirector(200)).thenReturn(Optional.ofNullable(director1));
+        when(directorRepository.findById(200)).thenReturn(Optional.ofNullable(director1));
         when(directorRepository.save(any(Director.class))).thenThrow(new IllegalArgumentException("Datos inválidos"));
 
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
@@ -170,7 +170,7 @@ public class DirectorServiceTest {
 
     @Test
     void testEliminarDirector() {
-        when(directorRepository.findByIdDirector(200)).thenReturn(Optional.of(director1));
+        when(directorRepository.findById(200)).thenReturn(Optional.of(director1));
 
         directorService.eliminarDirector(200);
 
@@ -179,7 +179,7 @@ public class DirectorServiceTest {
 
     @Test
     void testEliminarDirectorKO() {
-        when(directorRepository.findByIdDirector(200)).thenReturn(Optional.empty());
+        when(directorRepository.findById(200)).thenReturn(Optional.empty());
 
         assertThrows(RuntimeException.class, () -> {
             directorService.eliminarDirector(200);
@@ -209,6 +209,29 @@ public class DirectorServiceTest {
 
         assertNull(listaDirectores);
         verify(directorCriteriaRepository, times(1)).listarDirectores();
+    }
+
+    @Test
+    void testInsertarDirectorCriteria() {
+        Director nuevoDirector = new Director(204, "James", "Cameron", 69, "Canadá");
+
+        directorService.insertarDirectorCriteria(nuevoDirector);
+
+        verify(directorCriteriaRepository, times(1)).insertarDirector(nuevoDirector);
+    }
+
+    @Test
+    void testInsertarDirectorCriteriaKO() {
+        Director nuevoDirector = new Director(204, "", "Cameron", 69, "Canadá");
+
+        doThrow(new IllegalArgumentException("No se puede guardar el director")).when(directorCriteriaRepository)
+                .insertarDirector(nuevoDirector);
+
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            directorService.insertarDirectorCriteria(nuevoDirector);
+        });
+
+        assertEquals("No se puede guardar el director", exception.getMessage());
     }
 
     // --------------------------------------------------

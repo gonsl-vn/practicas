@@ -23,7 +23,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
-public class SerieServiceTest {
+class SerieServiceTest {
 
     @Mock
     private SerieRepository serieRepository;
@@ -130,9 +130,8 @@ public class SerieServiceTest {
 
         when(serieRepository.save(nuevaSerie)).thenThrow(new IllegalArgumentException("No se puede guardar la serie"));
 
-        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-            serieService.insertarSerie(nuevaSerie);
-        });
+        Exception exception = assertThrows(IllegalArgumentException.class,
+                () -> serieService.insertarSerie(nuevaSerie));
 
         assertEquals("No se puede guardar la serie", exception.getMessage());
     }
@@ -163,9 +162,8 @@ public class SerieServiceTest {
         when(serieRepository.findById(101)).thenReturn(Optional.ofNullable(serie1));
         when(serieRepository.save(any(Serie.class))).thenThrow(new IllegalArgumentException("Datos inválidos"));
 
-        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-            serieService.actualizarSerie(101, serieActualizada);
-        });
+        Exception exception = assertThrows(IllegalArgumentException.class,
+                () -> serieService.actualizarSerie(101, serieActualizada));
 
         assertEquals("Datos inválidos", exception.getMessage());
     }
@@ -185,9 +183,7 @@ public class SerieServiceTest {
     void testEliminarSerieKO() {
         when(serieRepository.findById(101)).thenReturn(Optional.empty());
 
-        assertThrows(RuntimeException.class, () -> {
-            serieService.eliminarSerie(101);
-        });
+        assertThrows(RuntimeException.class, () -> serieService.eliminarSerie(101));
 
         verify(serieRepository, times(0)).delete(any());
     }
@@ -252,9 +248,8 @@ public class SerieServiceTest {
         doThrow(new IllegalArgumentException("No se puede guardar la serie")).when(serieCriteriaRepository)
                 .insertarSerie(nuevaSerie);
 
-        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-            serieService.insertarSerieCriteria(nuevaSerie);
-        });
+        Exception exception = assertThrows(IllegalArgumentException.class,
+                () -> serieService.insertarSerieCriteria(nuevaSerie));
 
         assertEquals("No se puede guardar la serie", exception.getMessage());
     }
@@ -276,9 +271,8 @@ public class SerieServiceTest {
         doThrow(new IllegalArgumentException("Datos inválidos")).when(serieCriteriaRepository)
                 .actualizarSerie(101, serieActualizada);
 
-        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-            serieService.actualizarSerieCriteria(101, serieActualizada);
-        });
+        Exception exception = assertThrows(IllegalArgumentException.class,
+                () -> serieService.actualizarSerieCriteria(101, serieActualizada));
 
         assertEquals("Datos inválidos", exception.getMessage());
     }
@@ -295,9 +289,7 @@ public class SerieServiceTest {
         doThrow(new RuntimeException("No se pudo eliminar la serie, no encontrada")).when(serieCriteriaRepository)
                 .borrarSeriePorId(999);
 
-        Exception exception = assertThrows(RuntimeException.class, () -> {
-            serieService.eliminarSerieCriteria(999);
-        });
+        Exception exception = assertThrows(RuntimeException.class, () -> serieService.eliminarSerieCriteria(999));
 
         assertEquals("No se pudo eliminar la serie, no encontrada", exception.getMessage());
     }

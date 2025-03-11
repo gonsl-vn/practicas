@@ -26,10 +26,6 @@ public class ProductoraService {
         return productoraRepository.findAll();
     }
 
-    public Optional<Productora> obtenerProductoraPorNombre(String nombre) {
-        return productoraRepository.findByNombre(nombre);
-    }
-
     public Optional<Productora> obtenerProductoraPorId(int idProductora) {
         return productoraRepository.findByIdProductora(idProductora);
     }
