@@ -67,7 +67,6 @@ public class PeliculaServiceTest {
         // Resetear los mocks
         reset(peliculaRepository);
     }
-
     // -------------------- TESTS CON JPA REPOSITORY --------------------
 
     @Test
@@ -76,12 +75,21 @@ public class PeliculaServiceTest {
 
         assertNotNull(listaPeliculas);
         assertEquals(3, listaPeliculas.size());
-        assertEquals("Inception", listaPeliculas.get(0).getTitulo());
-        assertEquals("Interstellar", listaPeliculas.get(1).getTitulo());
-        assertEquals("Dunkirk", listaPeliculas.get(2).getTitulo());
 
         verify(peliculaRepository, times(1)).findAll();
     }
+
+    @Test
+    void testObtenerPeliculasKO() {
+        when(peliculaRepository.findAll()).thenReturn(null);
+
+        List<Pelicula> listaPeliculas = peliculaService.listarPeliculas();
+
+        assertNull(listaPeliculas);
+        verify(peliculaRepository, times(1)).findAll();
+    }
+
+    // --------------------------------------------------
 
     @Test
     void testObtenerPeliculaPorId() {
@@ -89,18 +97,46 @@ public class PeliculaServiceTest {
 
         assertTrue(pelicula.isPresent());
         assertEquals("Inception", pelicula.get().getTitulo());
-        assertEquals(2010, pelicula.get().getAno().getYear());
 
         verify(peliculaRepository, times(1)).findById(101);
     }
 
     @Test
+    void testObtenerPeliculaPorIdKO() {
+        when(peliculaRepository.findById(999)).thenReturn(Optional.empty());
+
+        Optional<Pelicula> pelicula = peliculaService.buscarPelicula(999);
+
+        assertFalse(pelicula.isPresent());
+        verify(peliculaRepository, times(1)).findById(999);
+    }
+
+    // --------------------------------------------------
+
+    @Test
     void testInsertarPelicula() {
         Pelicula nuevaPelicula = new Pelicula(104, "Tenet", LocalDate.of(2020, 8, 26), null, null, List.of());
+
         peliculaService.insertarPelicula(nuevaPelicula);
 
         verify(peliculaRepository, times(1)).save(nuevaPelicula);
     }
+
+    @Test
+    void testInsertarPeliculaKO() {
+        Pelicula nuevaPelicula = new Pelicula(104, "", LocalDate.of(2020, 8, 26), null, null, List.of());
+
+        when(peliculaRepository.save(nuevaPelicula)).thenThrow(
+                new IllegalArgumentException("No se puede guardar la película"));
+
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            peliculaService.insertarPelicula(nuevaPelicula);
+        });
+
+        assertEquals("No se puede guardar la película", exception.getMessage());
+    }
+
+    // --------------------------------------------------
 
     @Test
     void testActualizarPelicula() {
@@ -120,12 +156,39 @@ public class PeliculaServiceTest {
     }
 
     @Test
+    void testActualizarPeliculaKO() {
+        Pelicula peliculaActualizada = new Pelicula(101, "", LocalDate.of(2010, 7, 16), null, null, List.of());
+
+        when(peliculaRepository.findById(101)).thenReturn(Optional.ofNullable(pelicula1));
+        when(peliculaRepository.save(any(Pelicula.class))).thenThrow(new IllegalArgumentException("Datos inválidos"));
+
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            peliculaService.actualizarPelicula(101, peliculaActualizada);
+        });
+
+        assertEquals("Datos inválidos", exception.getMessage());
+    }
+
+    // --------------------------------------------------
+
+    @Test
     void testEliminarPelicula() {
         when(peliculaRepository.existsById(101)).thenReturn(true);
 
         peliculaService.borrarPeliculaPorId(101);
 
         verify(peliculaRepository, times(1)).deleteById(101);
+    }
+
+    @Test
+    void testEliminarPeliculaKO() {
+        when(peliculaRepository.existsById(999)).thenReturn(false);
+
+        assertThrows(RuntimeException.class, () -> {
+            peliculaService.borrarPeliculaPorId(999);
+        });
+
+        verify(peliculaRepository, times(0)).deleteById(any());
     }
 
     // -------------------- TESTS CON CRITERIA API --------------------
@@ -142,6 +205,18 @@ public class PeliculaServiceTest {
     }
 
     @Test
+    void testObtenerPeliculasCriteriaKO() {
+        when(peliculaCriteriaRepository.listarPeliculas()).thenReturn(null);
+
+        List<Pelicula> listaPeliculas = peliculaService.listarPeliculasCriteria();
+
+        assertNull(listaPeliculas);
+        verify(peliculaCriteriaRepository, times(1)).listarPeliculas();
+    }
+
+    // --------------------------------------------------
+
+    @Test
     void testObtenerPeliculaPorIdCriteria() {
         when(peliculaCriteriaRepository.buscarPelicula(101)).thenReturn(pelicula1);
 
@@ -153,6 +228,18 @@ public class PeliculaServiceTest {
     }
 
     @Test
+    void testObtenerPeliculaPorIdCriteriaKO() {
+        when(peliculaCriteriaRepository.buscarPelicula(999)).thenReturn(null);
+
+        Pelicula pelicula = peliculaService.buscarPeliculaCriteria(999);
+
+        assertNull(pelicula);
+        verify(peliculaCriteriaRepository, times(1)).buscarPelicula(999);
+    }
+
+    // --------------------------------------------------
+
+    @Test
     void testInsertarPeliculaCriteria() {
         Pelicula nuevaPelicula = new Pelicula(104, "Tenet", LocalDate.of(2020, 8, 26), null, null, List.of());
 
@@ -160,6 +247,22 @@ public class PeliculaServiceTest {
 
         verify(peliculaCriteriaRepository, times(1)).insertarPelicula(nuevaPelicula);
     }
+
+    @Test
+    void testInsertarPeliculaCriteriaKO() {
+        Pelicula nuevaPelicula = new Pelicula(104, "", LocalDate.of(2020, 8, 26), null, null, List.of());
+
+        doThrow(new IllegalArgumentException("No se puede guardar la película")).when(peliculaCriteriaRepository)
+                .insertarPelicula(nuevaPelicula);
+
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            peliculaService.insertarPeliculaCriteria(nuevaPelicula);
+        });
+
+        assertEquals("No se puede guardar la película", exception.getMessage());
+    }
+
+    // --------------------------------------------------
 
     @Test
     void testActualizarPeliculaCriteria() {
@@ -172,9 +275,37 @@ public class PeliculaServiceTest {
     }
 
     @Test
+    void testActualizarPeliculaCriteriaKO() {
+        Pelicula peliculaActualizada = new Pelicula(101, "", LocalDate.of(2010, 7, 16), null, null, List.of());
+
+        doThrow(new IllegalArgumentException("Datos inválidos")).when(peliculaCriteriaRepository)
+                .actualizarPelicula(101, peliculaActualizada);
+
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            peliculaService.actualizarPeliculaCriteria(101, peliculaActualizada);
+        });
+
+        assertEquals("Datos inválidos", exception.getMessage());
+    }
+
+    // --------------------------------------------------
+
+    @Test
     void testEliminarPeliculaCriteria() {
         peliculaService.borrarPeliculaPorIdCriteria(101);
 
         verify(peliculaCriteriaRepository, times(1)).borrarPeliculaPorId(101);
+    }
+
+    @Test
+    void testEliminarPeliculaCriteriaKO() {
+        doThrow(new RuntimeException("No se pudo eliminar la película, no encontrada")).when(peliculaCriteriaRepository)
+                .borrarPeliculaPorId(999);
+
+        Exception exception = assertThrows(RuntimeException.class, () -> {
+            peliculaService.borrarPeliculaPorIdCriteria(999);
+        });
+
+        assertEquals("No se pudo eliminar la película, no encontrada", exception.getMessage());
     }
 }

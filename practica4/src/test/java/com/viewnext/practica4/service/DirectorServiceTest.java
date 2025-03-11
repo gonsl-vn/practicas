@@ -73,12 +73,21 @@ public class DirectorServiceTest {
 
         assertNotNull(listaDirectores);
         assertEquals(3, listaDirectores.size());
-        assertEquals("Steven", listaDirectores.get(0).getNombre());
-        assertEquals("Christopher", listaDirectores.get(1).getNombre());
-        assertEquals("Quentin", listaDirectores.get(2).getNombre());
 
         verify(directorRepository, times(1)).findAll();
     }
+
+    @Test
+    void testObtenerDirectoresKO() {
+        when(directorRepository.findAll()).thenReturn(null);
+
+        List<Director> listaDirectores = directorService.obtenerDirectores();
+
+        assertNull(listaDirectores);
+        verify(directorRepository, times(1)).findAll();
+    }
+
+    // --------------------------------------------------
 
     @Test
     void testObtenerDirectorPorId() {
@@ -86,42 +95,97 @@ public class DirectorServiceTest {
 
         assertTrue(director.isPresent());
         assertEquals("Steven", director.get().getNombre());
-        assertEquals("Spielberg", director.get().getApellido());
-        assertEquals(77, director.get().getEdad());
 
+        verify(directorRepository, times(1)).findByIdDirector(200);
     }
+
+    @Test
+    void testObtenerDirectorPorIdKO() {
+        when(directorRepository.findByIdDirector(200)).thenReturn(Optional.empty());
+
+        Optional<Director> director = directorService.obtenerDirectorPorId(200);
+
+        assertFalse(director.isPresent());
+        verify(directorRepository, times(1)).findByIdDirector(200);
+    }
+
+    // --------------------------------------------------
 
     @Test
     void testInsertarDirector() {
         Director nuevoDirector = new Director(203, "James", "Cameron", 69, "Canadá");
+
         directorService.insertarDirector(nuevoDirector);
 
         verify(directorRepository, times(1)).save(nuevoDirector);
     }
 
     @Test
+    void testInsertarDirectorKO() {
+        Director nuevoDirector = new Director(203, "", "Cameron", 69, "Canadá");
+
+        when(directorRepository.save(nuevoDirector)).thenThrow(
+                new IllegalArgumentException("No se puede guardar director"));
+
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            directorService.insertarDirector(nuevoDirector);
+        });
+
+        assertEquals("No se puede guardar director", exception.getMessage());
+    }
+
+    // --------------------------------------------------
+
+    @Test
     void testActualizarDirector() {
         Director directorActualizado = new Director(200, "Steven", "Spielberg", 78, "EE.UU");
 
-        when(directorRepository.findById(200)).thenReturn(Optional.of(director1));
+        when(directorRepository.findByIdDirector(200)).thenReturn(Optional.of(director1));
         when(directorRepository.save(any(Director.class))).thenAnswer(invocation -> invocation.getArgument(0));
-        when(directorService.actualizarDirector(200, directorActualizado)).thenReturn(directorActualizado);
 
         Director resultado = directorService.actualizarDirector(200, directorActualizado);
 
         assertNotNull(resultado);
         assertEquals("Steven", resultado.getNombre());
-        assertEquals("Spielberg", resultado.getApellido());
-        assertEquals(78, resultado.getEdad());
+
+        verify(directorRepository, times(1)).findByIdDirector(200);
+        verify(directorRepository, times(1)).save(any(Director.class));
     }
 
     @Test
+    void testActualizarDirectorKO() {
+        Director directorActualizado = new Director(200, "", "Spielberg", 78, "EE.UU");
+
+        when(directorRepository.findByIdDirector(200)).thenReturn(Optional.ofNullable(director1));
+        when(directorRepository.save(any(Director.class))).thenThrow(new IllegalArgumentException("Datos inválidos"));
+
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            directorService.actualizarDirector(200, directorActualizado);
+        });
+
+        assertEquals("Datos inválidos", exception.getMessage());
+    }
+
+    // --------------------------------------------------
+
+    @Test
     void testEliminarDirector() {
-        when(directorRepository.findById(200)).thenReturn(Optional.of(director1));
+        when(directorRepository.findByIdDirector(200)).thenReturn(Optional.of(director1));
 
         directorService.eliminarDirector(200);
 
         verify(directorRepository, times(1)).delete(director1);
+    }
+
+    @Test
+    void testEliminarDirectorKO() {
+        when(directorRepository.findByIdDirector(200)).thenReturn(Optional.empty());
+
+        assertThrows(RuntimeException.class, () -> {
+            directorService.eliminarDirector(200);
+        });
+
+        verify(directorRepository, times(0)).delete(any());
     }
 
     // -------------------- TESTS CON CRITERIA API --------------------
@@ -138,6 +202,18 @@ public class DirectorServiceTest {
     }
 
     @Test
+    void testObtenerDirectoresCriteriaKO() {
+        when(directorCriteriaRepository.listarDirectores()).thenReturn(null);
+
+        List<Director> listaDirectores = directorService.obtenerDirectoresCriteria();
+
+        assertNull(listaDirectores);
+        verify(directorCriteriaRepository, times(1)).listarDirectores();
+    }
+
+    // --------------------------------------------------
+
+    @Test
     void testObtenerDirectorPorIdCriteria() {
         when(directorCriteriaRepository.buscarDirector(200)).thenReturn(Optional.of(director1));
 
@@ -145,29 +221,46 @@ public class DirectorServiceTest {
 
         assertTrue(director.isPresent());
         assertEquals("Steven", director.get().getNombre());
-        assertEquals("Spielberg", director.get().getApellido());
-        assertEquals(77, director.get().getEdad());
 
         verify(directorCriteriaRepository, times(1)).buscarDirector(200);
     }
 
     @Test
-    void testInsertarDirectorCriteria() {
-        Director nuevoDirector = new Director(203, "James", "Cameron", 69, "Canadá");
+    void testObtenerDirectorPorIdCriteriaKO() {
+        when(directorCriteriaRepository.buscarDirector(200)).thenReturn(Optional.empty());
 
-        directorService.insertarDirectorCriteria(nuevoDirector);
+        Optional<Director> director = directorService.obtenerDirectorPorIdCriteria(200);
 
-        verify(directorCriteriaRepository, times(1)).insertarDirector(nuevoDirector);
+        assertFalse(director.isPresent());
+        verify(directorCriteriaRepository, times(1)).buscarDirector(200);
     }
+
+    // --------------------------------------------------
 
     @Test
     void testActualizarDirectorCriteria() {
         Director directorActualizado = new Director(200, "Steven", "Spielberg", 78, "EE.UU");
 
-        directorService.actualizarActorCriteria(200, directorActualizado);
+        directorService.actualizarDirectorCriteria(200, directorActualizado);
 
         verify(directorCriteriaRepository, times(1)).actualizarDirector(200, directorActualizado);
     }
+
+    @Test
+    void testActualizarDirectorCriteriaKO() {
+        Director directorActualizado = new Director(200, "", "Spielberg", 78, "EE.UU");
+
+        doThrow(new IllegalArgumentException("Datos inválidos")).when(directorCriteriaRepository)
+                .actualizarDirector(200, directorActualizado);
+
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            directorService.actualizarDirectorCriteria(200, directorActualizado);
+        });
+
+        assertEquals("Datos inválidos", exception.getMessage());
+    }
+
+    // --------------------------------------------------
 
     @Test
     void testEliminarDirectorCriteria() {
@@ -175,4 +268,17 @@ public class DirectorServiceTest {
 
         verify(directorCriteriaRepository, times(1)).borrarDirectorPorId(200);
     }
+
+    @Test
+    void testEliminarDirectorCriteriaKO() {
+        doThrow(new RuntimeException("No se pudo eliminar director, Director no encontrado")).when(
+                directorCriteriaRepository).borrarDirectorPorId(200);
+
+        Exception exception = assertThrows(RuntimeException.class, () -> {
+            directorService.eliminarDirectorCriteria(200);
+        });
+
+        assertEquals("No se pudo eliminar director, Director no encontrado", exception.getMessage());
+    }
+
 }

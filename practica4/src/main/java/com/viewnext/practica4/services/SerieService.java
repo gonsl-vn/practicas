@@ -30,7 +30,7 @@ public class SerieService {
     }
 
     public Optional<Serie> obtenerSeriePorId(int idSerie) {
-        return serieRepository.findByIdSerie(idSerie);
+        return serieRepository.findById(idSerie);
     }
 
     public void insertarSerie(Serie serie) {
@@ -38,7 +38,11 @@ public class SerieService {
     }
 
     public void eliminarSerie(int idSerie) {
-        serieRepository.delete(serieRepository.findByIdSerie(idSerie).get());
+        if (serieRepository.findById(idSerie).isPresent()) {
+            serieRepository.delete(serieRepository.findById(idSerie).get());
+        } else {
+            throw new RuntimeException();
+        }
     }
 
     public Serie actualizarSerie(int idSerie, Serie serieActualizada) {

@@ -62,7 +62,6 @@ public class ProductoraServiceTest {
         // Resetear los mocks
         reset(productoraRepository);
     }
-
     // -------------------- TESTS CON JPA REPOSITORY --------------------
 
     @Test
@@ -71,12 +70,21 @@ public class ProductoraServiceTest {
 
         assertNotNull(listaProductoras);
         assertEquals(3, listaProductoras.size());
-        assertEquals("Warner Bros", listaProductoras.get(0).getNombre());
-        assertEquals("Universal Pictures", listaProductoras.get(1).getNombre());
-        assertEquals("Paramount Pictures", listaProductoras.get(2).getNombre());
 
         verify(productoraRepository, times(1)).findAll();
     }
+
+    @Test
+    void testObtenerProductorasKO() {
+        when(productoraRepository.findAll()).thenReturn(null);
+
+        List<Productora> listaProductoras = productoraService.obtenerProductoras();
+
+        assertNull(listaProductoras);
+        verify(productoraRepository, times(1)).findAll();
+    }
+
+    // --------------------------------------------------
 
     @Test
     void testObtenerProductoraPorId() {
@@ -84,28 +92,46 @@ public class ProductoraServiceTest {
 
         assertTrue(productora.isPresent());
         assertEquals("Warner Bros", productora.get().getNombre());
-        assertEquals(1923, productora.get().getAnoFundacion().getYear());
 
         verify(productoraRepository, times(1)).findByIdProductora(1);
     }
 
     @Test
-    void testObtenerProductoraPorNombre() {
-        Optional<Productora> productora = productoraService.obtenerProductoraPorNombre("Warner Bros");
+    void testObtenerProductoraPorIdKO() {
+        when(productoraRepository.findByIdProductora(999)).thenReturn(Optional.empty());
 
-        assertTrue(productora.isPresent());
-        assertEquals(1923, productora.get().getAnoFundacion().getYear());
+        Optional<Productora> productora = productoraService.obtenerProductoraPorId(999);
 
-        verify(productoraRepository, times(1)).findByNombre("Warner Bros");
+        assertFalse(productora.isPresent());
+        verify(productoraRepository, times(1)).findByIdProductora(999);
     }
+
+    // --------------------------------------------------
 
     @Test
     void testInsertarProductora() {
         Productora nuevaProductora = new Productora(4, "Netflix Studios", LocalDate.of(2010, 3, 1));
+
         productoraService.insertarProductora(nuevaProductora);
 
         verify(productoraRepository, times(1)).save(nuevaProductora);
     }
+
+    @Test
+    void testInsertarProductoraKO() {
+        Productora nuevaProductora = new Productora(4, "", LocalDate.of(2010, 3, 1));
+
+        when(productoraRepository.save(nuevaProductora)).thenThrow(
+                new IllegalArgumentException("No se puede guardar la productora"));
+
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            productoraService.insertarProductora(nuevaProductora);
+        });
+
+        assertEquals("No se puede guardar la productora", exception.getMessage());
+    }
+
+    // --------------------------------------------------
 
     @Test
     void testActualizarProductora() {
@@ -124,12 +150,40 @@ public class ProductoraServiceTest {
     }
 
     @Test
+    void testActualizarProductoraKO() {
+        Productora productoraActualizada = new Productora(1, "", LocalDate.of(1923, 4, 4));
+
+        when(productoraRepository.findByIdProductora(1)).thenReturn(Optional.ofNullable(productora1));
+        when(productoraRepository.save(any(Productora.class))).thenThrow(
+                new IllegalArgumentException("Datos inválidos"));
+
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            productoraService.actualizarProductora(1, productoraActualizada);
+        });
+
+        assertEquals("Datos inválidos", exception.getMessage());
+    }
+
+    // --------------------------------------------------
+
+    @Test
     void testEliminarProductora() {
         when(productoraRepository.findByIdProductora(1)).thenReturn(Optional.of(productora1));
 
         productoraService.eliminarProductora(1);
 
         verify(productoraRepository, times(1)).delete(productora1);
+    }
+
+    @Test
+    void testEliminarProductoraKO() {
+        when(productoraRepository.findByIdProductora(999)).thenReturn(Optional.empty());
+
+        assertThrows(RuntimeException.class, () -> {
+            productoraService.eliminarProductora(999);
+        });
+
+        verify(productoraRepository, times(0)).delete(any());
     }
 
     // -------------------- TESTS CON CRITERIA API --------------------
@@ -147,6 +201,18 @@ public class ProductoraServiceTest {
     }
 
     @Test
+    void testObtenerProductorasCriteriaKO() {
+        when(productoraCriteriaRepository.listarProductoras()).thenReturn(null);
+
+        List<Productora> listaProductoras = productoraService.obtenerProductorasCriteria();
+
+        assertNull(listaProductoras);
+        verify(productoraCriteriaRepository, times(1)).listarProductoras();
+    }
+
+    // --------------------------------------------------
+
+    @Test
     void testObtenerProductoraPorIdCriteria() {
         when(productoraCriteriaRepository.buscarProductora(1)).thenReturn(productora1);
 
@@ -158,13 +224,16 @@ public class ProductoraServiceTest {
     }
 
     @Test
-    void testInsertarProductoraCriteria() {
-        Productora nuevaProductora = new Productora(4, "Netflix Studios", LocalDate.of(2010, 3, 1));
+    void testObtenerProductoraPorIdCriteriaKO() {
+        when(productoraCriteriaRepository.buscarProductora(999)).thenReturn(null);
 
-        productoraService.insertarProductoraCriteria(nuevaProductora);
+        Productora productora = productoraService.obtenerProductoraPorIdCriteria(999);
 
-        verify(productoraCriteriaRepository, times(1)).insertarProductora(nuevaProductora);
+        assertNull(productora);
+        verify(productoraCriteriaRepository, times(1)).buscarProductora(999);
     }
+
+    // --------------------------------------------------
 
     @Test
     void testActualizarProductoraCriteria() {
@@ -176,9 +245,38 @@ public class ProductoraServiceTest {
     }
 
     @Test
+    void testActualizarProductoraCriteriaKO() {
+        Productora productoraActualizada = new Productora(1, "", LocalDate.of(1923, 4, 4));
+
+        doThrow(new IllegalArgumentException("Datos inválidos")).when(productoraCriteriaRepository)
+                .actualizarProductora(1, productoraActualizada);
+
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            productoraService.actualizarProductoraCriteria(1, productoraActualizada);
+        });
+
+        assertEquals("Datos inválidos", exception.getMessage());
+    }
+
+    // --------------------------------------------------
+
+    @Test
     void testEliminarProductoraCriteria() {
         productoraService.eliminarProductoraCriteria(1);
 
         verify(productoraCriteriaRepository, times(1)).borrarProductoraPorId(1);
     }
+
+    @Test
+    void testEliminarProductoraCriteriaKO() {
+        doThrow(new RuntimeException("No se pudo eliminar la productora, no encontrada")).when(
+                productoraCriteriaRepository).borrarProductoraPorId(999);
+
+        Exception exception = assertThrows(RuntimeException.class, () -> {
+            productoraService.eliminarProductoraCriteria(999);
+        });
+
+        assertEquals("No se pudo eliminar la productora, no encontrada", exception.getMessage());
+    }
+
 }

@@ -63,7 +63,7 @@ public class DirectorService {
         directorCriteriaRepository.borrarDirectorPorId(idDirector);
     }
 
-    public void actualizarActorCriteria(int idActor, Director actorActualizado) {
-        directorCriteriaRepository.actualizarDirector(idActor, actorActualizado);
+    public void actualizarDirectorCriteria(int idDirector, Director actorActualizado) {
+        directorCriteriaRepository.actualizarDirector(idDirector, actorActualizado);
     }
 }

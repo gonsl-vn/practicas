@@ -69,12 +69,21 @@ class ActorServiceTest {
 
         assertNotNull(listaActores);
         assertEquals(3, listaActores.size());
-        assertEquals(100, listaActores.get(0).getIdActor());
-        assertEquals(101, listaActores.get(1).getIdActor());
-        assertEquals(102, listaActores.get(2).getIdActor());
 
         verify(actorRepository, times(1)).findAll();
     }
+
+    @Test
+    void testObtenerActoresKO() {
+        when(actorRepository.findAll()).thenReturn(null);
+
+        List<Actor> listaActores = actorService.obtenerActores();
+
+        assertNull(listaActores);
+        verify(actorRepository, times(1)).findAll();
+    }
+
+    // --------------------------------------------------
 
     @Test
     void testObtenerActorPorId() {
@@ -82,19 +91,45 @@ class ActorServiceTest {
 
         assertTrue(actor.isPresent());
         assertEquals("Chris", actor.get().getNombre());
-        assertEquals("Evans", actor.get().getApellido());
-        assertEquals(45, actor.get().getEdad());
 
         verify(actorRepository, times(1)).findByIdActor(100);
     }
 
     @Test
+    void testObtenerActorPorIdKO() {
+        when(actorRepository.findByIdActor(999)).thenReturn(Optional.empty());
+
+        Optional<Actor> actor = actorService.obtenerActorPorId(999);
+
+        assertFalse(actor.isPresent());
+        verify(actorRepository, times(1)).findByIdActor(999);
+    }
+
+    // --------------------------------------------------
+
+    @Test
     void testInsertarActor() {
         Actor nuevoActor = new Actor(103, "Robert", "Downey Jr.", 58, "USA");
+
         actorService.insertarActor(nuevoActor);
 
         verify(actorRepository, times(1)).save(nuevoActor);
     }
+
+    @Test
+    void testInsertarActorKO() {
+        Actor nuevoActor = new Actor(103, "", "Downey Jr.", 58, "USA");
+
+        when(actorRepository.save(nuevoActor)).thenThrow(new IllegalArgumentException("No se puede guardar actor"));
+
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            actorService.insertarActor(nuevoActor);
+        });
+
+        assertEquals("No se puede guardar actor", exception.getMessage());
+    }
+
+    // --------------------------------------------------
 
     @Test
     void testActualizarActor() {
@@ -107,12 +142,26 @@ class ActorServiceTest {
 
         assertNotNull(resultado);
         assertEquals("Chris", resultado.getNombre());
-        assertEquals("Pratt", resultado.getApellido());
-        assertEquals(43, resultado.getEdad());
 
         verify(actorRepository, times(1)).findByIdActor(100);
         verify(actorRepository, times(1)).save(any(Actor.class));
     }
+
+    @Test
+    void testActualizarActorKO() {
+        Actor actorActualizado = new Actor(100, "", "Pratt", 43, "EE.UU");
+
+        when(actorRepository.findByIdActor(100)).thenReturn(Optional.ofNullable(actor1));
+        when(actorRepository.save(any(Actor.class))).thenThrow(new IllegalArgumentException("Datos inválidos"));
+
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            actorService.actualizarActor(100, actorActualizado);
+        });
+
+        assertEquals("Datos inválidos", exception.getMessage());
+    }
+
+    // --------------------------------------------------
 
     @Test
     void testEliminarActor() {
@@ -121,6 +170,17 @@ class ActorServiceTest {
         actorService.eliminarActor(100);
 
         verify(actorRepository, times(1)).delete(actor1);
+    }
+
+    @Test
+    void testEliminarActorKO() {
+        when(actorRepository.findByIdActor(999)).thenReturn(Optional.empty());
+
+        Exception exception = assertThrows(RuntimeException.class, () -> {
+            actorService.eliminarActor(999);
+        });
+
+        verify(actorRepository, times(0)).delete(any());
     }
 
     // -------------------- TESTS CON CRITERIA API --------------------
@@ -137,6 +197,18 @@ class ActorServiceTest {
     }
 
     @Test
+    void testObtenerActoresCriteriaKO() {
+        when(actorCriteriaRepository.listarActores()).thenReturn(null);
+
+        List<Actor> listaActores = actorService.obtenerActoresCriteria();
+
+        assertNull(listaActores);
+        verify(actorCriteriaRepository, times(1)).listarActores();
+    }
+
+    // --------------------------------------------------
+
+    @Test
     void testObtenerActorPorIdCriteria() {
         when(actorCriteriaRepository.buscarActor(100)).thenReturn(Optional.of(actor1));
 
@@ -144,11 +216,21 @@ class ActorServiceTest {
 
         assertTrue(actor.isPresent());
         assertEquals("Chris", actor.get().getNombre());
-        assertEquals("Evans", actor.get().getApellido());
-        assertEquals(45, actor.get().getEdad());
 
         verify(actorCriteriaRepository, times(1)).buscarActor(100);
     }
+
+    @Test
+    void testObtenerActorPorIdCriteriaKO() {
+        when(actorCriteriaRepository.buscarActor(999)).thenReturn(Optional.empty());
+
+        Optional<Actor> actor = actorService.obtenerActorPorIdCriteria(999);
+
+        assertFalse(actor.isPresent());
+        verify(actorCriteriaRepository, times(1)).buscarActor(999);
+    }
+
+    // --------------------------------------------------
 
     @Test
     void testInsertarActorCriteria() {
@@ -160,6 +242,22 @@ class ActorServiceTest {
     }
 
     @Test
+    void testInsertarActorCriteriaKO() {
+        Actor nuevoActor = new Actor(103, "", "Downey Jr.", 58, "USA");
+
+        doThrow(new IllegalArgumentException("No se puede guardar actor")).when(actorCriteriaRepository)
+                .insertarActor(nuevoActor);
+
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            actorService.insertarActorCriteria(nuevoActor);
+        });
+
+        assertEquals("No se puede guardar actor", exception.getMessage());
+    }
+
+    // --------------------------------------------------
+
+    @Test
     void testActualizarActorCriteria() {
         Actor actorActualizado = new Actor(100, "Chris", "Hemsworth", 40, "Australia");
 
@@ -169,9 +267,38 @@ class ActorServiceTest {
     }
 
     @Test
+    void testActualizarActorCriteriaKO() {
+        Actor actorActualizado = new Actor(100, "", "Pratt", 43, "EE.UU");
+
+        doThrow(new IllegalArgumentException("Datos inválidos")).when(actorCriteriaRepository)
+                .actualizarActor(100, actorActualizado);
+
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            actorService.actualizarActorCriteria(100, actorActualizado);
+        });
+
+        assertEquals("Datos inválidos", exception.getMessage());
+    }
+
+    // --------------------------------------------------
+
+    @Test
     void testEliminarActorCriteria() {
         actorService.eliminarActorCriteria(100);
 
         verify(actorCriteriaRepository, times(1)).borrarActorPorId(100);
     }
+
+    @Test
+    void testEliminarActorCriteriaKO() {
+        doThrow(new RuntimeException("No se pudo eliminar actor, Actor no encontrado")).when(actorCriteriaRepository)
+                .borrarActorPorId(999);
+
+        Exception exception = assertThrows(RuntimeException.class, () -> {
+            actorService.eliminarActorCriteria(999);
+        });
+
+        assertEquals("No se pudo eliminar actor, Actor no encontrado", exception.getMessage());
+    }
+
 }

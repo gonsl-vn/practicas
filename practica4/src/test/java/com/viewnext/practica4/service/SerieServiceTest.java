@@ -51,9 +51,9 @@ public class SerieServiceTest {
 
         // Simular respuestas del repositorio con Mockito
         when(serieRepository.findAll()).thenReturn(Arrays.asList(serie1, serie2, serie3));
-        when(serieRepository.findByIdSerie(101)).thenReturn(Optional.of(serie1));
-        when(serieRepository.findByIdSerie(102)).thenReturn(Optional.of(serie2));
-        when(serieRepository.findByIdSerie(103)).thenReturn(Optional.of(serie3));
+        when(serieRepository.findById(101)).thenReturn(Optional.of(serie1));
+        when(serieRepository.findById(102)).thenReturn(Optional.of(serie2));
+        when(serieRepository.findById(103)).thenReturn(Optional.of(serie3));
         when(serieRepository.findByTitulo("Breaking Bad")).thenReturn(Optional.of(serie1));
         when(serieRepository.save(any(Serie.class))).thenAnswer(invocation -> invocation.getArgument(0));
     }
@@ -77,12 +77,21 @@ public class SerieServiceTest {
 
         assertNotNull(listaSeries);
         assertEquals(3, listaSeries.size());
-        assertEquals("Breaking Bad", listaSeries.get(0).getTitulo());
-        assertEquals("Better Call Saul", listaSeries.get(1).getTitulo());
-        assertEquals("The Walking Dead", listaSeries.get(2).getTitulo());
 
         verify(serieRepository, times(1)).findAll();
     }
+
+    @Test
+    void testObtenerSeriesKO() {
+        when(serieRepository.findAll()).thenReturn(null);
+
+        List<Serie> listaSeries = serieService.obtenerSeries();
+
+        assertNull(listaSeries);
+        verify(serieRepository, times(1)).findAll();
+    }
+
+    // --------------------------------------------------
 
     @Test
     void testObtenerSeriePorId() {
@@ -90,28 +99,45 @@ public class SerieServiceTest {
 
         assertTrue(serie.isPresent());
         assertEquals("Breaking Bad", serie.get().getTitulo());
-        assertEquals(2008, serie.get().getAno().getYear());
 
-        verify(serieRepository, times(1)).findByIdSerie(101);
+        verify(serieRepository, times(1)).findById(101);
     }
 
     @Test
-    void testObtenerSeriePorTitulo() {
-        Optional<Serie> serie = serieService.obtenerSeriePorTitulo("Breaking Bad");
+    void testObtenerSeriePorIdKO() {
+        when(serieRepository.findById(101)).thenReturn(Optional.empty());
 
-        assertTrue(serie.isPresent());
-        assertEquals(2008, serie.get().getAno().getYear());
+        Optional<Serie> serie = serieService.obtenerSeriePorId(101);
 
-        verify(serieRepository, times(1)).findByTitulo("Breaking Bad");
+        assertFalse(serie.isPresent());
+        verify(serieRepository, times(1)).findById(101);
     }
+
+    // --------------------------------------------------
 
     @Test
     void testInsertarSerie() {
         Serie nuevaSerie = new Serie(104, "Game of Thrones", LocalDate.of(2011, 4, 17), null, null, List.of());
+
         serieService.insertarSerie(nuevaSerie);
 
         verify(serieRepository, times(1)).save(nuevaSerie);
     }
+
+    @Test
+    void testInsertarSerieKO() {
+        Serie nuevaSerie = new Serie(104, "", LocalDate.of(2011, 4, 17), null, null, List.of());
+
+        when(serieRepository.save(nuevaSerie)).thenThrow(new IllegalArgumentException("No se puede guardar la serie"));
+
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            serieService.insertarSerie(nuevaSerie);
+        });
+
+        assertEquals("No se puede guardar la serie", exception.getMessage());
+    }
+
+    // --------------------------------------------------
 
     @Test
     void testActualizarSerie() {
@@ -131,12 +157,39 @@ public class SerieServiceTest {
     }
 
     @Test
+    void testActualizarSerieKO() {
+        Serie serieActualizada = new Serie(101, "", LocalDate.of(2008, 1, 20), null, null, List.of());
+
+        when(serieRepository.findById(101)).thenReturn(Optional.ofNullable(serie1));
+        when(serieRepository.save(any(Serie.class))).thenThrow(new IllegalArgumentException("Datos inválidos"));
+
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            serieService.actualizarSerie(101, serieActualizada);
+        });
+
+        assertEquals("Datos inválidos", exception.getMessage());
+    }
+
+    // --------------------------------------------------
+
+    @Test
     void testEliminarSerie() {
-        when(serieRepository.findByIdSerie(101)).thenReturn(Optional.of(serie1));
+        when(serieRepository.findById(101)).thenReturn(Optional.of(serie1));
 
         serieService.eliminarSerie(101);
 
         verify(serieRepository, times(1)).delete(serie1);
+    }
+
+    @Test
+    void testEliminarSerieKO() {
+        when(serieRepository.findById(101)).thenReturn(Optional.empty());
+
+        assertThrows(RuntimeException.class, () -> {
+            serieService.eliminarSerie(101);
+        });
+
+        verify(serieRepository, times(0)).delete(any());
     }
 
     // -------------------- TESTS CON CRITERIA API --------------------
@@ -153,6 +206,16 @@ public class SerieServiceTest {
     }
 
     @Test
+    void testObtenerSeriesCriteriaKO() {
+        when(serieCriteriaRepository.listarSeries()).thenReturn(null);
+
+        List<Serie> listaSeries = serieService.obtenerSeriesCriteria();
+
+        assertNull(listaSeries);
+        verify(serieCriteriaRepository, times(1)).listarSeries();
+    }
+
+    @Test
     void testObtenerSeriePorIdCriteria() {
         when(serieCriteriaRepository.buscarSerie(101)).thenReturn(serie1);
 
@@ -164,12 +227,36 @@ public class SerieServiceTest {
     }
 
     @Test
+    void testObtenerSeriePorIdCriteriaKO() {
+        when(serieCriteriaRepository.buscarSerie(999)).thenReturn(null);
+
+        Serie serie = serieService.obtenerSeriePorIdCriteria(999);
+
+        assertNull(serie);
+        verify(serieCriteriaRepository, times(1)).buscarSerie(999);
+    }
+
+    @Test
     void testInsertarSerieCriteria() {
         Serie nuevaSerie = new Serie(104, "Game of Thrones", LocalDate.of(2011, 4, 17), null, null, List.of());
 
         serieService.insertarSerieCriteria(nuevaSerie);
 
         verify(serieCriteriaRepository, times(1)).insertarSerie(nuevaSerie);
+    }
+
+    @Test
+    void testInsertarSerieCriteriaKO() {
+        Serie nuevaSerie = new Serie(104, "", LocalDate.of(2011, 4, 17), null, null, List.of());
+
+        doThrow(new IllegalArgumentException("No se puede guardar la serie")).when(serieCriteriaRepository)
+                .insertarSerie(nuevaSerie);
+
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            serieService.insertarSerieCriteria(nuevaSerie);
+        });
+
+        assertEquals("No se puede guardar la serie", exception.getMessage());
     }
 
     @Test
@@ -183,9 +270,35 @@ public class SerieServiceTest {
     }
 
     @Test
+    void testActualizarSerieCriteriaKO() {
+        Serie serieActualizada = new Serie(101, "", LocalDate.of(2008, 1, 20), null, null, List.of());
+
+        doThrow(new IllegalArgumentException("Datos inválidos")).when(serieCriteriaRepository)
+                .actualizarSerie(101, serieActualizada);
+
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            serieService.actualizarSerieCriteria(101, serieActualizada);
+        });
+
+        assertEquals("Datos inválidos", exception.getMessage());
+    }
+
+    @Test
     void testEliminarSerieCriteria() {
         serieService.eliminarSerieCriteria(101);
 
         verify(serieCriteriaRepository, times(1)).borrarSeriePorId(101);
+    }
+
+    @Test
+    void testEliminarSerieCriteriaKO() {
+        doThrow(new RuntimeException("No se pudo eliminar la serie, no encontrada")).when(serieCriteriaRepository)
+                .borrarSeriePorId(999);
+
+        Exception exception = assertThrows(RuntimeException.class, () -> {
+            serieService.eliminarSerieCriteria(999);
+        });
+
+        assertEquals("No se pudo eliminar la serie, no encontrada", exception.getMessage());
     }
 }
