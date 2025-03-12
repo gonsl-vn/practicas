@@ -36,7 +36,7 @@ public class DirectorCriteriaRepository {
 
         return entityManager.createQuery(query).getResultList();
     }
-
+    
     /**
      * Busca un director por su ID.
      */
