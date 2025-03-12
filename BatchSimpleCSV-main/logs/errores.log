@@ -1,0 +1,675 @@
+2025-03-12T09:46:10.591+01:00  WARN 16228 --- [practica52] [main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-03-12T09:46:12.724+01:00  WARN 16228 --- [practica52] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-03-12T09:50:42.223+01:00  WARN 11488 --- [practica52] [main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-03-12T09:50:44.865+01:00  WARN 11488 --- [practica52] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-03-12T09:50:48.582+01:00  WARN 11488 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 844 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[5428,PL,"ANTONIO ASENSI ""EL CHICUELO"",1,3,""EL PALO ",2,ESTE,,,]
+2025-03-12T09:50:48.583+01:00  WARN 11488 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 845 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[5428,PL,"ANTONIO ASENSI ""EL CHICUELO"",2,2,""EL PALO ",2,ESTE,,,]
+2025-03-12T09:50:53.446+01:00  WARN 11488 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 4366 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[21683,CL,"ENRIQUETA ""LA REPOMPA"",1,95,""EL CUARTON",8,CHURRIANA ,,,]
+2025-03-12T09:50:53.447+01:00  WARN 11488 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 4367 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[21683,CL,"ENRIQUETA ""LA REPOMPA"",2,106,""EL CUARTON",8,CHURRIANA ,,,]
+2025-03-12T09:50:55.447+01:00  WARN 11488 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 6870 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[37774,PL,"JUAN GOMEZ ""JUANITO"",1,9,""EL HIGUERAL ",7,CARRETERA DE CADIZ,,,]
+2025-03-12T09:50:55.447+01:00  WARN 11488 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 6871 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[37774,PL,"JUAN GOMEZ ""JUANITO"",2,10,""EL HIGUERAL ",7,CARRETERA DE CADIZ,,,]
+2025-03-12T09:50:55.491+01:00  WARN 11488 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 6932 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[11985,PQUE,"JUAN ROSA ""EL PULGA"",1,1,""CIUDAD JARD�N ",3,CIUDAD JARDIN ,,,]
+2025-03-12T09:50:55.492+01:00  WARN 11488 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 6933 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[11985,PQUE,"JUAN ROSA ""EL PULGA"",2,2,""CIUDAD JARD�N ",3,CIUDAD JARDIN ,,,]
+2025-03-12T09:50:56.030+01:00  WARN 11488 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 7583 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[39700,CL,"LEOPOLDO ALAS ""CLARIN"",1,9,""JARDIN DE LA ABADIA ",7,CARRETERA DE CADIZ,,,]
+2025-03-12T09:50:56.030+01:00  WARN 11488 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 7584 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[39700,CL,"LEOPOLDO ALAS ""CLARIN"",2,10,""JARDIN DE LA ABADIA ",7,CARRETERA DE CADIZ,,,]
+2025-03-12T09:50:58.340+01:00  WARN 11488 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 10916 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[21699,CL,"RAFAEL ""EL MORENO"",1,107,""EL CUARTON",8,CHURRIANA ,,,]
+2025-03-12T09:50:58.341+01:00  WARN 11488 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 10917 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[21699,CL,"RAFAEL ""EL MORENO"",2,44,""EL CUARTON",8,CHURRIANA ,,,]
+2025-03-12T09:57:20.340+01:00  WARN 7152 --- [practica52] [main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-03-12T09:57:22.326+01:00  WARN 7152 --- [practica52] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-03-12T09:57:25.157+01:00  WARN 7152 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 844 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[5428,PL,"ANTONIO ASENSI ""EL CHICUELO"",1,3,""EL PALO ",2,ESTE,,,]
+2025-03-12T09:57:25.158+01:00  WARN 7152 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 845 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[5428,PL,"ANTONIO ASENSI ""EL CHICUELO"",2,2,""EL PALO ",2,ESTE,,,]
+2025-03-12T09:57:28.022+01:00  WARN 7152 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 4366 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[21683,CL,"ENRIQUETA ""LA REPOMPA"",1,95,""EL CUARTON",8,CHURRIANA ,,,]
+2025-03-12T09:57:28.022+01:00  WARN 7152 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 4367 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[21683,CL,"ENRIQUETA ""LA REPOMPA"",2,106,""EL CUARTON",8,CHURRIANA ,,,]
+2025-03-12T09:57:29.258+01:00  WARN 7152 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 6870 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[37774,PL,"JUAN GOMEZ ""JUANITO"",1,9,""EL HIGUERAL ",7,CARRETERA DE CADIZ,,,]
+2025-03-12T09:57:29.259+01:00  WARN 7152 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 6871 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[37774,PL,"JUAN GOMEZ ""JUANITO"",2,10,""EL HIGUERAL ",7,CARRETERA DE CADIZ,,,]
+2025-03-12T09:57:29.293+01:00  WARN 7152 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 6932 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[11985,PQUE,"JUAN ROSA ""EL PULGA"",1,1,""CIUDAD JARD�N ",3,CIUDAD JARDIN ,,,]
+2025-03-12T09:57:29.293+01:00  WARN 7152 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 6933 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[11985,PQUE,"JUAN ROSA ""EL PULGA"",2,2,""CIUDAD JARD�N ",3,CIUDAD JARDIN ,,,]
+2025-03-12T09:57:29.611+01:00  WARN 7152 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 7583 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[39700,CL,"LEOPOLDO ALAS ""CLARIN"",1,9,""JARDIN DE LA ABADIA ",7,CARRETERA DE CADIZ,,,]
+2025-03-12T09:57:29.612+01:00  WARN 7152 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 7584 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[39700,CL,"LEOPOLDO ALAS ""CLARIN"",2,10,""JARDIN DE LA ABADIA ",7,CARRETERA DE CADIZ,,,]
+2025-03-12T09:57:30.865+01:00  WARN 7152 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 10916 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[21699,CL,"RAFAEL ""EL MORENO"",1,107,""EL CUARTON",8,CHURRIANA ,,,]
+2025-03-12T09:57:30.866+01:00  WARN 7152 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 10917 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[21699,CL,"RAFAEL ""EL MORENO"",2,44,""EL CUARTON",8,CHURRIANA ,,,]
+2025-03-12T09:59:43.532+01:00  WARN 10464 --- [practica52] [main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-03-12T09:59:46.455+01:00  WARN 10464 --- [practica52] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-03-12T09:59:52.096+01:00  WARN 10464 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 844 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[5428,PL,"ANTONIO ASENSI ""EL CHICUELO"",1,3,""EL PALO ",2,ESTE,,,]
+2025-03-12T09:59:52.097+01:00  WARN 10464 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 845 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[5428,PL,"ANTONIO ASENSI ""EL CHICUELO"",2,2,""EL PALO ",2,ESTE,,,]
+2025-03-12T10:00:02.265+01:00  WARN 10464 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 4366 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[21683,CL,"ENRIQUETA ""LA REPOMPA"",1,95,""EL CUARTON",8,CHURRIANA ,,,]
+2025-03-12T10:00:02.267+01:00  WARN 10464 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 4367 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[21683,CL,"ENRIQUETA ""LA REPOMPA"",2,106,""EL CUARTON",8,CHURRIANA ,,,]
+2025-03-12T10:00:05.130+01:00  WARN 25732 --- [practica52] [main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-03-12T10:00:05.679+01:00  WARN 10464 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 6870 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[37774,PL,"JUAN GOMEZ ""JUANITO"",1,9,""EL HIGUERAL ",7,CARRETERA DE CADIZ,,,]
+2025-03-12T10:00:05.680+01:00  WARN 10464 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 6871 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[37774,PL,"JUAN GOMEZ ""JUANITO"",2,10,""EL HIGUERAL ",7,CARRETERA DE CADIZ,,,]
+2025-03-12T10:00:05.712+01:00  WARN 10464 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 6932 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[11985,PQUE,"JUAN ROSA ""EL PULGA"",1,1,""CIUDAD JARD�N ",3,CIUDAD JARDIN ,,,]
+2025-03-12T10:00:05.713+01:00  WARN 10464 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 6933 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[11985,PQUE,"JUAN ROSA ""EL PULGA"",2,2,""CIUDAD JARD�N ",3,CIUDAD JARDIN ,,,]
+2025-03-12T10:00:06.426+01:00  WARN 10464 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 7583 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[39700,CL,"LEOPOLDO ALAS ""CLARIN"",1,9,""JARDIN DE LA ABADIA ",7,CARRETERA DE CADIZ,,,]
+2025-03-12T10:00:06.427+01:00  WARN 10464 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 7584 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[39700,CL,"LEOPOLDO ALAS ""CLARIN"",2,10,""JARDIN DE LA ABADIA ",7,CARRETERA DE CADIZ,,,]
+2025-03-12T10:00:09.243+01:00  WARN 10464 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 10916 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[21699,CL,"RAFAEL ""EL MORENO"",1,107,""EL CUARTON",8,CHURRIANA ,,,]
+2025-03-12T10:00:09.244+01:00  WARN 10464 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 10917 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[21699,CL,"RAFAEL ""EL MORENO"",2,44,""EL CUARTON",8,CHURRIANA ,,,]
+2025-03-12T10:00:11.595+01:00  WARN 25732 --- [practica52] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-03-12T10:00:12.606+01:00  WARN 25732 --- [practica52] [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'
+2025-03-12T10:00:12.709+01:00 ERROR 25732 --- [practica52] [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8080 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8080 or configure this application to listen on another port.
+
+2025-03-12T11:06:30.698+01:00  WARN 23212 --- [practica52] [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.support.BeanDefinitionOverrideException: Invalid bean definition with name 'distritoProcessor' defined in class path resource [com/example/practica52/config/DistritoProcessor.class]: Cannot register bean definition [Root bean: class=null; scope=; abstract=false; lazyInit=null; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; fallback=false; factoryBeanName=distritoProcessor; factoryMethodName=distritoProcessor; initMethodNames=null; destroyMethodNames=[(inferred)]; defined in class path resource [com/example/practica52/config/DistritoProcessor.class]] for bean 'distritoProcessor' since there is already [Generic bean: class=com.example.practica52.config.DistritoProcessor; scope=singleton; abstract=false; lazyInit=null; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; fallback=false; factoryBeanName=null; factoryMethodName=null; initMethodNames=null; destroyMethodNames=null; defined in file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\target\classes\com\example\practica52\config\DistritoProcessor.class]] bound.
+2025-03-12T11:06:30.780+01:00 ERROR 23212 --- [practica52] [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+The bean 'distritoProcessor', defined in class path resource [com/example/practica52/config/DistritoProcessor.class], could not be registered. A bean with that name has already been defined in file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\target\classes\com\example\practica52\config\DistritoProcessor.class] and overriding is disabled.
+
+Action:
+
+Consider renaming one of the beans or enabling overriding by setting spring.main.allow-bean-definition-overriding=true
+
+2025-03-12T11:08:11.322+01:00  WARN 19604 --- [practica52] [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.support.BeanDefinitionOverrideException: Invalid bean definition with name 'distritoStep' defined in class path resource [com/example/practica52/step/DistritoStep.class]: Cannot register bean definition [Root bean: class=null; scope=; abstract=false; lazyInit=null; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; fallback=false; factoryBeanName=distritoStep; factoryMethodName=distritoStep; initMethodNames=null; destroyMethodNames=[(inferred)]; defined in class path resource [com/example/practica52/step/DistritoStep.class]] for bean 'distritoStep' since there is already [Generic bean: class=com.example.practica52.step.DistritoStep; scope=singleton; abstract=false; lazyInit=null; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; fallback=false; factoryBeanName=null; factoryMethodName=null; initMethodNames=null; destroyMethodNames=null; defined in file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\target\classes\com\example\practica52\step\DistritoStep.class]] bound.
+2025-03-12T11:08:11.392+01:00 ERROR 19604 --- [practica52] [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+The bean 'distritoStep', defined in class path resource [com/example/practica52/step/DistritoStep.class], could not be registered. A bean with that name has already been defined in file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\target\classes\com\example\practica52\step\DistritoStep.class] and overriding is disabled.
+
+Action:
+
+Consider renaming one of the beans or enabling overriding by setting spring.main.allow-bean-definition-overriding=true
+
+2025-03-12T11:09:21.241+01:00  WARN 12080 --- [practica52] [main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-03-12T11:09:24.346+01:00  WARN 12080 --- [practica52] [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'numeroCasasPorDistrito' defined in class path resource [com/example/practica52/job/NumCasasPorDistritoJob.class]: Unsatisfied dependency expressed through method 'numeroCasasPorDistrito' parameter 0: No qualifying bean of type 'org.springframework.batch.core.Step' available: expected single matching bean but found 2: step,distritoStep1
+2025-03-12T11:09:24.426+01:00 ERROR 12080 --- [practica52] [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Parameter 0 of method numeroCasasPorDistrito in com.example.practica52.job.NumCasasPorDistritoJob required a single bean, but 2 were found:
+	- step: defined by method 'step' in class path resource [com/example/practica52/step/CalleStep.class]
+	- distritoStep1: defined by method 'distritoStep1' in class path resource [com/example/practica52/step/DistritoStep.class]
+
+This may be due to missing parameter name information
+
+Action:
+
+Consider marking one of the beans as @Primary, updating the consumer to accept multiple beans, or using @Qualifier to identify the bean that should be consumed
+
+Ensure that your compiler is configured to use the '-parameters' flag.
+You may need to update both your build tool settings as well as your IDE.
+(See https://github.com/spring-projects/spring-framework/wiki/Upgrading-to-Spring-Framework-6.x#parameter-name-retention)
+
+
+2025-03-12T11:09:34.809+01:00  WARN 20036 --- [practica52] [main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-03-12T11:09:37.915+01:00  WARN 20036 --- [practica52] [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'numeroCasasPorDistrito' defined in class path resource [com/example/practica52/job/NumCasasPorDistritoJob.class]: Unsatisfied dependency expressed through method 'numeroCasasPorDistrito' parameter 0: No qualifying bean of type 'org.springframework.batch.core.Step' available: expected single matching bean but found 2: step,distritoStep1
+2025-03-12T11:09:38.006+01:00 ERROR 20036 --- [practica52] [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Parameter 0 of method numeroCasasPorDistrito in com.example.practica52.job.NumCasasPorDistritoJob required a single bean, but 2 were found:
+	- step: defined by method 'step' in class path resource [com/example/practica52/step/CalleStep.class]
+	- distritoStep1: defined by method 'distritoStep1' in class path resource [com/example/practica52/step/DistritoStep.class]
+
+This may be due to missing parameter name information
+
+Action:
+
+Consider marking one of the beans as @Primary, updating the consumer to accept multiple beans, or using @Qualifier to identify the bean that should be consumed
+
+Ensure that your compiler is configured to use the '-parameters' flag.
+You may need to update both your build tool settings as well as your IDE.
+(See https://github.com/spring-projects/spring-framework/wiki/Upgrading-to-Spring-Framework-6.x#parameter-name-retention)
+
+
+2025-03-12T11:13:08.421+01:00  WARN 23476 --- [practica52] [main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-03-12T11:13:10.911+01:00  WARN 23476 --- [practica52] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-03-12T11:13:13.852+01:00  WARN 23476 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 844 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[5428,PL,"ANTONIO ASENSI ""EL CHICUELO"",1,3,""EL PALO ",2,ESTE,,,]
+2025-03-12T11:13:13.853+01:00  WARN 23476 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 845 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[5428,PL,"ANTONIO ASENSI ""EL CHICUELO"",2,2,""EL PALO ",2,ESTE,,,]
+2025-03-12T11:13:17.145+01:00  WARN 23476 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 4366 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[21683,CL,"ENRIQUETA ""LA REPOMPA"",1,95,""EL CUARTON",8,CHURRIANA ,,,]
+2025-03-12T11:13:17.145+01:00  WARN 23476 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 4367 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[21683,CL,"ENRIQUETA ""LA REPOMPA"",2,106,""EL CUARTON",8,CHURRIANA ,,,]
+2025-03-12T11:13:19.116+01:00  WARN 23476 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 6870 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[37774,PL,"JUAN GOMEZ ""JUANITO"",1,9,""EL HIGUERAL ",7,CARRETERA DE CADIZ,,,]
+2025-03-12T11:13:19.117+01:00  WARN 23476 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 6871 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[37774,PL,"JUAN GOMEZ ""JUANITO"",2,10,""EL HIGUERAL ",7,CARRETERA DE CADIZ,,,]
+2025-03-12T11:13:19.163+01:00  WARN 23476 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 6932 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[11985,PQUE,"JUAN ROSA ""EL PULGA"",1,1,""CIUDAD JARD�N ",3,CIUDAD JARDIN ,,,]
+2025-03-12T11:13:19.163+01:00  WARN 23476 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 6933 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[11985,PQUE,"JUAN ROSA ""EL PULGA"",2,2,""CIUDAD JARD�N ",3,CIUDAD JARDIN ,,,]
+2025-03-12T11:13:19.855+01:00  WARN 23476 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 7583 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[39700,CL,"LEOPOLDO ALAS ""CLARIN"",1,9,""JARDIN DE LA ABADIA ",7,CARRETERA DE CADIZ,,,]
+2025-03-12T11:13:19.858+01:00  WARN 23476 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 7584 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[39700,CL,"LEOPOLDO ALAS ""CLARIN"",2,10,""JARDIN DE LA ABADIA ",7,CARRETERA DE CADIZ,,,]
+2025-03-12T11:13:21.288+01:00  WARN 23476 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 10916 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[21699,CL,"RAFAEL ""EL MORENO"",1,107,""EL CUARTON",8,CHURRIANA ,,,]
+2025-03-12T11:13:21.289+01:00  WARN 23476 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 10917 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[21699,CL,"RAFAEL ""EL MORENO"",2,44,""EL CUARTON",8,CHURRIANA ,,,]
+2025-03-12T11:14:18.834+01:00  WARN 13292 --- [practica52] [main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-03-12T11:14:21.282+01:00  WARN 13292 --- [practica52] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-03-12T12:59:44.771+01:00  WARN 3192 --- [practica52] [main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-03-12T12:59:47.104+01:00  WARN 3192 --- [practica52] [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'job' defined in class path resource [com/example/practica52/job/CopiarCalleJob.class]: Unsatisfied dependency expressed through method 'job' parameter 0: Error creating bean with name 'step' defined in class path resource [com/example/practica52/step/CalleStep.class]: Unsatisfied dependency expressed through method 'step' parameter 4: No qualifying bean of type 'org.springframework.batch.item.ItemWriter<com.example.practica52.model.Calle>' available: expected single matching bean but found 2: write,writeCalleACsv
+2025-03-12T12:59:47.170+01:00 ERROR 3192 --- [practica52] [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Parameter 4 of method step in com.example.practica52.step.CalleStep required a single bean, but 2 were found:
+	- write: defined by method 'write' in class path resource [com/example/practica52/config/CalleWritter.class]
+	- writeCalleACsv: defined by method 'writeCalleACsv' in class path resource [com/example/practica52/config/writter/CalleACsvWritter.class]
+
+This may be due to missing parameter name information
+
+Action:
+
+Consider marking one of the beans as @Primary, updating the consumer to accept multiple beans, or using @Qualifier to identify the bean that should be consumed
+
+Ensure that your compiler is configured to use the '-parameters' flag.
+You may need to update both your build tool settings as well as your IDE.
+(See https://github.com/spring-projects/spring-framework/wiki/Upgrading-to-Spring-Framework-6.x#parameter-name-retention)
+
+
+2025-03-12T13:12:34.564+01:00  WARN 13184 --- [practica52] [main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-03-12T13:12:36.767+01:00  WARN 13184 --- [practica52] [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'job' defined in class path resource [com/example/practica52/job/CopiarCalleJob.class]: Unsatisfied dependency expressed through method 'job' parameter 0: Error creating bean with name 'step' defined in class path resource [com/example/practica52/step/CalleStep.class]: Unsatisfied dependency expressed through method 'step' parameter 4: No qualifying bean of type 'org.springframework.batch.item.ItemWriter<com.example.practica52.model.Calle>' available: expected single matching bean but found 2: calleCsvwriter,writeCalleACsv
+2025-03-12T13:12:36.840+01:00 ERROR 13184 --- [practica52] [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Parameter 4 of method step in com.example.practica52.step.CalleStep required a single bean, but 2 were found:
+	- calleCsvwriter: defined by method 'calleCsvwriter' in class path resource [com/example/practica52/config/CalleWritter.class]
+	- writeCalleACsv: defined by method 'writeCalleACsv' in class path resource [com/example/practica52/config/writter/CalleACsvWritter.class]
+
+This may be due to missing parameter name information
+
+Action:
+
+Consider marking one of the beans as @Primary, updating the consumer to accept multiple beans, or using @Qualifier to identify the bean that should be consumed
+
+Ensure that your compiler is configured to use the '-parameters' flag.
+You may need to update both your build tool settings as well as your IDE.
+(See https://github.com/spring-projects/spring-framework/wiki/Upgrading-to-Spring-Framework-6.x#parameter-name-retention)
+
+
+2025-03-12T13:14:33.808+01:00  WARN 23988 --- [practica52] [main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-03-12T13:14:36.345+01:00  WARN 23988 --- [practica52] [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'job' defined in class path resource [com/example/practica52/job/CopiarCalleJob.class]: Unsatisfied dependency expressed through method 'job' parameter 0: Error creating bean with name 'step' defined in class path resource [com/example/practica52/step/CalleStep.class]: Unsatisfied dependency expressed through method 'step' parameter 4: No qualifying bean of type 'org.springframework.batch.item.ItemWriter<com.example.practica52.model.Calle>' available: expected single matching bean but found 2: calleCsvwriter,writeCalleACsv
+2025-03-12T13:14:36.422+01:00 ERROR 23988 --- [practica52] [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Parameter 4 of method step in com.example.practica52.step.CalleStep required a single bean, but 2 were found:
+	- calleCsvwriter: defined by method 'calleCsvwriter' in class path resource [com/example/practica52/config/CalleWritter.class]
+	- writeCalleACsv: defined by method 'writeCalleACsv' in class path resource [com/example/practica52/config/writter/CalleACsvWritter.class]
+
+This may be due to missing parameter name information
+
+Action:
+
+Consider marking one of the beans as @Primary, updating the consumer to accept multiple beans, or using @Qualifier to identify the bean that should be consumed
+
+Ensure that your compiler is configured to use the '-parameters' flag.
+You may need to update both your build tool settings as well as your IDE.
+(See https://github.com/spring-projects/spring-framework/wiki/Upgrading-to-Spring-Framework-6.x#parameter-name-retention)
+
+
+2025-03-12T13:19:11.530+01:00  WARN 11260 --- [practica52] [main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-03-12T13:19:13.738+01:00  WARN 11260 --- [practica52] [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'job' defined in class path resource [com/example/practica52/job/CopiarCalleJob.class]: Unsatisfied dependency expressed through method 'job' parameter 0: Error creating bean with name 'step' defined in class path resource [com/example/practica52/step/CalleStep.class]: Unsatisfied dependency expressed through method 'step' parameter 4: No qualifying bean of type 'org.springframework.batch.item.ItemWriter<com.example.practica52.model.Calle>' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Qualifier("calleCsvWriter")}
+2025-03-12T13:19:13.821+01:00 ERROR 11260 --- [practica52] [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Parameter 4 of method step in com.example.practica52.step.CalleStep required a bean of type 'org.springframework.batch.item.ItemWriter' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'org.springframework.batch.item.ItemWriter' in your configuration.
+
+2025-03-12T13:21:02.724+01:00  WARN 19800 --- [practica52] [main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-03-12T13:21:05.767+01:00  WARN 19800 --- [practica52] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-03-12T13:21:08.610+01:00  WARN 19800 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 844 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[5428,PL,"ANTONIO ASENSI ""EL CHICUELO"",1,3,""EL PALO ",2,ESTE,,,]
+2025-03-12T13:21:08.611+01:00  WARN 19800 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 845 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[5428,PL,"ANTONIO ASENSI ""EL CHICUELO"",2,2,""EL PALO ",2,ESTE,,,]
+2025-03-12T13:21:11.459+01:00  WARN 19800 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 4366 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[21683,CL,"ENRIQUETA ""LA REPOMPA"",1,95,""EL CUARTON",8,CHURRIANA ,,,]
+2025-03-12T13:21:11.460+01:00  WARN 19800 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 4367 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[21683,CL,"ENRIQUETA ""LA REPOMPA"",2,106,""EL CUARTON",8,CHURRIANA ,,,]
+2025-03-12T13:21:12.757+01:00  WARN 19800 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 6870 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[37774,PL,"JUAN GOMEZ ""JUANITO"",1,9,""EL HIGUERAL ",7,CARRETERA DE CADIZ,,,]
+2025-03-12T13:21:12.758+01:00  WARN 19800 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 6871 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[37774,PL,"JUAN GOMEZ ""JUANITO"",2,10,""EL HIGUERAL ",7,CARRETERA DE CADIZ,,,]
+2025-03-12T13:21:12.791+01:00  WARN 19800 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 6932 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[11985,PQUE,"JUAN ROSA ""EL PULGA"",1,1,""CIUDAD JARD�N ",3,CIUDAD JARDIN ,,,]
+2025-03-12T13:21:12.791+01:00  WARN 19800 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 6933 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[11985,PQUE,"JUAN ROSA ""EL PULGA"",2,2,""CIUDAD JARD�N ",3,CIUDAD JARDIN ,,,]
+2025-03-12T13:21:13.295+01:00  WARN 19800 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 7583 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[39700,CL,"LEOPOLDO ALAS ""CLARIN"",1,9,""JARDIN DE LA ABADIA ",7,CARRETERA DE CADIZ,,,]
+2025-03-12T13:21:13.295+01:00  WARN 19800 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 7584 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[39700,CL,"LEOPOLDO ALAS ""CLARIN"",2,10,""JARDIN DE LA ABADIA ",7,CARRETERA DE CADIZ,,,]
+2025-03-12T13:21:14.560+01:00  WARN 19800 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 10916 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[21699,CL,"RAFAEL ""EL MORENO"",1,107,""EL CUARTON",8,CHURRIANA ,,,]
+2025-03-12T13:21:14.560+01:00  WARN 19800 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 10917 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[21699,CL,"RAFAEL ""EL MORENO"",2,44,""EL CUARTON",8,CHURRIANA ,,,]
+2025-03-12T13:21:32.347+01:00 ERROR 19800 --- [practica52] [main] o.s.batch.core.step.AbstractStep         : Encountered an error executing step exportaTodoACsvStep in job exportarTodoACsvJob
+
+org.springframework.retry.ExhaustedRetryException: Retry exhausted after last attempt in recovery path, but exception is not skippable.
+	at org.springframework.batch.core.step.item.FaultTolerantChunkProcessor.lambda$write$4(FaultTolerantChunkProcessor.java:401) ~[spring-batch-core-5.2.1.jar:5.2.1]
+	at org.springframework.retry.support.RetryTemplate.handleRetryExhausted(RetryTemplate.java:573) ~[spring-retry-2.0.11.jar:na]
+	at org.springframework.retry.support.RetryTemplate.doExecute(RetryTemplate.java:418) ~[spring-retry-2.0.11.jar:na]
+	at org.springframework.retry.support.RetryTemplate.execute(RetryTemplate.java:276) ~[spring-retry-2.0.11.jar:na]
+	at org.springframework.batch.core.step.item.BatchRetryTemplate.execute(BatchRetryTemplate.java:216) ~[spring-batch-core-5.2.1.jar:5.2.1]
+	at org.springframework.batch.core.step.item.FaultTolerantChunkProcessor.write(FaultTolerantChunkProcessor.java:414) ~[spring-batch-core-5.2.1.jar:5.2.1]
+	at org.springframework.batch.core.step.item.SimpleChunkProcessor.process(SimpleChunkProcessor.java:227) ~[spring-batch-core-5.2.1.jar:5.2.1]
+	at org.springframework.batch.core.step.item.ChunkOrientedTasklet.execute(ChunkOrientedTasklet.java:75) ~[spring-batch-core-5.2.1.jar:5.2.1]
+	at org.springframework.batch.core.step.tasklet.TaskletStep$ChunkTransactionCallback.doInTransaction(TaskletStep.java:383) ~[spring-batch-core-5.2.1.jar:5.2.1]
+	at org.springframework.batch.core.step.tasklet.TaskletStep$ChunkTransactionCallback.doInTransaction(TaskletStep.java:307) ~[spring-batch-core-5.2.1.jar:5.2.1]
+	at org.springframework.transaction.support.TransactionTemplate.execute(TransactionTemplate.java:140) ~[spring-tx-6.2.3.jar:6.2.3]
+	at org.springframework.batch.core.step.tasklet.TaskletStep$2.doInChunkContext(TaskletStep.java:250) ~[spring-batch-core-5.2.1.jar:5.2.1]
+	at org.springframework.batch.core.scope.context.StepContextRepeatCallback.doInIteration(StepContextRepeatCallback.java:82) ~[spring-batch-core-5.2.1.jar:5.2.1]
+	at org.springframework.batch.repeat.support.RepeatTemplate.getNextResult(RepeatTemplate.java:369) ~[spring-batch-infrastructure-5.2.1.jar:5.2.1]
+	at org.springframework.batch.repeat.support.RepeatTemplate.executeInternal(RepeatTemplate.java:206) ~[spring-batch-infrastructure-5.2.1.jar:5.2.1]
+	at org.springframework.batch.repeat.support.RepeatTemplate.iterate(RepeatTemplate.java:140) ~[spring-batch-infrastructure-5.2.1.jar:5.2.1]
+	at org.springframework.batch.core.step.tasklet.TaskletStep.doExecute(TaskletStep.java:235) ~[spring-batch-core-5.2.1.jar:5.2.1]
+	at org.springframework.batch.core.step.AbstractStep.execute(AbstractStep.java:230) ~[spring-batch-core-5.2.1.jar:5.2.1]
+	at org.springframework.batch.core.job.SimpleStepHandler.handleStep(SimpleStepHandler.java:153) ~[spring-batch-core-5.2.1.jar:5.2.1]
+	at org.springframework.batch.core.job.AbstractJob.handleStep(AbstractJob.java:408) ~[spring-batch-core-5.2.1.jar:5.2.1]
+	at org.springframework.batch.core.job.SimpleJob.doExecute(SimpleJob.java:127) ~[spring-batch-core-5.2.1.jar:5.2.1]
+	at org.springframework.batch.core.job.AbstractJob.execute(AbstractJob.java:307) ~[spring-batch-core-5.2.1.jar:5.2.1]
+	at org.springframework.batch.core.launch.support.TaskExecutorJobLauncher$1.run(TaskExecutorJobLauncher.java:155) ~[spring-batch-core-5.2.1.jar:5.2.1]
+	at org.springframework.core.task.SyncTaskExecutor.execute(SyncTaskExecutor.java:50) ~[spring-core-6.2.3.jar:6.2.3]
+	at org.springframework.batch.core.launch.support.TaskExecutorJobLauncher.run(TaskExecutorJobLauncher.java:146) ~[spring-batch-core-5.2.1.jar:5.2.1]
+	at org.springframework.boot.autoconfigure.batch.JobLauncherApplicationRunner.execute(JobLauncherApplicationRunner.java:210) ~[spring-boot-autoconfigure-3.4.3.jar:3.4.3]
+	at org.springframework.boot.autoconfigure.batch.JobLauncherApplicationRunner.executeLocalJobs(JobLauncherApplicationRunner.java:194) ~[spring-boot-autoconfigure-3.4.3.jar:3.4.3]
+	at org.springframework.boot.autoconfigure.batch.JobLauncherApplicationRunner.launchJobFromProperties(JobLauncherApplicationRunner.java:174) ~[spring-boot-autoconfigure-3.4.3.jar:3.4.3]
+	at org.springframework.boot.autoconfigure.batch.JobLauncherApplicationRunner.run(JobLauncherApplicationRunner.java:169) ~[spring-boot-autoconfigure-3.4.3.jar:3.4.3]
+	at org.springframework.boot.autoconfigure.batch.JobLauncherApplicationRunner.run(JobLauncherApplicationRunner.java:164) ~[spring-boot-autoconfigure-3.4.3.jar:3.4.3]
+	at org.springframework.boot.SpringApplication.lambda$callRunner$4(SpringApplication.java:784) ~[spring-boot-3.4.3.jar:3.4.3]
+	at org.springframework.util.function.ThrowingConsumer$1.acceptWithException(ThrowingConsumer.java:82) ~[spring-core-6.2.3.jar:6.2.3]
+	at org.springframework.util.function.ThrowingConsumer.accept(ThrowingConsumer.java:60) ~[spring-core-6.2.3.jar:6.2.3]
+	at org.springframework.util.function.ThrowingConsumer$1.accept(ThrowingConsumer.java:86) ~[spring-core-6.2.3.jar:6.2.3]
+	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:796) ~[spring-boot-3.4.3.jar:3.4.3]
+	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:784) ~[spring-boot-3.4.3.jar:3.4.3]
+	at org.springframework.boot.SpringApplication.lambda$callRunners$3(SpringApplication.java:772) ~[spring-boot-3.4.3.jar:3.4.3]
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184) ~[na:na]
+	at java.base/java.util.stream.SortedOps$SizedRefSortingSink.end(SortedOps.java:357) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:571) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:560) ~[na:na]
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151) ~[na:na]
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:265) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:636) ~[na:na]
+	at org.springframework.boot.SpringApplication.callRunners(SpringApplication.java:772) ~[spring-boot-3.4.3.jar:3.4.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:325) ~[spring-boot-3.4.3.jar:3.4.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361) ~[spring-boot-3.4.3.jar:3.4.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350) ~[spring-boot-3.4.3.jar:3.4.3]
+	at com.example.practica52.Practica52Application.main(Practica52Application.java:10) ~[classes/:na]
+Caused by: org.springframework.beans.NotReadablePropertyException: Invalid property 'CODIGO_CALLE' of bean class [com.example.practica52.model.Calle]: Bean property 'CODIGO_CALLE' is not readable or has an invalid getter method: Does the return type of the getter match the parameter type of the setter?
+	at org.springframework.beans.AbstractNestablePropertyAccessor.getPropertyValue(AbstractNestablePropertyAccessor.java:627) ~[spring-beans-6.2.3.jar:6.2.3]
+	at org.springframework.beans.AbstractNestablePropertyAccessor.getPropertyValue(AbstractNestablePropertyAccessor.java:617) ~[spring-beans-6.2.3.jar:6.2.3]
+	at org.springframework.batch.item.file.transform.BeanWrapperFieldExtractor.extract(BeanWrapperFieldExtractor.java:56) ~[spring-batch-infrastructure-5.2.1.jar:5.2.1]
+	at org.springframework.batch.item.file.transform.ExtractorLineAggregator.aggregate(ExtractorLineAggregator.java:51) ~[spring-batch-infrastructure-5.2.1.jar:5.2.1]
+	at org.springframework.batch.item.file.FlatFileItemWriter.doWrite(FlatFileItemWriter.java:76) ~[spring-batch-infrastructure-5.2.1.jar:5.2.1]
+	at org.springframework.batch.item.support.AbstractFileItemWriter.write(AbstractFileItemWriter.java:233) ~[spring-batch-infrastructure-5.2.1.jar:5.2.1]
+	at org.springframework.batch.core.step.item.SimpleChunkProcessor.writeItems(SimpleChunkProcessor.java:203) ~[spring-batch-core-5.2.1.jar:5.2.1]
+	at org.springframework.batch.core.step.item.SimpleChunkProcessor.doWrite(SimpleChunkProcessor.java:170) ~[spring-batch-core-5.2.1.jar:5.2.1]
+	at org.springframework.batch.core.step.item.FaultTolerantChunkProcessor.lambda$write$2(FaultTolerantChunkProcessor.java:331) ~[spring-batch-core-5.2.1.jar:5.2.1]
+	at org.springframework.retry.support.RetryTemplate.doExecute(RetryTemplate.java:357) ~[spring-retry-2.0.11.jar:na]
+	... 47 common frames omitted
+
+2025-03-12T13:25:21.917+01:00  WARN 10104 --- [practica52] [main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-03-12T13:25:24.167+01:00  WARN 10104 --- [practica52] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-03-12T13:25:26.991+01:00  WARN 10104 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 844 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[5428,PL,"ANTONIO ASENSI ""EL CHICUELO"",1,3,""EL PALO ",2,ESTE,,,]
+2025-03-12T13:25:26.992+01:00  WARN 10104 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 845 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[5428,PL,"ANTONIO ASENSI ""EL CHICUELO"",2,2,""EL PALO ",2,ESTE,,,]
+2025-03-12T13:25:30.720+01:00  WARN 10104 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 4366 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[21683,CL,"ENRIQUETA ""LA REPOMPA"",1,95,""EL CUARTON",8,CHURRIANA ,,,]
+2025-03-12T13:25:30.721+01:00  WARN 10104 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 4367 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[21683,CL,"ENRIQUETA ""LA REPOMPA"",2,106,""EL CUARTON",8,CHURRIANA ,,,]
+2025-03-12T13:25:32.432+01:00  WARN 10104 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 6870 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[37774,PL,"JUAN GOMEZ ""JUANITO"",1,9,""EL HIGUERAL ",7,CARRETERA DE CADIZ,,,]
+2025-03-12T13:25:32.433+01:00  WARN 10104 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 6871 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[37774,PL,"JUAN GOMEZ ""JUANITO"",2,10,""EL HIGUERAL ",7,CARRETERA DE CADIZ,,,]
+2025-03-12T13:25:32.468+01:00  WARN 10104 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 6932 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[11985,PQUE,"JUAN ROSA ""EL PULGA"",1,1,""CIUDAD JARD�N ",3,CIUDAD JARDIN ,,,]
+2025-03-12T13:25:32.468+01:00  WARN 10104 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 6933 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[11985,PQUE,"JUAN ROSA ""EL PULGA"",2,2,""CIUDAD JARD�N ",3,CIUDAD JARDIN ,,,]
+2025-03-12T13:25:33.058+01:00  WARN 10104 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 7583 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[39700,CL,"LEOPOLDO ALAS ""CLARIN"",1,9,""JARDIN DE LA ABADIA ",7,CARRETERA DE CADIZ,,,]
+2025-03-12T13:25:33.058+01:00  WARN 10104 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 7584 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[39700,CL,"LEOPOLDO ALAS ""CLARIN"",2,10,""JARDIN DE LA ABADIA ",7,CARRETERA DE CADIZ,,,]
+2025-03-12T13:25:34.548+01:00  WARN 10104 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 10916 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[21699,CL,"RAFAEL ""EL MORENO"",1,107,""EL CUARTON",8,CHURRIANA ,,,]
+2025-03-12T13:25:34.548+01:00  WARN 10104 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 10917 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[21699,CL,"RAFAEL ""EL MORENO"",2,44,""EL CUARTON",8,CHURRIANA ,,,]
+2025-03-12T13:25:52.053+01:00 ERROR 10104 --- [practica52] [main] o.s.batch.core.step.AbstractStep         : Encountered an error executing step exportaTodoACsvStep in job exportarTodoACsvJob
+
+org.springframework.retry.ExhaustedRetryException: Retry exhausted after last attempt in recovery path, but exception is not skippable.
+	at org.springframework.batch.core.step.item.FaultTolerantChunkProcessor.lambda$write$4(FaultTolerantChunkProcessor.java:401) ~[spring-batch-core-5.2.1.jar:5.2.1]
+	at org.springframework.retry.support.RetryTemplate.handleRetryExhausted(RetryTemplate.java:573) ~[spring-retry-2.0.11.jar:na]
+	at org.springframework.retry.support.RetryTemplate.doExecute(RetryTemplate.java:418) ~[spring-retry-2.0.11.jar:na]
+	at org.springframework.retry.support.RetryTemplate.execute(RetryTemplate.java:276) ~[spring-retry-2.0.11.jar:na]
+	at org.springframework.batch.core.step.item.BatchRetryTemplate.execute(BatchRetryTemplate.java:216) ~[spring-batch-core-5.2.1.jar:5.2.1]
+	at org.springframework.batch.core.step.item.FaultTolerantChunkProcessor.write(FaultTolerantChunkProcessor.java:414) ~[spring-batch-core-5.2.1.jar:5.2.1]
+	at org.springframework.batch.core.step.item.SimpleChunkProcessor.process(SimpleChunkProcessor.java:227) ~[spring-batch-core-5.2.1.jar:5.2.1]
+	at org.springframework.batch.core.step.item.ChunkOrientedTasklet.execute(ChunkOrientedTasklet.java:75) ~[spring-batch-core-5.2.1.jar:5.2.1]
+	at org.springframework.batch.core.step.tasklet.TaskletStep$ChunkTransactionCallback.doInTransaction(TaskletStep.java:383) ~[spring-batch-core-5.2.1.jar:5.2.1]
+	at org.springframework.batch.core.step.tasklet.TaskletStep$ChunkTransactionCallback.doInTransaction(TaskletStep.java:307) ~[spring-batch-core-5.2.1.jar:5.2.1]
+	at org.springframework.transaction.support.TransactionTemplate.execute(TransactionTemplate.java:140) ~[spring-tx-6.2.3.jar:6.2.3]
+	at org.springframework.batch.core.step.tasklet.TaskletStep$2.doInChunkContext(TaskletStep.java:250) ~[spring-batch-core-5.2.1.jar:5.2.1]
+	at org.springframework.batch.core.scope.context.StepContextRepeatCallback.doInIteration(StepContextRepeatCallback.java:82) ~[spring-batch-core-5.2.1.jar:5.2.1]
+	at org.springframework.batch.repeat.support.RepeatTemplate.getNextResult(RepeatTemplate.java:369) ~[spring-batch-infrastructure-5.2.1.jar:5.2.1]
+	at org.springframework.batch.repeat.support.RepeatTemplate.executeInternal(RepeatTemplate.java:206) ~[spring-batch-infrastructure-5.2.1.jar:5.2.1]
+	at org.springframework.batch.repeat.support.RepeatTemplate.iterate(RepeatTemplate.java:140) ~[spring-batch-infrastructure-5.2.1.jar:5.2.1]
+	at org.springframework.batch.core.step.tasklet.TaskletStep.doExecute(TaskletStep.java:235) ~[spring-batch-core-5.2.1.jar:5.2.1]
+	at org.springframework.batch.core.step.AbstractStep.execute(AbstractStep.java:230) ~[spring-batch-core-5.2.1.jar:5.2.1]
+	at org.springframework.batch.core.job.SimpleStepHandler.handleStep(SimpleStepHandler.java:153) ~[spring-batch-core-5.2.1.jar:5.2.1]
+	at org.springframework.batch.core.job.AbstractJob.handleStep(AbstractJob.java:408) ~[spring-batch-core-5.2.1.jar:5.2.1]
+	at org.springframework.batch.core.job.SimpleJob.doExecute(SimpleJob.java:127) ~[spring-batch-core-5.2.1.jar:5.2.1]
+	at org.springframework.batch.core.job.AbstractJob.execute(AbstractJob.java:307) ~[spring-batch-core-5.2.1.jar:5.2.1]
+	at org.springframework.batch.core.launch.support.TaskExecutorJobLauncher$1.run(TaskExecutorJobLauncher.java:155) ~[spring-batch-core-5.2.1.jar:5.2.1]
+	at org.springframework.core.task.SyncTaskExecutor.execute(SyncTaskExecutor.java:50) ~[spring-core-6.2.3.jar:6.2.3]
+	at org.springframework.batch.core.launch.support.TaskExecutorJobLauncher.run(TaskExecutorJobLauncher.java:146) ~[spring-batch-core-5.2.1.jar:5.2.1]
+	at org.springframework.boot.autoconfigure.batch.JobLauncherApplicationRunner.execute(JobLauncherApplicationRunner.java:210) ~[spring-boot-autoconfigure-3.4.3.jar:3.4.3]
+	at org.springframework.boot.autoconfigure.batch.JobLauncherApplicationRunner.executeLocalJobs(JobLauncherApplicationRunner.java:194) ~[spring-boot-autoconfigure-3.4.3.jar:3.4.3]
+	at org.springframework.boot.autoconfigure.batch.JobLauncherApplicationRunner.launchJobFromProperties(JobLauncherApplicationRunner.java:174) ~[spring-boot-autoconfigure-3.4.3.jar:3.4.3]
+	at org.springframework.boot.autoconfigure.batch.JobLauncherApplicationRunner.run(JobLauncherApplicationRunner.java:169) ~[spring-boot-autoconfigure-3.4.3.jar:3.4.3]
+	at org.springframework.boot.autoconfigure.batch.JobLauncherApplicationRunner.run(JobLauncherApplicationRunner.java:164) ~[spring-boot-autoconfigure-3.4.3.jar:3.4.3]
+	at org.springframework.boot.SpringApplication.lambda$callRunner$4(SpringApplication.java:784) ~[spring-boot-3.4.3.jar:3.4.3]
+	at org.springframework.util.function.ThrowingConsumer$1.acceptWithException(ThrowingConsumer.java:82) ~[spring-core-6.2.3.jar:6.2.3]
+	at org.springframework.util.function.ThrowingConsumer.accept(ThrowingConsumer.java:60) ~[spring-core-6.2.3.jar:6.2.3]
+	at org.springframework.util.function.ThrowingConsumer$1.accept(ThrowingConsumer.java:86) ~[spring-core-6.2.3.jar:6.2.3]
+	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:796) ~[spring-boot-3.4.3.jar:3.4.3]
+	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:784) ~[spring-boot-3.4.3.jar:3.4.3]
+	at org.springframework.boot.SpringApplication.lambda$callRunners$3(SpringApplication.java:772) ~[spring-boot-3.4.3.jar:3.4.3]
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184) ~[na:na]
+	at java.base/java.util.stream.SortedOps$SizedRefSortingSink.end(SortedOps.java:357) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:571) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:560) ~[na:na]
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151) ~[na:na]
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:265) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:636) ~[na:na]
+	at org.springframework.boot.SpringApplication.callRunners(SpringApplication.java:772) ~[spring-boot-3.4.3.jar:3.4.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:325) ~[spring-boot-3.4.3.jar:3.4.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361) ~[spring-boot-3.4.3.jar:3.4.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350) ~[spring-boot-3.4.3.jar:3.4.3]
+	at com.example.practica52.Practica52Application.main(Practica52Application.java:10) ~[classes/:na]
+Caused by: org.springframework.beans.NotReadablePropertyException: Invalid property 'CODIGO_CALLE' of bean class [com.example.practica52.model.Calle]: Bean property 'CODIGO_CALLE' is not readable or has an invalid getter method: Does the return type of the getter match the parameter type of the setter?
+	at org.springframework.beans.AbstractNestablePropertyAccessor.getPropertyValue(AbstractNestablePropertyAccessor.java:627) ~[spring-beans-6.2.3.jar:6.2.3]
+	at org.springframework.beans.AbstractNestablePropertyAccessor.getPropertyValue(AbstractNestablePropertyAccessor.java:617) ~[spring-beans-6.2.3.jar:6.2.3]
+	at org.springframework.batch.item.file.transform.BeanWrapperFieldExtractor.extract(BeanWrapperFieldExtractor.java:56) ~[spring-batch-infrastructure-5.2.1.jar:5.2.1]
+	at org.springframework.batch.item.file.transform.ExtractorLineAggregator.aggregate(ExtractorLineAggregator.java:51) ~[spring-batch-infrastructure-5.2.1.jar:5.2.1]
+	at org.springframework.batch.item.file.FlatFileItemWriter.doWrite(FlatFileItemWriter.java:76) ~[spring-batch-infrastructure-5.2.1.jar:5.2.1]
+	at org.springframework.batch.item.support.AbstractFileItemWriter.write(AbstractFileItemWriter.java:233) ~[spring-batch-infrastructure-5.2.1.jar:5.2.1]
+	at org.springframework.batch.core.step.item.SimpleChunkProcessor.writeItems(SimpleChunkProcessor.java:203) ~[spring-batch-core-5.2.1.jar:5.2.1]
+	at org.springframework.batch.core.step.item.SimpleChunkProcessor.doWrite(SimpleChunkProcessor.java:170) ~[spring-batch-core-5.2.1.jar:5.2.1]
+	at org.springframework.batch.core.step.item.FaultTolerantChunkProcessor.lambda$write$2(FaultTolerantChunkProcessor.java:331) ~[spring-batch-core-5.2.1.jar:5.2.1]
+	at org.springframework.retry.support.RetryTemplate.doExecute(RetryTemplate.java:357) ~[spring-retry-2.0.11.jar:na]
+	... 47 common frames omitted
+
+2025-03-12T13:29:40.809+01:00  WARN 13356 --- [practica52] [main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-03-12T13:29:43.032+01:00  WARN 13356 --- [practica52] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-03-12T13:29:46.207+01:00  WARN 13356 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 844 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[5428,PL,"ANTONIO ASENSI ""EL CHICUELO"",1,3,""EL PALO ",2,ESTE,,,]
+2025-03-12T13:29:46.208+01:00  WARN 13356 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 845 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[5428,PL,"ANTONIO ASENSI ""EL CHICUELO"",2,2,""EL PALO ",2,ESTE,,,]
+2025-03-12T13:29:49.395+01:00  WARN 13356 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 4366 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[21683,CL,"ENRIQUETA ""LA REPOMPA"",1,95,""EL CUARTON",8,CHURRIANA ,,,]
+2025-03-12T13:29:49.396+01:00  WARN 13356 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 4367 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[21683,CL,"ENRIQUETA ""LA REPOMPA"",2,106,""EL CUARTON",8,CHURRIANA ,,,]
+2025-03-12T13:29:50.854+01:00  WARN 13356 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 6870 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[37774,PL,"JUAN GOMEZ ""JUANITO"",1,9,""EL HIGUERAL ",7,CARRETERA DE CADIZ,,,]
+2025-03-12T13:29:50.855+01:00  WARN 13356 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 6871 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[37774,PL,"JUAN GOMEZ ""JUANITO"",2,10,""EL HIGUERAL ",7,CARRETERA DE CADIZ,,,]
+2025-03-12T13:29:50.890+01:00  WARN 13356 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 6932 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[11985,PQUE,"JUAN ROSA ""EL PULGA"",1,1,""CIUDAD JARD�N ",3,CIUDAD JARDIN ,,,]
+2025-03-12T13:29:50.891+01:00  WARN 13356 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 6933 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[11985,PQUE,"JUAN ROSA ""EL PULGA"",2,2,""CIUDAD JARD�N ",3,CIUDAD JARDIN ,,,]
+2025-03-12T13:29:51.447+01:00  WARN 13356 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 7583 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[39700,CL,"LEOPOLDO ALAS ""CLARIN"",1,9,""JARDIN DE LA ABADIA ",7,CARRETERA DE CADIZ,,,]
+2025-03-12T13:29:51.448+01:00  WARN 13356 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 7584 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[39700,CL,"LEOPOLDO ALAS ""CLARIN"",2,10,""JARDIN DE LA ABADIA ",7,CARRETERA DE CADIZ,,,]
+2025-03-12T13:29:52.919+01:00  WARN 13356 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 10916 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[21699,CL,"RAFAEL ""EL MORENO"",1,107,""EL CUARTON",8,CHURRIANA ,,,]
+2025-03-12T13:29:52.920+01:00  WARN 13356 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 10917 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[21699,CL,"RAFAEL ""EL MORENO"",2,44,""EL CUARTON",8,CHURRIANA ,,,]
+2025-03-12T13:30:11.516+01:00 ERROR 13356 --- [practica52] [main] o.s.batch.core.step.AbstractStep         : Encountered an error executing step exportaTodoACsvStep in job exportarTodoACsvJob
+
+org.springframework.retry.ExhaustedRetryException: Retry exhausted after last attempt in recovery path, but exception is not skippable.
+	at org.springframework.batch.core.step.item.FaultTolerantChunkProcessor.lambda$write$4(FaultTolerantChunkProcessor.java:401) ~[spring-batch-core-5.2.1.jar:5.2.1]
+	at org.springframework.retry.support.RetryTemplate.handleRetryExhausted(RetryTemplate.java:573) ~[spring-retry-2.0.11.jar:na]
+	at org.springframework.retry.support.RetryTemplate.doExecute(RetryTemplate.java:418) ~[spring-retry-2.0.11.jar:na]
+	at org.springframework.retry.support.RetryTemplate.execute(RetryTemplate.java:276) ~[spring-retry-2.0.11.jar:na]
+	at org.springframework.batch.core.step.item.BatchRetryTemplate.execute(BatchRetryTemplate.java:216) ~[spring-batch-core-5.2.1.jar:5.2.1]
+	at org.springframework.batch.core.step.item.FaultTolerantChunkProcessor.write(FaultTolerantChunkProcessor.java:414) ~[spring-batch-core-5.2.1.jar:5.2.1]
+	at org.springframework.batch.core.step.item.SimpleChunkProcessor.process(SimpleChunkProcessor.java:227) ~[spring-batch-core-5.2.1.jar:5.2.1]
+	at org.springframework.batch.core.step.item.ChunkOrientedTasklet.execute(ChunkOrientedTasklet.java:75) ~[spring-batch-core-5.2.1.jar:5.2.1]
+	at org.springframework.batch.core.step.tasklet.TaskletStep$ChunkTransactionCallback.doInTransaction(TaskletStep.java:383) ~[spring-batch-core-5.2.1.jar:5.2.1]
+	at org.springframework.batch.core.step.tasklet.TaskletStep$ChunkTransactionCallback.doInTransaction(TaskletStep.java:307) ~[spring-batch-core-5.2.1.jar:5.2.1]
+	at org.springframework.transaction.support.TransactionTemplate.execute(TransactionTemplate.java:140) ~[spring-tx-6.2.3.jar:6.2.3]
+	at org.springframework.batch.core.step.tasklet.TaskletStep$2.doInChunkContext(TaskletStep.java:250) ~[spring-batch-core-5.2.1.jar:5.2.1]
+	at org.springframework.batch.core.scope.context.StepContextRepeatCallback.doInIteration(StepContextRepeatCallback.java:82) ~[spring-batch-core-5.2.1.jar:5.2.1]
+	at org.springframework.batch.repeat.support.RepeatTemplate.getNextResult(RepeatTemplate.java:369) ~[spring-batch-infrastructure-5.2.1.jar:5.2.1]
+	at org.springframework.batch.repeat.support.RepeatTemplate.executeInternal(RepeatTemplate.java:206) ~[spring-batch-infrastructure-5.2.1.jar:5.2.1]
+	at org.springframework.batch.repeat.support.RepeatTemplate.iterate(RepeatTemplate.java:140) ~[spring-batch-infrastructure-5.2.1.jar:5.2.1]
+	at org.springframework.batch.core.step.tasklet.TaskletStep.doExecute(TaskletStep.java:235) ~[spring-batch-core-5.2.1.jar:5.2.1]
+	at org.springframework.batch.core.step.AbstractStep.execute(AbstractStep.java:230) ~[spring-batch-core-5.2.1.jar:5.2.1]
+	at org.springframework.batch.core.job.SimpleStepHandler.handleStep(SimpleStepHandler.java:153) ~[spring-batch-core-5.2.1.jar:5.2.1]
+	at org.springframework.batch.core.job.AbstractJob.handleStep(AbstractJob.java:408) ~[spring-batch-core-5.2.1.jar:5.2.1]
+	at org.springframework.batch.core.job.SimpleJob.doExecute(SimpleJob.java:127) ~[spring-batch-core-5.2.1.jar:5.2.1]
+	at org.springframework.batch.core.job.AbstractJob.execute(AbstractJob.java:307) ~[spring-batch-core-5.2.1.jar:5.2.1]
+	at org.springframework.batch.core.launch.support.TaskExecutorJobLauncher$1.run(TaskExecutorJobLauncher.java:155) ~[spring-batch-core-5.2.1.jar:5.2.1]
+	at org.springframework.core.task.SyncTaskExecutor.execute(SyncTaskExecutor.java:50) ~[spring-core-6.2.3.jar:6.2.3]
+	at org.springframework.batch.core.launch.support.TaskExecutorJobLauncher.run(TaskExecutorJobLauncher.java:146) ~[spring-batch-core-5.2.1.jar:5.2.1]
+	at org.springframework.boot.autoconfigure.batch.JobLauncherApplicationRunner.execute(JobLauncherApplicationRunner.java:210) ~[spring-boot-autoconfigure-3.4.3.jar:3.4.3]
+	at org.springframework.boot.autoconfigure.batch.JobLauncherApplicationRunner.executeLocalJobs(JobLauncherApplicationRunner.java:194) ~[spring-boot-autoconfigure-3.4.3.jar:3.4.3]
+	at org.springframework.boot.autoconfigure.batch.JobLauncherApplicationRunner.launchJobFromProperties(JobLauncherApplicationRunner.java:174) ~[spring-boot-autoconfigure-3.4.3.jar:3.4.3]
+	at org.springframework.boot.autoconfigure.batch.JobLauncherApplicationRunner.run(JobLauncherApplicationRunner.java:169) ~[spring-boot-autoconfigure-3.4.3.jar:3.4.3]
+	at org.springframework.boot.autoconfigure.batch.JobLauncherApplicationRunner.run(JobLauncherApplicationRunner.java:164) ~[spring-boot-autoconfigure-3.4.3.jar:3.4.3]
+	at org.springframework.boot.SpringApplication.lambda$callRunner$4(SpringApplication.java:784) ~[spring-boot-3.4.3.jar:3.4.3]
+	at org.springframework.util.function.ThrowingConsumer$1.acceptWithException(ThrowingConsumer.java:82) ~[spring-core-6.2.3.jar:6.2.3]
+	at org.springframework.util.function.ThrowingConsumer.accept(ThrowingConsumer.java:60) ~[spring-core-6.2.3.jar:6.2.3]
+	at org.springframework.util.function.ThrowingConsumer$1.accept(ThrowingConsumer.java:86) ~[spring-core-6.2.3.jar:6.2.3]
+	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:796) ~[spring-boot-3.4.3.jar:3.4.3]
+	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:784) ~[spring-boot-3.4.3.jar:3.4.3]
+	at org.springframework.boot.SpringApplication.lambda$callRunners$3(SpringApplication.java:772) ~[spring-boot-3.4.3.jar:3.4.3]
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184) ~[na:na]
+	at java.base/java.util.stream.SortedOps$SizedRefSortingSink.end(SortedOps.java:357) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:571) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:560) ~[na:na]
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151) ~[na:na]
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:265) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:636) ~[na:na]
+	at org.springframework.boot.SpringApplication.callRunners(SpringApplication.java:772) ~[spring-boot-3.4.3.jar:3.4.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:325) ~[spring-boot-3.4.3.jar:3.4.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361) ~[spring-boot-3.4.3.jar:3.4.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350) ~[spring-boot-3.4.3.jar:3.4.3]
+	at com.example.practica52.Practica52Application.main(Practica52Application.java:10) ~[classes/:na]
+Caused by: org.springframework.beans.NotReadablePropertyException: Invalid property 'ID' of bean class [com.example.practica52.model.Calle]: Bean property 'ID' is not readable or has an invalid getter method: Does the return type of the getter match the parameter type of the setter?
+	at org.springframework.beans.AbstractNestablePropertyAccessor.getPropertyValue(AbstractNestablePropertyAccessor.java:627) ~[spring-beans-6.2.3.jar:6.2.3]
+	at org.springframework.beans.AbstractNestablePropertyAccessor.getPropertyValue(AbstractNestablePropertyAccessor.java:617) ~[spring-beans-6.2.3.jar:6.2.3]
+	at org.springframework.batch.item.file.transform.BeanWrapperFieldExtractor.extract(BeanWrapperFieldExtractor.java:56) ~[spring-batch-infrastructure-5.2.1.jar:5.2.1]
+	at org.springframework.batch.item.file.transform.ExtractorLineAggregator.aggregate(ExtractorLineAggregator.java:51) ~[spring-batch-infrastructure-5.2.1.jar:5.2.1]
+	at org.springframework.batch.item.file.FlatFileItemWriter.doWrite(FlatFileItemWriter.java:76) ~[spring-batch-infrastructure-5.2.1.jar:5.2.1]
+	at org.springframework.batch.item.support.AbstractFileItemWriter.write(AbstractFileItemWriter.java:233) ~[spring-batch-infrastructure-5.2.1.jar:5.2.1]
+	at org.springframework.batch.core.step.item.SimpleChunkProcessor.writeItems(SimpleChunkProcessor.java:203) ~[spring-batch-core-5.2.1.jar:5.2.1]
+	at org.springframework.batch.core.step.item.SimpleChunkProcessor.doWrite(SimpleChunkProcessor.java:170) ~[spring-batch-core-5.2.1.jar:5.2.1]
+	at org.springframework.batch.core.step.item.FaultTolerantChunkProcessor.lambda$write$2(FaultTolerantChunkProcessor.java:331) ~[spring-batch-core-5.2.1.jar:5.2.1]
+	at org.springframework.retry.support.RetryTemplate.doExecute(RetryTemplate.java:357) ~[spring-retry-2.0.11.jar:na]
+	... 47 common frames omitted
+
+2025-03-12T13:32:54.177+01:00  WARN 19800 --- [practica52] [main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-03-12T13:32:56.905+01:00  WARN 19800 --- [practica52] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-03-12T13:32:59.743+01:00  WARN 19800 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 844 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[5428,PL,"ANTONIO ASENSI ""EL CHICUELO"",1,3,""EL PALO ",2,ESTE,,,]
+2025-03-12T13:32:59.744+01:00  WARN 19800 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 845 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[5428,PL,"ANTONIO ASENSI ""EL CHICUELO"",2,2,""EL PALO ",2,ESTE,,,]
+2025-03-12T13:33:04.497+01:00  WARN 19800 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 4366 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[21683,CL,"ENRIQUETA ""LA REPOMPA"",1,95,""EL CUARTON",8,CHURRIANA ,,,]
+2025-03-12T13:33:04.499+01:00  WARN 19800 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 4367 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[21683,CL,"ENRIQUETA ""LA REPOMPA"",2,106,""EL CUARTON",8,CHURRIANA ,,,]
+2025-03-12T13:33:05.690+01:00  WARN 19800 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 6870 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[37774,PL,"JUAN GOMEZ ""JUANITO"",1,9,""EL HIGUERAL ",7,CARRETERA DE CADIZ,,,]
+2025-03-12T13:33:05.690+01:00  WARN 19800 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 6871 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[37774,PL,"JUAN GOMEZ ""JUANITO"",2,10,""EL HIGUERAL ",7,CARRETERA DE CADIZ,,,]
+2025-03-12T13:33:05.716+01:00  WARN 19800 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 6932 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[11985,PQUE,"JUAN ROSA ""EL PULGA"",1,1,""CIUDAD JARD�N ",3,CIUDAD JARDIN ,,,]
+2025-03-12T13:33:05.717+01:00  WARN 19800 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 6933 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[11985,PQUE,"JUAN ROSA ""EL PULGA"",2,2,""CIUDAD JARD�N ",3,CIUDAD JARDIN ,,,]
+2025-03-12T13:33:06.187+01:00  WARN 19800 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 7583 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[39700,CL,"LEOPOLDO ALAS ""CLARIN"",1,9,""JARDIN DE LA ABADIA ",7,CARRETERA DE CADIZ,,,]
+2025-03-12T13:33:06.188+01:00  WARN 19800 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 7584 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[39700,CL,"LEOPOLDO ALAS ""CLARIN"",2,10,""JARDIN DE LA ABADIA ",7,CARRETERA DE CADIZ,,,]
+2025-03-12T13:33:07.450+01:00  WARN 19800 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 10916 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[21699,CL,"RAFAEL ""EL MORENO"",1,107,""EL CUARTON",8,CHURRIANA ,,,]
+2025-03-12T13:33:07.450+01:00  WARN 19800 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 10917 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[21699,CL,"RAFAEL ""EL MORENO"",2,44,""EL CUARTON",8,CHURRIANA ,,,]
+2025-03-12T13:33:25.292+01:00 ERROR 19800 --- [practica52] [main] o.s.batch.core.step.AbstractStep         : Encountered an error executing step exportaTodoACsvStep in job exportarTodoACsvJob
+
+org.springframework.retry.ExhaustedRetryException: Retry exhausted after last attempt in recovery path, but exception is not skippable.
+	at org.springframework.batch.core.step.item.FaultTolerantChunkProcessor.lambda$write$4(FaultTolerantChunkProcessor.java:401) ~[spring-batch-core-5.2.1.jar:5.2.1]
+	at org.springframework.retry.support.RetryTemplate.handleRetryExhausted(RetryTemplate.java:573) ~[spring-retry-2.0.11.jar:na]
+	at org.springframework.retry.support.RetryTemplate.doExecute(RetryTemplate.java:418) ~[spring-retry-2.0.11.jar:na]
+	at org.springframework.retry.support.RetryTemplate.execute(RetryTemplate.java:276) ~[spring-retry-2.0.11.jar:na]
+	at org.springframework.batch.core.step.item.BatchRetryTemplate.execute(BatchRetryTemplate.java:216) ~[spring-batch-core-5.2.1.jar:5.2.1]
+	at org.springframework.batch.core.step.item.FaultTolerantChunkProcessor.write(FaultTolerantChunkProcessor.java:414) ~[spring-batch-core-5.2.1.jar:5.2.1]
+	at org.springframework.batch.core.step.item.SimpleChunkProcessor.process(SimpleChunkProcessor.java:227) ~[spring-batch-core-5.2.1.jar:5.2.1]
+	at org.springframework.batch.core.step.item.ChunkOrientedTasklet.execute(ChunkOrientedTasklet.java:75) ~[spring-batch-core-5.2.1.jar:5.2.1]
+	at org.springframework.batch.core.step.tasklet.TaskletStep$ChunkTransactionCallback.doInTransaction(TaskletStep.java:383) ~[spring-batch-core-5.2.1.jar:5.2.1]
+	at org.springframework.batch.core.step.tasklet.TaskletStep$ChunkTransactionCallback.doInTransaction(TaskletStep.java:307) ~[spring-batch-core-5.2.1.jar:5.2.1]
+	at org.springframework.transaction.support.TransactionTemplate.execute(TransactionTemplate.java:140) ~[spring-tx-6.2.3.jar:6.2.3]
+	at org.springframework.batch.core.step.tasklet.TaskletStep$2.doInChunkContext(TaskletStep.java:250) ~[spring-batch-core-5.2.1.jar:5.2.1]
+	at org.springframework.batch.core.scope.context.StepContextRepeatCallback.doInIteration(StepContextRepeatCallback.java:82) ~[spring-batch-core-5.2.1.jar:5.2.1]
+	at org.springframework.batch.repeat.support.RepeatTemplate.getNextResult(RepeatTemplate.java:369) ~[spring-batch-infrastructure-5.2.1.jar:5.2.1]
+	at org.springframework.batch.repeat.support.RepeatTemplate.executeInternal(RepeatTemplate.java:206) ~[spring-batch-infrastructure-5.2.1.jar:5.2.1]
+	at org.springframework.batch.repeat.support.RepeatTemplate.iterate(RepeatTemplate.java:140) ~[spring-batch-infrastructure-5.2.1.jar:5.2.1]
+	at org.springframework.batch.core.step.tasklet.TaskletStep.doExecute(TaskletStep.java:235) ~[spring-batch-core-5.2.1.jar:5.2.1]
+	at org.springframework.batch.core.step.AbstractStep.execute(AbstractStep.java:230) ~[spring-batch-core-5.2.1.jar:5.2.1]
+	at org.springframework.batch.core.job.SimpleStepHandler.handleStep(SimpleStepHandler.java:153) ~[spring-batch-core-5.2.1.jar:5.2.1]
+	at org.springframework.batch.core.job.AbstractJob.handleStep(AbstractJob.java:408) ~[spring-batch-core-5.2.1.jar:5.2.1]
+	at org.springframework.batch.core.job.SimpleJob.doExecute(SimpleJob.java:127) ~[spring-batch-core-5.2.1.jar:5.2.1]
+	at org.springframework.batch.core.job.AbstractJob.execute(AbstractJob.java:307) ~[spring-batch-core-5.2.1.jar:5.2.1]
+	at org.springframework.batch.core.launch.support.TaskExecutorJobLauncher$1.run(TaskExecutorJobLauncher.java:155) ~[spring-batch-core-5.2.1.jar:5.2.1]
+	at org.springframework.core.task.SyncTaskExecutor.execute(SyncTaskExecutor.java:50) ~[spring-core-6.2.3.jar:6.2.3]
+	at org.springframework.batch.core.launch.support.TaskExecutorJobLauncher.run(TaskExecutorJobLauncher.java:146) ~[spring-batch-core-5.2.1.jar:5.2.1]
+	at org.springframework.boot.autoconfigure.batch.JobLauncherApplicationRunner.execute(JobLauncherApplicationRunner.java:210) ~[spring-boot-autoconfigure-3.4.3.jar:3.4.3]
+	at org.springframework.boot.autoconfigure.batch.JobLauncherApplicationRunner.executeLocalJobs(JobLauncherApplicationRunner.java:194) ~[spring-boot-autoconfigure-3.4.3.jar:3.4.3]
+	at org.springframework.boot.autoconfigure.batch.JobLauncherApplicationRunner.launchJobFromProperties(JobLauncherApplicationRunner.java:174) ~[spring-boot-autoconfigure-3.4.3.jar:3.4.3]
+	at org.springframework.boot.autoconfigure.batch.JobLauncherApplicationRunner.run(JobLauncherApplicationRunner.java:169) ~[spring-boot-autoconfigure-3.4.3.jar:3.4.3]
+	at org.springframework.boot.autoconfigure.batch.JobLauncherApplicationRunner.run(JobLauncherApplicationRunner.java:164) ~[spring-boot-autoconfigure-3.4.3.jar:3.4.3]
+	at org.springframework.boot.SpringApplication.lambda$callRunner$4(SpringApplication.java:784) ~[spring-boot-3.4.3.jar:3.4.3]
+	at org.springframework.util.function.ThrowingConsumer$1.acceptWithException(ThrowingConsumer.java:82) ~[spring-core-6.2.3.jar:6.2.3]
+	at org.springframework.util.function.ThrowingConsumer.accept(ThrowingConsumer.java:60) ~[spring-core-6.2.3.jar:6.2.3]
+	at org.springframework.util.function.ThrowingConsumer$1.accept(ThrowingConsumer.java:86) ~[spring-core-6.2.3.jar:6.2.3]
+	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:796) ~[spring-boot-3.4.3.jar:3.4.3]
+	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:784) ~[spring-boot-3.4.3.jar:3.4.3]
+	at org.springframework.boot.SpringApplication.lambda$callRunners$3(SpringApplication.java:772) ~[spring-boot-3.4.3.jar:3.4.3]
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184) ~[na:na]
+	at java.base/java.util.stream.SortedOps$SizedRefSortingSink.end(SortedOps.java:357) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:571) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:560) ~[na:na]
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151) ~[na:na]
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:265) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:636) ~[na:na]
+	at org.springframework.boot.SpringApplication.callRunners(SpringApplication.java:772) ~[spring-boot-3.4.3.jar:3.4.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:325) ~[spring-boot-3.4.3.jar:3.4.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361) ~[spring-boot-3.4.3.jar:3.4.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350) ~[spring-boot-3.4.3.jar:3.4.3]
+	at com.example.practica52.Practica52Application.main(Practica52Application.java:10) ~[classes/:na]
+Caused by: org.springframework.beans.NotReadablePropertyException: Invalid property 'ID' of bean class [com.example.practica52.model.Calle]: Bean property 'ID' is not readable or has an invalid getter method: Does the return type of the getter match the parameter type of the setter?
+	at org.springframework.beans.AbstractNestablePropertyAccessor.getPropertyValue(AbstractNestablePropertyAccessor.java:627) ~[spring-beans-6.2.3.jar:6.2.3]
+	at org.springframework.beans.AbstractNestablePropertyAccessor.getPropertyValue(AbstractNestablePropertyAccessor.java:617) ~[spring-beans-6.2.3.jar:6.2.3]
+	at org.springframework.batch.item.file.transform.BeanWrapperFieldExtractor.extract(BeanWrapperFieldExtractor.java:56) ~[spring-batch-infrastructure-5.2.1.jar:5.2.1]
+	at org.springframework.batch.item.file.transform.ExtractorLineAggregator.aggregate(ExtractorLineAggregator.java:51) ~[spring-batch-infrastructure-5.2.1.jar:5.2.1]
+	at org.springframework.batch.item.file.FlatFileItemWriter.doWrite(FlatFileItemWriter.java:76) ~[spring-batch-infrastructure-5.2.1.jar:5.2.1]
+	at org.springframework.batch.item.support.AbstractFileItemWriter.write(AbstractFileItemWriter.java:233) ~[spring-batch-infrastructure-5.2.1.jar:5.2.1]
+	at org.springframework.batch.core.step.item.SimpleChunkProcessor.writeItems(SimpleChunkProcessor.java:203) ~[spring-batch-core-5.2.1.jar:5.2.1]
+	at org.springframework.batch.core.step.item.SimpleChunkProcessor.doWrite(SimpleChunkProcessor.java:170) ~[spring-batch-core-5.2.1.jar:5.2.1]
+	at org.springframework.batch.core.step.item.FaultTolerantChunkProcessor.lambda$write$2(FaultTolerantChunkProcessor.java:331) ~[spring-batch-core-5.2.1.jar:5.2.1]
+	at org.springframework.retry.support.RetryTemplate.doExecute(RetryTemplate.java:357) ~[spring-retry-2.0.11.jar:na]
+	... 47 common frames omitted
+
+2025-03-12T13:35:05.403+01:00  WARN 15652 --- [practica52] [main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-03-12T13:35:08.483+01:00  WARN 15652 --- [practica52] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-03-12T13:35:11.871+01:00  WARN 15652 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 844 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[5428,PL,"ANTONIO ASENSI ""EL CHICUELO"",1,3,""EL PALO ",2,ESTE,,,]
+2025-03-12T13:35:11.872+01:00  WARN 15652 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 845 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[5428,PL,"ANTONIO ASENSI ""EL CHICUELO"",2,2,""EL PALO ",2,ESTE,,,]
+2025-03-12T13:35:15.202+01:00  WARN 15652 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 4366 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[21683,CL,"ENRIQUETA ""LA REPOMPA"",1,95,""EL CUARTON",8,CHURRIANA ,,,]
+2025-03-12T13:35:15.203+01:00  WARN 15652 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 4367 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[21683,CL,"ENRIQUETA ""LA REPOMPA"",2,106,""EL CUARTON",8,CHURRIANA ,,,]
+2025-03-12T13:35:16.613+01:00  WARN 15652 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 6870 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[37774,PL,"JUAN GOMEZ ""JUANITO"",1,9,""EL HIGUERAL ",7,CARRETERA DE CADIZ,,,]
+2025-03-12T13:35:16.614+01:00  WARN 15652 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 6871 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[37774,PL,"JUAN GOMEZ ""JUANITO"",2,10,""EL HIGUERAL ",7,CARRETERA DE CADIZ,,,]
+2025-03-12T13:35:16.647+01:00  WARN 15652 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 6932 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[11985,PQUE,"JUAN ROSA ""EL PULGA"",1,1,""CIUDAD JARD�N ",3,CIUDAD JARDIN ,,,]
+2025-03-12T13:35:16.648+01:00  WARN 15652 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 6933 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[11985,PQUE,"JUAN ROSA ""EL PULGA"",2,2,""CIUDAD JARD�N ",3,CIUDAD JARDIN ,,,]
+2025-03-12T13:35:17.192+01:00  WARN 15652 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 7583 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[39700,CL,"LEOPOLDO ALAS ""CLARIN"",1,9,""JARDIN DE LA ABADIA ",7,CARRETERA DE CADIZ,,,]
+2025-03-12T13:35:17.193+01:00  WARN 15652 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 7584 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[39700,CL,"LEOPOLDO ALAS ""CLARIN"",2,10,""JARDIN DE LA ABADIA ",7,CARRETERA DE CADIZ,,,]
+2025-03-12T13:35:18.698+01:00  WARN 15652 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 10916 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[21699,CL,"RAFAEL ""EL MORENO"",1,107,""EL CUARTON",8,CHURRIANA ,,,]
+2025-03-12T13:35:18.698+01:00  WARN 15652 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 10917 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[21699,CL,"RAFAEL ""EL MORENO"",2,44,""EL CUARTON",8,CHURRIANA ,,,]
+2025-03-12T13:35:35.069+01:00 ERROR 15652 --- [practica52] [main] o.s.batch.core.step.AbstractStep         : Encountered an error executing step exportaTodoACsvStep in job exportarTodoACsvJob
+
+org.springframework.retry.ExhaustedRetryException: Retry exhausted after last attempt in recovery path, but exception is not skippable.
+	at org.springframework.batch.core.step.item.FaultTolerantChunkProcessor.lambda$write$4(FaultTolerantChunkProcessor.java:401) ~[spring-batch-core-5.2.1.jar:5.2.1]
+	at org.springframework.retry.support.RetryTemplate.handleRetryExhausted(RetryTemplate.java:573) ~[spring-retry-2.0.11.jar:na]
+	at org.springframework.retry.support.RetryTemplate.doExecute(RetryTemplate.java:418) ~[spring-retry-2.0.11.jar:na]
+	at org.springframework.retry.support.RetryTemplate.execute(RetryTemplate.java:276) ~[spring-retry-2.0.11.jar:na]
+	at org.springframework.batch.core.step.item.BatchRetryTemplate.execute(BatchRetryTemplate.java:216) ~[spring-batch-core-5.2.1.jar:5.2.1]
+	at org.springframework.batch.core.step.item.FaultTolerantChunkProcessor.write(FaultTolerantChunkProcessor.java:414) ~[spring-batch-core-5.2.1.jar:5.2.1]
+	at org.springframework.batch.core.step.item.SimpleChunkProcessor.process(SimpleChunkProcessor.java:227) ~[spring-batch-core-5.2.1.jar:5.2.1]
+	at org.springframework.batch.core.step.item.ChunkOrientedTasklet.execute(ChunkOrientedTasklet.java:75) ~[spring-batch-core-5.2.1.jar:5.2.1]
+	at org.springframework.batch.core.step.tasklet.TaskletStep$ChunkTransactionCallback.doInTransaction(TaskletStep.java:383) ~[spring-batch-core-5.2.1.jar:5.2.1]
+	at org.springframework.batch.core.step.tasklet.TaskletStep$ChunkTransactionCallback.doInTransaction(TaskletStep.java:307) ~[spring-batch-core-5.2.1.jar:5.2.1]
+	at org.springframework.transaction.support.TransactionTemplate.execute(TransactionTemplate.java:140) ~[spring-tx-6.2.3.jar:6.2.3]
+	at org.springframework.batch.core.step.tasklet.TaskletStep$2.doInChunkContext(TaskletStep.java:250) ~[spring-batch-core-5.2.1.jar:5.2.1]
+	at org.springframework.batch.core.scope.context.StepContextRepeatCallback.doInIteration(StepContextRepeatCallback.java:82) ~[spring-batch-core-5.2.1.jar:5.2.1]
+	at org.springframework.batch.repeat.support.RepeatTemplate.getNextResult(RepeatTemplate.java:369) ~[spring-batch-infrastructure-5.2.1.jar:5.2.1]
+	at org.springframework.batch.repeat.support.RepeatTemplate.executeInternal(RepeatTemplate.java:206) ~[spring-batch-infrastructure-5.2.1.jar:5.2.1]
+	at org.springframework.batch.repeat.support.RepeatTemplate.iterate(RepeatTemplate.java:140) ~[spring-batch-infrastructure-5.2.1.jar:5.2.1]
+	at org.springframework.batch.core.step.tasklet.TaskletStep.doExecute(TaskletStep.java:235) ~[spring-batch-core-5.2.1.jar:5.2.1]
+	at org.springframework.batch.core.step.AbstractStep.execute(AbstractStep.java:230) ~[spring-batch-core-5.2.1.jar:5.2.1]
+	at org.springframework.batch.core.job.SimpleStepHandler.handleStep(SimpleStepHandler.java:153) ~[spring-batch-core-5.2.1.jar:5.2.1]
+	at org.springframework.batch.core.job.AbstractJob.handleStep(AbstractJob.java:408) ~[spring-batch-core-5.2.1.jar:5.2.1]
+	at org.springframework.batch.core.job.SimpleJob.doExecute(SimpleJob.java:127) ~[spring-batch-core-5.2.1.jar:5.2.1]
+	at org.springframework.batch.core.job.AbstractJob.execute(AbstractJob.java:307) ~[spring-batch-core-5.2.1.jar:5.2.1]
+	at org.springframework.batch.core.launch.support.TaskExecutorJobLauncher$1.run(TaskExecutorJobLauncher.java:155) ~[spring-batch-core-5.2.1.jar:5.2.1]
+	at org.springframework.core.task.SyncTaskExecutor.execute(SyncTaskExecutor.java:50) ~[spring-core-6.2.3.jar:6.2.3]
+	at org.springframework.batch.core.launch.support.TaskExecutorJobLauncher.run(TaskExecutorJobLauncher.java:146) ~[spring-batch-core-5.2.1.jar:5.2.1]
+	at org.springframework.boot.autoconfigure.batch.JobLauncherApplicationRunner.execute(JobLauncherApplicationRunner.java:210) ~[spring-boot-autoconfigure-3.4.3.jar:3.4.3]
+	at org.springframework.boot.autoconfigure.batch.JobLauncherApplicationRunner.executeLocalJobs(JobLauncherApplicationRunner.java:194) ~[spring-boot-autoconfigure-3.4.3.jar:3.4.3]
+	at org.springframework.boot.autoconfigure.batch.JobLauncherApplicationRunner.launchJobFromProperties(JobLauncherApplicationRunner.java:174) ~[spring-boot-autoconfigure-3.4.3.jar:3.4.3]
+	at org.springframework.boot.autoconfigure.batch.JobLauncherApplicationRunner.run(JobLauncherApplicationRunner.java:169) ~[spring-boot-autoconfigure-3.4.3.jar:3.4.3]
+	at org.springframework.boot.autoconfigure.batch.JobLauncherApplicationRunner.run(JobLauncherApplicationRunner.java:164) ~[spring-boot-autoconfigure-3.4.3.jar:3.4.3]
+	at org.springframework.boot.SpringApplication.lambda$callRunner$4(SpringApplication.java:784) ~[spring-boot-3.4.3.jar:3.4.3]
+	at org.springframework.util.function.ThrowingConsumer$1.acceptWithException(ThrowingConsumer.java:82) ~[spring-core-6.2.3.jar:6.2.3]
+	at org.springframework.util.function.ThrowingConsumer.accept(ThrowingConsumer.java:60) ~[spring-core-6.2.3.jar:6.2.3]
+	at org.springframework.util.function.ThrowingConsumer$1.accept(ThrowingConsumer.java:86) ~[spring-core-6.2.3.jar:6.2.3]
+	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:796) ~[spring-boot-3.4.3.jar:3.4.3]
+	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:784) ~[spring-boot-3.4.3.jar:3.4.3]
+	at org.springframework.boot.SpringApplication.lambda$callRunners$3(SpringApplication.java:772) ~[spring-boot-3.4.3.jar:3.4.3]
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184) ~[na:na]
+	at java.base/java.util.stream.SortedOps$SizedRefSortingSink.end(SortedOps.java:357) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:571) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:560) ~[na:na]
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151) ~[na:na]
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:265) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:636) ~[na:na]
+	at org.springframework.boot.SpringApplication.callRunners(SpringApplication.java:772) ~[spring-boot-3.4.3.jar:3.4.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:325) ~[spring-boot-3.4.3.jar:3.4.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361) ~[spring-boot-3.4.3.jar:3.4.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350) ~[spring-boot-3.4.3.jar:3.4.3]
+	at com.example.practica52.Practica52Application.main(Practica52Application.java:10) ~[classes/:na]
+Caused by: org.springframework.beans.NotReadablePropertyException: Invalid property 'BARRIO' of bean class [com.example.practica52.model.Calle]: Bean property 'BARRIO' is not readable or has an invalid getter method: Does the return type of the getter match the parameter type of the setter?
+	at org.springframework.beans.AbstractNestablePropertyAccessor.getPropertyValue(AbstractNestablePropertyAccessor.java:627) ~[spring-beans-6.2.3.jar:6.2.3]
+	at org.springframework.beans.AbstractNestablePropertyAccessor.getPropertyValue(AbstractNestablePropertyAccessor.java:617) ~[spring-beans-6.2.3.jar:6.2.3]
+	at org.springframework.batch.item.file.transform.BeanWrapperFieldExtractor.extract(BeanWrapperFieldExtractor.java:56) ~[spring-batch-infrastructure-5.2.1.jar:5.2.1]
+	at org.springframework.batch.item.file.transform.ExtractorLineAggregator.aggregate(ExtractorLineAggregator.java:51) ~[spring-batch-infrastructure-5.2.1.jar:5.2.1]
+	at org.springframework.batch.item.file.FlatFileItemWriter.doWrite(FlatFileItemWriter.java:76) ~[spring-batch-infrastructure-5.2.1.jar:5.2.1]
+	at org.springframework.batch.item.support.AbstractFileItemWriter.write(AbstractFileItemWriter.java:233) ~[spring-batch-infrastructure-5.2.1.jar:5.2.1]
+	at org.springframework.batch.core.step.item.SimpleChunkProcessor.writeItems(SimpleChunkProcessor.java:203) ~[spring-batch-core-5.2.1.jar:5.2.1]
+	at org.springframework.batch.core.step.item.SimpleChunkProcessor.doWrite(SimpleChunkProcessor.java:170) ~[spring-batch-core-5.2.1.jar:5.2.1]
+	at org.springframework.batch.core.step.item.FaultTolerantChunkProcessor.lambda$write$2(FaultTolerantChunkProcessor.java:331) ~[spring-batch-core-5.2.1.jar:5.2.1]
+	at org.springframework.retry.support.RetryTemplate.doExecute(RetryTemplate.java:357) ~[spring-retry-2.0.11.jar:na]
+	... 47 common frames omitted
+
+2025-03-12T13:38:01.945+01:00  WARN 14420 --- [practica52] [main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-03-12T13:38:04.839+01:00  WARN 14420 --- [practica52] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-03-12T13:38:07.875+01:00  WARN 14420 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 844 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[5428,PL,"ANTONIO ASENSI ""EL CHICUELO"",1,3,""EL PALO ",2,ESTE,,,]
+2025-03-12T13:38:07.876+01:00  WARN 14420 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 845 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[5428,PL,"ANTONIO ASENSI ""EL CHICUELO"",2,2,""EL PALO ",2,ESTE,,,]
+2025-03-12T13:38:11.171+01:00  WARN 14420 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 4366 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[21683,CL,"ENRIQUETA ""LA REPOMPA"",1,95,""EL CUARTON",8,CHURRIANA ,,,]
+2025-03-12T13:38:11.172+01:00  WARN 14420 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 4367 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[21683,CL,"ENRIQUETA ""LA REPOMPA"",2,106,""EL CUARTON",8,CHURRIANA ,,,]
+2025-03-12T13:38:12.704+01:00  WARN 14420 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 6870 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[37774,PL,"JUAN GOMEZ ""JUANITO"",1,9,""EL HIGUERAL ",7,CARRETERA DE CADIZ,,,]
+2025-03-12T13:38:12.705+01:00  WARN 14420 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 6871 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[37774,PL,"JUAN GOMEZ ""JUANITO"",2,10,""EL HIGUERAL ",7,CARRETERA DE CADIZ,,,]
+2025-03-12T13:38:12.742+01:00  WARN 14420 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 6932 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[11985,PQUE,"JUAN ROSA ""EL PULGA"",1,1,""CIUDAD JARD�N ",3,CIUDAD JARDIN ,,,]
+2025-03-12T13:38:12.744+01:00  WARN 14420 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 6933 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[11985,PQUE,"JUAN ROSA ""EL PULGA"",2,2,""CIUDAD JARD�N ",3,CIUDAD JARDIN ,,,]
+2025-03-12T13:38:13.281+01:00  WARN 14420 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 7583 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[39700,CL,"LEOPOLDO ALAS ""CLARIN"",1,9,""JARDIN DE LA ABADIA ",7,CARRETERA DE CADIZ,,,]
+2025-03-12T13:38:13.282+01:00  WARN 14420 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 7584 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[39700,CL,"LEOPOLDO ALAS ""CLARIN"",2,10,""JARDIN DE LA ABADIA ",7,CARRETERA DE CADIZ,,,]
+2025-03-12T13:38:14.761+01:00  WARN 14420 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 10916 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[21699,CL,"RAFAEL ""EL MORENO"",1,107,""EL CUARTON",8,CHURRIANA ,,,]
+2025-03-12T13:38:14.761+01:00  WARN 14420 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 10917 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[21699,CL,"RAFAEL ""EL MORENO"",2,44,""EL CUARTON",8,CHURRIANA ,,,]
+2025-03-12T13:38:32.834+01:00  WARN 14420 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 844 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[5428,PL,"ANTONIO ASENSI ""EL CHICUELO"",1,3,""EL PALO ",2,ESTE,,,]
+2025-03-12T13:38:32.835+01:00  WARN 14420 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 845 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[5428,PL,"ANTONIO ASENSI ""EL CHICUELO"",2,2,""EL PALO ",2,ESTE,,,]
+2025-03-12T13:38:33.172+01:00  WARN 14420 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 4366 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[21683,CL,"ENRIQUETA ""LA REPOMPA"",1,95,""EL CUARTON",8,CHURRIANA ,,,]
+2025-03-12T13:38:33.173+01:00  WARN 14420 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 4367 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[21683,CL,"ENRIQUETA ""LA REPOMPA"",2,106,""EL CUARTON",8,CHURRIANA ,,,]
+2025-03-12T13:38:33.378+01:00  WARN 14420 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 6870 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[37774,PL,"JUAN GOMEZ ""JUANITO"",1,9,""EL HIGUERAL ",7,CARRETERA DE CADIZ,,,]
+2025-03-12T13:38:33.379+01:00  WARN 14420 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 6871 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[37774,PL,"JUAN GOMEZ ""JUANITO"",2,10,""EL HIGUERAL ",7,CARRETERA DE CADIZ,,,]
+2025-03-12T13:38:33.384+01:00  WARN 14420 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 6932 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[11985,PQUE,"JUAN ROSA ""EL PULGA"",1,1,""CIUDAD JARD�N ",3,CIUDAD JARDIN ,,,]
+2025-03-12T13:38:33.385+01:00  WARN 14420 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 6933 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[11985,PQUE,"JUAN ROSA ""EL PULGA"",2,2,""CIUDAD JARD�N ",3,CIUDAD JARDIN ,,,]
+2025-03-12T13:38:33.448+01:00  WARN 14420 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 7583 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[39700,CL,"LEOPOLDO ALAS ""CLARIN"",1,9,""JARDIN DE LA ABADIA ",7,CARRETERA DE CADIZ,,,]
+2025-03-12T13:38:33.449+01:00  WARN 14420 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 7584 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[39700,CL,"LEOPOLDO ALAS ""CLARIN"",2,10,""JARDIN DE LA ABADIA ",7,CARRETERA DE CADIZ,,,]
+2025-03-12T13:38:33.667+01:00  WARN 14420 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 10916 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[21699,CL,"RAFAEL ""EL MORENO"",1,107,""EL CUARTON",8,CHURRIANA ,,,]
+2025-03-12T13:38:33.668+01:00  WARN 14420 --- [practica52] [main] lombok.extern.slf4j.Slf4j                : Error de lectura  en Parsing error at line: 10917 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[21699,CL,"RAFAEL ""EL MORENO"",2,44,""EL CUARTON",8,CHURRIANA ,,,]
