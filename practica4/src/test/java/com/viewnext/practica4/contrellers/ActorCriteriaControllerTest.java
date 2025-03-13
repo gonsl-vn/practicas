@@ -1,8 +1,8 @@
 package com.viewnext.practica4.contrellers;
 
-import com.viewnext.practica4.controllers.ActorController;
+import com.viewnext.practica4.controllers.ActorControllerCriteria;
 import com.viewnext.practica4.models.Actor;
-import com.viewnext.practica4.repositorys.ActorRepository;
+import com.viewnext.practica4.repositorys.ActorCriteriaRepository;
 import com.viewnext.practica4.services.ActorService;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -11,20 +11,24 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.ResponseEntity;
 
-import java.util.*;
+import java.util.Collections;
+import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS) // Para evitar static en @BeforeAll
-public class ActorControllerTest {
+public class ActorCriteriaControllerTest {
 
     @Mock
     private ResponseEntity<Actor> responseEntity;
 
     @Mock
-    private ActorRepository actorRepository;
+    private ActorCriteriaRepository actorRepository;
 
     @Mock
     private ResponseEntity<List<Actor>> listResponseEntity;
@@ -33,7 +37,7 @@ public class ActorControllerTest {
     private ActorService actorService;
 
     @InjectMocks
-    private ActorController actorController;
+    private ActorControllerCriteria actorController;
 
     private Actor actor;
 
@@ -61,16 +65,17 @@ public class ActorControllerTest {
 
         @Test
         void tesObtenerActores_OK() {
-            when(actorService.obtenerActores()).thenReturn(Collections.singletonList(actor));
-            listResponseEntity = actorController.obtenerActores();
+            when(actorService.obtenerActoresCriteria()).thenReturn(Collections.singletonList(actor));
+            listResponseEntity = actorController.listarActores();
 
-            assertFalse(Objects.requireNonNull(listResponseEntity.getBody()).isEmpty());
+            assertTrue(listResponseEntity.getBody().size() != 0);
+
         }
 
         @Test
         void testObtenerActores_KO() {
-            when(actorService.obtenerActores()).thenReturn(null);
-            listResponseEntity = actorController.obtenerActores();
+            when(actorService.obtenerActoresCriteria()).thenReturn(null);
+            listResponseEntity = actorController.listarActores();
 
             assertNull(listResponseEntity.getBody());
         }
@@ -91,11 +96,10 @@ public class ActorControllerTest {
         @Test
         void testObtenerActorPorId_OK() {
             // Simulamos que el servicio devuelve un actor con el ID especificado
-            when(actorService.obtenerActorPorId(actor.getIdActor())).thenReturn(Optional.of(actor));
+            when(actorService.obtenerActorPorIdCriteria(actor.getIdActor())).thenReturn(Optional.ofNullable(actor));
 
             // Llamamos al controlador para obtener el actor
-            ResponseEntity<Actor> responseEntity = actorController.obtenerActores(actor.getIdActor());
-
+            ResponseEntity<Actor> responseEntity = actorController.buscarActor(100);
             // Verificamos que la respuesta no sea nula
             assertNotNull(responseEntity.getBody());
             // Verificamos que el actor tiene los datos correctos
@@ -106,10 +110,10 @@ public class ActorControllerTest {
         @Test
         void testObtenerActorPorId_KO() {
             // Simulamos que el servicio devuelve un Optional vacío (no se encuentra el actor)
-            when(actorService.obtenerActorPorId(actor.getIdActor())).thenReturn(Optional.empty());
+            when(actorService.obtenerActorPorIdCriteria(100)).thenThrow(new NoSuchElementException());
 
             // Llamamos al controlador y verificamos que lance una excepción
-            assertThrows(NoSuchElementException.class, () -> actorController.obtenerActores(actor.getIdActor()));
+            assertThrows(NoSuchElementException.class, () -> actorController.buscarActor(actor.getIdActor()));
         }
     }
 
@@ -126,27 +130,26 @@ public class ActorControllerTest {
 
         @Test
         void testInsertarActor_OK() {
-            responseEntity = actorController.insertarActor(actor);
+            when(actorService.obtenerActorPorIdCriteria(actor.getIdActor())).thenReturn(Optional.ofNullable(actor));
 
+            actorController.insertarActor(actor);
+            actor = actorController.buscarActor(actor.getIdActor()).getBody();
             // Verificamos que el cuerpo de la respuesta no sea nulo
-            assertNotNull(responseEntity.getBody());
+            assertNotNull(actor);
             // Verificamos que los datos del actor insertado sean correctos
-            assertEquals("Chris", responseEntity.getBody().getNombre());
-            assertEquals("Evans", responseEntity.getBody().getApellido());
-            // Verificamos que la respuesta tiene el código de estado 200 OK
-            assertEquals(200, responseEntity.getStatusCodeValue());
+            assertEquals("Chris", actor.getNombre());
+            assertEquals("Evans", actor.getApellido());
         }
 
         @Test
         void testInsertarActor_KO() {
-            // Simulamos que el servicio lanza una excepción al insertar el actor
-            doThrow(new RuntimeException("Error al insertar actor")).when(actorService).insertarActor(actor);
+            // Simulamos que el servicio devuelve un Optional vacío (no se encuentra el actor)
+            when(actorService.obtenerActorPorIdCriteria(100)).thenThrow(new NoSuchElementException());
+
+            actorController.insertarActor(actor);
 
             // Llamamos al controlador y verificamos que lance una excepción
-            RuntimeException thrown = assertThrows(RuntimeException.class, () -> actorController.insertarActor(actor));
-
-            // Verificamos que el mensaje de la excepción sea el esperado
-            assertEquals("Error al insertar actor", thrown.getMessage());
+            assertThrows(NoSuchElementException.class, () -> actorController.buscarActor(actor.getIdActor()).getBody());
         }
     }
 
@@ -165,17 +168,12 @@ public class ActorControllerTest {
         void testActualizarActor_OK() {
             // Simulamos que el servicio devuelve el actor actualizado
             Actor updatedActor = new Actor(100, "Chris", "Evans", 46, "Estados Unidos");  // Edad actualizada
-            when(actorService.actualizarActor(actor.getIdActor(), updatedActor)).thenReturn(updatedActor);
 
             // Llamamos al controlador para actualizar el actor
-            ResponseEntity<Actor> responseEntity = actorController.ActualizarActor(actor.getIdActor(), updatedActor);
+            ResponseEntity<String> responseEntity = actorController.actualizarActor(actor.getIdActor(), updatedActor);
 
             // Verificamos que el cuerpo de la respuesta no sea nulo
             assertNotNull(responseEntity.getBody());
-            // Verificamos que el actor actualizado tiene los datos correctos
-            assertEquals("Chris", responseEntity.getBody().getNombre());
-            assertEquals("Evans", responseEntity.getBody().getApellido());
-            assertEquals(46, responseEntity.getBody().getEdad());  // Verificamos que la edad se haya actualizado
             // Verificamos que la respuesta tenga el código de estado 200 OK
             assertEquals(200, responseEntity.getStatusCodeValue());
         }
@@ -183,12 +181,12 @@ public class ActorControllerTest {
         @Test
         void testActualizarActor_KO() {
             // Simulamos que el servicio devuelve null, lo que indicaría que el actor no se ha encontrado
-            when(actorService.actualizarActor(actor.getIdActor(), actor)).thenThrow(
+            when(actorController.actualizarActor(actor.getIdActor(), actor)).thenThrow(
                     new RuntimeException("No se encontró el actor"));
 
             // Llamamos al controlador para actualizar el actor y verificamos que lance una excepción
             RuntimeException thrown = assertThrows(RuntimeException.class,
-                    () -> actorController.ActualizarActor(actor.getIdActor(), actor));
+                    () -> actorController.actualizarActor(actor.getIdActor(), actor));
 
             // Verificamos que el mensaje de la excepción sea el esperado
             assertEquals("No se encontró el actor", thrown.getMessage());
@@ -208,10 +206,10 @@ public class ActorControllerTest {
         @Test
         void testEliminarActor_OK() {
             // Simulamos que el servicio elimina correctamente el actor
-            doNothing().when(actorService).eliminarActor(actor.getIdActor());
+            doNothing().when(actorService).eliminarActorCriteria(actor.getIdActor());
 
             // Llamamos al controlador para eliminar el actor
-            ResponseEntity<Void> responseEntity = actorController.BorrarActor(actor.getIdActor());
+            ResponseEntity<String> responseEntity = actorController.borrarActor(actor.getIdActor());
 
             // Verificamos que el código de estado sea 200 OK
             assertEquals(200, responseEntity.getStatusCodeValue());
@@ -220,12 +218,11 @@ public class ActorControllerTest {
         @Test
         void testEliminarActor_KO() {
             // Simulamos que el servicio lanza una excepción al intentar eliminar el actor
-            doThrow(new RuntimeException("No se encontró el actor")).when(actorService)
-                    .eliminarActor(actor.getIdActor());
+            when(actorController.borrarActor(100)).thenThrow(new RuntimeException("No se encontró el actor"));
 
             // Llamamos al controlador y verificamos que lance una excepción
             RuntimeException thrown = assertThrows(RuntimeException.class,
-                    () -> actorController.BorrarActor(actor.getIdActor()));
+                    () -> actorController.borrarActor(actor.getIdActor()));
 
             // Verificamos que el mensaje de la excepción sea el esperado
             assertEquals("No se encontró el actor", thrown.getMessage());

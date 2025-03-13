@@ -49,7 +49,7 @@ public class DirectorControllerCriteria {
      */
     @PutMapping("/{id}")
     public ResponseEntity<String> actualizarDirector(@PathVariable int id, @RequestBody Director directorNuevo) {
-        directorServiceCriteria.actualizarDirector(id, directorNuevo);
+        directorServiceCriteria.actualizarDirectorCriteria(id, directorNuevo);
         return ResponseEntity.ok("Director actualizado correctamente.");
     }
 

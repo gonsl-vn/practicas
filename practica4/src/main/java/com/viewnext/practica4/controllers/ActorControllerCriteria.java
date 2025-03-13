@@ -23,7 +23,7 @@ public class ActorControllerCriteria {
      */
     @PostMapping
     public ResponseEntity<String> insertarActor(@RequestBody Actor actor) {
-        actorService.insertarActor(actor);
+        actorService.insertarActorCriteria(actor);
         return ResponseEntity.ok("Actor insertado correctamente.");
     }
 
@@ -40,7 +40,7 @@ public class ActorControllerCriteria {
      */
     @GetMapping("/{id}")
     public ResponseEntity<Actor> buscarActor(@PathVariable int id) {
-        Optional<Actor> actor = actorService.obtenerActorPorId(id);
+        Optional<Actor> actor = actorService.obtenerActorPorIdCriteria(id);
         return ResponseEntity.ok(actor.get());
     }
 
