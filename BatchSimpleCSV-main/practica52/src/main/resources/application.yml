@@ -23,5 +23,4 @@ spring:
     jdbc:
       initialize-schema: always
     job:
-      enabled: true
-      name: exportarTodoACsvJob
+      enabled: false

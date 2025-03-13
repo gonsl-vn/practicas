@@ -1,5 +1,6 @@
 package com.example.practica52.step;
 
+import com.example.practica52.listener.SkipCheckingListener;
 import com.example.practica52.listener.SkipListenerConfig;
 import com.example.practica52.model.Calle;
 import com.example.practica52.model.Distrito;
@@ -10,6 +11,7 @@ import org.springframework.batch.item.ItemProcessor;
 import org.springframework.batch.item.ItemWriter;
 import org.springframework.batch.item.file.FlatFileItemReader;
 import org.springframework.batch.item.file.FlatFileParseException;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.transaction.PlatformTransactionManager;
@@ -19,17 +21,22 @@ public class DistritoStep {
 
     @Bean
     public Step distritoStep1(JobRepository jobRepository, PlatformTransactionManager transactionManager,
-            FlatFileItemReader<Calle> reader, ItemProcessor<Calle, Distrito> distritoProcessor,
-            ItemWriter<Distrito> distritoWritter, SkipListenerConfig skipListenerConfig){
+            @Qualifier("calleCsvReader")
+            FlatFileItemReader<Calle> reader,
+            ItemProcessor<Calle, Distrito> distritoProcessor,
+            ItemWriter<Distrito> distritoWrite,
+            SkipListenerConfig skipListenerConfig,
+            SkipCheckingListener skipCheckingListener){
         return new StepBuilder("distritoStep", jobRepository)
                 .<Calle, Distrito>chunk(1, transactionManager)
                 .reader(reader)
                 .processor(distritoProcessor)
-                .writer(distritoWritter)
+                .writer(distritoWrite)
                 .faultTolerant()
                 .skip(FlatFileParseException.class)
                 .skipLimit(20)
                 .listener(skipListenerConfig)
+                .listener(skipCheckingListener)
                 .build();
     }
 }

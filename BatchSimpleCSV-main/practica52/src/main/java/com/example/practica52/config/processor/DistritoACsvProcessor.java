@@ -11,13 +11,13 @@ import org.springframework.context.annotation.Configuration;
 @Slf4j
 @Configuration
 public class DistritoACsvProcessor {
-    private final Logger logger = LoggerFactory.getLogger(Slf4j.class);
+    //private static final Logger logger = LoggerFactory.getLogger(Slf4j.class);
 
 
     @Bean
     public ItemProcessor<Distrito, Distrito> csvDProcessor(){
         return distrito->{
-            logger.info("procesando datos de distritos...");
+            log.info("procesando datos de distritos...");
                     return distrito;
         };
     }

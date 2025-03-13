@@ -13,12 +13,12 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class CalleACsvProcessor {
 
-    private final Logger logger = LoggerFactory.getLogger(Slf4j.class);
+    //private static final Logger logger = LoggerFactory.getLogger(Slf4j.class);
 
     @Bean
     public ItemProcessor<Calle, Calle> csvCProcessor(){
         return calle->{
-            logger.info("procesando datos");
+            log.info("procesando datos");
             return calle;
         };
     }

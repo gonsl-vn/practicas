@@ -1,13 +1,13 @@
 package com.example.practica52.config;
 
-import com.example.practica52.job.CopiarCalleJob;
-import com.example.practica52.step.CalleStep;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.batch.core.Job;
-import org.springframework.batch.core.Step;
+import org.springframework.batch.core.*;
+import org.springframework.batch.core.launch.JobLauncher;
 import org.springframework.batch.core.repository.JobRepository;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.transaction.PlatformTransactionManager;
@@ -16,29 +16,44 @@ import org.springframework.transaction.PlatformTransactionManager;
 @Configuration
 public class BatchConfig {
 
-    private final JobRepository jobRepository;
-    private final PlatformTransactionManager transactionManager;
+    private final JobLauncher jobLauncher;
+    private final ApplicationContext applicationContext;
 
-    private static Logger logger = LoggerFactory.getLogger(Slf4j.class);
+    //private static final Logger logger = LoggerFactory.getLogger(Slf4j.class);
 
-    public BatchConfig(JobRepository jobRepository,
-                       PlatformTransactionManager transactionManager) {
-        this.jobRepository = jobRepository;
-        this.transactionManager = transactionManager;
+    public BatchConfig( JobLauncher jobLauncher, ApplicationContext applicationContext) {
+        this.jobLauncher = jobLauncher;
+
+        this.applicationContext = applicationContext;
     }
-/*
     @Bean
-    public Job copiarCalleJobConfig(CopiarCalleJob copiarCalleJob,
-                                    CalleStep calleStep,
-                                    CalleReader reader,
-                                    CalleProcessor processor,
-                                    CalleWritter writter){
+    public CommandLineRunner jobLauncherRunner(){
+        return args -> {
+            if(args.length==0){
+                log.warn("No has incluido ningun nombre de job");
+                return;
+            }
+            String jobName = args[0];
+            String distritoAFiltrar = (args[1] != null) ? args[1] : null;
+            try {
+                Job job = applicationContext.getBean(jobName, Job.class);
 
-        Step calleStepParam = calleStep.step(jobRepository,
-                transactionManager, reader.reader(),
-                processor.processor(), writter.write());
+                JobParametersBuilder jobParametersBuilder = new JobParametersBuilder();
+                jobParametersBuilder.addLong("hora: ", System.currentTimeMillis() );
 
-        logger.info("Entra en Job desde BatchConfig");
-        return copiarCalleJob.job(calleStepParam, jobRepository);
-    }*/
+                if(distritoAFiltrar != null && jobName.equals("copiarCalleJob")){
+                    jobParametersBuilder.addString("distritoAFiltrar", distritoAFiltrar);
+                }
+                JobParameters jobParameters =  jobParametersBuilder.toJobParameters();
+                log.info("ejecutando job: ");
+
+                JobExecution jobExecution = jobLauncher.run(job, jobParameters);
+                log.info("job acabado, Estado: " );
+            } catch (Exception e){
+                log.warn("Error en la ejecucion de" );
+            }
+        };
+    }
+
+
 }

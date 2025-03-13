@@ -1,0 +1,415 @@
+2025-03-13T12:33:00.185+01:00  WARN 3632 --- [practica52] [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: java.lang.IllegalStateException: Unable to load cache item
+2025-03-13T12:33:00.225+01:00 ERROR 3632 --- [practica52] [main] o.s.boot.SpringApplication               : Application run failed
+
+java.lang.IllegalStateException: Unable to load cache item
+	at org.springframework.cglib.core.internal.LoadingCache.createEntry(LoadingCache.java:75) ~[spring-core-6.2.3.jar:6.2.3]
+	at org.springframework.cglib.core.internal.LoadingCache.get(LoadingCache.java:34) ~[spring-core-6.2.3.jar:6.2.3]
+	at org.springframework.cglib.core.AbstractClassGenerator$ClassLoaderData.get(AbstractClassGenerator.java:130) ~[spring-core-6.2.3.jar:6.2.3]
+	at org.springframework.cglib.core.AbstractClassGenerator.create(AbstractClassGenerator.java:317) ~[spring-core-6.2.3.jar:6.2.3]
+	at org.springframework.cglib.proxy.Enhancer.createHelper(Enhancer.java:562) ~[spring-core-6.2.3.jar:6.2.3]
+	at org.springframework.cglib.proxy.Enhancer.createClass(Enhancer.java:407) ~[spring-core-6.2.3.jar:6.2.3]
+	at org.springframework.context.annotation.ConfigurationClassEnhancer.createClass(ConfigurationClassEnhancer.java:169) ~[spring-context-6.2.3.jar:6.2.3]
+	at org.springframework.context.annotation.ConfigurationClassEnhancer.enhance(ConfigurationClassEnhancer.java:121) ~[spring-context-6.2.3.jar:6.2.3]
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.enhanceConfigurationClasses(ConfigurationClassPostProcessor.java:539) ~[spring-context-6.2.3.jar:6.2.3]
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.postProcessBeanFactory(ConfigurationClassPostProcessor.java:311) ~[spring-context-6.2.3.jar:6.2.3]
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanFactoryPostProcessors(PostProcessorRegistrationDelegate.java:363) ~[spring-context-6.2.3.jar:6.2.3]
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanFactoryPostProcessors(PostProcessorRegistrationDelegate.java:153) ~[spring-context-6.2.3.jar:6.2.3]
+	at org.springframework.context.support.AbstractApplicationContext.invokeBeanFactoryPostProcessors(AbstractApplicationContext.java:791) ~[spring-context-6.2.3.jar:6.2.3]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:609) ~[spring-context-6.2.3.jar:6.2.3]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.4.3.jar:3.4.3]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:752) ~[spring-boot-3.4.3.jar:3.4.3]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439) ~[spring-boot-3.4.3.jar:3.4.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318) ~[spring-boot-3.4.3.jar:3.4.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361) ~[spring-boot-3.4.3.jar:3.4.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350) ~[spring-boot-3.4.3.jar:3.4.3]
+	at com.example.practica52.Practica52Application.main(Practica52Application.java:10) ~[classes/:na]
+Caused by: java.lang.NoClassDefFoundError: lombok/extern/slf4j/Slf4j
+	at com.example.practica52.config.BatchConfig.<clinit>(BatchConfig.java:22) ~[classes/:na]
+	at java.base/java.lang.Class.forName0(Native Method) ~[na:na]
+	at java.base/java.lang.Class.forName(Class.java:467) ~[na:na]
+	at org.springframework.cglib.core.ReflectUtils.defineClass(ReflectUtils.java:559) ~[spring-core-6.2.3.jar:6.2.3]
+	at org.springframework.cglib.core.AbstractClassGenerator.generate(AbstractClassGenerator.java:371) ~[spring-core-6.2.3.jar:6.2.3]
+	at org.springframework.cglib.proxy.Enhancer.generate(Enhancer.java:575) ~[spring-core-6.2.3.jar:6.2.3]
+	at org.springframework.cglib.core.AbstractClassGenerator$ClassLoaderData.lambda$new$1(AbstractClassGenerator.java:107) ~[spring-core-6.2.3.jar:6.2.3]
+	at org.springframework.cglib.core.internal.LoadingCache.lambda$createEntry$1(LoadingCache.java:52) ~[spring-core-6.2.3.jar:6.2.3]
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264) ~[na:na]
+	at org.springframework.cglib.core.internal.LoadingCache.createEntry(LoadingCache.java:57) ~[spring-core-6.2.3.jar:6.2.3]
+	... 20 common frames omitted
+Caused by: java.lang.ClassNotFoundException: lombok.extern.slf4j.Slf4j
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641) ~[na:na]
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188) ~[na:na]
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525) ~[na:na]
+	... 30 common frames omitted
+
+2025-03-13T12:49:17.188+01:00  WARN 2384 --- [practica52] [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: java.lang.IllegalStateException: Unable to load cache item
+2025-03-13T12:49:17.231+01:00 ERROR 2384 --- [practica52] [main] o.s.boot.SpringApplication               : Application run failed
+
+java.lang.IllegalStateException: Unable to load cache item
+	at org.springframework.cglib.core.internal.LoadingCache.createEntry(LoadingCache.java:75) ~[spring-core-6.2.3.jar:6.2.3]
+	at org.springframework.cglib.core.internal.LoadingCache.get(LoadingCache.java:34) ~[spring-core-6.2.3.jar:6.2.3]
+	at org.springframework.cglib.core.AbstractClassGenerator$ClassLoaderData.get(AbstractClassGenerator.java:130) ~[spring-core-6.2.3.jar:6.2.3]
+	at org.springframework.cglib.core.AbstractClassGenerator.create(AbstractClassGenerator.java:317) ~[spring-core-6.2.3.jar:6.2.3]
+	at org.springframework.cglib.proxy.Enhancer.createHelper(Enhancer.java:562) ~[spring-core-6.2.3.jar:6.2.3]
+	at org.springframework.cglib.proxy.Enhancer.createClass(Enhancer.java:407) ~[spring-core-6.2.3.jar:6.2.3]
+	at org.springframework.context.annotation.ConfigurationClassEnhancer.createClass(ConfigurationClassEnhancer.java:169) ~[spring-context-6.2.3.jar:6.2.3]
+	at org.springframework.context.annotation.ConfigurationClassEnhancer.enhance(ConfigurationClassEnhancer.java:121) ~[spring-context-6.2.3.jar:6.2.3]
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.enhanceConfigurationClasses(ConfigurationClassPostProcessor.java:539) ~[spring-context-6.2.3.jar:6.2.3]
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.postProcessBeanFactory(ConfigurationClassPostProcessor.java:311) ~[spring-context-6.2.3.jar:6.2.3]
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanFactoryPostProcessors(PostProcessorRegistrationDelegate.java:363) ~[spring-context-6.2.3.jar:6.2.3]
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanFactoryPostProcessors(PostProcessorRegistrationDelegate.java:153) ~[spring-context-6.2.3.jar:6.2.3]
+	at org.springframework.context.support.AbstractApplicationContext.invokeBeanFactoryPostProcessors(AbstractApplicationContext.java:791) ~[spring-context-6.2.3.jar:6.2.3]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:609) ~[spring-context-6.2.3.jar:6.2.3]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.4.3.jar:3.4.3]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:752) ~[spring-boot-3.4.3.jar:3.4.3]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439) ~[spring-boot-3.4.3.jar:3.4.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318) ~[spring-boot-3.4.3.jar:3.4.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361) ~[spring-boot-3.4.3.jar:3.4.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350) ~[spring-boot-3.4.3.jar:3.4.3]
+	at com.example.practica52.Practica52Application.main(Practica52Application.java:10) ~[classes/:na]
+Caused by: java.lang.NoClassDefFoundError: lombok/extern/slf4j/Slf4j
+	at com.example.practica52.config.BatchConfig.<clinit>(BatchConfig.java:22) ~[classes/:na]
+	at java.base/java.lang.Class.forName0(Native Method) ~[na:na]
+	at java.base/java.lang.Class.forName(Class.java:467) ~[na:na]
+	at org.springframework.cglib.core.ReflectUtils.defineClass(ReflectUtils.java:559) ~[spring-core-6.2.3.jar:6.2.3]
+	at org.springframework.cglib.core.AbstractClassGenerator.generate(AbstractClassGenerator.java:371) ~[spring-core-6.2.3.jar:6.2.3]
+	at org.springframework.cglib.proxy.Enhancer.generate(Enhancer.java:575) ~[spring-core-6.2.3.jar:6.2.3]
+	at org.springframework.cglib.core.AbstractClassGenerator$ClassLoaderData.lambda$new$1(AbstractClassGenerator.java:107) ~[spring-core-6.2.3.jar:6.2.3]
+	at org.springframework.cglib.core.internal.LoadingCache.lambda$createEntry$1(LoadingCache.java:52) ~[spring-core-6.2.3.jar:6.2.3]
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264) ~[na:na]
+	at org.springframework.cglib.core.internal.LoadingCache.createEntry(LoadingCache.java:57) ~[spring-core-6.2.3.jar:6.2.3]
+	... 20 common frames omitted
+Caused by: java.lang.ClassNotFoundException: lombok.extern.slf4j.Slf4j
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641) ~[na:na]
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188) ~[na:na]
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525) ~[na:na]
+	... 30 common frames omitted
+
+2025-03-13T12:51:31.813+01:00  WARN 16720 --- [practica52] [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: java.lang.IllegalStateException: Unable to load cache item
+2025-03-13T12:51:31.861+01:00 ERROR 16720 --- [practica52] [main] o.s.boot.SpringApplication               : Application run failed
+
+java.lang.IllegalStateException: Unable to load cache item
+	at org.springframework.cglib.core.internal.LoadingCache.createEntry(LoadingCache.java:75) ~[spring-core-6.2.3.jar:6.2.3]
+	at org.springframework.cglib.core.internal.LoadingCache.get(LoadingCache.java:34) ~[spring-core-6.2.3.jar:6.2.3]
+	at org.springframework.cglib.core.AbstractClassGenerator$ClassLoaderData.get(AbstractClassGenerator.java:130) ~[spring-core-6.2.3.jar:6.2.3]
+	at org.springframework.cglib.core.AbstractClassGenerator.create(AbstractClassGenerator.java:317) ~[spring-core-6.2.3.jar:6.2.3]
+	at org.springframework.cglib.proxy.Enhancer.createHelper(Enhancer.java:562) ~[spring-core-6.2.3.jar:6.2.3]
+	at org.springframework.cglib.proxy.Enhancer.createClass(Enhancer.java:407) ~[spring-core-6.2.3.jar:6.2.3]
+	at org.springframework.context.annotation.ConfigurationClassEnhancer.createClass(ConfigurationClassEnhancer.java:169) ~[spring-context-6.2.3.jar:6.2.3]
+	at org.springframework.context.annotation.ConfigurationClassEnhancer.enhance(ConfigurationClassEnhancer.java:121) ~[spring-context-6.2.3.jar:6.2.3]
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.enhanceConfigurationClasses(ConfigurationClassPostProcessor.java:539) ~[spring-context-6.2.3.jar:6.2.3]
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.postProcessBeanFactory(ConfigurationClassPostProcessor.java:311) ~[spring-context-6.2.3.jar:6.2.3]
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanFactoryPostProcessors(PostProcessorRegistrationDelegate.java:363) ~[spring-context-6.2.3.jar:6.2.3]
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanFactoryPostProcessors(PostProcessorRegistrationDelegate.java:153) ~[spring-context-6.2.3.jar:6.2.3]
+	at org.springframework.context.support.AbstractApplicationContext.invokeBeanFactoryPostProcessors(AbstractApplicationContext.java:791) ~[spring-context-6.2.3.jar:6.2.3]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:609) ~[spring-context-6.2.3.jar:6.2.3]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.4.3.jar:3.4.3]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:752) ~[spring-boot-3.4.3.jar:3.4.3]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439) ~[spring-boot-3.4.3.jar:3.4.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318) ~[spring-boot-3.4.3.jar:3.4.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361) ~[spring-boot-3.4.3.jar:3.4.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350) ~[spring-boot-3.4.3.jar:3.4.3]
+	at com.example.practica52.Practica52Application.main(Practica52Application.java:10) ~[classes/:na]
+Caused by: java.lang.NoClassDefFoundError: lombok/extern/slf4j/Slf4j
+	at com.example.practica52.config.BatchConfig.<clinit>(BatchConfig.java:22) ~[classes/:na]
+	at java.base/java.lang.Class.forName0(Native Method) ~[na:na]
+	at java.base/java.lang.Class.forName(Class.java:467) ~[na:na]
+	at org.springframework.cglib.core.ReflectUtils.defineClass(ReflectUtils.java:559) ~[spring-core-6.2.3.jar:6.2.3]
+	at org.springframework.cglib.core.AbstractClassGenerator.generate(AbstractClassGenerator.java:371) ~[spring-core-6.2.3.jar:6.2.3]
+	at org.springframework.cglib.proxy.Enhancer.generate(Enhancer.java:575) ~[spring-core-6.2.3.jar:6.2.3]
+	at org.springframework.cglib.core.AbstractClassGenerator$ClassLoaderData.lambda$new$1(AbstractClassGenerator.java:107) ~[spring-core-6.2.3.jar:6.2.3]
+	at org.springframework.cglib.core.internal.LoadingCache.lambda$createEntry$1(LoadingCache.java:52) ~[spring-core-6.2.3.jar:6.2.3]
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264) ~[na:na]
+	at org.springframework.cglib.core.internal.LoadingCache.createEntry(LoadingCache.java:57) ~[spring-core-6.2.3.jar:6.2.3]
+	... 20 common frames omitted
+Caused by: java.lang.ClassNotFoundException: lombok.extern.slf4j.Slf4j
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641) ~[na:na]
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188) ~[na:na]
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525) ~[na:na]
+	... 30 common frames omitted
+
+2025-03-13T12:54:27.044+01:00  WARN 6352 --- [practica52] [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: java.lang.IllegalStateException: Unable to load cache item
+2025-03-13T12:54:27.093+01:00 ERROR 6352 --- [practica52] [main] o.s.boot.SpringApplication               : Application run failed
+
+java.lang.IllegalStateException: Unable to load cache item
+	at org.springframework.cglib.core.internal.LoadingCache.createEntry(LoadingCache.java:75) ~[spring-core-6.2.3.jar:6.2.3]
+	at org.springframework.cglib.core.internal.LoadingCache.get(LoadingCache.java:34) ~[spring-core-6.2.3.jar:6.2.3]
+	at org.springframework.cglib.core.AbstractClassGenerator$ClassLoaderData.get(AbstractClassGenerator.java:130) ~[spring-core-6.2.3.jar:6.2.3]
+	at org.springframework.cglib.core.AbstractClassGenerator.create(AbstractClassGenerator.java:317) ~[spring-core-6.2.3.jar:6.2.3]
+	at org.springframework.cglib.proxy.Enhancer.createHelper(Enhancer.java:562) ~[spring-core-6.2.3.jar:6.2.3]
+	at org.springframework.cglib.proxy.Enhancer.createClass(Enhancer.java:407) ~[spring-core-6.2.3.jar:6.2.3]
+	at org.springframework.context.annotation.ConfigurationClassEnhancer.createClass(ConfigurationClassEnhancer.java:169) ~[spring-context-6.2.3.jar:6.2.3]
+	at org.springframework.context.annotation.ConfigurationClassEnhancer.enhance(ConfigurationClassEnhancer.java:121) ~[spring-context-6.2.3.jar:6.2.3]
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.enhanceConfigurationClasses(ConfigurationClassPostProcessor.java:539) ~[spring-context-6.2.3.jar:6.2.3]
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.postProcessBeanFactory(ConfigurationClassPostProcessor.java:311) ~[spring-context-6.2.3.jar:6.2.3]
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanFactoryPostProcessors(PostProcessorRegistrationDelegate.java:363) ~[spring-context-6.2.3.jar:6.2.3]
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanFactoryPostProcessors(PostProcessorRegistrationDelegate.java:153) ~[spring-context-6.2.3.jar:6.2.3]
+	at org.springframework.context.support.AbstractApplicationContext.invokeBeanFactoryPostProcessors(AbstractApplicationContext.java:791) ~[spring-context-6.2.3.jar:6.2.3]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:609) ~[spring-context-6.2.3.jar:6.2.3]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.4.3.jar:3.4.3]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:752) ~[spring-boot-3.4.3.jar:3.4.3]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439) ~[spring-boot-3.4.3.jar:3.4.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318) ~[spring-boot-3.4.3.jar:3.4.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361) ~[spring-boot-3.4.3.jar:3.4.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350) ~[spring-boot-3.4.3.jar:3.4.3]
+	at com.example.practica52.Practica52Application.main(Practica52Application.java:10) ~[classes/:na]
+Caused by: java.lang.NoClassDefFoundError: lombok/extern/slf4j/Slf4j
+	at com.example.practica52.config.BatchConfig.<clinit>(BatchConfig.java:22) ~[classes/:na]
+	at java.base/java.lang.Class.forName0(Native Method) ~[na:na]
+	at java.base/java.lang.Class.forName(Class.java:467) ~[na:na]
+	at org.springframework.cglib.core.ReflectUtils.defineClass(ReflectUtils.java:559) ~[spring-core-6.2.3.jar:6.2.3]
+	at org.springframework.cglib.core.AbstractClassGenerator.generate(AbstractClassGenerator.java:371) ~[spring-core-6.2.3.jar:6.2.3]
+	at org.springframework.cglib.proxy.Enhancer.generate(Enhancer.java:575) ~[spring-core-6.2.3.jar:6.2.3]
+	at org.springframework.cglib.core.AbstractClassGenerator$ClassLoaderData.lambda$new$1(AbstractClassGenerator.java:107) ~[spring-core-6.2.3.jar:6.2.3]
+	at org.springframework.cglib.core.internal.LoadingCache.lambda$createEntry$1(LoadingCache.java:52) ~[spring-core-6.2.3.jar:6.2.3]
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264) ~[na:na]
+	at org.springframework.cglib.core.internal.LoadingCache.createEntry(LoadingCache.java:57) ~[spring-core-6.2.3.jar:6.2.3]
+	... 20 common frames omitted
+Caused by: java.lang.ClassNotFoundException: lombok.extern.slf4j.Slf4j
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641) ~[na:na]
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188) ~[na:na]
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525) ~[na:na]
+	... 30 common frames omitted
+
+2025-03-13T13:20:20.209+01:00  WARN 11280 --- [practica52] [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: java.lang.IllegalStateException: Unable to load cache item
+2025-03-13T13:20:20.264+01:00 ERROR 11280 --- [practica52] [main] o.s.boot.SpringApplication               : Application run failed
+
+java.lang.IllegalStateException: Unable to load cache item
+	at org.springframework.cglib.core.internal.LoadingCache.createEntry(LoadingCache.java:75) ~[spring-core-6.2.3.jar:6.2.3]
+	at org.springframework.cglib.core.internal.LoadingCache.get(LoadingCache.java:34) ~[spring-core-6.2.3.jar:6.2.3]
+	at org.springframework.cglib.core.AbstractClassGenerator$ClassLoaderData.get(AbstractClassGenerator.java:130) ~[spring-core-6.2.3.jar:6.2.3]
+	at org.springframework.cglib.core.AbstractClassGenerator.create(AbstractClassGenerator.java:317) ~[spring-core-6.2.3.jar:6.2.3]
+	at org.springframework.cglib.proxy.Enhancer.createHelper(Enhancer.java:562) ~[spring-core-6.2.3.jar:6.2.3]
+	at org.springframework.cglib.proxy.Enhancer.createClass(Enhancer.java:407) ~[spring-core-6.2.3.jar:6.2.3]
+	at org.springframework.context.annotation.ConfigurationClassEnhancer.createClass(ConfigurationClassEnhancer.java:169) ~[spring-context-6.2.3.jar:6.2.3]
+	at org.springframework.context.annotation.ConfigurationClassEnhancer.enhance(ConfigurationClassEnhancer.java:121) ~[spring-context-6.2.3.jar:6.2.3]
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.enhanceConfigurationClasses(ConfigurationClassPostProcessor.java:539) ~[spring-context-6.2.3.jar:6.2.3]
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.postProcessBeanFactory(ConfigurationClassPostProcessor.java:311) ~[spring-context-6.2.3.jar:6.2.3]
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanFactoryPostProcessors(PostProcessorRegistrationDelegate.java:363) ~[spring-context-6.2.3.jar:6.2.3]
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanFactoryPostProcessors(PostProcessorRegistrationDelegate.java:153) ~[spring-context-6.2.3.jar:6.2.3]
+	at org.springframework.context.support.AbstractApplicationContext.invokeBeanFactoryPostProcessors(AbstractApplicationContext.java:791) ~[spring-context-6.2.3.jar:6.2.3]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:609) ~[spring-context-6.2.3.jar:6.2.3]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.4.3.jar:3.4.3]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:752) ~[spring-boot-3.4.3.jar:3.4.3]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439) ~[spring-boot-3.4.3.jar:3.4.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318) ~[spring-boot-3.4.3.jar:3.4.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361) ~[spring-boot-3.4.3.jar:3.4.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350) ~[spring-boot-3.4.3.jar:3.4.3]
+	at com.example.practica52.Practica52Application.main(Practica52Application.java:10) ~[classes/:na]
+Caused by: java.lang.NoClassDefFoundError: lombok/extern/slf4j/Slf4j
+	at com.example.practica52.config.processor.CalleACsvProcessor.<clinit>(CalleACsvProcessor.java:16) ~[classes/:na]
+	at java.base/java.lang.Class.forName0(Native Method) ~[na:na]
+	at java.base/java.lang.Class.forName(Class.java:467) ~[na:na]
+	at org.springframework.cglib.core.ReflectUtils.defineClass(ReflectUtils.java:559) ~[spring-core-6.2.3.jar:6.2.3]
+	at org.springframework.cglib.core.AbstractClassGenerator.generate(AbstractClassGenerator.java:371) ~[spring-core-6.2.3.jar:6.2.3]
+	at org.springframework.cglib.proxy.Enhancer.generate(Enhancer.java:575) ~[spring-core-6.2.3.jar:6.2.3]
+	at org.springframework.cglib.core.AbstractClassGenerator$ClassLoaderData.lambda$new$1(AbstractClassGenerator.java:107) ~[spring-core-6.2.3.jar:6.2.3]
+	at org.springframework.cglib.core.internal.LoadingCache.lambda$createEntry$1(LoadingCache.java:52) ~[spring-core-6.2.3.jar:6.2.3]
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264) ~[na:na]
+	at org.springframework.cglib.core.internal.LoadingCache.createEntry(LoadingCache.java:57) ~[spring-core-6.2.3.jar:6.2.3]
+	... 20 common frames omitted
+Caused by: java.lang.ClassNotFoundException: lombok.extern.slf4j.Slf4j
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641) ~[na:na]
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188) ~[na:na]
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525) ~[na:na]
+	... 30 common frames omitted
+
+2025-03-13T13:27:49.135+01:00  WARN 16992 --- [practica52] [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: java.lang.IllegalStateException: Unable to load cache item
+2025-03-13T13:27:49.173+01:00 ERROR 16992 --- [practica52] [main] o.s.boot.SpringApplication               : Application run failed
+
+java.lang.IllegalStateException: Unable to load cache item
+	at org.springframework.cglib.core.internal.LoadingCache.createEntry(LoadingCache.java:75) ~[spring-core-6.2.3.jar:6.2.3]
+	at org.springframework.cglib.core.internal.LoadingCache.get(LoadingCache.java:34) ~[spring-core-6.2.3.jar:6.2.3]
+	at org.springframework.cglib.core.AbstractClassGenerator$ClassLoaderData.get(AbstractClassGenerator.java:130) ~[spring-core-6.2.3.jar:6.2.3]
+	at org.springframework.cglib.core.AbstractClassGenerator.create(AbstractClassGenerator.java:317) ~[spring-core-6.2.3.jar:6.2.3]
+	at org.springframework.cglib.proxy.Enhancer.createHelper(Enhancer.java:562) ~[spring-core-6.2.3.jar:6.2.3]
+	at org.springframework.cglib.proxy.Enhancer.createClass(Enhancer.java:407) ~[spring-core-6.2.3.jar:6.2.3]
+	at org.springframework.context.annotation.ConfigurationClassEnhancer.createClass(ConfigurationClassEnhancer.java:169) ~[spring-context-6.2.3.jar:6.2.3]
+	at org.springframework.context.annotation.ConfigurationClassEnhancer.enhance(ConfigurationClassEnhancer.java:121) ~[spring-context-6.2.3.jar:6.2.3]
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.enhanceConfigurationClasses(ConfigurationClassPostProcessor.java:539) ~[spring-context-6.2.3.jar:6.2.3]
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.postProcessBeanFactory(ConfigurationClassPostProcessor.java:311) ~[spring-context-6.2.3.jar:6.2.3]
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanFactoryPostProcessors(PostProcessorRegistrationDelegate.java:363) ~[spring-context-6.2.3.jar:6.2.3]
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanFactoryPostProcessors(PostProcessorRegistrationDelegate.java:153) ~[spring-context-6.2.3.jar:6.2.3]
+	at org.springframework.context.support.AbstractApplicationContext.invokeBeanFactoryPostProcessors(AbstractApplicationContext.java:791) ~[spring-context-6.2.3.jar:6.2.3]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:609) ~[spring-context-6.2.3.jar:6.2.3]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.4.3.jar:3.4.3]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:752) ~[spring-boot-3.4.3.jar:3.4.3]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439) ~[spring-boot-3.4.3.jar:3.4.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318) ~[spring-boot-3.4.3.jar:3.4.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361) ~[spring-boot-3.4.3.jar:3.4.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350) ~[spring-boot-3.4.3.jar:3.4.3]
+	at com.example.practica52.Practica52Application.main(Practica52Application.java:10) ~[classes/:na]
+Caused by: java.lang.NoClassDefFoundError: lombok/extern/slf4j/Slf4j
+	at com.example.practica52.config.writter.CalleWritter.<clinit>(CalleWritter.java:16) ~[classes/:na]
+	at java.base/java.lang.Class.forName0(Native Method) ~[na:na]
+	at java.base/java.lang.Class.forName(Class.java:467) ~[na:na]
+	at org.springframework.cglib.core.ReflectUtils.defineClass(ReflectUtils.java:559) ~[spring-core-6.2.3.jar:6.2.3]
+	at org.springframework.cglib.core.AbstractClassGenerator.generate(AbstractClassGenerator.java:371) ~[spring-core-6.2.3.jar:6.2.3]
+	at org.springframework.cglib.proxy.Enhancer.generate(Enhancer.java:575) ~[spring-core-6.2.3.jar:6.2.3]
+	at org.springframework.cglib.core.AbstractClassGenerator$ClassLoaderData.lambda$new$1(AbstractClassGenerator.java:107) ~[spring-core-6.2.3.jar:6.2.3]
+	at org.springframework.cglib.core.internal.LoadingCache.lambda$createEntry$1(LoadingCache.java:52) ~[spring-core-6.2.3.jar:6.2.3]
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264) ~[na:na]
+	at org.springframework.cglib.core.internal.LoadingCache.createEntry(LoadingCache.java:57) ~[spring-core-6.2.3.jar:6.2.3]
+	... 20 common frames omitted
+Caused by: java.lang.ClassNotFoundException: lombok.extern.slf4j.Slf4j
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641) ~[na:na]
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188) ~[na:na]
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525) ~[na:na]
+	... 30 common frames omitted
+
+2025-03-13T13:30:00.748+01:00  WARN 24696 --- [practica52] [main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-03-13T13:30:02.732+01:00  WARN 24696 --- [practica52] [main] o.s.b.c.l.AbstractListenerFactoryBean    : org.springframework.batch.item.ItemProcessor is an interface. The implementing class will not be queried for annotation based listener configurations. If using @StepScope on a @Bean method, be sure to return the implementing class so listener annotations can be used.
+2025-03-13T13:30:02.746+01:00  WARN 24696 --- [practica52] [main] o.s.b.c.l.AbstractListenerFactoryBean    : org.springframework.batch.item.ItemProcessor is an interface. The implementing class will not be queried for annotation based listener configurations. If using @StepScope on a @Bean method, be sure to return the implementing class so listener annotations can be used.
+2025-03-13T13:30:02.842+01:00  WARN 24696 --- [practica52] [main] o.s.b.c.l.AbstractListenerFactoryBean    : org.springframework.batch.item.ItemProcessor is an interface. The implementing class will not be queried for annotation based listener configurations. If using @StepScope on a @Bean method, be sure to return the implementing class so listener annotations can be used.
+2025-03-13T13:30:02.849+01:00  WARN 24696 --- [practica52] [main] o.s.b.c.l.AbstractListenerFactoryBean    : org.springframework.batch.item.ItemProcessor is an interface. The implementing class will not be queried for annotation based listener configurations. If using @StepScope on a @Bean method, be sure to return the implementing class so listener annotations can be used.
+2025-03-13T13:30:02.851+01:00  WARN 24696 --- [practica52] [main] o.s.b.c.s.b.FaultTolerantStepBuilder     : Asynchronous TaskExecutor detected with ItemStream reader.  This is probably an error, and may lead to incorrect restart data being stored.
+2025-03-13T13:30:02.908+01:00  WARN 24696 --- [practica52] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-03-13T13:30:05.464+01:00  WARN 24696 --- [practica52] [main] c.e.p.listener.SkipListenerConfig        : Error de lectura  en Parsing error at line: 844 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[5428,PL,"ANTONIO ASENSI ""EL CHICUELO"",1,3,""EL PALO ",2,ESTE,,,]
+2025-03-13T13:30:05.465+01:00  WARN 24696 --- [practica52] [main] c.e.p.listener.SkipListenerConfig        : Error de lectura  en Parsing error at line: 845 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[5428,PL,"ANTONIO ASENSI ""EL CHICUELO"",2,2,""EL PALO ",2,ESTE,,,]
+2025-03-13T13:30:07.601+01:00  WARN 24696 --- [practica52] [main] c.e.p.listener.SkipListenerConfig        : Error de lectura  en Parsing error at line: 4366 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[21683,CL,"ENRIQUETA ""LA REPOMPA"",1,95,""EL CUARTON",8,CHURRIANA ,,,]
+2025-03-13T13:30:07.601+01:00  WARN 24696 --- [practica52] [main] c.e.p.listener.SkipListenerConfig        : Error de lectura  en Parsing error at line: 4367 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[21683,CL,"ENRIQUETA ""LA REPOMPA"",2,106,""EL CUARTON",8,CHURRIANA ,,,]
+2025-03-13T13:30:08.941+01:00  WARN 24696 --- [practica52] [main] c.e.p.listener.SkipListenerConfig        : Error de lectura  en Parsing error at line: 6870 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[37774,PL,"JUAN GOMEZ ""JUANITO"",1,9,""EL HIGUERAL ",7,CARRETERA DE CADIZ,,,]
+2025-03-13T13:30:08.942+01:00  WARN 24696 --- [practica52] [main] c.e.p.listener.SkipListenerConfig        : Error de lectura  en Parsing error at line: 6871 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[37774,PL,"JUAN GOMEZ ""JUANITO"",2,10,""EL HIGUERAL ",7,CARRETERA DE CADIZ,,,]
+2025-03-13T13:30:08.976+01:00  WARN 24696 --- [practica52] [main] c.e.p.listener.SkipListenerConfig        : Error de lectura  en Parsing error at line: 6932 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[11985,PQUE,"JUAN ROSA ""EL PULGA"",1,1,""CIUDAD JARD?N ",3,CIUDAD JARDIN ,,,]
+2025-03-13T13:30:08.977+01:00  WARN 24696 --- [practica52] [main] c.e.p.listener.SkipListenerConfig        : Error de lectura  en Parsing error at line: 6933 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[11985,PQUE,"JUAN ROSA ""EL PULGA"",2,2,""CIUDAD JARD?N ",3,CIUDAD JARDIN ,,,]
+2025-03-13T13:30:09.396+01:00  WARN 24696 --- [practica52] [main] c.e.p.listener.SkipListenerConfig        : Error de lectura  en Parsing error at line: 7583 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[39700,CL,"LEOPOLDO ALAS ""CLARIN"",1,9,""JARDIN DE LA ABADIA ",7,CARRETERA DE CADIZ,,,]
+2025-03-13T13:30:09.397+01:00  WARN 24696 --- [practica52] [main] c.e.p.listener.SkipListenerConfig        : Error de lectura  en Parsing error at line: 7584 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[39700,CL,"LEOPOLDO ALAS ""CLARIN"",2,10,""JARDIN DE LA ABADIA ",7,CARRETERA DE CADIZ,,,]
+2025-03-13T13:30:11.359+01:00  WARN 24696 --- [practica52] [main] c.e.p.listener.SkipListenerConfig        : Error de lectura  en Parsing error at line: 10916 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[21699,CL,"RAFAEL ""EL MORENO"",1,107,""EL CUARTON",8,CHURRIANA ,,,]
+2025-03-13T13:30:11.361+01:00  WARN 24696 --- [practica52] [main] c.e.p.listener.SkipListenerConfig        : Error de lectura  en Parsing error at line: 10917 in resource=[file [C:\Users\6003351\Desktop\Practicas\BatchSimpleCSV-main\practica52\src\main\resources\tramos_calle_BarrioDismuni.csv]], input=[21699,CL,"RAFAEL ""EL MORENO"",2,44,""EL CUARTON",8,CHURRIANA ,,,]
+2025-03-13T13:30:12.944+01:00 ERROR 24696 --- [practica52] [main] o.s.boot.SpringApplication               : Application run failed
+
+java.lang.ArrayIndexOutOfBoundsException: Index 1 out of bounds for length 1
+	at com.example.practica52.config.BatchConfig.lambda$jobLauncherRunner$0(BatchConfig.java:37) ~[classes/:na]
+	at org.springframework.boot.SpringApplication.lambda$callRunner$5(SpringApplication.java:788) ~[spring-boot-3.4.3.jar:3.4.3]
+	at org.springframework.util.function.ThrowingConsumer$1.acceptWithException(ThrowingConsumer.java:82) ~[spring-core-6.2.3.jar:6.2.3]
+	at org.springframework.util.function.ThrowingConsumer.accept(ThrowingConsumer.java:60) ~[spring-core-6.2.3.jar:6.2.3]
+	at org.springframework.util.function.ThrowingConsumer$1.accept(ThrowingConsumer.java:86) ~[spring-core-6.2.3.jar:6.2.3]
+	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:796) ~[spring-boot-3.4.3.jar:3.4.3]
+	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:787) ~[spring-boot-3.4.3.jar:3.4.3]
+	at org.springframework.boot.SpringApplication.lambda$callRunners$3(SpringApplication.java:772) ~[spring-boot-3.4.3.jar:3.4.3]
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:183) ~[na:na]
+	at java.base/java.util.stream.SortedOps$SizedRefSortingSink.end(SortedOps.java:357) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:510) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499) ~[na:na]
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:150) ~[na:na]
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:173) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596) ~[na:na]
+	at org.springframework.boot.SpringApplication.callRunners(SpringApplication.java:772) ~[spring-boot-3.4.3.jar:3.4.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:325) ~[spring-boot-3.4.3.jar:3.4.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361) ~[spring-boot-3.4.3.jar:3.4.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350) ~[spring-boot-3.4.3.jar:3.4.3]
+	at com.example.practica52.Practica52Application.main(Practica52Application.java:10) ~[classes/:na]
+
+2025-03-13T13:30:13.777+01:00  WARN 24696 --- [practica52] [main] o.s.b.f.support.DisposableBeanAdapter    : Custom destroy method 'close' on bean with name 'csvDistritoReader' propagated an exception: org.springframework.batch.item.ItemStreamException: Error while closing item reader
+2025-03-13T13:31:38.990+01:00  WARN 16876 --- [practica52] [main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-03-13T13:31:40.754+01:00  WARN 16876 --- [practica52] [main] o.s.b.c.l.AbstractListenerFactoryBean    : org.springframework.batch.item.ItemProcessor is an interface. The implementing class will not be queried for annotation based listener configurations. If using @StepScope on a @Bean method, be sure to return the implementing class so listener annotations can be used.
+2025-03-13T13:31:40.764+01:00  WARN 16876 --- [practica52] [main] o.s.b.c.l.AbstractListenerFactoryBean    : org.springframework.batch.item.ItemProcessor is an interface. The implementing class will not be queried for annotation based listener configurations. If using @StepScope on a @Bean method, be sure to return the implementing class so listener annotations can be used.
+2025-03-13T13:31:40.832+01:00  WARN 16876 --- [practica52] [main] o.s.b.c.l.AbstractListenerFactoryBean    : org.springframework.batch.item.ItemProcessor is an interface. The implementing class will not be queried for annotation based listener configurations. If using @StepScope on a @Bean method, be sure to return the implementing class so listener annotations can be used.
+2025-03-13T13:31:40.837+01:00  WARN 16876 --- [practica52] [main] o.s.b.c.l.AbstractListenerFactoryBean    : org.springframework.batch.item.ItemProcessor is an interface. The implementing class will not be queried for annotation based listener configurations. If using @StepScope on a @Bean method, be sure to return the implementing class so listener annotations can be used.
+2025-03-13T13:31:40.840+01:00  WARN 16876 --- [practica52] [main] o.s.b.c.s.b.FaultTolerantStepBuilder     : Asynchronous TaskExecutor detected with ItemStream reader.  This is probably an error, and may lead to incorrect restart data being stored.
+2025-03-13T13:31:40.891+01:00  WARN 16876 --- [practica52] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-03-13T13:31:41.386+01:00 ERROR 16876 --- [practica52] [main] o.s.boot.SpringApplication               : Application run failed
+
+java.lang.ArrayIndexOutOfBoundsException: Index 1 out of bounds for length 1
+	at com.example.practica52.config.BatchConfig.lambda$jobLauncherRunner$0(BatchConfig.java:37) ~[classes/:na]
+	at org.springframework.boot.SpringApplication.lambda$callRunner$5(SpringApplication.java:788) ~[spring-boot-3.4.3.jar:3.4.3]
+	at org.springframework.util.function.ThrowingConsumer$1.acceptWithException(ThrowingConsumer.java:82) ~[spring-core-6.2.3.jar:6.2.3]
+	at org.springframework.util.function.ThrowingConsumer.accept(ThrowingConsumer.java:60) ~[spring-core-6.2.3.jar:6.2.3]
+	at org.springframework.util.function.ThrowingConsumer$1.accept(ThrowingConsumer.java:86) ~[spring-core-6.2.3.jar:6.2.3]
+	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:796) ~[spring-boot-3.4.3.jar:3.4.3]
+	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:787) ~[spring-boot-3.4.3.jar:3.4.3]
+	at org.springframework.boot.SpringApplication.lambda$callRunners$3(SpringApplication.java:772) ~[spring-boot-3.4.3.jar:3.4.3]
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:183) ~[na:na]
+	at java.base/java.util.stream.SortedOps$SizedRefSortingSink.end(SortedOps.java:357) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:510) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499) ~[na:na]
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:150) ~[na:na]
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:173) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596) ~[na:na]
+	at org.springframework.boot.SpringApplication.callRunners(SpringApplication.java:772) ~[spring-boot-3.4.3.jar:3.4.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:325) ~[spring-boot-3.4.3.jar:3.4.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361) ~[spring-boot-3.4.3.jar:3.4.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350) ~[spring-boot-3.4.3.jar:3.4.3]
+	at com.example.practica52.Practica52Application.main(Practica52Application.java:10) ~[classes/:na]
+
+2025-03-13T13:31:42.106+01:00  WARN 16876 --- [practica52] [main] o.s.b.f.support.DisposableBeanAdapter    : Custom destroy method 'close' on bean with name 'csvDistritoReader' propagated an exception: org.springframework.batch.item.ItemStreamException: Error while closing item reader
+2025-03-13T13:34:25.371+01:00  WARN 3528 --- [practica52] [main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-03-13T13:34:27.133+01:00  WARN 3528 --- [practica52] [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'calleACalleProcessor' defined in class path resource [com/example/practica52/config/processor/CalleProcessor.class]: Unsatisfied dependency expressed through method 'calleACalleProcessor' parameter 0: Expression parsing failed
+2025-03-13T13:34:27.182+01:00 ERROR 3528 --- [practica52] [main] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'calleACalleProcessor' defined in class path resource [com/example/practica52/config/processor/CalleProcessor.class]: Unsatisfied dependency expressed through method 'calleACalleProcessor' parameter 0: Expression parsing failed
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:804) ~[spring-beans-6.2.3.jar:6.2.3]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:546) ~[spring-beans-6.2.3.jar:6.2.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1361) ~[spring-beans-6.2.3.jar:6.2.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1191) ~[spring-beans-6.2.3.jar:6.2.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:563) ~[spring-beans-6.2.3.jar:6.2.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:523) ~[spring-beans-6.2.3.jar:6.2.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339) ~[spring-beans-6.2.3.jar:6.2.3]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:346) ~[spring-beans-6.2.3.jar:6.2.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337) ~[spring-beans-6.2.3.jar:6.2.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202) ~[spring-beans-6.2.3.jar:6.2.3]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.instantiateSingleton(DefaultListableBeanFactory.java:1155) ~[spring-beans-6.2.3.jar:6.2.3]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingleton(DefaultListableBeanFactory.java:1121) ~[spring-beans-6.2.3.jar:6.2.3]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:1056) ~[spring-beans-6.2.3.jar:6.2.3]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:987) ~[spring-context-6.2.3.jar:6.2.3]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:627) ~[spring-context-6.2.3.jar:6.2.3]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.4.3.jar:3.4.3]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:752) ~[spring-boot-3.4.3.jar:3.4.3]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439) ~[spring-boot-3.4.3.jar:3.4.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318) ~[spring-boot-3.4.3.jar:3.4.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361) ~[spring-boot-3.4.3.jar:3.4.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350) ~[spring-boot-3.4.3.jar:3.4.3]
+	at com.example.practica52.Practica52Application.main(Practica52Application.java:10) ~[classes/:na]
+Caused by: org.springframework.beans.factory.BeanExpressionException: Expression parsing failed
+	at org.springframework.context.expression.StandardBeanExpressionResolver.evaluate(StandardBeanExpressionResolver.java:185) ~[spring-context-6.2.3.jar:6.2.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.evaluateBeanDefinitionString(AbstractBeanFactory.java:1665) ~[spring-beans-6.2.3.jar:6.2.3]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1577) ~[spring-beans-6.2.3.jar:6.2.3]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1552) ~[spring-beans-6.2.3.jar:6.2.3]
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:913) ~[spring-beans-6.2.3.jar:6.2.3]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791) ~[spring-beans-6.2.3.jar:6.2.3]
+	... 21 common frames omitted
+Caused by: org.springframework.expression.spel.SpelEvaluationException: EL1008E: Property or field 'jobParameters' cannot be found on object of type 'org.springframework.beans.factory.config.BeanExpressionContext' - maybe not public or not valid?
+	at org.springframework.expression.spel.ast.PropertyOrFieldReference.readProperty(PropertyOrFieldReference.java:229) ~[spring-expression-6.2.3.jar:6.2.3]
+	at org.springframework.expression.spel.ast.PropertyOrFieldReference.getValueInternal(PropertyOrFieldReference.java:112) ~[spring-expression-6.2.3.jar:6.2.3]
+	at org.springframework.expression.spel.ast.PropertyOrFieldReference.getValueInternal(PropertyOrFieldReference.java:100) ~[spring-expression-6.2.3.jar:6.2.3]
+	at org.springframework.expression.spel.ast.CompoundExpression.getValueRef(CompoundExpression.java:60) ~[spring-expression-6.2.3.jar:6.2.3]
+	at org.springframework.expression.spel.ast.CompoundExpression.getValueInternal(CompoundExpression.java:96) ~[spring-expression-6.2.3.jar:6.2.3]
+	at org.springframework.expression.spel.ast.SpelNodeImpl.getValue(SpelNodeImpl.java:116) ~[spring-expression-6.2.3.jar:6.2.3]
+	at org.springframework.expression.spel.standard.SpelExpression.getValue(SpelExpression.java:273) ~[spring-expression-6.2.3.jar:6.2.3]
+	at org.springframework.context.expression.StandardBeanExpressionResolver.evaluate(StandardBeanExpressionResolver.java:182) ~[spring-context-6.2.3.jar:6.2.3]
+	... 26 common frames omitted
+
+2025-03-13T13:36:05.848+01:00  WARN 7968 --- [practica52] [main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-03-13T13:36:07.689+01:00  WARN 7968 --- [practica52] [main] o.s.b.c.l.AbstractListenerFactoryBean    : org.springframework.batch.item.ItemProcessor is an interface. The implementing class will not be queried for annotation based listener configurations. If using @StepScope on a @Bean method, be sure to return the implementing class so listener annotations can be used.
+2025-03-13T13:36:07.702+01:00  WARN 7968 --- [practica52] [main] o.s.b.c.l.AbstractListenerFactoryBean    : org.springframework.batch.item.ItemProcessor is an interface. The implementing class will not be queried for annotation based listener configurations. If using @StepScope on a @Bean method, be sure to return the implementing class so listener annotations can be used.
+2025-03-13T13:36:07.782+01:00  WARN 7968 --- [practica52] [main] o.s.b.c.l.AbstractListenerFactoryBean    : org.springframework.batch.item.ItemProcessor is an interface. The implementing class will not be queried for annotation based listener configurations. If using @StepScope on a @Bean method, be sure to return the implementing class so listener annotations can be used.
+2025-03-13T13:36:07.788+01:00  WARN 7968 --- [practica52] [main] o.s.b.c.l.AbstractListenerFactoryBean    : org.springframework.batch.item.ItemProcessor is an interface. The implementing class will not be queried for annotation based listener configurations. If using @StepScope on a @Bean method, be sure to return the implementing class so listener annotations can be used.
+2025-03-13T13:36:07.789+01:00  WARN 7968 --- [practica52] [main] o.s.b.c.s.b.FaultTolerantStepBuilder     : Asynchronous TaskExecutor detected with ItemStream reader.  This is probably an error, and may lead to incorrect restart data being stored.
+2025-03-13T13:36:07.842+01:00  WARN 7968 --- [practica52] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-03-13T13:36:08.334+01:00 ERROR 7968 --- [practica52] [main] o.s.boot.SpringApplication               : Application run failed
+
+java.lang.ArrayIndexOutOfBoundsException: Index 1 out of bounds for length 1
+	at com.example.practica52.config.BatchConfig.lambda$jobLauncherRunner$0(BatchConfig.java:37) ~[classes/:na]
+	at org.springframework.boot.SpringApplication.lambda$callRunner$5(SpringApplication.java:788) ~[spring-boot-3.4.3.jar:3.4.3]
+	at org.springframework.util.function.ThrowingConsumer$1.acceptWithException(ThrowingConsumer.java:82) ~[spring-core-6.2.3.jar:6.2.3]
+	at org.springframework.util.function.ThrowingConsumer.accept(ThrowingConsumer.java:60) ~[spring-core-6.2.3.jar:6.2.3]
+	at org.springframework.util.function.ThrowingConsumer$1.accept(ThrowingConsumer.java:86) ~[spring-core-6.2.3.jar:6.2.3]
+	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:796) ~[spring-boot-3.4.3.jar:3.4.3]
+	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:787) ~[spring-boot-3.4.3.jar:3.4.3]
+	at org.springframework.boot.SpringApplication.lambda$callRunners$3(SpringApplication.java:772) ~[spring-boot-3.4.3.jar:3.4.3]
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:183) ~[na:na]
+	at java.base/java.util.stream.SortedOps$SizedRefSortingSink.end(SortedOps.java:357) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:510) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499) ~[na:na]
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:150) ~[na:na]
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:173) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596) ~[na:na]
+	at org.springframework.boot.SpringApplication.callRunners(SpringApplication.java:772) ~[spring-boot-3.4.3.jar:3.4.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:325) ~[spring-boot-3.4.3.jar:3.4.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361) ~[spring-boot-3.4.3.jar:3.4.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350) ~[spring-boot-3.4.3.jar:3.4.3]
+	at com.example.practica52.Practica52Application.main(Practica52Application.java:10) ~[classes/:na]
+
+2025-03-13T13:36:09.071+01:00  WARN 7968 --- [practica52] [main] o.s.b.f.support.DisposableBeanAdapter    : Custom destroy method 'close' on bean with name 'csvDistritoReader' propagated an exception: org.springframework.batch.item.ItemStreamException: Error while closing item reader

@@ -2,11 +2,13 @@ package com.example.practica52.step;
 
 import com.example.practica52.listener.SkipCheckingListener;
 import com.example.practica52.listener.SkipListenerConfig;
-import com.example.practica52.model.Calle;
+import com.example.practica52.model.Distrito;
 import org.springframework.batch.core.Step;
+import org.springframework.batch.core.job.builder.JobBuilder;
 import org.springframework.batch.core.repository.JobRepository;
 import org.springframework.batch.core.step.builder.StepBuilder;
 import org.springframework.batch.item.ItemProcessor;
+import org.springframework.batch.item.ItemReader;
 import org.springframework.batch.item.ItemWriter;
 import org.springframework.batch.item.file.FlatFileItemReader;
 import org.springframework.batch.item.file.FlatFileParseException;
@@ -16,23 +18,22 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.transaction.PlatformTransactionManager;
 
 @Configuration
-public class ExportarACsvStep {
+public class ExportarDistritoACsvStep {
 
     @Bean
-    public Step exportarTodoACsvStep(JobRepository jobRepository,
+    public Step exportarTodosDistritosACsvStep(JobRepository jobRepository,
             PlatformTransactionManager transactionManager,
-            @Qualifier("calleCsvReader")
-            FlatFileItemReader<Calle> csvCalleReader,
-            ItemProcessor<Calle,Calle> csvCProcessor,
-            ItemWriter<Calle> writeCalleACsv,
+            ItemReader<Distrito> csvDistritoReader,
+            ItemProcessor<Distrito, Distrito> csvDProcessor,
+            ItemWriter<Distrito> writeDistritoACsv,
             SkipListenerConfig skipListenerConfig,
             SkipCheckingListener skipCheckingListener){
 
-        return  new StepBuilder("exportaTodoACsvStep", jobRepository)
-                .<Calle, Calle>chunk(10, transactionManager)
-                .reader(csvCalleReader)
-                .processor(csvCProcessor)
-                .writer(writeCalleACsv)
+        return new StepBuilder("exportarTodosDistritosACsvStep", jobRepository)
+                .<Distrito, Distrito>chunk(10, transactionManager)
+                .reader(csvDistritoReader)
+                .processor(csvDProcessor)
+                .writer(writeDistritoACsv)
                 .faultTolerant()
                 .skip(FlatFileParseException.class)
                 .skipLimit(20)
@@ -40,5 +41,4 @@ public class ExportarACsvStep {
                 .listener(skipCheckingListener)
                 .build();
     }
-
 }

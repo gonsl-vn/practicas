@@ -18,7 +18,7 @@ import java.io.File;
 @Configuration
 public class DistritoCsvWritter {
 
-    private final Logger logger = LoggerFactory.getLogger(Slf4j.class);
+    //private final Logger logger = LoggerFactory.getLogger(Slf4j.class);
 
     @Bean
     public ItemWriter<Distrito> writeDistritoACsv(){
@@ -42,9 +42,10 @@ public class DistritoCsvWritter {
         File file = new File("C:\\Users\\6003351\\Desktop\\Practicas\\BatchSimpleCSV-main\\practica52\\src\\main\\resources\\distritos_exportados.csv");
         if(!file.exists()){
             try{
+                log.info("Creando el archivo distritos_exportados.csv");
                 file.createNewFile();
             }catch(Exception e){
-                logger.warn("Error iniciando el fichero distritos csv");
+                log.warn("Error iniciando el fichero distritos csv");
                 throw new RuntimeException("Error creando el fichero de distritos csv",e);
             }
         }

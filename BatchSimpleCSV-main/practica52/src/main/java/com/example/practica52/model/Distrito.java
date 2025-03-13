@@ -3,7 +3,7 @@ package com.example.practica52.model;
 import jakarta.persistence.*;
 import lombok.*;
 
-@Data
+
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor

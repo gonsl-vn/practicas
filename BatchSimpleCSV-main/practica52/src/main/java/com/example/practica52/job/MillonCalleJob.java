@@ -8,12 +8,12 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class ExportarACsvJob {
+public class MillonCalleJob {
 
     @Bean
-    public Job exportarTodoACsvJob(Step exportarTodoACsvStep, Step distritoStep1,
-            Step step, Step exportarTodosDistritosACsvStep, JobRepository jobRepository){
-        return new JobBuilder("exportarTodoACsvJob", jobRepository)
-                .start(step).next(distritoStep1).next(exportarTodoACsvStep).next(exportarTodosDistritosACsvStep).build();
+    public Job copiarMillonCalleJob(Step stepMultihilos,
+            JobRepository jobRepository){
+        return new JobBuilder("copiarMillonCalleJob", jobRepository)
+                .start(stepMultihilos).build();
     }
 }

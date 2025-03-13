@@ -1,0 +1,11 @@
+nombre;DNI;direccion;ciudad;codPostal;importe;numpedido
+Juan Pérez;12345678A;Calle Falsa 123;Madrid;28001;100.00;1
+María García;23456789B;Calle Real 456;Barcelona;08001;200.00;2
+Pedro Martínez;34567890C;Calle Nueva 789;Valencia;46001;50.00;3
+Ana López;45678901D;Calle Vieja 321;Sevilla;41001;150.00;4
+Carlos Díaz;56789012E;Calle Alta 654;Zaragoza;50001;250.00;5
+Eva Rodríguez;67890123F;Calle Baja 987;Málaga;29001;300.00;6
+Luis González;78901234G;Calle Larga 111;Bilbao;48001;400.00;7
+Sofía Sánchez;89012345H;Calle Corta 222;Alicante;03001;350.00;8
+Daniel Fernández;90123456I;Calle Ancha 333;Córdoba;14001;450.00;9
+Cristina Torres;01234567J;Calle Estrecha 444;Granada;18001;500.00;10
