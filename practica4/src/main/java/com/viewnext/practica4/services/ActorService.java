@@ -3,6 +3,8 @@ package com.viewnext.practica4.services;
 import com.viewnext.practica4.models.Actor;
 import com.viewnext.practica4.repositorys.ActorCriteriaRepository;
 import com.viewnext.practica4.repositorys.ActorRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -65,6 +67,12 @@ public class ActorService {
 
     public void actualizarActorCriteria(int idActor, Actor actorActualizado) {
         actorCriteriaRepository.actualizarActor(idActor, actorActualizado);
+    }
+
+    //Pageables
+
+    public Page<Actor> obtenerActores(Pageable pageable) {
+        return actorRepository.findAll(pageable);
     }
 
 }

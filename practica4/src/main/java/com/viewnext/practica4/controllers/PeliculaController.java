@@ -2,6 +2,11 @@ package com.viewnext.practica4.controllers;
 
 import com.viewnext.practica4.models.Pelicula;
 import com.viewnext.practica4.services.PeliculaService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,6 +17,7 @@ import java.util.Optional;
 @RequestMapping("/api/peliculas")
 public class PeliculaController {
 
+    @Autowired
     private final PeliculaService peliculaService;
 
     public PeliculaController(PeliculaService peliculaService) {
@@ -67,5 +73,13 @@ public class PeliculaController {
         } catch (RuntimeException e) {
             return ResponseEntity.notFound().build();
         }
+    }
+
+    @GetMapping("/paginadoYordenado")
+    public Page<Pelicula> encontrarPelicula(@RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "3") int size, @RequestParam(defaultValue = "idPelicula") String orden) {
+        Sort sort = Sort.by(orden).ascending();
+        Pageable pageable = PageRequest.of(page, size, sort);
+        return peliculaService.obtenerPelicula(pageable);
     }
 }

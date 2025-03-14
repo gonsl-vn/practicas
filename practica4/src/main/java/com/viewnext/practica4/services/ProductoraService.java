@@ -3,6 +3,8 @@ package com.viewnext.practica4.services;
 import com.viewnext.practica4.models.Productora;
 import com.viewnext.practica4.repositorys.ProductoraCriteriaRepository;
 import com.viewnext.practica4.repositorys.ProductoraRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -70,4 +72,11 @@ public class ProductoraService {
     public void eliminarProductoraCriteria(int idProductora) {
         productoraCriteriaRepository.borrarProductoraPorId(idProductora);
     }
+
+    //Pageables
+
+    public Page<Productora> obtenerProductora(Pageable pageable) {
+        return productoraRepository.findAll(pageable);
+    }
+
 }

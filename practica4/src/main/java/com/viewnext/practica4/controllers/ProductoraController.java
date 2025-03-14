@@ -2,6 +2,10 @@ package com.viewnext.practica4.controllers;
 
 import com.viewnext.practica4.models.Productora;
 import com.viewnext.practica4.services.ProductoraService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -43,5 +47,13 @@ public class ProductoraController {
     public ResponseEntity<Void> BorrarProductora(@PathVariable int idProductora) {
         productoraService.eliminarProductora(idProductora);
         return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("/paginadoYordenado")
+    public Page<Productora> encontrarProductoras(@RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "3") int size, @RequestParam(defaultValue = "idProductora") String orden) {
+        Sort sort = Sort.by(orden).ascending();
+        Pageable pageable = PageRequest.of(page, size, sort);
+        return productoraService.obtenerProductora(pageable);
     }
 }

@@ -3,6 +3,8 @@ package com.viewnext.practica4.services;
 import com.viewnext.practica4.models.Pelicula;
 import com.viewnext.practica4.repositorys.PeliculaCriteriaRepository;
 import com.viewnext.practica4.repositorys.PeliculaRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -110,5 +112,11 @@ public class PeliculaService {
     @Transactional
     public void borrarPeliculaPorIdCriteria(int idPelicula) {
         peliculaCriteriaRepository.borrarPeliculaPorId(idPelicula);
+    }
+
+    //Pageables
+
+    public Page<Pelicula> obtenerPelicula(Pageable pageable) {
+        return peliculaRepository.findAll(pageable);
     }
 }

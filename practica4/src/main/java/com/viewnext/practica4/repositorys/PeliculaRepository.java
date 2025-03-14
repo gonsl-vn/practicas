@@ -4,6 +4,7 @@ import com.viewnext.practica4.models.Pelicula;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -14,7 +15,7 @@ public interface PeliculaRepository extends JpaRepository<Pelicula, Integer> {
     Optional<Pelicula> findByTitulo(String titulo);
 
     // Buscar películas por año
-    List<Pelicula> findByAno(int ano);
+    List<Pelicula> findByAno(LocalDate ano);
 
     // Buscar películas de una productora específica
     List<Pelicula> findByProductoraIdProductora(int idProductora);

@@ -2,6 +2,10 @@ package com.viewnext.practica4.controllers;
 
 import com.viewnext.practica4.models.Director;
 import com.viewnext.practica4.services.DirectorService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -42,6 +46,14 @@ public class DirectorController {
     public ResponseEntity<Void> BorrarDirector(@PathVariable int idDirector) {
         directorService.eliminarDirector(idDirector);
         return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("/paginadoYordenado")
+    public Page<Director> encontrarActores(@RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "3") int size, @RequestParam(defaultValue = "idDirector") String orden) {
+        Sort sort = Sort.by(orden).ascending();
+        Pageable pageable = PageRequest.of(page, size, sort);
+        return directorService.obtenerDirector(pageable);
     }
 
 }

@@ -3,6 +3,8 @@ package com.viewnext.practica4.services;
 import com.viewnext.practica4.models.Serie;
 import com.viewnext.practica4.repositorys.SerieCriteriaRepository;
 import com.viewnext.practica4.repositorys.SerieRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -75,5 +77,11 @@ public class SerieService {
     @Transactional
     public void eliminarSerieCriteria(int idSerie) {
         serieCriteriaRepository.borrarSeriePorId(idSerie);
+    }
+
+    //Pageables
+
+    public Page<Serie> obtenerSerie(Pageable pageable) {
+        return serieRepository.findAll(pageable);
     }
 }

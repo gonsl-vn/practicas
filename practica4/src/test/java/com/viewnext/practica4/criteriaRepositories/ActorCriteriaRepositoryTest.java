@@ -5,7 +5,10 @@ import com.viewnext.practica4.repositorys.ActorCriteriaRepository;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 import jakarta.persistence.criteria.*;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -18,7 +21,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
-@TestInstance(TestInstance.Lifecycle.PER_CLASS) // Para evitar static en @BeforeAll
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class ActorCriteriaRepositoryTest {
 
     @Mock
@@ -50,16 +53,6 @@ class ActorCriteriaRepositoryTest {
 
     private Actor actor1;
 
-    @BeforeAll
-    void setUpBeforeAll() {
-        System.out.println("Ejecutando configuración global...");
-    }
-
-    @AfterAll
-    void tearDownAfterAll() {
-        System.out.println("Limpieza después de todas las pruebas...");
-    }
-
     // -------------------------------
     // 📌 TEST PARA LISTAR ACTORES
     // -------------------------------
@@ -73,14 +66,6 @@ class ActorCriteriaRepositoryTest {
             when(criteriaBuilder.createQuery(Actor.class)).thenReturn(criteriaQuery);
             when(criteriaQuery.from(Actor.class)).thenReturn(root);
             when(entityManager.createQuery(criteriaQuery)).thenReturn(typedQuery);
-        }
-
-        @AfterEach
-        void tearDown() {
-            // Limpiar datos simulados de los mocks
-            actor1 = null;
-            // Reiniciar el mock después de cada prueba para evitar inconsistencias
-            reset(actorCriteriaRepository);
         }
 
         @Test
@@ -127,14 +112,6 @@ class ActorCriteriaRepositoryTest {
             when(typedQuery.getSingleResult()).thenReturn(actor1);
         }
 
-        @AfterEach
-        void tearDown() {
-            // Limpiar datos simulados de los mocks
-            actor1 = null;
-            // Reiniciar el mock después de cada prueba para evitar inconsistencias
-            reset(actorCriteriaRepository);
-        }
-
         @Test
         void testBuscarActorPorId_OK() {
 
@@ -161,14 +138,6 @@ class ActorCriteriaRepositoryTest {
     // -------------------------------
     @Nested
     class InsertarActorTests {
-
-        @AfterEach
-        void tearDown() {
-            // Limpiar datos simulados de los mocks
-            actor1 = null;
-            // Reiniciar el mock después de cada prueba para evitar inconsistencias
-            reset(actorCriteriaRepository);
-        }
 
         @Test
         void testInsertarActor_OK() {
@@ -199,14 +168,6 @@ class ActorCriteriaRepositoryTest {
     // -------------------------------
     @Nested
     class EliminarActorTests {
-
-        @AfterEach
-        void tearDown() {
-            // Limpiar datos simulados de los mocks
-            actor1 = null;
-            // Reiniciar el mock después de cada prueba para evitar inconsistencias
-            reset(actorCriteriaRepository);
-        }
 
         @BeforeEach
         void setUp() {
@@ -257,14 +218,6 @@ class ActorCriteriaRepositoryTest {
     // -------------------------------
     @Nested
     class ActualizarActorTests {
-
-        @AfterEach
-        void tearDown() {
-            // Limpiar datos simulados de los mocks
-            actor1 = null;
-            // Reiniciar el mock después de cada prueba para evitar inconsistencias
-            reset(actorCriteriaRepository);
-        }
 
         @BeforeEach
         void setUp() {

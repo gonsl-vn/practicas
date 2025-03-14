@@ -3,6 +3,8 @@ package com.viewnext.practica4.services;
 import com.viewnext.practica4.models.Director;
 import com.viewnext.practica4.repositorys.DirectorCriteriaRepository;
 import com.viewnext.practica4.repositorys.DirectorRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -65,5 +67,11 @@ public class DirectorService {
 
     public void actualizarDirectorCriteria(int idDirector, Director actorActualizado) {
         directorCriteriaRepository.actualizarDirector(idDirector, actorActualizado);
+    }
+
+    //Pageables
+
+    public Page<Director> obtenerDirector(Pageable pageable) {
+        return directorRepository.findAll(pageable);
     }
 }
