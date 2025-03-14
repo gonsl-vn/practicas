@@ -3,7 +3,9 @@ package com.viewnext.practica4.contrellers;
 import com.viewnext.practica4.controllers.PeliculaController;
 import com.viewnext.practica4.models.Pelicula;
 import com.viewnext.practica4.services.PeliculaService;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -22,7 +24,6 @@ import static org.mockito.Mockito.*;
  * Clase de pruebas unitarias para PeliculaController.
  */
 @ExtendWith(MockitoExtension.class)
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class PeliculaControllerTest {
 
     @Mock
@@ -32,16 +33,6 @@ class PeliculaControllerTest {
     private PeliculaController peliculaController;
 
     private Pelicula pelicula;
-
-    @BeforeAll
-    void setUpBeforeAll() {
-        System.out.println("Ejecutando configuración global de PeliculaControllerTest...");
-    }
-
-    @AfterAll
-    void tearDownAfterAll() {
-        System.out.println("Limpieza después de todas las pruebas de PeliculaControllerTest...");
-    }
 
     @BeforeEach
     void setUp() {

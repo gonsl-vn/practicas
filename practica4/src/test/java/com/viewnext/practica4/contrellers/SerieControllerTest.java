@@ -3,7 +3,9 @@ package com.viewnext.practica4.contrellers;
 import com.viewnext.practica4.controllers.SerieController;
 import com.viewnext.practica4.models.Serie;
 import com.viewnext.practica4.services.SerieService;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -23,7 +25,6 @@ import static org.mockito.Mockito.*;
  * Clase de pruebas para SerieController (métodos con JPA).
  */
 @ExtendWith(MockitoExtension.class)
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class SerieControllerTest {
 
     @Mock
@@ -33,16 +34,6 @@ class SerieControllerTest {
     private SerieController serieController;
 
     private Serie serie;
-
-    @BeforeAll
-    void beforeAll() {
-        System.out.println("Configuración global para SerieControllerTest...");
-    }
-
-    @AfterAll
-    void afterAll() {
-        System.out.println("Limpieza después de todas las pruebas de SerieControllerTest...");
-    }
 
     @BeforeEach
     void setUpEach() {

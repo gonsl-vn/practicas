@@ -3,7 +3,9 @@ package com.viewnext.practica4.contrellers;
 import com.viewnext.practica4.controllers.DirectorController;
 import com.viewnext.practica4.models.Director;
 import com.viewnext.practica4.services.DirectorService;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -19,7 +21,6 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
-@TestInstance(TestInstance.Lifecycle.PER_CLASS) // Para evitar static en @BeforeAll
 public class DirectorControllerTest {
 
     @Mock
@@ -30,22 +31,17 @@ public class DirectorControllerTest {
 
     private Director director;
 
-    @BeforeAll
-    void setUpBeforeAll() {
-        director = new Director(100, "Steven", "Spielberg", 75, "Estados Unidos");
-        System.out.println("Ejecutando configuración global...");
-    }
-
-    @AfterAll
-    void tearDownAfterAll() {
-        System.out.println("Limpieza después de todas las pruebas...");
-    }
-
     // -------------------------------
     // 📌 TEST PARA LISTAR DIRECTORES
     // -------------------------------
     @Nested
     class ListarDirectoresTests {
+
+        @BeforeEach
+        void setUp() {
+            // Crear instancias de directores de prueba
+            director = new Director(200, "Steven", "Spielberg", 77, "EE.UU");
+        }
 
         @Test
         void testListarDirectores_OK() {
@@ -81,6 +77,12 @@ public class DirectorControllerTest {
     @Nested
     class ObtenerDirectorPorIdTests {
 
+        @BeforeEach
+        void setUp() {
+            // Crear instancias de directores de prueba
+            director = new Director(200, "Steven", "Spielberg", 77, "EE.UU");
+        }
+
         @Test
         void testObtenerDirectorPorId_OK() {
             // Simulamos que el servicio devuelve el director con el ID especificado
@@ -111,6 +113,12 @@ public class DirectorControllerTest {
     // -------------------------------
     @Nested
     class InsertarDirectorTests {
+
+        @BeforeEach
+        void setUp() {
+            // Crear instancias de directores de prueba
+            director = new Director(200, "Steven", "Spielberg", 77, "EE.UU");
+        }
 
         @Test
         void testInsertarDirector_OK() {
@@ -146,6 +154,12 @@ public class DirectorControllerTest {
     // -------------------------------
     @Nested
     class ActualizarDirectorTests {
+
+        @BeforeEach
+        void setUp() {
+            // Crear instancias de directores de prueba
+            director = new Director(200, "Steven", "Spielberg", 77, "EE.UU");
+        }
 
         @Test
         void testActualizarDirector_OK() {
@@ -184,6 +198,12 @@ public class DirectorControllerTest {
     // -------------------------------
     @Nested
     class EliminarDirectorTests {
+
+        @BeforeEach
+        void setUp() {
+            // Crear instancias de directores de prueba
+            director = new Director(200, "Steven", "Spielberg", 77, "EE.UU");
+        }
 
         @Test
         void testEliminarDirector_OK() {

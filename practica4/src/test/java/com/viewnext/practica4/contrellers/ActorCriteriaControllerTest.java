@@ -4,7 +4,9 @@ import com.viewnext.practica4.controllers.ActorControllerCriteria;
 import com.viewnext.practica4.models.Actor;
 import com.viewnext.practica4.repositorys.ActorCriteriaRepository;
 import com.viewnext.practica4.services.ActorService;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -21,7 +23,6 @@ import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-@TestInstance(TestInstance.Lifecycle.PER_CLASS) // Para evitar static en @BeforeAll
 public class ActorCriteriaControllerTest {
 
     @Mock
@@ -40,16 +41,6 @@ public class ActorCriteriaControllerTest {
     private ActorControllerCriteria actorController;
 
     private Actor actor;
-
-    @BeforeAll
-    void setUpBeforeAll() {
-        System.out.println("Ejecutando configuración global...");
-    }
-
-    @AfterAll
-    void tearDownAfterAll() {
-        System.out.println("Limpieza después de todas las pruebas...");
-    }
 
     // -------------------------------
     // 📌 TEST PARA LISTAR ACTORES

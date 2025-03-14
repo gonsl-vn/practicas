@@ -4,7 +4,10 @@ import com.viewnext.practica4.controllers.ActorController;
 import com.viewnext.practica4.models.Actor;
 import com.viewnext.practica4.repositorys.ActorRepository;
 import com.viewnext.practica4.services.ActorService;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -17,7 +20,6 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
-@TestInstance(TestInstance.Lifecycle.PER_CLASS) // Para evitar static en @BeforeAll
 public class ActorControllerTest {
 
     @Mock
@@ -37,16 +39,6 @@ public class ActorControllerTest {
 
     private Actor actor;
 
-    @BeforeAll
-    void setUpBeforeAll() {
-        System.out.println("Ejecutando configuración global...");
-    }
-
-    @AfterAll
-    void tearDownAfterAll() {
-        System.out.println("Limpieza después de todas las pruebas...");
-    }
-
     // -------------------------------
     // 📌 TEST PARA LISTAR ACTORES
     // -------------------------------
@@ -57,6 +49,15 @@ public class ActorControllerTest {
         void setUp() {
             actor = new Actor(100, "Chris", "Evans", 45, "Estados Unidos");
 
+        }
+
+        @AfterEach
+        void tearDown() {
+            // Limpiar datos simulados de los mocks
+            actor = null;
+            // Reiniciar el mock después de cada prueba para evitar inconsistencias
+            reset(actorRepository);
+            reset(actorService);
         }
 
         @Test
@@ -86,6 +87,15 @@ public class ActorControllerTest {
         void setUp() {
             actor = new Actor(100, "Chris", "Evans", 45, "Estados Unidos");
 
+        }
+
+        @AfterEach
+        void tearDown() {
+            // Limpiar datos simulados de los mocks
+            actor = null;
+            // Reiniciar el mock después de cada prueba para evitar inconsistencias
+            reset(actorRepository);
+            reset(actorService);
         }
 
         @Test
@@ -124,6 +134,15 @@ public class ActorControllerTest {
             actor = new Actor(100, "Chris", "Evans", 45, "Estados Unidos");
         }
 
+        @AfterEach
+        void tearDown() {
+            // Limpiar datos simulados de los mocks
+            actor = null;
+            // Reiniciar el mock después de cada prueba para evitar inconsistencias
+            reset(actorRepository);
+            reset(actorService);
+        }
+
         @Test
         void testInsertarActor_OK() {
             responseEntity = actorController.insertarActor(actor);
@@ -159,6 +178,15 @@ public class ActorControllerTest {
         @BeforeEach
         void setUp() {
             actor = new Actor(100, "Chris", "Evans", 45, "Estados Unidos");
+        }
+
+        @AfterEach
+        void tearDown() {
+            // Limpiar datos simulados de los mocks
+            actor = null;
+            // Reiniciar el mock después de cada prueba para evitar inconsistencias
+            reset(actorRepository);
+            reset(actorService);
         }
 
         @Test
@@ -203,6 +231,15 @@ public class ActorControllerTest {
         @BeforeEach
         void setUp() {
             actor = new Actor(100, "Chris", "Evans", 45, "Estados Unidos");
+        }
+
+        @AfterEach
+        void tearDown() {
+            // Limpiar datos simulados de los mocks
+            actor = null;
+            // Reiniciar el mock después de cada prueba para evitar inconsistencias
+            reset(actorRepository);
+            reset(actorService);
         }
 
         @Test

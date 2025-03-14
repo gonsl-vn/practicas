@@ -3,7 +3,9 @@ package com.viewnext.practica4.contrellers;
 import com.viewnext.practica4.controllers.ProductoraController;
 import com.viewnext.practica4.models.Productora;
 import com.viewnext.practica4.services.ProductoraService;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -23,7 +25,6 @@ import static org.mockito.Mockito.*;
  * Clase de prueba para el controlador ProductoraController (vía JPA).
  */
 @ExtendWith(MockitoExtension.class)
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class ProductoraControllerTest {
 
     @Mock
@@ -33,16 +34,6 @@ class ProductoraControllerTest {
     private ProductoraController productoraController;
 
     private Productora productora;
-
-    @BeforeAll
-    void setUpBeforeAll() {
-        System.out.println("Configuración global de ProductoraControllerTest...");
-    }
-
-    @AfterAll
-    void tearDownAfterAll() {
-        System.out.println("Limpieza de ProductoraControllerTest completada...");
-    }
 
     @BeforeEach
     void initEachTest() {

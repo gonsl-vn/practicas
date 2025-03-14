@@ -3,7 +3,9 @@ package com.viewnext.practica4.contrellers;
 import com.viewnext.practica4.controllers.DirectorControllerCriteria;
 import com.viewnext.practica4.models.Director;
 import com.viewnext.practica4.services.DirectorService;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -21,7 +23,6 @@ import static org.mockito.Mockito.*;
  * Clase de prueba simplificada para DirectorControllerCriteria.
  */
 @ExtendWith(MockitoExtension.class)
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class DirectorCriteriaControllerTest {
 
     @Mock
@@ -31,16 +32,6 @@ class DirectorCriteriaControllerTest {
     private DirectorControllerCriteria directorControllerCriteria;
 
     private Director director;
-
-    @BeforeAll
-    void beforeAll() {
-        System.out.println("Ejecutando configuración global para DirectorCriteriaControllerTest...");
-    }
-
-    @AfterAll
-    void afterAll() {
-        System.out.println("Limpieza al finalizar DirectorCriteriaControllerTest...");
-    }
 
     // -------------------------------
     // 1. TEST PARA LISTAR DIRECTORES

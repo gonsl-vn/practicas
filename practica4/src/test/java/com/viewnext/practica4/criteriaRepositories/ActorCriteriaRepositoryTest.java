@@ -75,6 +75,14 @@ class ActorCriteriaRepositoryTest {
             when(entityManager.createQuery(criteriaQuery)).thenReturn(typedQuery);
         }
 
+        @AfterEach
+        void tearDown() {
+            // Limpiar datos simulados de los mocks
+            actor1 = null;
+            // Reiniciar el mock después de cada prueba para evitar inconsistencias
+            reset(actorCriteriaRepository);
+        }
+
         @Test
         void testListarActores_OK() {
             List<Actor> actores = List.of(actor1);
@@ -119,6 +127,14 @@ class ActorCriteriaRepositoryTest {
             when(typedQuery.getSingleResult()).thenReturn(actor1);
         }
 
+        @AfterEach
+        void tearDown() {
+            // Limpiar datos simulados de los mocks
+            actor1 = null;
+            // Reiniciar el mock después de cada prueba para evitar inconsistencias
+            reset(actorCriteriaRepository);
+        }
+
         @Test
         void testBuscarActorPorId_OK() {
 
@@ -145,6 +161,14 @@ class ActorCriteriaRepositoryTest {
     // -------------------------------
     @Nested
     class InsertarActorTests {
+
+        @AfterEach
+        void tearDown() {
+            // Limpiar datos simulados de los mocks
+            actor1 = null;
+            // Reiniciar el mock después de cada prueba para evitar inconsistencias
+            reset(actorCriteriaRepository);
+        }
 
         @Test
         void testInsertarActor_OK() {
@@ -175,6 +199,14 @@ class ActorCriteriaRepositoryTest {
     // -------------------------------
     @Nested
     class EliminarActorTests {
+
+        @AfterEach
+        void tearDown() {
+            // Limpiar datos simulados de los mocks
+            actor1 = null;
+            // Reiniciar el mock después de cada prueba para evitar inconsistencias
+            reset(actorCriteriaRepository);
+        }
 
         @BeforeEach
         void setUp() {
@@ -225,6 +257,14 @@ class ActorCriteriaRepositoryTest {
     // -------------------------------
     @Nested
     class ActualizarActorTests {
+
+        @AfterEach
+        void tearDown() {
+            // Limpiar datos simulados de los mocks
+            actor1 = null;
+            // Reiniciar el mock después de cada prueba para evitar inconsistencias
+            reset(actorCriteriaRepository);
+        }
 
         @BeforeEach
         void setUp() {
