@@ -60,4 +60,16 @@ public class SerieControllerCriteria {
         serieServiceCriteria.eliminarSerieCriteria(id);
         return ResponseEntity.ok("Serie eliminada correctamente.");
     }
+
+    @GetMapping("/filtro")
+    public ResponseEntity<List<Serie>> filtrarSeries(@RequestParam(required = false) String titulo,
+            @RequestParam(required = false) String nombreDirector,
+            @RequestParam(required = false) String nombreProductora,
+            //@RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate ano
+            @RequestParam(required = false) String ano // asumiendo que "Año" es un String o un año simple
+    ) {
+        // Llamamos al servicio que realiza el filtro dinámico
+        List<Serie> seriesFiltradas = serieServiceCriteria.filtrarSeries(titulo, ano, nombreDirector, nombreProductora);
+        return ResponseEntity.ok(seriesFiltradas);
+    }
 }

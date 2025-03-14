@@ -3,6 +3,7 @@ package com.viewnext.practica4.contrellers;
 import com.viewnext.practica4.controllers.ProductoraController;
 import com.viewnext.practica4.models.Productora;
 import com.viewnext.practica4.services.ProductoraService;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -10,13 +11,13 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 
 import java.time.LocalDate;
-import java.util.Collections;
-import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.Optional;
+import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
@@ -184,4 +185,55 @@ class ProductoraControllerTest {
             assertThrows(RuntimeException.class, () -> productoraController.BorrarProductora(100));
         }
     }
+
+    // -------------------------------
+    // 📌 TEST PARA PAGINAR Y ORDENAR
+    // -------------------------------
+    @Nested
+    class PaginaryOrdenarTests {
+        @BeforeEach
+        void setUp() {
+            productora = new Productora(100, "Universal Studios", LocalDate.of(1912, 4, 30));
+        }
+
+        @AfterEach
+        void tearDown() {
+            // Limpiar datos simulados de los mocks
+            productora = null;
+
+            reset(productoraService);
+        }
+
+        @Test
+        void testEncontrarProductorasPaginadoYOrdenado_OK() {
+            // Simulamos que el servicio devuelve una página de productoras
+            Page<Productora> page = new PageImpl<>(Arrays.asList(productora));
+            when(productoraService.obtenerProductora(any(Pageable.class))).thenReturn(page);
+
+            // Llamamos al controlador para encontrar productoras paginadas y ordenadas
+            Page<Productora> result = productoraController.encontrarProductoras(0, 3, "idProductora");
+
+            // Verificamos que la página no sea nula
+            assertNotNull(result);
+            // Verificamos que la página tenga contenido
+            assertFalse(result.isEmpty());
+            // Verificamos que el tamaño de la página sea el esperado
+            assertEquals(1, result.getSize());
+        }
+
+        @Test
+        void testEncontrarProductorasPaginadoYOrdenado_KO() {
+            // Simulamos que el servicio lanza una excepción al intentar encontrar productoras
+            when(productoraService.obtenerProductora(any(Pageable.class))).thenThrow(
+                    new RuntimeException("Error al encontrar productoras"));
+
+            // Llamamos al controlador y verificamos que lance una excepción
+            RuntimeException thrown = assertThrows(RuntimeException.class,
+                    () -> productoraController.encontrarProductoras(0, 3, "idProductora"));
+
+            // Verificamos que el mensaje de la excepción sea el esperado
+            assertEquals("Error al encontrar productoras", thrown.getMessage());
+        }
+    }
+
 }

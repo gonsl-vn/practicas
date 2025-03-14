@@ -10,6 +10,8 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 
 import java.time.LocalDate;
@@ -221,4 +223,35 @@ class PeliculaControllerTest {
             assertNull(response.getBody());
         }
     }
+
+    // -------------------------------
+    // 📌 6) TESTS PARA PAGINAR Y ORDENAR
+    // -------------------------------
+    @Nested
+    class PaginarYOrdenarTests {
+
+        @Test
+        void testPaginarYOrdenar_OK() {
+            // Simulamos que el servicio devuelve una página de películas
+            Page<Pelicula> page = Page.empty();
+            when(peliculaService.obtenerPelicula(any(Pageable.class))).thenReturn(page);
+
+            // Llamamos al controlador
+            Page<Pelicula> response = peliculaController.encontrarPelicula(0, 10, "idPelicula");
+
+            // Verificamos la respuesta
+            assertNotNull(response, "La respuesta no debe ser nula");
+        }
+
+        @Test
+        void testPaginarYOrdenar_KO() {
+            // Simulamos que el servicio lanza una excepción
+            doThrow(new RuntimeException("Error al paginar y ordenar")).when(peliculaService)
+                    .obtenerPelicula(any(Pageable.class));
+
+            // Llamamos al controlador y verificamos que lance una excepción
+            assertThrows(RuntimeException.class, () -> peliculaController.encontrarPelicula(0, 10, "idPelicula"));
+        }
+    }
+
 }

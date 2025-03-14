@@ -11,7 +11,9 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.data.domain.*;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -181,6 +183,47 @@ class ActorServiceTest {
         });
 
         verify(actorRepository, times(0)).delete(any());
+    }
+
+    @Test
+    void testObtenerActoresPaginacionyOrdenados_OK() {
+        // Creamos una lista de actores
+        List<Actor> actores = new ArrayList<>();
+        actores.add(new Actor(1, "Actor 1", "Apellido 1", 30, "Nacionalidad 1"));
+        actores.add(new Actor(2, "Actor 2", "Apellido 2", 31, "Nacionalidad 2"));
+        actores.add(new Actor(3, "Actor 3", "Apellido 3", 32, "Nacionalidad 3"));
+
+        // Creamos un Pageable con paginación y ordenación
+        Pageable pageable = PageRequest.of(0, 2, Sort.by("nombre"));
+
+        // Creamos un Page de actores
+        Page<Actor> page = new PageImpl<>(actores, pageable, actores.size());
+
+        // Configuramos el mock
+        when(actorRepository.findAll(pageable)).thenReturn(page);
+
+        // Llamamos al método que queremos probar
+        Page<Actor> result = actorService.obtenerActores(pageable);
+
+        // Verificamos que el resultado sea correcto
+        assertEquals(3, result.getContent().size());
+        assertEquals("Actor 1", result.getContent().get(0).getNombre());
+        assertEquals("Actor 2", result.getContent().get(1).getNombre());
+    }
+
+    @Test
+    void testObtenerActoresPaginacionyOrdenados_KO() {
+        // Configuración del mock
+        Pageable pageable = PageRequest.of(0, 10, Sort.by("nombre"));
+        when(actorRepository.findAll(pageable)).thenReturn(Page.empty());
+
+        // Llamada al método que se está testeando
+        Page<Actor> actores = actorService.obtenerActores(pageable);
+
+        // Verificación de los resultados
+        assertTrue(actores.isEmpty());
+        assertEquals(0, actores.getTotalElements());
+        assertEquals(1, actores.getTotalPages());
     }
 
     // -------------------- TESTS CON CRITERIA API --------------------

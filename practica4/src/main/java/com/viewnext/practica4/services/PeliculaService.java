@@ -114,6 +114,12 @@ public class PeliculaService {
         peliculaCriteriaRepository.borrarPeliculaPorId(idPelicula);
     }
 
+    //Filtro
+
+    public List<Pelicula> filtrarPeliculas(String titulo, Integer ano, String nombreDirector, String nombreProductora) {
+        return peliculaCriteriaRepository.filtrarPeliculas(titulo, ano, nombreDirector, nombreProductora);
+    }
+
     //Pageables
 
     public Page<Pelicula> obtenerPelicula(Pageable pageable) {

@@ -55,4 +55,5 @@ public class SerieController {
         Pageable pageable = PageRequest.of(page, size, sort);
         return serieService.obtenerSerie(pageable);
     }
+
 }

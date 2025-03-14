@@ -65,7 +65,7 @@ class PeliculaCriteriaControllerTest {
         }
 
         @Test
-        void testListarPeliculas_Vacio() {
+        void testListarPeliculas_KO() {
             // 1) Simulamos que el servicio devuelve una lista vacía
             when(peliculaServiceCriteria.listarPeliculasCriteria()).thenReturn(Collections.emptyList());
 
@@ -251,4 +251,76 @@ class PeliculaCriteriaControllerTest {
             assertEquals("No se encontró la película", ex.getMessage());
         }
     }
+
+    @Nested
+    class FiltrarPeliculasTests {
+
+        @BeforeEach
+        void setUp() {
+            // Creamos una película de ejemplo
+            pelicula = new Pelicula();
+            pelicula.setIdPelicula(1);
+            pelicula.setTitulo("The Matrix");
+            pelicula.setAno(LocalDate.of(1999, 3, 31));
+        }
+
+        @Test
+        void testFiltrarPeliculas_OK() {
+            // 1) Simulamos que el servicio devuelve una lista con una Pelicula
+            List<Pelicula> mockResult = Collections.singletonList(pelicula);
+
+            // Suponemos que el servicio llama a filtrarPeliculas(titulo, ano, nombreDirector, nombreProductora)
+            when(peliculaServiceCriteria.filtrarPeliculas("Matrix", 1999, "Wachowski", "Warner")).thenReturn(
+                    mockResult);
+
+            // 2) Llamamos al controlador con parámetros concretos
+            ResponseEntity<List<Pelicula>> response = peliculaControllerCriteria.filtrarPeliculas("Matrix", 1999,
+                    "Wachowski", "Warner");
+
+            // 3) Verificamos la respuesta
+            assertNotNull(response.getBody(), "La lista no debe ser nula");
+            assertFalse(response.getBody().isEmpty(), "La lista no debe estar vacía");
+            assertEquals(1, response.getBody().size(), "Debe haber exactamente una película");
+            assertEquals("The Matrix", response.getBody().get(0).getTitulo());
+
+            // 4) Verificamos que se llamó al servicio con dichos parámetros
+            verify(peliculaServiceCriteria, times(1)).filtrarPeliculas("Matrix", 1999, "Wachowski", "Warner");
+        }
+
+        @Test
+        void testFiltrarPeliculas_KO() {
+            // 1) Simulamos que el servicio devuelve una lista vacía
+            when(peliculaServiceCriteria.filtrarPeliculas(anyString(), any(), anyString(), anyString())).thenReturn(
+                    Collections.emptyList());
+
+            // 2) Llamamos al controlador con parámetros cualesquiera
+            ResponseEntity<List<Pelicula>> response = peliculaControllerCriteria.filtrarPeliculas("Interstellar", 2014,
+                    "Nolan", "Paramount");
+
+            // 3) Verificamos la respuesta
+            assertNotNull(response.getBody(), "La lista debe existir aunque esté vacía");
+            assertTrue(response.getBody().isEmpty(), "La lista debe estar vacía");
+
+            // 4) Verificamos que el servicio se llamó con esos parámetros
+            verify(peliculaServiceCriteria).filtrarPeliculas("Interstellar", 2014, "Nolan", "Paramount");
+        }
+
+        @Test
+        void testFiltrarPeliculas_KO_Excepcion() {
+            // 1) Simulamos que el servicio lanza una excepción al filtrar
+            doThrow(new RuntimeException("Error interno en el filtrado")).when(peliculaServiceCriteria)
+                    .filtrarPeliculas("Matrix", 1999, "Wachowski", "Warner");
+
+            // 2) Verificamos que el controlador propaga la excepción
+            RuntimeException ex = assertThrows(RuntimeException.class,
+                    () -> peliculaControllerCriteria.filtrarPeliculas("Matrix", 1999, "Wachowski", "Warner"));
+
+            // 3) Revisamos el mensaje de la excepción
+            assertEquals("Error interno en el filtrado", ex.getMessage());
+
+            // 4) Verificamos la interacción con el servicio
+            verify(peliculaServiceCriteria).filtrarPeliculas("Matrix", 1999, "Wachowski", "Warner");
+        }
+    }
+
 }

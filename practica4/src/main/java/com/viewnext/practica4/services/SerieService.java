@@ -84,4 +84,9 @@ public class SerieService {
     public Page<Serie> obtenerSerie(Pageable pageable) {
         return serieRepository.findAll(pageable);
     }
+
+    public List<Serie> filtrarSeries(String titulo, String nombreDirector, String nombreProductora, String ano) {
+        return serieCriteriaRepository.filtrarSeries(titulo, nombreDirector, nombreProductora, ano);
+
+    }
 }

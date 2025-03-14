@@ -13,9 +13,11 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.data.domain.*;
 
 import java.time.LocalDate;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -37,6 +39,7 @@ class SerieServiceTest {
     private Serie serie1;
     private Serie serie2;
     private Serie serie3;
+    private Serie serie;
 
     @BeforeEach
     void setUp() {
@@ -49,6 +52,10 @@ class SerieServiceTest {
         serie2 = new Serie(102, "Better Call Saul", LocalDate.of(2015, 2, 8), director, productora, List.of());
         serie3 = new Serie(103, "The Walking Dead", LocalDate.of(2010, 10, 31), director, productora, List.of());
 
+        serie = new Serie();
+        serie.setIdSerie(10);
+        serie.setTitulo("The Walking Dead");
+        serie.setAno(LocalDate.of(2010, 10, 31));
         // Simular respuestas del repositorio con Mockito
         when(serieRepository.findAll()).thenReturn(Arrays.asList(serie1, serie2, serie3));
         when(serieRepository.findById(101)).thenReturn(Optional.of(serie1));
@@ -186,6 +193,94 @@ class SerieServiceTest {
         assertThrows(RuntimeException.class, () -> serieService.eliminarSerie(101));
 
         verify(serieRepository, times(0)).delete(any());
+    }
+
+    @Test
+    void testObtenerSeriesPaginacionyOrdenados_OK() {
+
+        // Configurar el pageable
+        Pageable pageable = PageRequest.of(0, 10, Sort.by("nombre").ascending());
+
+        // Configurar el resultado esperado
+        Page<Serie> resultadoEsperado = new PageImpl<>(Arrays.asList(serie1, serie2, serie3), pageable, 3);
+
+        // Configurar el mock
+        when(serieRepository.findAll(pageable)).thenReturn(resultadoEsperado);
+
+        // Llamar al método a probar
+        Page<Serie> resultado = serieService.obtenerSerie(pageable);
+
+        // Verificación del resultado
+        assertNotNull(resultado);
+        assertEquals(10, resultado.getSize());
+        verify(serieRepository, times(1)).findAll(any(Pageable.class));
+    }
+
+    @Test
+    void testObtenerSeriesPaginacionyOrdenados_KO() {
+
+        // Simular la respuesta del repositorio
+        when(serieRepository.findAll(any(Pageable.class))).thenReturn(null);
+
+        // Llamar al método a probar
+        Page<Serie> resultado = serieService.obtenerSerie(PageRequest.of(0, 10, Sort.by("nombre")));
+
+        // Verificaciones
+        assertNull(resultado);
+        verify(serieRepository, times(1)).findAll(any(Pageable.class));
+    }
+
+    @Test
+    void testFiltrarSeries_OK() {
+        // 1) Simulamos que el repositorio devuelve una lista con una Serie
+        List<Serie> mockResult = Arrays.asList(serie, serie1, serie2, serie3);
+        when(serieCriteriaRepository.filtrarSeries("Walking", "Kirkman", "AMC", "2010")).thenReturn(mockResult);
+
+        // 2) Llamamos al servicio
+        List<Serie> result = serieService.filtrarSeries("Walking", "Kirkman", "AMC", "2010");
+
+        // 3) Verificamos el resultado
+        assertNotNull(result, "La lista no debe ser nula");
+        assertFalse(result.isEmpty(), "La lista no debe estar vacía");
+        assertEquals(4, result.size(), "Debe devolver exactamente un resultado");
+        assertEquals(serie, result.get(0), "La serie devuelta debe coincidir con la de prueba");
+
+        // 4) Verificamos que el repositorio se llamó exactamente 1 vez con esos parámetros
+        verify(serieCriteriaRepository, times(1)).filtrarSeries("Walking", "Kirkman", "AMC", "2010");
+    }
+
+    @Test
+    void testFiltrarSeries_KO() {
+        // 1) Simulamos que el repositorio devuelve una lista vacía
+        when(serieCriteriaRepository.filtrarSeries(anyString(), anyString(), anyString(), anyString())).thenReturn(
+                Collections.emptyList());
+
+        // 2) Llamamos al servicio con cualquier valor
+        List<Serie> result = serieService.filtrarSeries("foo", "bar", "baz", "2020");
+
+        // 3) Verificamos que está vacía
+        assertNotNull(result, "La lista debe existir aunque esté vacía");
+        assertTrue(result.isEmpty(), "La lista debe estar vacía");
+
+        // 4) Verificamos la interacción con el repositorio
+        verify(serieCriteriaRepository).filtrarSeries("foo", "bar", "baz", "2020");
+    }
+
+    @Test
+    void testFiltrarSeries_KO_Exception() {
+        // 1) Simulamos que el repositorio lanza una excepción
+        doThrow(new RuntimeException("Error interno en Criteria")).when(serieCriteriaRepository)
+                .filtrarSeries("Walking", "Kirkman", "AMC", "2010");
+
+        // 2) Verificamos que el servicio propaga la excepción
+        RuntimeException ex = assertThrows(RuntimeException.class,
+                () -> serieService.filtrarSeries("Walking", "Kirkman", "AMC", "2010"));
+
+        // 3) Comprobamos el mensaje de la excepción
+        assertEquals("Error interno en Criteria", ex.getMessage());
+
+        // 4) Verificamos la interacción
+        verify(serieCriteriaRepository).filtrarSeries("Walking", "Kirkman", "AMC", "2010");
     }
 
     // -------------------- TESTS CON CRITERIA API --------------------

@@ -11,6 +11,10 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 
 import java.util.Arrays;
 import java.util.List;
@@ -186,6 +190,38 @@ public class DirectorServiceTest {
         });
 
         verify(directorRepository, times(0)).delete(any());
+    }
+
+    @Test
+    void testObtenerDirectoresPaginacionyOrdenados_OK() {
+        // Configuración
+        Director director1 = new Director(200, "Steven", "Spielberg", 77, "EE.UU");
+        Director director2 = new Director(201, "PRV3", "Cameron", 68, "Canadá");
+        Director director3 = new Director(202, "PRV4", "Nolan", 51, "Reino Unido");
+
+        Page<Director> page = new PageImpl<>(Arrays.asList(director1, director2, director3));
+
+        // Mockear el repositorio
+        when(directorRepository.findAll(any(Pageable.class))).thenReturn(page);
+
+        // Llamar al servicio
+        Page<Director> result = directorService.obtenerDirector(PageRequest.of(0, 10));
+
+        // Verificar el resultado
+        assertNotNull(result);
+        assertEquals(3, result.getContent().size());
+        assertEquals(director1, result.getContent().get(0));
+        assertEquals(director2, result.getContent().get(1));
+        assertEquals(director3, result.getContent().get(2));
+    }
+
+    @Test
+    void testObtenerDirectoresPaginacionyOrdenados_KO() {
+        // Configuración
+        when(directorRepository.findAll(any(Pageable.class))).thenThrow(new NullPointerException());
+
+        // Llamar al servicio
+        assertThrows(NullPointerException.class, () -> directorService.obtenerDirector(PageRequest.of(0, 10)));
     }
 
     // -------------------- TESTS CON CRITERIA API --------------------

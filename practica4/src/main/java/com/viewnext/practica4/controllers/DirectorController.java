@@ -49,7 +49,7 @@ public class DirectorController {
     }
 
     @GetMapping("/paginadoYordenado")
-    public Page<Director> encontrarActores(@RequestParam(defaultValue = "0") int page,
+    public Page<Director> encontrarDirectores(@RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "3") int size, @RequestParam(defaultValue = "idDirector") String orden) {
         Sort sort = Sort.by(orden).ascending();
         Pageable pageable = PageRequest.of(page, size, sort);

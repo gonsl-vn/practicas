@@ -182,4 +182,66 @@ class SerieControllerCriteriaTest {
             assertEquals("No se encontró la serie", ex.getMessage());
         }
     }
+
+    // -------------------------------
+    // TESTS PARA filtrarSeries
+    // -------------------------------
+    @Nested
+    class FiltrarSeriesTests {
+
+        @Test
+        void testFiltrarSeries_OK() {
+            // 1) Simulamos que el servicio devuelve una lista con una Serie
+            List<Serie> mockResult = Collections.singletonList(serie);
+
+            when(serieServiceCriteria.filtrarSeries("Breaking", "2008", "Vince", "AMC")).thenReturn(mockResult);
+
+            // 2) Llamamos al controlador con parámetros
+            ResponseEntity<List<Serie>> response = serieControllerCriteria.filtrarSeries("Breaking", "Vince", "AMC",
+                    "2008");
+
+            // 3) Verificamos la respuesta
+            assertNotNull(response.getBody(), "La lista no debe ser nula");
+            assertFalse(response.getBody().isEmpty(), "No debe estar vacía");
+            assertEquals(1, response.getBody().size(), "Debe tener exactamente un elemento");
+            assertEquals("The Walking Dead", response.getBody().get(0).getTitulo());
+
+            // 4) Verificamos que se llamó al servicio con los mismos parámetros
+            verify(serieServiceCriteria, times(1)).filtrarSeries("Breaking", "2008", "Vince", "AMC");
+        }
+
+        @Test
+        void testFiltrarSeries_Vacio() {
+            // 1) Simulamos que el servicio devuelve una lista vacía
+            when(serieServiceCriteria.filtrarSeries(anyString(), anyString(), anyString(), anyString())).thenReturn(
+                    Collections.emptyList());
+
+            // 2) Llamamos al controlador
+            ResponseEntity<List<Serie>> response = serieControllerCriteria.filtrarSeries("foo", "bar", "baz", "2023");
+
+            // 3) Verificamos la respuesta
+            assertNotNull(response.getBody());
+            assertTrue(response.getBody().isEmpty(), "La lista debe estar vacía");
+
+            // 4) Verificamos que se llamó al servicio
+            verify(serieServiceCriteria).filtrarSeries("foo", "2023", "bar", "baz");
+        }
+
+        @Test
+        void testFiltrarSeries_ErrorInterno() {
+            // 1) Simulamos que el servicio lanza una excepción
+            doThrow(new RuntimeException("Error al filtrar series")).when(serieServiceCriteria)
+                    .filtrarSeries("Breaking", "2008", "Vince", "AMC");
+
+            // 2) Verificamos que el controlador propaga la excepción
+            RuntimeException ex = assertThrows(RuntimeException.class,
+                    () -> serieControllerCriteria.filtrarSeries("Breaking", "Vince", "AMC", "2008"));
+
+            // 3) Revisamos el mensaje de la excepción
+            assertEquals("Error al filtrar series", ex.getMessage());
+
+            // 4) Verificamos la interacción
+            verify(serieServiceCriteria).filtrarSeries("Breaking", "2008", "Vince", "AMC");
+        }
+    }
 }

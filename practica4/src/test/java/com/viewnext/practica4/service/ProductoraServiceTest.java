@@ -11,6 +11,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.data.domain.*;
 
 import java.time.LocalDate;
 import java.util.Arrays;
@@ -184,6 +185,41 @@ public class ProductoraServiceTest {
         });
 
         verify(productoraRepository, times(0)).delete(any());
+    }
+
+    // Test para obtener productoras con paginación y ordenación
+    @Test
+    void testObtenerProductorasPaginacionyOrdenados_OK() {
+        // Configurar el pageable
+        Pageable pageable = PageRequest.of(0, 10, Sort.by("nombre").ascending());
+
+        // Configurar el resultado esperado
+        Page<Productora> resultadoEsperado = new PageImpl<>(Arrays.asList(productora1, productora2, productora3),
+                pageable, 3);
+
+        // Configurar el mock
+        when(productoraRepository.findAll(pageable)).thenReturn(resultadoEsperado);
+
+        // Llamar al método a probar
+        Page<Productora> resultado = productoraService.obtenerProductora(pageable);
+
+        // Verificación del resultado
+        assertNotNull(resultado);
+        assertEquals(10, resultado.getSize());
+        verify(productoraRepository, times(1)).findAll(any(Pageable.class));
+    }
+
+    @Test
+    void testObtenerProductorasPaginacionyOrdenados_KO() {
+        // Configuración del mock
+        when(productoraRepository.findAll(any(Pageable.class))).thenReturn(null);
+
+        // Llamada al servicio
+        Page<Productora> resultado = productoraService.obtenerProductora(PageRequest.of(0, 10, Sort.by("nombre")));
+
+        // Verificación del resultado
+        assertNull(resultado);
+        verify(productoraRepository, times(1)).findAll(any(Pageable.class));
     }
 
     // -------------------- TESTS CON CRITERIA API --------------------

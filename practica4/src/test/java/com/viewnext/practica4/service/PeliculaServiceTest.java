@@ -13,9 +13,11 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.data.domain.*;
 
 import java.time.LocalDate;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -37,6 +39,7 @@ public class PeliculaServiceTest {
     private Pelicula pelicula1;
     private Pelicula pelicula2;
     private Pelicula pelicula3;
+    private Pelicula pelicula;
 
     @BeforeEach
     void setUp() {
@@ -48,6 +51,11 @@ public class PeliculaServiceTest {
         pelicula1 = new Pelicula(101, "Inception", LocalDate.of(2010, 7, 16), director, productora, List.of());
         pelicula2 = new Pelicula(102, "Interstellar", LocalDate.of(2014, 11, 7), director, productora, List.of());
         pelicula3 = new Pelicula(103, "Dunkirk", LocalDate.of(2017, 7, 21), director, productora, List.of());
+
+        pelicula = new Pelicula();
+        pelicula.setIdPelicula(101);
+        pelicula.setTitulo("Interstellar");
+        pelicula.setAno(LocalDate.of(2014, 11, 7));
 
         // Simular respuestas del repositorio con Mockito
         when(peliculaRepository.findAll()).thenReturn(Arrays.asList(pelicula1, pelicula2, pelicula3));
@@ -191,6 +199,56 @@ public class PeliculaServiceTest {
         verify(peliculaRepository, times(0)).deleteById(any());
     }
 
+    @Test
+    void testObtenerPeliculasPaginacionyOrdenados_OK() {
+        // Configurar el pageable
+        Pageable pageable = PageRequest.of(0, 10, Sort.by("titulo").ascending());
+
+        // Configurar el resultado esperado
+        Page<Pelicula> resultadoEsperado = new PageImpl<>(Arrays.asList(pelicula1, pelicula2, pelicula3), pageable, 3);
+
+        // Configurar el mock
+        when(peliculaRepository.findAll(pageable)).thenReturn(resultadoEsperado);
+
+        // Llamar al método a probar
+        Page<Pelicula> resultado = peliculaService.obtenerPelicula(pageable);
+
+        // Verificar el resultado
+        assertNotNull(resultado);
+        assertEquals(3, resultado.getTotalElements());
+        assertEquals(1, resultado.getTotalPages());
+        assertEquals("Inception", resultado.getContent().get(0).getTitulo());
+        assertEquals("Interstellar", resultado.getContent().get(1).getTitulo());
+        assertEquals("Dunkirk", resultado.getContent().get(2).getTitulo());
+
+        // Verificar el mock
+        verify(peliculaRepository, times(1)).findAll(pageable);
+    }
+
+    @Test
+    void testObtenerPeliculasPaginacionyOrdenados_KO() {
+        // Configurar el pageable
+        Pageable pageable = PageRequest.of(0, 10, Sort.by("titulo").ascending());
+
+        // Configurar el resultado esperado
+        Page<Pelicula> resultadoEsperado = new PageImpl<>(Arrays.asList(), pageable, 0);
+
+        // Configurar el mock
+        when(peliculaRepository.findAll(pageable)).thenReturn(resultadoEsperado);
+
+        // Llamar al método a probar
+        Page<Pelicula> resultado = peliculaService.obtenerPelicula(pageable);
+
+        // Verificar el resultado
+        assertNotNull(resultado);
+        assertEquals(0, resultado.getTotalElements());
+        assertEquals(0, resultado.getTotalPages());
+        assertTrue(resultado.getContent().isEmpty());
+
+        // Verificar el mock
+        verify(peliculaRepository, times(1)).findAll(pageable);
+    }
+
     // -------------------- TESTS CON CRITERIA API --------------------
 
     @Test
@@ -308,4 +366,58 @@ public class PeliculaServiceTest {
 
         assertEquals("No se pudo eliminar la película, no encontrada", exception.getMessage());
     }
+
+    @Test
+    void testFiltrarPeliculas_OK() {
+        // 1) Simulamos que el repositorio Criteria devuelve una lista con una película
+        List<Pelicula> mockResult = List.of(pelicula);
+        when(peliculaCriteriaRepository.filtrarPeliculas("Inter", 2014, "Nolan", "Warner")).thenReturn(mockResult);
+
+        // 2) Llamamos al servicio
+        List<Pelicula> resultado = peliculaService.filtrarPeliculas("Inter", 2014, "Nolan", "Warner");
+
+        // 3) Verificaciones
+        assertNotNull(resultado, "La lista no debe ser nula");
+        assertFalse(resultado.isEmpty(), "La lista no debe estar vacía");
+        assertEquals(1, resultado.size(), "Debe haber exactamente 1 película");
+        assertEquals("Interstellar", resultado.get(0).getTitulo());
+
+        // 4) Verificamos que el repositorio se llamó con esos parámetros
+        verify(peliculaCriteriaRepository, times(1)).filtrarPeliculas("Inter", 2014, "Nolan", "Warner");
+    }
+
+    @Test
+    void testFiltrarPeliculas_KO() {
+        // 1) Simulamos que el repositorio Criteria devuelve una lista vacía
+        when(peliculaCriteriaRepository.filtrarPeliculas(anyString(), any(), anyString(), anyString())).thenReturn(
+                Collections.emptyList());
+
+        // 2) Llamamos al servicio con cualquier parámetro
+        List<Pelicula> resultado = peliculaService.filtrarPeliculas("matrix", 1999, "Wachowski", "Warner");
+
+        // 3) Verificaciones
+        assertNotNull(resultado, "La lista debe existir aunque esté vacía");
+        assertTrue(resultado.isEmpty(), "La lista debe estar vacía");
+
+        // 4) Verificamos la llamada al repositorio
+        verify(peliculaCriteriaRepository).filtrarPeliculas("matrix", 1999, "Wachowski", "Warner");
+    }
+
+    @Test
+    void testFiltrarPeliculas_KO_Excepcion() {
+        // 1) Simulamos que el repositorio lanza excepción
+        doThrow(new RuntimeException("Error interno en Criteria")).when(peliculaCriteriaRepository)
+                .filtrarPeliculas("Inter", 2014, "Nolan", "Warner");
+
+        // 2) Verificamos que el servicio propaga la excepción
+        RuntimeException ex = assertThrows(RuntimeException.class,
+                () -> peliculaService.filtrarPeliculas("Inter", 2014, "Nolan", "Warner"));
+
+        // 3) Revisamos el mensaje
+        assertEquals("Error interno en Criteria", ex.getMessage());
+
+        // 4) Verificamos la interacción
+        verify(peliculaCriteriaRepository).filtrarPeliculas("Inter", 2014, "Nolan", "Warner");
+    }
+
 }

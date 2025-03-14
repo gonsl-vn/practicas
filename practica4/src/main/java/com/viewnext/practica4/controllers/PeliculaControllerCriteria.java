@@ -60,4 +60,14 @@ public class PeliculaControllerCriteria {
         peliculaServiceCriteria.borrarPeliculaPorIdCriteria(id);
         return ResponseEntity.ok("Película eliminada correctamente.");
     }
+
+    @GetMapping("/filtrar")
+    public ResponseEntity<List<Pelicula>> filtrarPeliculas(@RequestParam(required = false) String titulo,
+            @RequestParam(required = false) Integer ano, // o un tipo apropiado, p. ej. LocalDate
+            @RequestParam(required = false) String nombreDirector,
+            @RequestParam(required = false) String nombreProductora) {
+        List<Pelicula> peliculasFiltradas = peliculaServiceCriteria.filtrarPeliculas(titulo, ano, nombreDirector,
+                nombreProductora);
+        return ResponseEntity.ok(peliculasFiltradas);
+    }
 }
