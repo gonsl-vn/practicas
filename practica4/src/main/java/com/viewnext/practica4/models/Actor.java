@@ -17,6 +17,9 @@ public class Actor {
     @Column(name = "IdActor", unique = true, nullable = false)
     private int idActor;
 
+    @Column(name = "Dni", unique = true, nullable = false)
+    private String dni;
+
     @Column(name = "Nombre")
     private String nombre;
 

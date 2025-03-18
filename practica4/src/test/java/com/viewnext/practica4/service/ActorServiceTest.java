@@ -12,6 +12,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.data.domain.*;
+import org.springframework.web.reactive.function.client.WebClient;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -30,6 +31,9 @@ class ActorServiceTest {
     @Mock
     private ActorCriteriaRepository actorCriteriaRepository;
 
+    @Mock
+    private WebClient.Builder webClientBuilder; // Mockear WebClient.Builder
+
     @InjectMocks
     private ActorService actorService;
 
@@ -39,10 +43,11 @@ class ActorServiceTest {
 
     @BeforeEach
     void setUp() {
+
         // Crear instancias de actores de prueb
-        actor1 = new Actor(100, "Chris", "Evans", 45, "Estados Unidos");
-        actor2 = new Actor(101, "Marcos", "Bolina", 54, "Estados");
-        actor3 = new Actor(102, "Fina", "Morgan", 65, "Unidos");
+        actor1 = new Actor(100, "12345678A", "Chris", "Evans", 45, "Estados Unidos");
+        actor2 = new Actor(101, "12345678A", "Marcos", "Bolina", 54, "Estados");
+        actor3 = new Actor(102, "12345678A", "Fina", "Morgan", 65, "Unidos");
 
         // Simular respuestas del repositorio con Mockito
         when(actorRepository.findAll()).thenReturn(Arrays.asList(actor1, actor2, actor3));
@@ -111,7 +116,7 @@ class ActorServiceTest {
 
     @Test
     void testInsertarActor() {
-        Actor nuevoActor = new Actor(103, "Robert", "Downey Jr.", 58, "USA");
+        Actor nuevoActor = new Actor(103, "12345678A", "Robert", "Downey Jr.", 58, "USA");
 
         actorService.insertarActor(nuevoActor);
 
@@ -120,7 +125,7 @@ class ActorServiceTest {
 
     @Test
     void testInsertarActorKO() {
-        Actor nuevoActor = new Actor(103, "", "Downey Jr.", 58, "USA");
+        Actor nuevoActor = new Actor(103, "12345678A", "", "Downey Jr.", 58, "USA");
 
         when(actorRepository.save(nuevoActor)).thenThrow(new IllegalArgumentException("No se puede guardar actor"));
 
@@ -135,7 +140,7 @@ class ActorServiceTest {
 
     @Test
     void testActualizarActor() {
-        Actor actorActualizado = new Actor(100, "Chris", "Pratt", 43, "EE.UU");
+        Actor actorActualizado = new Actor(100, "12345678A", "Chris", "Pratt", 43, "EE.UU");
 
         when(actorRepository.findByIdActor(100)).thenReturn(Optional.of(actor1));
         when(actorRepository.save(any(Actor.class))).thenAnswer(invocation -> invocation.getArgument(0));
@@ -151,7 +156,7 @@ class ActorServiceTest {
 
     @Test
     void testActualizarActorKO() {
-        Actor actorActualizado = new Actor(100, "", "Pratt", 43, "EE.UU");
+        Actor actorActualizado = new Actor(100, "12345678A", "", "Pratt", 43, "EE.UU");
 
         when(actorRepository.findByIdActor(100)).thenReturn(Optional.ofNullable(actor1));
         when(actorRepository.save(any(Actor.class))).thenThrow(new IllegalArgumentException("Datos inválidos"));
@@ -189,9 +194,9 @@ class ActorServiceTest {
     void testObtenerActoresPaginacionyOrdenados_OK() {
         // Creamos una lista de actores
         List<Actor> actores = new ArrayList<>();
-        actores.add(new Actor(1, "Actor 1", "Apellido 1", 30, "Nacionalidad 1"));
-        actores.add(new Actor(2, "Actor 2", "Apellido 2", 31, "Nacionalidad 2"));
-        actores.add(new Actor(3, "Actor 3", "Apellido 3", 32, "Nacionalidad 3"));
+        actores.add(new Actor(1, "12345678A", "Actor 1", "Apellido 1", 30, "Nacionalidad 1"));
+        actores.add(new Actor(2, "12345678A", "Actor 2", "Apellido 2", 31, "Nacionalidad 2"));
+        actores.add(new Actor(3, "12345678A", "Actor 3", "Apellido 3", 32, "Nacionalidad 3"));
 
         // Creamos un Pageable con paginación y ordenación
         Pageable pageable = PageRequest.of(0, 2, Sort.by("nombre"));
@@ -277,7 +282,7 @@ class ActorServiceTest {
 
     @Test
     void testInsertarActorCriteria() {
-        Actor nuevoActor = new Actor(103, "Tom", "Holland", 27, "UK");
+        Actor nuevoActor = new Actor(103, "12345678A", "Tom", "Holland", 27, "UK");
 
         actorService.insertarActorCriteria(nuevoActor);
 
@@ -286,7 +291,7 @@ class ActorServiceTest {
 
     @Test
     void testInsertarActorCriteriaKO() {
-        Actor nuevoActor = new Actor(103, "", "Downey Jr.", 58, "USA");
+        Actor nuevoActor = new Actor(103, "12345678A", "", "Downey Jr.", 58, "USA");
 
         doThrow(new IllegalArgumentException("No se puede guardar actor")).when(actorCriteriaRepository)
                 .insertarActor(nuevoActor);
@@ -302,7 +307,7 @@ class ActorServiceTest {
 
     @Test
     void testActualizarActorCriteria() {
-        Actor actorActualizado = new Actor(100, "Chris", "Hemsworth", 40, "Australia");
+        Actor actorActualizado = new Actor(100, "12345678A", "Chris", "Hemsworth", 40, "Australia");
 
         actorService.actualizarActorCriteria(100, actorActualizado);
 
@@ -311,7 +316,7 @@ class ActorServiceTest {
 
     @Test
     void testActualizarActorCriteriaKO() {
-        Actor actorActualizado = new Actor(100, "", "Pratt", 43, "EE.UU");
+        Actor actorActualizado = new Actor(100, "12345678A", "", "Pratt", 43, "EE.UU");
 
         doThrow(new IllegalArgumentException("Datos inválidos")).when(actorCriteriaRepository)
                 .actualizarActor(100, actorActualizado);

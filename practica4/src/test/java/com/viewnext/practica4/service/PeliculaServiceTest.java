@@ -44,7 +44,7 @@ public class PeliculaServiceTest {
     @BeforeEach
     void setUp() {
         // Crear instancias de directores y productoras para las películas
-        Director director = new Director(1, "Christopher", "Nolan", 53, "Reino Unido");
+        Director director = new Director(1, "12345678A", "Christopher", "Nolan", 53, "Reino Unido");
         Productora productora = new Productora(1, "Warner Bros", LocalDate.of(1975, 7, 16));
 
         // Crear instancias de películas de prueba

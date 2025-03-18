@@ -5,20 +5,28 @@ import com.viewnext.practica4.repositorys.DirectorCriteriaRepository;
 import com.viewnext.practica4.repositorys.DirectorRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.reactive.function.client.WebClient;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
+import java.util.Map;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Service
 public class DirectorService {
     private final DirectorRepository directorRepository;
     private final DirectorCriteriaRepository directorCriteriaRepository;
+    private final WebClient apiUsuarios;
 
-    public DirectorService(DirectorRepository directorRepository,
-            DirectorCriteriaRepository directorCriteriaRepository) {
+    public DirectorService(DirectorRepository directorRepository, DirectorCriteriaRepository directorCriteriaRepository,
+            WebClient.Builder webClientBuilder) {
         this.directorRepository = directorRepository;
         this.directorCriteriaRepository = directorCriteriaRepository;
+        this.apiUsuarios = webClientBuilder.baseUrl("http://localhost:8080/api/usuarios").build();
+
     }
 
     public List<Director> obtenerDirectores() {
@@ -30,11 +38,25 @@ public class DirectorService {
     }
 
     public void insertarDirector(Director director) {
-        directorRepository.save(director);
+
+        Map<String, String> usuarioResponse = apiUsuarios.get().uri("/" + director.getDni()).retrieve()
+                .bodyToMono(Map.class).block();
+        if (usuarioResponse != null) {
+            if (usuarioResponse.get("dni").equals(director.getDni())) {
+                directorRepository.save(director);
+            }
+        } else {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Director no encontrado", new Exception());
+        }
+
     }
 
     public void eliminarDirector(int idDirector) {
-        directorRepository.delete(directorRepository.findById(idDirector).get());
+        Optional<Director> director = directorRepository.findById(idDirector);
+        director.ifPresent(directorRepository::delete);
+        if (director.isEmpty()) {
+            throw new NoSuchElementException("No se encontro el director buscado, no se eliminara nada de la BD");
+        }
     }
 
     public Director actualizarDirector(int idDirector, Director directorActualizado) {
@@ -58,7 +80,15 @@ public class DirectorService {
     }
 
     public void insertarDirectorCriteria(Director director) {
-        directorCriteriaRepository.insertarDirector(director);
+        Map<String, String> usuarioResponse = apiUsuarios.get().uri("/" + director.getDni()).retrieve()
+                .bodyToMono(Map.class).block();
+        if (usuarioResponse != null) {
+            if (usuarioResponse.get("dni").equals(director.getDni())) {
+                directorCriteriaRepository.insertarDirector(director);
+            }
+        } else {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Director no encontrado", new Exception());
+        }
     }
 
     public void eliminarDirectorCriteria(int idDirector) {

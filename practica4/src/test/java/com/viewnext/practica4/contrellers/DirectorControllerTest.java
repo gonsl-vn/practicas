@@ -43,7 +43,7 @@ public class DirectorControllerTest {
         @BeforeEach
         void setUp() {
             // Crear instancias de directores de prueba
-            director = new Director(200, "Steven", "Spielberg", 77, "EE.UU");
+            director = new Director(200, "12345678A", "Steven", "Spielberg", 77, "EE.UU");
         }
 
         @Test
@@ -83,7 +83,7 @@ public class DirectorControllerTest {
         @BeforeEach
         void setUp() {
             // Crear instancias de directores de prueba
-            director = new Director(200, "Steven", "Spielberg", 77, "EE.UU");
+            director = new Director(200, "12345678A", "Steven", "Spielberg", 77, "EE.UU");
         }
 
         @Test
@@ -120,7 +120,7 @@ public class DirectorControllerTest {
         @BeforeEach
         void setUp() {
             // Crear instancias de directores de prueba
-            director = new Director(200, "Steven", "Spielberg", 77, "EE.UU");
+            director = new Director(200, "12345678A", "Steven", "Spielberg", 77, "EE.UU");
         }
 
         @Test
@@ -161,13 +161,13 @@ public class DirectorControllerTest {
         @BeforeEach
         void setUp() {
             // Crear instancias de directores de prueba
-            director = new Director(200, "Steven", "Spielberg", 77, "EE.UU");
+            director = new Director(200, "12345678A", "Steven", "Spielberg", 77, "EE.UU");
         }
 
         @Test
         void testActualizarDirector_OK() {
             // Simulamos que el servicio devuelve el director actualizado
-            Director updatedDirector = new Director(100, "Steven", "Spielberg", 76,
+            Director updatedDirector = new Director(100, "12345678A", "Steven", "Spielberg", 76,
                     "Estados Unidos");  // Edad actualizada
             when(directorService.actualizarDirector(director.getIdDirector(), updatedDirector)).thenReturn(
                     updatedDirector);
@@ -205,7 +205,7 @@ public class DirectorControllerTest {
         @BeforeEach
         void setUp() {
             // Crear instancias de directores de prueba
-            director = new Director(200, "Steven", "Spielberg", 77, "EE.UU");
+            director = new Director(200, "12345678A", "Steven", "Spielberg", 77, "EE.UU");
         }
 
         @Test
@@ -242,7 +242,7 @@ public class DirectorControllerTest {
     class PaginaryOrdenarTests {
         @BeforeEach
         void setUp() {
-            director = new Director(100, "Chris", "Evans", 45, "Estados Unidos");
+            director = new Director(100, "12345678A", "Chris", "Evans", 45, "Estados Unidos");
         }
 
         @AfterEach

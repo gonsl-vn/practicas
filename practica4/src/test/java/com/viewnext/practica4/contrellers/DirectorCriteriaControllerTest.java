@@ -41,7 +41,7 @@ class DirectorCriteriaControllerTest {
         @BeforeEach
         void setUpEachTest() {
             // Un director de ejemplo
-            director = new Director(1, "Steven", "Spielberg", 75, "EEUU");
+            director = new Director(1, "12345678A", "Steven", "Spielberg", 75, "EEUU");
         }
 
         @Test
@@ -81,7 +81,7 @@ class DirectorCriteriaControllerTest {
         @BeforeEach
         void setUpEachTest() {
             // Un director de ejemplo
-            director = new Director(1, "Steven", "Spielberg", 75, "EEUU");
+            director = new Director(1, "12345678A", "Steven", "Spielberg", 75, "EEUU");
         }
 
         @Test
@@ -125,7 +125,7 @@ class DirectorCriteriaControllerTest {
         @BeforeEach
         void setUpEachTest() {
             // Un director de ejemplo
-            director = new Director(1, "Steven", "Spielberg", 75, "EEUU");
+            director = new Director(1, "12345678A", "Steven", "Spielberg", 75, "EEUU");
         }
 
         @Test
@@ -166,7 +166,7 @@ class DirectorCriteriaControllerTest {
         @BeforeEach
         void setUpEachTest() {
             // Un director de ejemplo
-            director = new Director(1, "Steven", "Spielberg", 75, "EEUU");
+            director = new Director(1, "12345678A", "Steven", "Spielberg", 75, "EEUU");
         }
 
         @Test
@@ -207,7 +207,7 @@ class DirectorCriteriaControllerTest {
         @BeforeEach
         void setUpEachTest() {
             // Un director de ejemplo
-            director = new Director(1, "Steven", "Spielberg", 75, "EEUU");
+            director = new Director(1, "12345678A", "Steven", "Spielberg", 75, "EEUU");
         }
 
         @Test

@@ -17,6 +17,9 @@ public class Director {
     @Column(name = "IdDirector", unique = true, nullable = false)
     private int idDirector;
 
+    @Column(name = "Dni", unique = true, nullable = false)
+    private String dni;
+
     @Column(name = "Nombre")
     private String nombre;
 

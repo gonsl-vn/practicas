@@ -50,7 +50,7 @@ public class ActorControllerTest {
 
         @BeforeEach
         void setUp() {
-            actor = new Actor(100, "Chris", "Evans", 45, "Estados Unidos");
+            actor = new Actor(100, "12345678A", "Chris", "Evans", 45, "Estados Unidos");
 
         }
 
@@ -88,7 +88,7 @@ public class ActorControllerTest {
 
         @BeforeEach
         void setUp() {
-            actor = new Actor(100, "Chris", "Evans", 45, "Estados Unidos");
+            actor = new Actor(100, "12345678A", "Chris", "Evans", 45, "Estados Unidos");
 
         }
 
@@ -134,7 +134,7 @@ public class ActorControllerTest {
 
         @BeforeEach
         void setUp() {
-            actor = new Actor(100, "Chris", "Evans", 45, "Estados Unidos");
+            actor = new Actor(100, "12345678A", "Chris", "Evans", 45, "Estados Unidos");
         }
 
         @AfterEach
@@ -180,7 +180,7 @@ public class ActorControllerTest {
 
         @BeforeEach
         void setUp() {
-            actor = new Actor(100, "Chris", "Evans", 45, "Estados Unidos");
+            actor = new Actor(100, "12345678A", "Chris", "Evans", 45, "Estados Unidos");
         }
 
         @AfterEach
@@ -195,7 +195,8 @@ public class ActorControllerTest {
         @Test
         void testActualizarActor_OK() {
             // Simulamos que el servicio devuelve el actor actualizado
-            Actor updatedActor = new Actor(100, "Chris", "Evans", 46, "Estados Unidos");  // Edad actualizada
+            Actor updatedActor = new Actor(100, "12345678A", "Chris", "Evans", 46,
+                    "Estados Unidos");  // Edad actualizada
             when(actorService.actualizarActor(actor.getIdActor(), updatedActor)).thenReturn(updatedActor);
 
             // Llamamos al controlador para actualizar el actor
@@ -233,7 +234,7 @@ public class ActorControllerTest {
     class EliminarActorTests {
         @BeforeEach
         void setUp() {
-            actor = new Actor(100, "Chris", "Evans", 45, "Estados Unidos");
+            actor = new Actor(100, "12345678A", "Chris", "Evans", 45, "Estados Unidos");
         }
 
         @AfterEach
@@ -279,7 +280,7 @@ public class ActorControllerTest {
     class PaginaryOrdenarTests {
         @BeforeEach
         void setUp() {
-            actor = new Actor(100, "Chris", "Evans", 45, "Estados Unidos");
+            actor = new Actor(100, "12345678A", "Chris", "Evans", 45, "Estados Unidos");
         }
 
         @AfterEach

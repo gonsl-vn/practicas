@@ -61,7 +61,7 @@ class ActorCriteriaRepositoryTest {
 
         @BeforeEach
         void setUp() {
-            actor1 = new Actor(1, "Bryan", "Cranston", 67, "EE.UU");
+            actor1 = new Actor(1, "12345678A", "Bryan", "Cranston", 67, "EE.UU");
             when(entityManager.getCriteriaBuilder()).thenReturn(criteriaBuilder);
             when(criteriaBuilder.createQuery(Actor.class)).thenReturn(criteriaQuery);
             when(criteriaQuery.from(Actor.class)).thenReturn(root);
@@ -100,7 +100,7 @@ class ActorCriteriaRepositoryTest {
 
         @BeforeEach
         void setUp() {
-            actor1 = new Actor(1, "Bryan", "Cranston", 67, "EE.UU");
+            actor1 = new Actor(1, "12345678A", "Bryan", "Cranston", 67, "EE.UU");
             when(entityManager.getCriteriaBuilder()).thenReturn(criteriaBuilder);
             when(criteriaBuilder.createQuery(Actor.class)).thenReturn(criteriaQuery);
             when(criteriaQuery.from(Actor.class)).thenReturn(root);
@@ -141,7 +141,7 @@ class ActorCriteriaRepositoryTest {
 
         @Test
         void testInsertarActor_OK() {
-            actor1 = new Actor(1, "Bryan", "Cranston", 67, "EE.UU");
+            actor1 = new Actor(1, "12345678A", "Bryan", "Cranston", 67, "EE.UU");
 
             // No se necesita un `when()` ya que persist() es void
             doNothing().when(entityManager).persist(actor1);
@@ -153,7 +153,7 @@ class ActorCriteriaRepositoryTest {
 
         @Test
         void testInsertarActor_KO() {
-            actor1 = new Actor(1, "Bryan", "Cranston", 67, "EE.UU");
+            actor1 = new Actor(1, "12345678A", "Bryan", "Cranston", 67, "EE.UU");
 
             doThrow(new IllegalArgumentException("Error al insertar actor")).when(entityManager).persist(actor1);
 
@@ -171,7 +171,7 @@ class ActorCriteriaRepositoryTest {
 
         @BeforeEach
         void setUp() {
-            actor1 = new Actor(1, "Bryan", "Cranston", 67, "EE.UU");
+            actor1 = new Actor(1, "12345678A", "Bryan", "Cranston", 67, "EE.UU");
 
             // Mockear el comportamiento del CriteriaBuilder
             when(entityManager.getCriteriaBuilder()).thenReturn(criteriaBuilder);
@@ -221,7 +221,7 @@ class ActorCriteriaRepositoryTest {
 
         @BeforeEach
         void setUp() {
-            actor1 = new Actor(1, "Bryan", "Cranston", 67, "EE.UU");
+            actor1 = new Actor(1, "12345678A", "Bryan", "Cranston", 67, "EE.UU");
 
         }
 
@@ -259,7 +259,7 @@ class ActorCriteriaRepositoryTest {
             when(criteriaBuilder.createCriteriaUpdate(Actor.class)).thenReturn(criteriaUpdate);
             when(criteriaUpdate.from(Actor.class)).thenReturn(root);
 
-            actor1 = new Actor(1, "", "Cranston", 67, "EE.UU");
+            actor1 = new Actor(1, "12345678A", "", "Cranston", 67, "EE.UU");
 
             when(criteriaUpdate.set(root.get("nombre"), actor1.getNombre())).thenThrow(
                     new IllegalArgumentException("No se puede poner un campo vacio"));

@@ -50,7 +50,7 @@ public class ActorCriteriaControllerTest {
 
         @BeforeEach
         void setUp() {
-            actor = new Actor(100, "Chris", "Evans", 45, "Estados Unidos");
+            actor = new Actor(100, "12345678A", "Chris", "Evans", 45, "Estados Unidos");
 
         }
 
@@ -80,7 +80,7 @@ public class ActorCriteriaControllerTest {
 
         @BeforeEach
         void setUp() {
-            actor = new Actor(100, "Chris", "Evans", 45, "Estados Unidos");
+            actor = new Actor(100, "12345678A", "Chris", "Evans", 45, "Estados Unidos");
 
         }
 
@@ -116,7 +116,7 @@ public class ActorCriteriaControllerTest {
 
         @BeforeEach
         void setUp() {
-            actor = new Actor(100, "Chris", "Evans", 45, "Estados Unidos");
+            actor = new Actor(100, "12345678A", "Chris", "Evans", 45, "Estados Unidos");
         }
 
         @Test
@@ -152,13 +152,14 @@ public class ActorCriteriaControllerTest {
 
         @BeforeEach
         void setUp() {
-            actor = new Actor(100, "Chris", "Evans", 45, "Estados Unidos");
+            actor = new Actor(100, "12345678A", "Chris", "Evans", 45, "Estados Unidos");
         }
 
         @Test
         void testActualizarActor_OK() {
             // Simulamos que el servicio devuelve el actor actualizado
-            Actor updatedActor = new Actor(100, "Chris", "Evans", 46, "Estados Unidos");  // Edad actualizada
+            Actor updatedActor = new Actor(100, "12345678A", "Chris", "Evans", 46,
+                    "Estados Unidos");  // Edad actualizada
 
             // Llamamos al controlador para actualizar el actor
             ResponseEntity<String> responseEntity = actorController.actualizarActor(actor.getIdActor(), updatedActor);
@@ -191,7 +192,7 @@ public class ActorCriteriaControllerTest {
     class EliminarActorTests {
         @BeforeEach
         void setUp() {
-            actor = new Actor(100, "Chris", "Evans", 45, "Estados Unidos");
+            actor = new Actor(100, "12345678A", "Chris", "Evans", 45, "Estados Unidos");
         }
 
         @Test

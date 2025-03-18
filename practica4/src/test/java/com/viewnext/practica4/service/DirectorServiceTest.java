@@ -15,6 +15,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.web.reactive.function.client.WebClient;
 
 import java.util.Arrays;
 import java.util.List;
@@ -31,6 +32,9 @@ public class DirectorServiceTest {
 
     @Mock
     private DirectorCriteriaRepository directorCriteriaRepository;
+    
+    @Mock
+    private WebClient.Builder webClientBuilder;
 
     @InjectMocks
     private DirectorService directorService;
@@ -42,9 +46,9 @@ public class DirectorServiceTest {
     @BeforeEach
     void setUp() {
         // Crear instancias de directores de prueba
-        director1 = new Director(200, "Steven", "Spielberg", 77, "EE.UU");
-        director2 = new Director(201, "Christopher", "Nolan", 53, "Reino Unido");
-        director3 = new Director(202, "Quentin", "Tarantino", 60, "EE.UU");
+        director1 = new Director(200, "12345678A", "Steven", "Spielberg", 77, "EE.UU");
+        director2 = new Director(201, "12345678A", "Christopher", "Nolan", 53, "Reino Unido");
+        director3 = new Director(202, "12345678A", "Quentin", "Tarantino", 60, "EE.UU");
 
         // Simular respuestas del repositorio con Mockito
         when(directorRepository.findAll()).thenReturn(Arrays.asList(director1, director2, director3));
@@ -117,7 +121,7 @@ public class DirectorServiceTest {
 
     @Test
     void testInsertarDirector() {
-        Director nuevoDirector = new Director(202, "James", "Cameron", 69, "Canadá");
+        Director nuevoDirector = new Director(202, "12345678A", "James", "Cameron", 69, "Canadá");
 
         directorService.insertarDirector(nuevoDirector);
         assertTrue(directorRepository.findById(202).isPresent());
@@ -126,7 +130,7 @@ public class DirectorServiceTest {
 
     @Test
     void testInsertarDirectorKO() {
-        Director nuevoDirector = new Director(203, "", "Cameron", 69, "Canadá");
+        Director nuevoDirector = new Director(203, "12345678A", "", "Cameron", 69, "Canadá");
 
         when(directorRepository.save(nuevoDirector)).thenThrow(
                 new IllegalArgumentException("No se puede guardar director"));
@@ -142,7 +146,7 @@ public class DirectorServiceTest {
 
     @Test
     void testActualizarDirector() {
-        Director directorActualizado = new Director(200, "Steven", "Spielberg", 78, "EE.UU");
+        Director directorActualizado = new Director(200, "12345678A", "Steven", "Spielberg", 78, "EE.UU");
 
         when(directorRepository.findById(200)).thenReturn(Optional.of(director1));
         when(directorRepository.save(any(Director.class))).thenAnswer(invocation -> invocation.getArgument(0));
@@ -158,7 +162,7 @@ public class DirectorServiceTest {
 
     @Test
     void testActualizarDirectorKO() {
-        Director directorActualizado = new Director(200, "", "Spielberg", 78, "EE.UU");
+        Director directorActualizado = new Director(200, "12345678A", "", "Spielberg", 78, "EE.UU");
 
         when(directorRepository.findById(200)).thenReturn(Optional.ofNullable(director1));
         when(directorRepository.save(any(Director.class))).thenThrow(new IllegalArgumentException("Datos inválidos"));
@@ -195,9 +199,9 @@ public class DirectorServiceTest {
     @Test
     void testObtenerDirectoresPaginacionyOrdenados_OK() {
         // Configuración
-        Director director1 = new Director(200, "Steven", "Spielberg", 77, "EE.UU");
-        Director director2 = new Director(201, "PRV3", "Cameron", 68, "Canadá");
-        Director director3 = new Director(202, "PRV4", "Nolan", 51, "Reino Unido");
+        Director director1 = new Director(200, "12345678A", "Steven", "Spielberg", 77, "EE.UU");
+        Director director2 = new Director(201, "12345678A", "PRV3", "Cameron", 68, "Canadá");
+        Director director3 = new Director(202, "12345678A", "PRV4", "Nolan", 51, "Reino Unido");
 
         Page<Director> page = new PageImpl<>(Arrays.asList(director1, director2, director3));
 
@@ -249,7 +253,7 @@ public class DirectorServiceTest {
 
     @Test
     void testInsertarDirectorCriteria() {
-        Director nuevoDirector = new Director(204, "James", "Cameron", 69, "Canadá");
+        Director nuevoDirector = new Director(204, "12345678A", "James", "Cameron", 69, "Canadá");
 
         directorService.insertarDirectorCriteria(nuevoDirector);
 
@@ -258,7 +262,7 @@ public class DirectorServiceTest {
 
     @Test
     void testInsertarDirectorCriteriaKO() {
-        Director nuevoDirector = new Director(204, "", "Cameron", 69, "Canadá");
+        Director nuevoDirector = new Director(204, "12345678A", "", "Cameron", 69, "Canadá");
 
         doThrow(new IllegalArgumentException("No se puede guardar el director")).when(directorCriteriaRepository)
                 .insertarDirector(nuevoDirector);
@@ -298,7 +302,7 @@ public class DirectorServiceTest {
 
     @Test
     void testActualizarDirectorCriteria() {
-        Director directorActualizado = new Director(200, "Steven", "Spielberg", 78, "EE.UU");
+        Director directorActualizado = new Director(200, "12345678A", "Steven", "Spielberg", 78, "EE.UU");
 
         directorService.actualizarDirectorCriteria(200, directorActualizado);
 
@@ -307,7 +311,7 @@ public class DirectorServiceTest {
 
     @Test
     void testActualizarDirectorCriteriaKO() {
-        Director directorActualizado = new Director(200, "", "Spielberg", 78, "EE.UU");
+        Director directorActualizado = new Director(200, "12345678A", "", "Spielberg", 78, "EE.UU");
 
         doThrow(new IllegalArgumentException("Datos inválidos")).when(directorCriteriaRepository)
                 .actualizarDirector(200, directorActualizado);

@@ -68,7 +68,7 @@ class DirectorCriteriaRepositoryTest {
 
         @BeforeEach
         void setUp() {
-            director1 = new Director(1, "Vince", "Gilligan", 57, "EE.UU");
+            director1 = new Director(1, "12345678A", "Vince", "Gilligan", 57, "EE.UU");
             when(entityManager.getCriteriaBuilder()).thenReturn(criteriaBuilder);
             when(criteriaBuilder.createQuery(Director.class)).thenReturn(criteriaQuery);
             when(criteriaQuery.from(Director.class)).thenReturn(root);
@@ -107,7 +107,7 @@ class DirectorCriteriaRepositoryTest {
 
         @BeforeEach
         void setUp() {
-            director1 = new Director(1, "Vince", "Gilligan", 57, "EE.UU");
+            director1 = new Director(1, "12345678A", "Vince", "Gilligan", 57, "EE.UU");
             when(entityManager.getCriteriaBuilder()).thenReturn(criteriaBuilder);
             when(criteriaBuilder.createQuery(Director.class)).thenReturn(criteriaQuery);
             when(criteriaQuery.from(Director.class)).thenReturn(root);
@@ -148,7 +148,7 @@ class DirectorCriteriaRepositoryTest {
 
         @Test
         void testInsertarDirector_OK() {
-            director1 = new Director(1, "Vince", "Gilligan", 57, "EE.UU");
+            director1 = new Director(1, "12345678A", "Vince", "Gilligan", 57, "EE.UU");
 
             // No se necesita un `when()` ya que persist() es void
             doNothing().when(entityManager).persist(director1);
@@ -160,7 +160,7 @@ class DirectorCriteriaRepositoryTest {
 
         @Test
         void testInsertarDirector_KO() {
-            director1 = new Director(1, "Vince", "Gilligan", 57, "EE.UU");
+            director1 = new Director(1, "12345678A", "Vince", "Gilligan", 57, "EE.UU");
 
             doThrow(new IllegalArgumentException("Error al insertar director")).when(entityManager).persist(director1);
 
@@ -178,7 +178,7 @@ class DirectorCriteriaRepositoryTest {
 
         @BeforeEach
         void setUp() {
-            director1 = new Director(1, "Vince", "Gilligan", 57, "EE.UU");
+            director1 = new Director(1, "12345678A", "Vince", "Gilligan", 57, "EE.UU");
 
             // Mockear el comportamiento del CriteriaBuilder
             when(entityManager.getCriteriaBuilder()).thenReturn(criteriaBuilder);
@@ -226,7 +226,7 @@ class DirectorCriteriaRepositoryTest {
 
         @BeforeEach
         void setUp() {
-            director1 = new Director(1, "Vince", "Gilligan", 57, "EE.UU");
+            director1 = new Director(1, "12345678A", "Vince", "Gilligan", 57, "EE.UU");
         }
 
         @Test
@@ -263,7 +263,7 @@ class DirectorCriteriaRepositoryTest {
             when(criteriaBuilder.createCriteriaUpdate(Director.class)).thenReturn(criteriaUpdate);
             when(criteriaUpdate.from(Director.class)).thenReturn(root);
 
-            director1 = new Director(1, "", "Gilligan", 57, "EE.UU");
+            director1 = new Director(1, "12345678A", "", "Gilligan", 57, "EE.UU");
 
             when(criteriaUpdate.set(root.get("nombre"), director1.getNombre())).thenThrow(
                     new IllegalArgumentException("No se puede poner un campo vacio"));

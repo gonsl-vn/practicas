@@ -58,9 +58,9 @@ class PeliculaCriteriaRepositoryTest {
 
     @BeforeAll
     void setUpBeforeAll() {
-        director1 = new Director(1, "Vince", "Gilligan", 57, "EE.UU");
+        director1 = new Director(1, "12345678A", "Vince", "Gilligan", 57, "EE.UU");
         productora1 = new Productora(1, "AMC", LocalDate.of(1994, 1, 1));
-        actor1 = new Actor(1, "Bryan", "Cranston", 67, "EE.UU");
+        actor1 = new Actor(1, "12345678A", "Bryan", "Cranston", 67, "EE.UU");
 
         pelicula1 = new Pelicula(1, "Breaking Bad", LocalDate.of(2008, 1, 20), director1, productora1, List.of(actor1));
 

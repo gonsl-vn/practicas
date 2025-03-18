@@ -44,7 +44,7 @@ class SerieServiceTest {
     @BeforeEach
     void setUp() {
         // Crear instancias de director, productora y actores para las series
-        Director director = new Director(1, "Vince", "Gilligan", 57, "EE.UU");
+        Director director = new Director(1, "12345678A", "Vince", "Gilligan", 57, "EE.UU");
         Productora productora = new Productora(1, "AMC", LocalDate.of(1994, 1, 1));
 
         // Crear instancias de series de prueba
