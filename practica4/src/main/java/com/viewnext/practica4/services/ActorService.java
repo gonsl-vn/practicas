@@ -15,13 +15,10 @@ public class ActorService {
 
     private final ActorRepository actorRepository;
     private final ActorCriteriaRepository actorCriteriaRepository;
-    /*private WebClient apiUsuarios;*/
 
-    public ActorService(ActorRepository actorRepository, ActorCriteriaRepository actorCriteriaRepository/*,
-            WebClient.Builder webClientBuilder*/) {
+    public ActorService(ActorRepository actorRepository, ActorCriteriaRepository actorCriteriaRepository) {
         this.actorRepository = actorRepository;
-        this.actorCriteriaRepository = actorCriteriaRepository;/*
-        this.apiUsuarios = webClientBuilder.baseUrl("http://localhost:8080/api/usuarios").build();*/
+        this.actorCriteriaRepository = actorCriteriaRepository;
     }
 
     public List<Actor> obtenerActores() {

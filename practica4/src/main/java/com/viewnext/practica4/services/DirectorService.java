@@ -19,14 +19,21 @@ import java.util.Optional;
 public class DirectorService {
     private final DirectorRepository directorRepository;
     private final DirectorCriteriaRepository directorCriteriaRepository;
-    private final WebClient apiUsuarios;
+    private final WebClient.Builder webClientBuilder;
+    private WebClient apiUsuarios;
 
     public DirectorService(DirectorRepository directorRepository, DirectorCriteriaRepository directorCriteriaRepository,
             WebClient.Builder webClientBuilder) {
         this.directorRepository = directorRepository;
         this.directorCriteriaRepository = directorCriteriaRepository;
-        this.apiUsuarios = webClientBuilder.baseUrl("http://localhost:8080/api/usuarios").build();
+        this.webClientBuilder = webClientBuilder;
+    }
 
+    private WebClient getApiUsuarios() {
+        if (this.apiUsuarios == null) {
+            this.apiUsuarios = webClientBuilder.baseUrl("http://localhost:8080/api/usuarios").build();
+        }
+        return this.apiUsuarios;
     }
 
     public List<Director> obtenerDirectores() {
@@ -39,7 +46,7 @@ public class DirectorService {
 
     public void insertarDirector(Director director) {
 
-        Map<String, String> usuarioResponse = apiUsuarios.get().uri("/" + director.getDni()).retrieve()
+        Map<String, String> usuarioResponse = getApiUsuarios().get().uri("/" + director.getDni()).retrieve()
                 .bodyToMono(Map.class).block();
         if (usuarioResponse != null) {
             if (usuarioResponse.get("dni").equals(director.getDni())) {
@@ -80,7 +87,7 @@ public class DirectorService {
     }
 
     public void insertarDirectorCriteria(Director director) {
-        Map<String, String> usuarioResponse = apiUsuarios.get().uri("/" + director.getDni()).retrieve()
+        Map<String, String> usuarioResponse = getApiUsuarios().get().uri("/" + director.getDni()).retrieve()
                 .bodyToMono(Map.class).block();
         if (usuarioResponse != null) {
             if (usuarioResponse.get("dni").equals(director.getDni())) {

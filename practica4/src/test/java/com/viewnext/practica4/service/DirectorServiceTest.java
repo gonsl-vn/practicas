@@ -16,10 +16,9 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.reactive.function.client.WebClient;
+import reactor.core.publisher.Mono;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
@@ -32,9 +31,21 @@ public class DirectorServiceTest {
 
     @Mock
     private DirectorCriteriaRepository directorCriteriaRepository;
-    
+
     @Mock
     private WebClient.Builder webClientBuilder;
+
+    @Mock
+    private WebClient apiUsuarios;
+
+    @Mock
+    private WebClient.RequestHeadersUriSpec requestHeadersUriSpec;
+
+    @Mock
+    private WebClient.RequestHeadersSpec requestHeadersSpec;
+
+    @Mock
+    private WebClient.ResponseSpec responseSpec;
 
     @InjectMocks
     private DirectorService directorService;
@@ -118,28 +129,48 @@ public class DirectorServiceTest {
     }
 
     // --------------------------------------------------
-
     @Test
     void testInsertarDirector() {
+        when(webClientBuilder.baseUrl(anyString())).thenReturn(webClientBuilder);
+        // Al construir, se retorna el WebClient mockeado
+        when(webClientBuilder.build()).thenReturn(apiUsuarios);
+        // Configurar la cadena del WebClient:
+        when(apiUsuarios.get()).thenReturn(requestHeadersUriSpec);
+        when(requestHeadersUriSpec.uri(anyString())).thenReturn(requestHeadersSpec);
+        when(requestHeadersSpec.retrieve()).thenReturn(responseSpec);
+
         Director nuevoDirector = new Director(202, "12345678A", "James", "Cameron", 69, "Canadá");
+        Map<String, String> usuarioResponse = new HashMap<>();
+        usuarioResponse.put("dni", "12345678A");
+
+        when(responseSpec.bodyToMono(Map.class)).thenReturn(Mono.just(usuarioResponse));
 
         directorService.insertarDirector(nuevoDirector);
-        assertTrue(directorRepository.findById(202).isPresent());
+
+        // Verificar que se haya guardado el director en el repositorio
         verify(directorRepository, times(1)).save(nuevoDirector);
     }
 
     @Test
     void testInsertarDirectorKO() {
-        Director nuevoDirector = new Director(203, "12345678A", "", "Cameron", 69, "Canadá");
 
-        when(directorRepository.save(nuevoDirector)).thenThrow(
-                new IllegalArgumentException("No se puede guardar director"));
+        when(webClientBuilder.baseUrl(anyString())).thenReturn(webClientBuilder);
+        // Al construir, se retorna el WebClient mockeado
+        when(webClientBuilder.build()).thenReturn(apiUsuarios);
+        // Configurar la cadena del WebClient:
+        when(apiUsuarios.get()).thenReturn(requestHeadersUriSpec);
+        when(requestHeadersUriSpec.uri(anyString())).thenReturn(requestHeadersSpec);
+        when(requestHeadersSpec.retrieve()).thenReturn(responseSpec);
 
-        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+        Director nuevoDirector = new Director(202, "12345678A", "James", "Cameron", 69, "Canadá");
+        Map<String, String> usuarioResponse = new HashMap<>();
+        usuarioResponse.put("dni", "12345678A");
+
+        when(responseSpec.bodyToMono(Map.class)).thenThrow(new NoSuchElementException(
+                "No se encontro el Dni del usuario, da de alta este usuario antes de añadirlo como director"));
+        assertThrows(NoSuchElementException.class, () -> {
             directorService.insertarDirector(nuevoDirector);
         });
-
-        assertEquals("No se puede guardar director", exception.getMessage());
     }
 
     // --------------------------------------------------
@@ -253,7 +284,17 @@ public class DirectorServiceTest {
 
     @Test
     void testInsertarDirectorCriteria() {
-        Director nuevoDirector = new Director(204, "12345678A", "James", "Cameron", 69, "Canadá");
+        when(webClientBuilder.baseUrl(anyString())).thenReturn(webClientBuilder);
+        when(webClientBuilder.build()).thenReturn(apiUsuarios);
+        when(apiUsuarios.get()).thenReturn(requestHeadersUriSpec);
+        when(requestHeadersUriSpec.uri(anyString())).thenReturn(requestHeadersSpec);
+        when(requestHeadersSpec.retrieve()).thenReturn(responseSpec);
+
+        Director nuevoDirector = new Director(202, "12345678A", "James", "Cameron", 69, "Canadá");
+        Map<String, String> usuarioResponse = new HashMap<>();
+        usuarioResponse.put("dni", "12345678A");
+
+        when(responseSpec.bodyToMono(Map.class)).thenReturn(Mono.just(usuarioResponse));
 
         directorService.insertarDirectorCriteria(nuevoDirector);
 
@@ -262,16 +303,23 @@ public class DirectorServiceTest {
 
     @Test
     void testInsertarDirectorCriteriaKO() {
-        Director nuevoDirector = new Director(204, "12345678A", "", "Cameron", 69, "Canadá");
+        when(webClientBuilder.baseUrl(anyString())).thenReturn(webClientBuilder);
+        // Al construir, se retorna el WebClient mockeado
+        when(webClientBuilder.build()).thenReturn(apiUsuarios);
+        // Configurar la cadena del WebClient:
+        when(apiUsuarios.get()).thenReturn(requestHeadersUriSpec);
+        when(requestHeadersUriSpec.uri(anyString())).thenReturn(requestHeadersSpec);
+        when(requestHeadersSpec.retrieve()).thenReturn(responseSpec);
 
-        doThrow(new IllegalArgumentException("No se puede guardar el director")).when(directorCriteriaRepository)
-                .insertarDirector(nuevoDirector);
+        Director nuevoDirector = new Director(202, "12345678A", "James", "Cameron", 69, "Canadá");
+        Map<String, String> usuarioResponse = new HashMap<>();
+        usuarioResponse.put("dni", "12345678A");
 
-        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+        when(responseSpec.bodyToMono(Map.class)).thenThrow(new NoSuchElementException(
+                "No se encontro el Dni del usuario, da de alta este usuario antes de añadirlo como director"));
+        assertThrows(NoSuchElementException.class, () -> {
             directorService.insertarDirectorCriteria(nuevoDirector);
         });
-
-        assertEquals("No se puede guardar el director", exception.getMessage());
     }
 
     // --------------------------------------------------
