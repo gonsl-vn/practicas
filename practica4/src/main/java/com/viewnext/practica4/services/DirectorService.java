@@ -60,9 +60,12 @@ public class DirectorService {
 
     public void eliminarDirector(int idDirector) {
         Optional<Director> director = directorRepository.findById(idDirector);
-        director.ifPresent(directorRepository::delete);
+
         if (director.isEmpty()) {
             throw new NoSuchElementException("No se encontro el director buscado, no se eliminara nada de la BD");
+        } else {
+            directorRepository.deleteById(idDirector);
+            directorRepository.delete(director.get());
         }
     }
 

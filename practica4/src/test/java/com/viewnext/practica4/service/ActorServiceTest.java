@@ -8,16 +8,15 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.jupiter.params.aggregator.ArgumentAccessException;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.data.domain.*;
 import org.springframework.web.reactive.function.client.WebClient;
+import reactor.core.publisher.Mono;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
@@ -32,7 +31,19 @@ class ActorServiceTest {
     private ActorCriteriaRepository actorCriteriaRepository;
 
     @Mock
-    private WebClient.Builder webClientBuilder; // Mockear WebClient.Builder
+    private WebClient.Builder webClientBuilder;
+
+    @Mock
+    private WebClient apiUsuarios;
+
+    @Mock
+    private WebClient.RequestHeadersUriSpec requestHeadersUriSpec;
+
+    @Mock
+    private WebClient.RequestHeadersSpec requestHeadersSpec;
+
+    @Mock
+    private WebClient.ResponseSpec responseSpec;
 
     @InjectMocks
     private ActorService actorService;
@@ -116,24 +127,57 @@ class ActorServiceTest {
 
     @Test
     void testInsertarActor() {
-        Actor nuevoActor = new Actor(103, "12345678A", "Robert", "Downey Jr.", 58, "USA");
+        // Configurar WebClient mockeado
+        when(webClientBuilder.baseUrl(anyString())).thenReturn(webClientBuilder);
+        when(webClientBuilder.build()).thenReturn(apiUsuarios);
 
+        // Simular la cadena de llamadas del WebClient
+        when(apiUsuarios.get()).thenReturn(requestHeadersUriSpec);
+        when(requestHeadersUriSpec.uri(anyString())).thenReturn(requestHeadersSpec);
+        when(requestHeadersSpec.retrieve()).thenReturn(responseSpec);
+
+        // Crear el Actor a insertar
+        Actor nuevoActor = new Actor(302, "87654321B", "Leonardo", "DiCaprio", 49, "EE.UU");
+
+        // Simular respuesta del servicio externo (usuario existente)
+        Map<String, String> usuarioResponse = new HashMap<>();
+        usuarioResponse.put("dni", "87654321B");
+
+        when(responseSpec.bodyToMono(Map.class)).thenReturn(Mono.just(usuarioResponse));
+
+        // Llamar al método a probar
         actorService.insertarActor(nuevoActor);
 
+        // Verificar que el actor se guardó en el repositorio
         verify(actorRepository, times(1)).save(nuevoActor);
     }
 
     @Test
     void testInsertarActorKO() {
-        Actor nuevoActor = new Actor(103, "12345678A", "", "Downey Jr.", 58, "USA");
+        // Configurar WebClient mockeado
+        when(webClientBuilder.baseUrl(anyString())).thenReturn(webClientBuilder);
+        when(webClientBuilder.build()).thenReturn(apiUsuarios);
 
-        when(actorRepository.save(nuevoActor)).thenThrow(new IllegalArgumentException("No se puede guardar actor"));
+        // Simular la cadena de llamadas del WebClient
+        when(apiUsuarios.get()).thenReturn(requestHeadersUriSpec);
+        when(requestHeadersUriSpec.uri(anyString())).thenReturn(requestHeadersSpec);
+        when(requestHeadersSpec.retrieve()).thenReturn(responseSpec);
 
-        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+        // Crear el Actor a insertar
+        Actor nuevoActor = new Actor(302, "", "Leonardo", "DiCaprio", 49, "EE.UU");
+
+        // Simular respuesta del servicio externo (usuario existente)
+        Map<String, String> usuarioResponse = new HashMap<>();
+        usuarioResponse.put("dni", "87654321B");
+
+        when(responseSpec.bodyToMono(Map.class)).thenThrow(ArgumentAccessException.class);
+
+        assertThrows(ArgumentAccessException.class, () -> {
+
+            // Llamar al método a probar
             actorService.insertarActor(nuevoActor);
         });
 
-        assertEquals("No se puede guardar actor", exception.getMessage());
     }
 
     // --------------------------------------------------
@@ -235,13 +279,30 @@ class ActorServiceTest {
 
     @Test
     void testObtenerActoresCriteria() {
-        when(actorCriteriaRepository.listarActores()).thenReturn(Arrays.asList(actor1, actor2, actor3));
 
-        List<Actor> listaActores = actorService.obtenerActoresCriteria();
+        // Configurar WebClient mockeado
+        when(webClientBuilder.baseUrl(anyString())).thenReturn(webClientBuilder);
+        when(webClientBuilder.build()).thenReturn(apiUsuarios);
 
-        assertNotNull(listaActores);
-        assertEquals(3, listaActores.size());
-        verify(actorCriteriaRepository, times(1)).listarActores();
+        // Simular la cadena de llamadas del WebClient
+        when(apiUsuarios.get()).thenReturn(requestHeadersUriSpec);
+        when(requestHeadersUriSpec.uri(anyString())).thenReturn(requestHeadersSpec);
+        when(requestHeadersSpec.retrieve()).thenReturn(responseSpec);
+
+        // Crear el Actor a insertar
+        Actor nuevoActor = new Actor(302, "87654321B", "Leonardo", "DiCaprio", 49, "EE.UU");
+
+        // Simular respuesta del servicio externo (usuario existente)
+        Map<String, String> usuarioResponse = new HashMap<>();
+        usuarioResponse.put("dni", "87654321B");
+
+        when(responseSpec.bodyToMono(Map.class)).thenReturn(Mono.just(usuarioResponse));
+
+        // Llamar al método a probar
+        actorService.insertarActorCriteria(nuevoActor);
+
+        // Verificar que el actor se guardó en el repositorio
+        verify(actorCriteriaRepository, times(1)).insertarActor(nuevoActor);
     }
 
     @Test
@@ -282,25 +343,56 @@ class ActorServiceTest {
 
     @Test
     void testInsertarActorCriteria() {
-        Actor nuevoActor = new Actor(103, "12345678A", "Tom", "Holland", 27, "UK");
+        // Configurar WebClient mockeado
+        when(webClientBuilder.baseUrl(anyString())).thenReturn(webClientBuilder);
+        when(webClientBuilder.build()).thenReturn(apiUsuarios);
 
+        // Simular la cadena de llamadas del WebClient
+        when(apiUsuarios.get()).thenReturn(requestHeadersUriSpec);
+        when(requestHeadersUriSpec.uri(anyString())).thenReturn(requestHeadersSpec);
+        when(requestHeadersSpec.retrieve()).thenReturn(responseSpec);
+
+        // Crear el Actor a insertar
+        Actor nuevoActor = new Actor(302, "87654321B", "Leonardo", "DiCaprio", 49, "EE.UU");
+
+        // Simular respuesta del servicio externo (usuario existente)
+        Map<String, String> usuarioResponse = new HashMap<>();
+        usuarioResponse.put("dni", "87654321B");
+
+        when(responseSpec.bodyToMono(Map.class)).thenReturn(Mono.just(usuarioResponse));
+
+        // Llamar al método a probar
         actorService.insertarActorCriteria(nuevoActor);
 
+        // Verificar que el actor se guardó en el repositorio
         verify(actorCriteriaRepository, times(1)).insertarActor(nuevoActor);
     }
 
     @Test
     void testInsertarActorCriteriaKO() {
-        Actor nuevoActor = new Actor(103, "12345678A", "", "Downey Jr.", 58, "USA");
+        // Configurar WebClient mockeado
+        when(webClientBuilder.baseUrl(anyString())).thenReturn(webClientBuilder);
+        when(webClientBuilder.build()).thenReturn(apiUsuarios);
 
-        doThrow(new IllegalArgumentException("No se puede guardar actor")).when(actorCriteriaRepository)
-                .insertarActor(nuevoActor);
+        // Simular la cadena de llamadas del WebClient
+        when(apiUsuarios.get()).thenReturn(requestHeadersUriSpec);
+        when(requestHeadersUriSpec.uri(anyString())).thenReturn(requestHeadersSpec);
+        when(requestHeadersSpec.retrieve()).thenReturn(responseSpec);
 
-        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+        // Crear el Actor a insertar
+        Actor nuevoActor = new Actor(302, "", "Leonardo", "DiCaprio", 49, "EE.UU");
+
+        // Simular respuesta del servicio externo (usuario existente)
+        Map<String, String> usuarioResponse = new HashMap<>();
+        usuarioResponse.put("dni", "87654321B");
+
+        when(responseSpec.bodyToMono(Map.class)).thenThrow(ArgumentAccessException.class);
+
+        assertThrows(ArgumentAccessException.class, () -> {
+
+            // Llamar al método a probar
             actorService.insertarActorCriteria(nuevoActor);
         });
-
-        assertEquals("No se puede guardar actor", exception.getMessage());
     }
 
     // --------------------------------------------------

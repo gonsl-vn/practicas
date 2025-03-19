@@ -62,6 +62,7 @@ public class ActorCriteriaRepository {
         entityManager.createQuery(update).executeUpdate();
     }
 
+    @Transactional
     public void borrarActorPorId(int idActor) {
         CriteriaBuilder cb = entityManager.getCriteriaBuilder();
         CriteriaDelete<Actor> delete = cb.createCriteriaDelete(Actor.class);

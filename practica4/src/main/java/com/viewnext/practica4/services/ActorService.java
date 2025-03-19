@@ -6,8 +6,11 @@ import com.viewnext.practica4.repositorys.ActorRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.web.reactive.function.client.WebClient;
 
 import java.util.List;
+import java.util.Map;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Service
@@ -16,9 +19,21 @@ public class ActorService {
     private final ActorRepository actorRepository;
     private final ActorCriteriaRepository actorCriteriaRepository;
 
-    public ActorService(ActorRepository actorRepository, ActorCriteriaRepository actorCriteriaRepository) {
+    private final WebClient.Builder webClientBuilder;
+    private WebClient apiUsuarios;
+
+    public ActorService(ActorRepository actorRepository, ActorCriteriaRepository actorCriteriaRepository,
+            WebClient.Builder webClientBuilder) {
         this.actorRepository = actorRepository;
         this.actorCriteriaRepository = actorCriteriaRepository;
+        this.webClientBuilder = webClientBuilder;
+    }
+
+    private WebClient getApiUsuarios() {
+        if (this.apiUsuarios == null) {
+            this.apiUsuarios = webClientBuilder.baseUrl("http://localhost:8080/api/usuarios").build();
+        }
+        return this.apiUsuarios;
     }
 
     public List<Actor> obtenerActores() {
@@ -31,21 +46,19 @@ public class ActorService {
 
     public void insertarActor(Actor actor) {
 
-       /* Map<String, String> usuarioResponse = apiUsuarios.get().uri("/" + actor.getDni()).retrieve()
+        Map<String, String> usuarioResponse = getApiUsuarios().get().uri("/" + actor.getDni()).retrieve()
                 .bodyToMono(Map.class).block();
 
         if (usuarioResponse.get("dni").equals(actor.getDni())) {
             actorRepository.save(actor);
         } else {
             new NoSuchElementException("No se encontro el DNI buscado, no se insertara nada");
-        }*/
-
-        actorRepository.save(actor);
+        }
 
     }
 
     public void eliminarActor(int idActor) {
-        actorRepository.delete(actorRepository.findByIdActor(idActor).get());
+        actorRepository.deleteById(idActor);
     }
 
     public Actor actualizarActor(int idActor, Actor actorActualizado) {
@@ -70,16 +83,14 @@ public class ActorService {
 
     public void insertarActorCriteria(Actor actor) {
 
-        /*Map<String, String> usuarioResponse = apiUsuarios.get().uri("/" + actor.getDni()).retrieve()
+        Map<String, String> usuarioResponse = getApiUsuarios().get().uri("/" + actor.getDni()).retrieve()
                 .bodyToMono(Map.class).block();
 
         if (usuarioResponse.get("dni").equals(actor.getDni())) {
             actorCriteriaRepository.insertarActor(actor);
         } else {
             new NoSuchElementException("No se encontro el DNI buscado, no se insertara nada");
-        }*/
-
-        actorCriteriaRepository.insertarActor(actor);
+        }
 
     }
 
