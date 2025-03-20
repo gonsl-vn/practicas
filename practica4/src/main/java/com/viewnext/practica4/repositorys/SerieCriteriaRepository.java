@@ -67,7 +67,6 @@ public class SerieCriteriaRepository {
         update.set(root.get("ano"), serieNueva.getAno());
         update.set(root.get("director"), serieNueva.getDirector());
         update.set(root.get("productora"), serieNueva.getProductora());
-        update.set(root.get("actores"), serieNueva.getActores());
 
         // WHERE ID_SERIE = idSerie
         Predicate predicate = cb.equal(root.get("idSerie"), idSerie);

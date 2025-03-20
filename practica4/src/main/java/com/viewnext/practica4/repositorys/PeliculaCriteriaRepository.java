@@ -58,22 +58,21 @@ public class PeliculaCriteriaRepository {
      */
     @Transactional
     public void actualizarPelicula(int idPelicula, Pelicula peliculaNueva) {
+        // Inicializar el CriteriaBuilder
         CriteriaBuilder cb = entityManager.getCriteriaBuilder();
         CriteriaUpdate<Pelicula> update = cb.createCriteriaUpdate(Pelicula.class);
         Root<Pelicula> root = update.from(Pelicula.class);
 
-        // SET TODOS LOS CAMPOS MENOS EL ID
+        // Actualizar los campos simples de la película (no colecciones)
         update.set(root.get("titulo"), peliculaNueva.getTitulo());
         update.set(root.get("ano"), peliculaNueva.getAno());
         update.set(root.get("director"), peliculaNueva.getDirector());
         update.set(root.get("productora"), peliculaNueva.getProductora());
-        update.set(root.get("actores"), peliculaNueva.getActores());
 
         // WHERE ID_PELICULA = idPelicula
         Predicate predicate = cb.equal(root.get("idPelicula"), idPelicula);
         update.where(predicate);
 
-        // Ejecutar la actualización
         entityManager.createQuery(update).executeUpdate();
     }
 

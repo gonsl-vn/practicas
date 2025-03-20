@@ -16,7 +16,6 @@ import java.util.List;
 public class Pelicula {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_pelicula", unique = true, nullable = false)
     private int idPelicula;
 
@@ -38,7 +37,5 @@ public class Pelicula {
 
     // Relación con Actores (ManyToMany)
     @ManyToMany
-    @JoinTable(name = "pelicula_actores", // Tabla intermedia para la relación ManyToMany
-            joinColumns = @JoinColumn(name = "id_pelicula"), inverseJoinColumns = @JoinColumn(name = "id_actor"))
     private List<Actor> actores;
 }
