@@ -30,7 +30,7 @@ public class PeliculaService {
      */
     @Transactional
     public Pelicula insertarPelicula(Pelicula pelicula) {
-        return peliculaRepository.saveAndFlush(pelicula);
+        return peliculaRepository.save(pelicula);
     }
 
     /**

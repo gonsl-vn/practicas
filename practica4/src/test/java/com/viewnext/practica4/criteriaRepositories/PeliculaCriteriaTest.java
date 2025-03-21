@@ -244,7 +244,6 @@ class PeliculaCriteriaRepositoryTest {
             when(criteriaUpdate.set(root.get("ano"), pelicula1.getAno())).thenReturn(criteriaUpdate);
             when(criteriaUpdate.set(root.get("director"), pelicula1.getDirector())).thenReturn(criteriaUpdate);
             when(criteriaUpdate.set(root.get("productora"), pelicula1.getProductora())).thenReturn(criteriaUpdate);
-            when(criteriaUpdate.set(root.get("actores"), pelicula1.getActores())).thenReturn(criteriaUpdate);
 
             when(criteriaBuilder.equal(root.get("idPelicula"), pelicula1.getIdPelicula())).thenReturn(predicate);
             when(criteriaUpdate.where(predicate)).thenReturn(criteriaUpdate);

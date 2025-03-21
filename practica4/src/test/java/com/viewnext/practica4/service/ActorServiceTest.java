@@ -220,18 +220,18 @@ class ActorServiceTest {
 
         actorService.eliminarActor(100);
 
-        verify(actorRepository, times(1)).delete(actor1);
+        verify(actorRepository, times(1)).deleteById(actor1.getIdActor());
     }
 
     @Test
     void testEliminarActorKO() {
-        when(actorRepository.findByIdActor(999)).thenReturn(Optional.empty());
+        doThrow(new RuntimeException("Datos inválidos")).when(actorRepository).deleteById(actor1.getIdActor());
 
         Exception exception = assertThrows(RuntimeException.class, () -> {
             actorService.eliminarActor(999);
         });
 
-        verify(actorRepository, times(0)).delete(any());
+        verify(actorRepository, times(1)).deleteById(any());
     }
 
     @Test
