@@ -17,22 +17,32 @@ import reactor.core.publisher.Sinks;
 @Slf4j
 public class ReactiveConsumer {
 
-    private final KStream<String, Mensaje> kStream;
-    private  Flux<Mensaje> fluxTemporal;
     private Sinks.Many<Mensaje> sinkMensaje;
     //private final ConnectableFlux<Mensaje> connectableFlux;
 
     public ReactiveConsumer(KStream<String, Mensaje> kStream,
             Sinks.Many<Mensaje> sinkMensaje) {
-        this.kStream = kStream;
+
         this.sinkMensaje = Sinks.many().multicast().onBackpressureBuffer();
 
         //this.connectableFlux = connectableFlux;
 
     }
 
+    public Flux<Mensaje> consumeReactivo(){
+        log.info("consumeReactivo bien invocado");
+        Flux<Mensaje> fluxTemporal = sinkMensaje.asFlux();
+
+        return fluxTemporal.doOnSubscribe(s->{log.info("Nuevo suscriptor");})
+                .doOnCancel(()->log.warn("FLUX CANCELADO"));
+    }
+
+
+
+/*
     @Bean
     public KStream<String, Mensaje> iniciar(){
+
         log.info("Iniciandoo");
         kStream.foreach((key,value)->{
             log.info("Recibiendo el mensaje" + value);
@@ -50,7 +60,7 @@ public class ReactiveConsumer {
                 .doOnCancel(()->log.warn("CANCELANDO FLUX"));
 
 
-    }
+    }*/
     /*
     public Flux<Mensaje> consumeFluxMensaje(){
         fluxTemporal = Flux.create(fluxSink->{

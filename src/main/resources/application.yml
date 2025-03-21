@@ -22,9 +22,9 @@ spring:
     bootstrap-servers: localhost:9092
     streams:
       application-id: kafka-stream-app
-      properties:
-        default.key.serde: org.apache.kafka.common.serialization.Serdes$StringSerde
-        default.value.serde: org.springframework.kafka.support.serializer.JsonSerde
+      #properties:
+       # default.key.serde: org.apache.kafka.common.serialization.Serdes$StringSerde
+        #default.value.serde: org.springframework.kafka.support.serializer.JsonSerde
 
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
@@ -32,6 +32,7 @@ spring:
       retries: 3
       acks: all
     consumer:
+      group-id: stringConsumer
       auto-offset-reset: earliest
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer

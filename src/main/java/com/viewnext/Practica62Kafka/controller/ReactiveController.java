@@ -17,6 +17,6 @@ public class ReactiveController {
 
     @GetMapping(value = "/consumeReactivo", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
     public Flux<Mensaje> streamMensajes(){
-        return reactiveConsumer.pruebaConsumeFluxMensaje();
+        return reactiveConsumer.consumeReactivo();
     }
 }

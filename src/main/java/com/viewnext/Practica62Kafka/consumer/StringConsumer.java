@@ -10,8 +10,10 @@ import org.springframework.stereotype.Service;
 public class StringConsumer {
 
 
-    @KafkaListener(topics = "MensajesTopic", groupId = "mensajeConsumer" )
-    public void consumeString(Mensaje mensaje){
+
+
+    @KafkaListener(topics = "stringTopic", groupId = "stringConsumer" )
+    public void consumeString(String mensaje){
         log.info("Se esta consumiendo El STRING" + mensaje);
     }
 }
