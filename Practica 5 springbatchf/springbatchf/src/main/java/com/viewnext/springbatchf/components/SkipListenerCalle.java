@@ -4,6 +4,7 @@ import com.viewnext.springbatchf.model.Calle;
 import org.springframework.batch.core.SkipListener;
 import org.springframework.stereotype.Component;
 
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -11,10 +12,16 @@ import java.io.PrintWriter;
 @Component
 public class SkipListenerCalle implements SkipListener<Calle, Calle> {
 
-    private static final String LOG_FILE = "/errores_registro.log";
+    private static final String LOG_FILE = "logs\\errores_registro.log";
 
     @Override
     public void onSkipInRead(Throwable throwable) {
+        // Crear la carpeta si no existe
+        File logDirectory = new File("logs");
+        if (!logDirectory.exists()) {
+            logDirectory.mkdirs();  // Crea la carpeta si no existe
+        }
+
         // Aquí se registra el error de procesamiento (por ejemplo, campos nulos)
         try (FileWriter fw = new FileWriter(LOG_FILE, true)) {
             fw.write("Causa: " + throwable.getMessage() + "\n");

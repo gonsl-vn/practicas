@@ -1,5 +1,6 @@
 package com.viewnext.springbatchf.config;
 
+import com.viewnext.springbatchf.components.CustomJobExecutionListener;
 import com.viewnext.springbatchf.components.SkipListenerCalle;
 import com.viewnext.springbatchf.model.Calle;
 import com.viewnext.springbatchf.processor.CalleItemProcessor;
@@ -80,8 +81,10 @@ public class SpringBatchConfig {
     }
 
     @Bean
-    public Job jobCalles(JobRepository jobRepository, Step stepCalles) {
-        return new JobBuilder("CallesJob", jobRepository).start(stepCalles).build();
+    public Job jobCalles(JobRepository jobRepository, Step stepCalles, CustomJobExecutionListener listener) {
+        return new JobBuilder("CallesJob", jobRepository).start(stepCalles)
+                .listener(listener)  // Aquí agregamos el listener al job
+                .build();
     }
 
 }
