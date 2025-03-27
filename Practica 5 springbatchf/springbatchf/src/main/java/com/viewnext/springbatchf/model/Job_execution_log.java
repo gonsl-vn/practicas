@@ -1,9 +1,6 @@
 package com.viewnext.springbatchf.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
@@ -20,9 +17,13 @@ public class Job_execution_log {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String distrito;
-    private int num_registros_guardados;
-    private String estado_batch;
     private LocalDateTime timestamp;
+
+    private String distrito;
+
+    private int numeroCasas;
+
+    @Column(name = "estado_batch")
+    private String estadoBatch;
 
 }
