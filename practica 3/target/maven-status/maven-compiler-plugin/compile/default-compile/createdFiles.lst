@@ -1,0 +1,6 @@
+com\viewnext\practica3\controller\UsuarioController.class
+com\viewnext\practica3\exceptions\InvalidUserException.class
+com\viewnext\practica3\repository\UsersRepository.class
+com\viewnext\practica3\Practica2Application.class
+com\viewnext\practica3\services\UserServices.class
+com\viewnext\practica3\models\Usuario.class
