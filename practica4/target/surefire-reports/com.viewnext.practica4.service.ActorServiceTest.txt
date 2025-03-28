@@ -1,0 +1,48 @@
+-------------------------------------------------------------------------------
+Test set: com.viewnext.practica4.service.ActorServiceTest
+-------------------------------------------------------------------------------
+Tests run: 22, Failures: 4, Errors: 2, Skipped: 0, Time elapsed: 1.339 s <<< FAILURE! - in com.viewnext.practica4.service.ActorServiceTest
+testInsertarActorKO  Time elapsed: 0.262 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: Unexpected exception type thrown, expected: <java.lang.IllegalArgumentException> but was: <org.springframework.web.reactive.function.client.WebClientRequestException>
+	at com.viewnext.practica4.service.ActorServiceTest.testInsertarActorKO(ActorServiceTest.java:132)
+Caused by: org.springframework.web.reactive.function.client.WebClientRequestException
+Caused by: java.net.ConnectException
+Caused by: java.nio.channels.ClosedChannelException
+
+testInsertarActor  Time elapsed: 0.017 s  <<< ERROR!
+org.springframework.web.reactive.function.client.WebClientRequestException
+Caused by: java.net.ConnectException
+Caused by: java.nio.channels.ClosedChannelException
+
+testInsertarActorCriteria  Time elapsed: 0.014 s  <<< ERROR!
+org.springframework.web.reactive.function.client.WebClientRequestException
+Caused by: java.net.ConnectException
+Caused by: java.nio.channels.ClosedChannelException
+
+testInsertarActorCriteriaKO  Time elapsed: 0.015 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: Unexpected exception type thrown, expected: <java.lang.IllegalArgumentException> but was: <org.springframework.web.reactive.function.client.WebClientRequestException>
+	at com.viewnext.practica4.service.ActorServiceTest.testInsertarActorCriteriaKO(ActorServiceTest.java:299)
+Caused by: org.springframework.web.reactive.function.client.WebClientRequestException
+Caused by: java.net.ConnectException
+Caused by: java.nio.channels.ClosedChannelException
+
+testEliminarActor  Time elapsed: 0.013 s  <<< FAILURE!
+org.mockito.exceptions.verification.WantedButNotInvoked: 
+
+Wanted but not invoked:
+actorRepository.delete(
+    Actor(idActor=100, dni=12345678A, nombre=Chris, apellido=Evans, edad=45, nacionalidad=Estados Unidos)
+);
+-> at com.viewnext.practica4.service.ActorServiceTest.testEliminarActor(ActorServiceTest.java:179)
+
+However, there was exactly 1 interaction with this mock:
+actorRepository.deleteById(100);
+-> at com.viewnext.practica4.services.ActorService.eliminarActor(ActorService.java:54)
+
+
+	at com.viewnext.practica4.service.ActorServiceTest.testEliminarActor(ActorServiceTest.java:179)
+
+testEliminarActorKO  Time elapsed: 0.007 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: Expected java.lang.RuntimeException to be thrown, but nothing was thrown.
+	at com.viewnext.practica4.service.ActorServiceTest.testEliminarActorKO(ActorServiceTest.java:186)
+

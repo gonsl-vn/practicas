@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.viewnext.practica4.contrellers.DirectorControllerTest
+-------------------------------------------------------------------------------
+Tests run: 12, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.075 s - in com.viewnext.practica4.contrellers.DirectorControllerTest

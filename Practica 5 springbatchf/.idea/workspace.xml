@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="7520eaad-4136-4657-a447-e2dcb58d62d4" name="Changes" comment="JAR: SpringBatch ejercicio 3 completo con correcion de codigo" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="FormatOnSaveOptions">
+    <option name="myRunOnSave" value="true" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="RESET_MODE" value="HARD" />
+    <option name="UPDATE_TYPE" value="REBASE" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;JavierAriasViewnext&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/gonsl-vn/practicas.git&quot;,
+    &quot;accountId&quot;: &quot;3bc6a9a8-4eb4-44b8-b2b4-80de1ad8956d&quot;
+  }
+}</component>
+  <component name="OptimizeOnSaveOptions">
+    <option name="myRunOnSave" value="true" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
+  <component name="ProjectId" id="2ucrshnm178ZljdgG1K4TJeJEGX" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Aplicacion.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Application.executor&quot;: &quot;Run&quot;,
+    &quot;Application.aplication.executor&quot;: &quot;Debug&quot;,
+    &quot;Maven.springbatchf [clean,install].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Javier-Arias&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Desarrollo Software/Repo GitHub/Practica 5 springbatchf/springbatchf&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.viewnext.springbatchf.Repositories" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Desarrollo Software\Repo GitHub\Practica 5 springbatchf\springbatchf\src\main\java\com\viewnext\springbatchf\jobs\job3" />
+      <recent name="C:\Desarrollo Software\Repo GitHub\Practica 5 springbatchf\springbatchf\src\main\resources" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Desarrollo Software\Repo GitHub\Practica 5 springbatchf\springbatchf\src\main\resources" />
+    </key>
+    <key name="ExtractSuperBase.RECENT_KEYS">
+      <recent name="com.viewnext.springbatchf.jobs.jobsLauncher" />
+      <recent name="com.viewnext.springbatchf.components" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.viewnext.springbatchf.jobs.job2.steps.step2.reader" />
+      <recent name="com.viewnext.springbatchf.jobs.job2" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Aplicacion" type="Application" factoryName="Application">
+      <option name="ALTERNATIVE_JRE_PATH" value="$PROJECT_DIR$/../../../Desarrollo/Herramientas/jdk-17_windows-x64_bin/jdk-17.0.11" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="MAIN_CLASS_NAME" value="com.viewnext.springbatchf.Application" />
+      <module name="springbatchf" />
+      <option name="PROGRAM_PARAMETERS" value="--job=jobMultihilos --nhilos=100 --distrito=ESTE " />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="7520eaad-4136-4657-a447-e2dcb58d62d4" name="Changes" comment="" />
+      <created>1740389451836</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1740389451836</updated>
+    </task>
+    <task id="LOCAL-00001" summary="JAR: SpringBatch Desarrollo inserccion BD">
+      <option name="closed" value="true" />
+      <created>1742905713049</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1742905713049</updated>
+    </task>
+    <task id="LOCAL-00002" summary="JAR: SpringBatch ejercicio 1 completo">
+      <option name="closed" value="true" />
+      <created>1742987361116</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1742987361116</updated>
+    </task>
+    <task id="LOCAL-00003" summary="JAR: SpringBatch ejercicio 2 completo">
+      <option name="closed" value="true" />
+      <created>1743081489621</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1743081489621</updated>
+    </task>
+    <task id="LOCAL-00004" summary="JAR: SpringBatch ejercicio 3 completo con correcion de codigo">
+      <option name="closed" value="true" />
+      <created>1743166194953</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1743166194953</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="JAR: SpringBatch Desarrollo inserccion BD" />
+    <MESSAGE value="JAR: SpringBatch ejercicio 1 completo" />
+    <MESSAGE value="JAR: SpringBatch ejercicio 2 completo" />
+    <MESSAGE value="JAR: SpringBatch ejercicio 3 completo con correcion de codigo" />
+    <option name="LAST_COMMIT_MESSAGE" value="JAR: SpringBatch ejercicio 3 completo con correcion de codigo" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/springbatchf/src/main/java/com/viewnext/springbatchf/jobs/job2/steps/step2/writer/LogWriterFromDBtoCSV.java</url>
+          <line>17</line>
+          <option name="timeStamp" value="20" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/springbatchf/src/main/java/com/viewnext/springbatchf/jobs/job2/steps/step1/writers/CalleWriterFromDBtoCSV.java</url>
+          <line>26</line>
+          <option name="timeStamp" value="23" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

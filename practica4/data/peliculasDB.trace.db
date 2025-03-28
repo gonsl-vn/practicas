@@ -1,0 +1,125 @@
+2025-03-18 08:46:30.310814+01:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Columna "IDACTOR" no encontrada
+Column "IDACTOR" not found; SQL statement:
+INSERT INTO ACTOR (IdActor, Dni, Nombre, Apellido, Edad, Nacionalidad) VALUES
+(1, '12345678A', 'Leonardo', 'DiCaprio', 48, 'EEUU'),
+(2, '23456789B', 'Brad', 'Pitt', 58, 'EEUU'),
+(3, '34567890C', 'Tom', 'Hanks', 66, 'EEUU'),
+(4, '45678901D', 'Meryl', 'Streep', 72, 'EEUU'),
+(5, '56789012E', 'Scarlett', 'Johansson', 36, 'EEUU'),
+(6, '67890123F', 'Dwayne', 'Johnson', 50, 'EEUU'),
+(7, '78901234G', 'Morgan', 'Freeman', 87, 'EEUU'),
+(8, '89012345H', 'Will', 'Smith', 53, 'EEUU'),
+(9, '90123456I', 'Julia', 'Roberts', 56, 'EEUU'),
+(10, '01234567J', 'Johnny', 'Depp', 62, 'EEUU') [42122-224]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:514)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.table.Table.getColumn(Table.java:759)
+	at org.h2.command.Parser.parseColumn(Parser.java:1190)
+	at org.h2.command.Parser.parseColumnList(Parser.java:1175)
+	at org.h2.command.Parser.parseInsert(Parser.java:1549)
+	at org.h2.command.Parser.parsePrepared(Parser.java:719)
+	at org.h2.command.Parser.parse(Parser.java:592)
+	at org.h2.command.Parser.parse(Parser.java:564)
+	at org.h2.command.Parser.prepareCommand(Parser.java:483)
+	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:639)
+	at org.h2.engine.SessionLocal.prepareCommand(SessionLocal.java:559)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1166)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:245)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:231)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1345)
+	at org.h2.server.web.WebApp.query(WebApp.java:1143)
+	at org.h2.server.web.WebApp.query(WebApp.java:1119)
+	at org.h2.server.web.WebApp.process(WebApp.java:245)
+	at org.h2.server.web.WebApp.processRequest(WebApp.java:177)
+	at org.h2.server.web.JakartaWebServlet.doGet(JakartaWebServlet.java:129)
+	at org.h2.server.web.JakartaWebServlet.doPost(JakartaWebServlet.java:166)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:397)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1743)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:842)
+2025-03-20 09:14:00.260160+01:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLDataException: Conversión de datos fallida, convirtiendo "2023 (SERIE: U&""A\\00d1O"" DATE NOT NULL)"
+Data conversion error converting "2023 (SERIE: U&""A\\00d1O"" DATE NOT NULL)"; SQL statement:
+INSERT INTO SERIE (ID_SERIE, AÑO, TITULO, ID_DIRECTOR, ID_PRODUCTORA)
+VALUES 
+(1, 2023, 'Breaking Bad', 1, 10),  
+(2, 2022, 'Game of Thrones', 2, 20),  
+(3, 2021, 'Stranger Things', 3, 30),
+(4, 2020, 'The Crown', 4, 40),
+(5, 2019, 'The Mandalorian', 5, 50) [22018-224]
+2025-03-20 09:15:47.610378+01:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "[*]describe table serie"; se esperaba "DELETE, DROP"
+Syntax error in SQL statement "[*]describe table serie"; expected "DELETE, DROP"; SQL statement:
+describe table serie [42001-224]
+2025-03-20 09:17:47.718050+01:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "[*]DESCRIBE SERIE"; se esperaba "DELETE, DROP"
+Syntax error in SQL statement "[*]DESCRIBE SERIE"; expected "DELETE, DROP"; SQL statement:
+DESCRIBE SERIE [42001-224]
+2025-03-20 09:18:12.570698+01:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "SHOW [*]CREATE TABLE SERIE"
+Syntax error in SQL statement "SHOW [*]CREATE TABLE SERIE"; SQL statement:
+SHOW CREATE TABLE SERIE [42000-224]
+2025-03-20 09:18:24.478403+01:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "SHOW [*]TABLE SERIE"
+Syntax error in SQL statement "SHOW [*]TABLE SERIE"; SQL statement:
+SHOW TABLE SERIE [42000-224]
+2025-03-20 09:23:50.442856+01:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLDataException: Conversión de datos fallida, convirtiendo "1985 (PRODUCTORA: U&""A\\00d1O_FUNDACION"" DATE)"
+Data conversion error converting "1985 (PRODUCTORA: U&""A\\00d1O_FUNDACION"" DATE)"; SQL statement:
+INSERT INTO productora (ID_PRODUCTORA, AÑO_FUNDACION, NOMBRE)
+VALUES
+(1, 1985, 'Warner Bros.'),
+(2, 1990, 'Universal Pictures'),
+(3, 1977, '20th Century Studios'),
+(4, 2013, 'Lionsgate'),
+(5, 2000, 'Marvel Studios') [22018-224]
+2025-03-20 09:30:45.030092+01:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "ACTORES" no encontrada
+Table "ACTORES" not found; SQL statement:
+select * from actores [42102-224]
+2025-03-20 09:40:58.849618+01:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "PELICULAS" no encontrada
+Table "PELICULAS" not found; SQL statement:
+select * from peliculas [42102-224]
+2025-03-20 10:29:51.102141+01:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "PELICULAS" no encontrada
+Table "PELICULAS" not found; SQL statement:
+select * from peliculas [42102-224]
+2025-03-20 10:41:44.456023+01:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "SELECT * FROM PELICULA PRODUCTORA [*]PRODUCTORA"
+Syntax error in SQL statement "SELECT * FROM PELICULA PRODUCTORA [*]PRODUCTORA"; SQL statement:
+SELECT * FROM PELICULA PRODUCTORA PRODUCTORA [42000-224]

@@ -1,0 +1,23 @@
+-------------------------------------------------------------------------------
+Test set: com.viewnext.practica4.service.DirectorServiceTest
+-------------------------------------------------------------------------------
+Tests run: 22, Failures: 2, Errors: 1, Skipped: 0, Time elapsed: 0.337 s <<< FAILURE! - in com.viewnext.practica4.service.DirectorServiceTest
+testInsertarDirectorCriteria  Time elapsed: 0.018 s  <<< ERROR!
+org.springframework.web.reactive.function.client.WebClientRequestException
+Caused by: java.net.ConnectException
+Caused by: java.nio.channels.ClosedChannelException
+
+testInsertarDirectorCriteriaKO  Time elapsed: 0.018 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: Unexpected exception type thrown, expected: <java.lang.IllegalArgumentException> but was: <org.springframework.web.reactive.function.client.WebClientRequestException>
+	at com.viewnext.practica4.service.DirectorServiceTest.testInsertarDirectorCriteriaKO(DirectorServiceTest.java:271)
+Caused by: org.springframework.web.reactive.function.client.WebClientRequestException
+Caused by: java.net.ConnectException
+Caused by: java.nio.channels.ClosedChannelException
+
+testInsertarDirectorKO  Time elapsed: 0.019 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: Unexpected exception type thrown, expected: <java.lang.IllegalArgumentException> but was: <org.springframework.web.reactive.function.client.WebClientRequestException>
+	at com.viewnext.practica4.service.DirectorServiceTest.testInsertarDirectorKO(DirectorServiceTest.java:139)
+Caused by: org.springframework.web.reactive.function.client.WebClientRequestException
+Caused by: java.net.ConnectException
+Caused by: java.nio.channels.ClosedChannelException
+
