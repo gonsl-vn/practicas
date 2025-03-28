@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="2415b2a9-18df-46ee-9cbe-c69e55b4e6e8" name="Changes" comment="JAR: Practica 3 Completa" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="FormatOnSaveOptions">
+    <option name="myRunOnSave" value="true" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$/.." value="Javier-Arias" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;JavierAriasViewnext&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/gonsl-vn/practicas.git&quot;,
+    &quot;accountId&quot;: &quot;3bc6a9a8-4eb4-44b8-b2b4-80de1ad8956d&quot;
+  }
+}</component>
+  <component name="OptimizeOnSaveOptions">
+    <option name="myRunOnSave" value="true" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
+  <component name="ProjectId" id="2tt8k262i0tWnqPSb5UOopwqBaw" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Practica2Application.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserServicesTest.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.UserServicesTest.testActualizarUsuario.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.UserServicesTest.testBorrarUsuarioNativo.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.UserServicesTest.testBuscarPorDniNativo.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.UserServicesTest.testBuscarPorEdadNativo.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.UserServicesTest.testBuscarPorNombreNativo.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.UserServicesTest.testInsertarUsuarioNativo.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.UserServicesTest.testListarUsuarios.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.UserServicesTest.testListarUsuariosNativo.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.UserServicesTest.testModificarUsuarioNativo.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.UserServicesTest.testbuscarPorNombre.executor&quot;: &quot;Coverage&quot;,
+    &quot;Maven.practica3 [clean,install].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.practica3 [clean,package,install].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.practica3 [clean,test,install].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.practica3 [clean...].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.practica3 [org.apache.maven.plugins:maven-clean-plugin:3.4.1:clean].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Javier-Arias&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Desarrollo Software/Repo GitHub/practica 3&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.Java&quot;
+  }
+}</component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="mvn clean install" />
+      <command value="mvn clean -Dmaven.clean.failOnError=false" />
+    </option>
+  </component>
+  <component name="RunManager" selected="Application.Practica2Application">
+    <configuration name="Practica2Application" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.viewnext.practica3.Practica2Application" />
+      <module name="practica3" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.viewnext.practica3.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserServicesTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="practica3" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.viewnext.practica3.services.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.viewnext.practica3.services" />
+      <option name="MAIN_CLASS_NAME" value="com.viewnext.practica3.services.UserServicesTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserServicesTest.testActualizarUsuario" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="practica3" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.viewnext.practica3.services.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.viewnext.practica3.services" />
+      <option name="MAIN_CLASS_NAME" value="com.viewnext.practica3.services.UserServicesTest" />
+      <option name="METHOD_NAME" value="testActualizarUsuario" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserServicesTest.testBorrarUsuarioNativo" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="practica3" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.viewnext.practica3.services.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.viewnext.practica3.services" />
+      <option name="MAIN_CLASS_NAME" value="com.viewnext.practica3.services.UserServicesTest" />
+      <option name="METHOD_NAME" value="testBorrarUsuarioNativo" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserServicesTest.testModificarUsuarioNativo" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="practica3" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.viewnext.practica3.services.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.viewnext.practica3.services" />
+      <option name="MAIN_CLASS_NAME" value="com.viewnext.practica3.services.UserServicesTest" />
+      <option name="METHOD_NAME" value="testModificarUsuarioNativo" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Practica2Application" />
+        <item itemvalue="JUnit.UserServicesTest" />
+        <item itemvalue="JUnit.UserServicesTest.testActualizarUsuario" />
+        <item itemvalue="JUnit.UserServicesTest.testBorrarUsuarioNativo" />
+        <item itemvalue="JUnit.UserServicesTest.testModificarUsuarioNativo" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2415b2a9-18df-46ee-9cbe-c69e55b4e6e8" name="Changes" comment="" />
+      <created>1740389451836</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1740389451836</updated>
+    </task>
+    <task id="LOCAL-00001" summary="Yaml añadido y usuarios configurados">
+      <option name="closed" value="true" />
+      <created>1741167144574</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1741167144574</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Target eliminado">
+      <option name="closed" value="true" />
+      <created>1741167178176</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1741167178176</updated>
+    </task>
+    <task id="LOCAL-00003" summary="JA: Practica 3 implementada sin pruebas (POstman,Sonar,Junit)">
+      <option name="closed" value="true" />
+      <created>1741177153109</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1741177153109</updated>
+    </task>
+    <task id="LOCAL-00004" summary="JA: Implementado Crud de servicios Query Nativas, falta Controller">
+      <option name="closed" value="true" />
+      <created>1741180048634</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1741180048634</updated>
+    </task>
+    <task id="LOCAL-00005" summary="JA: Implementado Test Junit5 y mockito menos Auctualizar">
+      <option name="closed" value="true" />
+      <created>1741254823919</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1741254823919</updated>
+    </task>
+    <task id="LOCAL-00006" summary="JA: Implementado Test Junit5 y mockito Terminados 93% method">
+      <option name="closed" value="true" />
+      <created>1741261079129</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1741261079129</updated>
+    </task>
+    <task id="LOCAL-00007" summary="JAR: Finalizacion Implementacion practica 3 (Falta Sonar)">
+      <option name="closed" value="true" />
+      <created>1741266633174</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1741266633174</updated>
+    </task>
+    <task id="LOCAL-00008" summary="JAR: Practica 3 Completa">
+      <option name="closed" value="true" />
+      <created>1741334802187</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1741334802187</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Yaml añadido y usuarios configurados" />
+    <MESSAGE value="Target eliminado" />
+    <MESSAGE value="JA: Practica 3 implementada sin pruebas" />
+    <MESSAGE value="JA: Practica 3 implementada sin pruebas (POstman,Sonar,Junit)" />
+    <MESSAGE value="JA: Implementado Crud de servicios Query Nativas, falta Controller" />
+    <MESSAGE value="JA: Implementado Test Junit5 y mockito menos Auctualizar" />
+    <MESSAGE value="JA: Implementado Test Junit5 y mockito Terminados 93% method" />
+    <MESSAGE value="JAR: Finalizacion Implementacion practica 3 (Falta Sonar)" />
+    <MESSAGE value="JAR: Practica 3 Completa" />
+    <option name="LAST_COMMIT_MESSAGE" value="JAR: Practica 3 Completa" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/practica_3$UserServicesTest_testListarUsuarios.ic" NAME="UserServicesTest.testListarUsuarios Coverage Results" MODIFIED="1741252505528" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>com.viewnext.practica3.services.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/practica_3$UserServicesTest_testModificarUsuarioNativo.ic" NAME="UserServicesTest.testModificarUsuarioNativo Coverage Results" MODIFIED="1741254731309" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>com.viewnext.practica3.services.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/practica_3$UserServicesTest.ic" NAME="UserServicesTest Coverage Results" MODIFIED="1741260929965" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>com.viewnext.practica3.services.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/practica_3$UserServicesTest_testbuscarPorNombre.ic" NAME="UserServicesTest.testbuscarPorNombre Coverage Results" MODIFIED="1741253291062" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>com.viewnext.practica3.services.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/practica_3$UserServicesTest_testBorrarUsuarioNativo.ic" NAME="UserServicesTest.testBorrarUsuarioNativo Coverage Results" MODIFIED="1741254751312" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>com.viewnext.practica3.services.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/practica_3$UserServicesTest_testBuscarPorNombreNativo.ic" NAME="UserServicesTest.testBuscarPorNombreNativo Coverage Results" MODIFIED="1741254696975" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>com.viewnext.practica3.services.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/practica_3$UserServicesTest_testBuscarPorDniNativo.ic" NAME="UserServicesTest.testBuscarPorDniNativo Coverage Results" MODIFIED="1741254705519" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>com.viewnext.practica3.services.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/practica_3$UserServicesTest_testActualizarUsuario.ic" NAME="UserServicesTest.testActualizarUsuario Coverage Results" MODIFIED="1741260917174" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>com.viewnext.practica3.services.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/practica_3$Practica2Application.ic" NAME="Practica2Application Coverage Results" MODIFIED="1741175517323" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>com.viewnext.practica3.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/practica_3$UserServicesTest_testListarUsuariosNativo.ic" NAME="UserServicesTest.testListarUsuariosNativo Coverage Results" MODIFIED="1741254686743" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>com.viewnext.practica3.services.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/practica_3$UserServicesTest_testBuscarPorEdadNativo.ic" NAME="UserServicesTest.testBuscarPorEdadNativo Coverage Results" MODIFIED="1741254714463" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>com.viewnext.practica3.services.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/practica_3$UserServicesTest_testInsertarUsuarioNativo.ic" NAME="UserServicesTest.testInsertarUsuarioNativo Coverage Results" MODIFIED="1741254723579" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>com.viewnext.practica3.services.*</FILTER>
+    </SUITE>
+  </component>
+</project>

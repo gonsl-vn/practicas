@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.viewnext.practica3.services.UserServicesTest
+-------------------------------------------------------------------------------
+Tests run: 14, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.636 s - in com.viewnext.practica3.services.UserServicesTest
