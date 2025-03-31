@@ -1,0 +1,5 @@
+com\example\practica52\config\writter\UsuarioBDWritterTest.class
+com\example\practica52\job\MillonCalleJobTest.class
+com\example\practica52\Practica52ApplicationTests.class
+com\example\practica52\job\UsuarioJobTest.class
+com\example\practica52\job\NumCasasPorDistritoJobTest.class
