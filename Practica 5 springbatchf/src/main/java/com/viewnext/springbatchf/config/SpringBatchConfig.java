@@ -139,7 +139,7 @@ public class SpringBatchConfig {
     @Bean
     public Job job3(JobRepository jobRepository, @Qualifier("step1job3") Step step1job3,
             @Qualifier("step2job3") Step step2job3) {
-        return Job1M.job3(jobRepository, step1job3, step2job3, 1);
+        return Job1M.job3(jobRepository, step1job3, step2job3);
     }
 
 }
