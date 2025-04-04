@@ -1,0 +1,22 @@
+spring:
+  datasource:
+    url: jdbc:h2:file:./data/testdb  # Ruta donde se almacenará la base de datos
+    username: usuario  # Usuario de la base de datos H2
+    password: contraseña  # Contraseña de la base de datos H2
+    driverClassName: org.h2.Driver  # Driver para H2
+
+  h2:
+    console:
+      enabled: true  # Habilitar la consola web de H2 para interactuar con la base de datos
+
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect  # Dialecto de Hibernate para H2
+    show-sql: true  # Mostrar las consultas SQL generadas por Hibernate
+    hibernate:
+      ddl-auto: update  # Crea o actualiza las tablas en la base de datos. Usa 'create', 'create-drop' o 'none' según sea necesario.
+
+logging:
+  level:
+    root: ERROR  # Solo muestra mensajes de error
+    org.hibernate.SQL: TRACE  # Muestra las consultas SQL generadas
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE  # Muestra los parámetros vinculados a las consultas SQL
