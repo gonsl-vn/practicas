@@ -1,0 +1,8 @@
+INSERT INTO usuarios (nombre, is_prime) VALUES ('usuario1', true)
+INSERT INTO usuarios (nombre, is_prime) VALUES ('usuario2', false)
+INSERT INTO usuarios (nombre, is_prime) VALUES ('usuario3', true)
+INSERT INTO usuarios (nombre, is_prime) VALUES ('usuario4', false)
+INSERT INTO usuarios (nombre, is_prime) VALUES ('usuario5', true)
+INSERT INTO usuarios (nombre, is_prime) VALUES ('usuario6', false)
+INSERT INTO usuarios (nombre, is_prime) VALUES ('usuario7', true)
+INSERT INTO usuarios (nombre, is_prime) VALUES ('usuario8', false)
