@@ -1,0 +1,13 @@
+C:\Users\6003351\Downloads\practicas-P6-Gonzalo-Kafka\practicas-P6-Gonzalo-Kafka\src\main\java\com\viewnext\Practica62Kafka\config\KafkaStreamConfig.java
+C:\Users\6003351\Downloads\practicas-P6-Gonzalo-Kafka\practicas-P6-Gonzalo-Kafka\src\main\java\com\viewnext\Practica62Kafka\consumer\ReactiveConsumer.java
+C:\Users\6003351\Downloads\practicas-P6-Gonzalo-Kafka\practicas-P6-Gonzalo-Kafka\src\main\java\com\viewnext\Practica62Kafka\consumer\StringConsumer.java
+C:\Users\6003351\Downloads\practicas-P6-Gonzalo-Kafka\practicas-P6-Gonzalo-Kafka\src\main\java\com\viewnext\Practica62Kafka\controller\MensajeController.java
+C:\Users\6003351\Downloads\practicas-P6-Gonzalo-Kafka\practicas-P6-Gonzalo-Kafka\src\main\java\com\viewnext\Practica62Kafka\controller\ReactiveController.java
+C:\Users\6003351\Downloads\practicas-P6-Gonzalo-Kafka\practicas-P6-Gonzalo-Kafka\src\main\java\com\viewnext\Practica62Kafka\controller\StringController.java
+C:\Users\6003351\Downloads\practicas-P6-Gonzalo-Kafka\practicas-P6-Gonzalo-Kafka\src\main\java\com\viewnext\Practica62Kafka\model\Mensaje.java
+C:\Users\6003351\Downloads\practicas-P6-Gonzalo-Kafka\practicas-P6-Gonzalo-Kafka\src\main\java\com\viewnext\Practica62Kafka\model\MensajeConNombreUsu.java
+C:\Users\6003351\Downloads\practicas-P6-Gonzalo-Kafka\practicas-P6-Gonzalo-Kafka\src\main\java\com\viewnext\Practica62Kafka\model\Usuario.java
+C:\Users\6003351\Downloads\practicas-P6-Gonzalo-Kafka\practicas-P6-Gonzalo-Kafka\src\main\java\com\viewnext\Practica62Kafka\Practica62KafkaApplication.java
+C:\Users\6003351\Downloads\practicas-P6-Gonzalo-Kafka\practicas-P6-Gonzalo-Kafka\src\main\java\com\viewnext\Practica62Kafka\producer\MensajeProducer.java
+C:\Users\6003351\Downloads\practicas-P6-Gonzalo-Kafka\practicas-P6-Gonzalo-Kafka\src\main\java\com\viewnext\Practica62Kafka\producer\StringProducer.java
+C:\Users\6003351\Downloads\practicas-P6-Gonzalo-Kafka\practicas-P6-Gonzalo-Kafka\src\main\java\com\viewnext\Practica62Kafka\repository\UsuarioRepository.java

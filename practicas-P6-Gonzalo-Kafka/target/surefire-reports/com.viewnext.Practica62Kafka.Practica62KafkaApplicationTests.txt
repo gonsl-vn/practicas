@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.viewnext.Practica62Kafka.Practica62KafkaApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 10.43 s -- in com.viewnext.Practica62Kafka.Practica62KafkaApplicationTests
