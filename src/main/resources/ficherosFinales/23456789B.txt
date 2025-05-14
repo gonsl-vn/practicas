@@ -1,0 +1,7 @@
+Estimado/a María García:
+
+Su pedido número 2 ha sido registrado con éxito.
+Importe total: 200,00€
+Dirección de envío: Calle Real 456, Barcelona (08001)
+
+Gracias por su compra.

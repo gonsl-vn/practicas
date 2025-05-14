@@ -1,0 +1,7 @@
+Estimado/a Juan Pérez:
+
+Su pedido número 1 ha sido registrado con éxito.
+Importe total: 100,00€
+Dirección de envío: Calle Falsa 123, Madrid (28001)
+
+Gracias por su compra.

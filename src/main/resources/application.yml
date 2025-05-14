@@ -1,0 +1,27 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:testDB # URL de la base de datos en memoria H2
+    driver-class-name: org.h2.Driver # Controlador para H2
+    username: usuariodb # Usuario de la base de datos
+    password: contraseñadb # Contraseña de la base de datos
+
+  sql:
+    init:
+      mode: always # Ejecutar los scripts de inicialización siempre al arrancar la aplicación
+
+  h2:
+    console:
+      enabled: true # Habilitar la consola web de H2
+      path: /h2-console # Ruta para acceder a la consola web
+
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect # Dialecto específico para H2
+    hibernate:
+      ddl-auto: update # Configuración para actualizar el esquema de la base de datos automáticamente
+    show-sql: false # No mostrar las consultas SQL en los logs
+
+  batch:
+    jdbc:
+      initialize-schema: always # Inicializar el esquema de la base de datos siempre
+    job:
+      enabled: true

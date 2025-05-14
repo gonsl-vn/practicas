@@ -1,0 +1,13 @@
+viewnext.practica5
+viewnext.practica5.batch.config.job
+viewnext.practica5.batch.config.jobTest
+viewnext.practica5.batch.config.listener
+viewnext.practica5.batch.config.listenerTest
+viewnext.practica5.batch.config.processor
+viewnext.practica5.batch.config.processorTest
+viewnext.practica5.batch.config.reader
+viewnext.practica5.batch.config.step
+viewnext.practica5.batch.config.writer
+viewnext.practica5.dto
+viewnext.practica5.model
+viewnext.practica5.repository

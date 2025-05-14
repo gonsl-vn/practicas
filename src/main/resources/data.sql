@@ -1,0 +1,24 @@
+DROP TABLE IF EXISTS calle;
+
+CREATE TABLE calle (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+       CODIGO_CALLE INT,
+       TIPO_VIA VARCHAR(255),
+       NOMBRE_CALLE VARCHAR(255),
+       PRIMER_NUM_TRAMO INT,
+       ULTIMO_NUM_TRAMO INT,
+       BARRIO VARCHAR(255),
+       COD_DISTRITO INT,
+       NOM_DISTRITO VARCHAR(255)
+    );
+
+CREATE TABLE contenido_usuario(
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(255),
+    dni VARCHAR(20),
+    direccion VARCHAR(255),
+    ciudad VARCHAR(100),
+    cod_postal VARCHAR(10),
+    importe DECIMAL(10, 2),
+    num_pedido INT
+);

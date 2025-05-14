@@ -1,0 +1,7 @@
+Estimado/a Pedro Martínez:
+
+Su pedido número 3 ha sido registrado con éxito.
+Importe total: 50,00€
+Dirección de envío: Calle Nueva 789, Valencia (46001)
+
+Gracias por su compra.
