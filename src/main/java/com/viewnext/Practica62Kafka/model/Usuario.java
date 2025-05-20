@@ -21,4 +21,6 @@ public class Usuario {
     private String nombre;
     @Column(name="is_prime")
     private Boolean is_prime;
+    @Column(name = "password")
+    private String password;
 }

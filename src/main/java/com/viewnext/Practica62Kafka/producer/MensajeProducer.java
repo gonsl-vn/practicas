@@ -3,6 +3,7 @@ package com.viewnext.Practica62Kafka.producer;
 import com.viewnext.Practica62Kafka.model.Mensaje;
 import com.viewnext.Practica62Kafka.model.MensajeConNombreUsu;
 import com.viewnext.Practica62Kafka.model.Usuario;
+import com.viewnext.Practica62Kafka.repository.MensajeRepository;
 import com.viewnext.Practica62Kafka.repository.UsuarioRepository;
 import lombok.RequiredArgsConstructor;
 
@@ -24,6 +25,8 @@ public class MensajeProducer {
 
     private final UsuarioRepository usuarioRepository;
 
+    private final MensajeRepository mensajeRepository;
+
     public void sendMessage(Mensaje mensaje){
 
        /* Message<Mensaje> messageKafka = MessageBuilder
@@ -32,13 +35,14 @@ public class MensajeProducer {
                 .build();*/
         kafkaTemplate.send("ReactiveTopic", mensaje);
         log.info("Se ha enviado el MENSAJE");
+
     }
 
     public void convertirAMensajeYEnviar(MensajeConNombreUsu mensaje){
         Mensaje mensajeAEnviar = new Mensaje();
 
         mensajeAEnviar.setMessage(mensaje.getMensaje());
-        mensajeAEnviar.setUser(mensaje.getNombreUsuario());
+        mensajeAEnviar.setNombreUsuario(mensaje.getNombreUsuario());
         mensajeAEnviar.setTimeStamp(LocalDateTime.now());
         Boolean isPrime = false;
         log.info("Nombre del usuario: " + mensaje.getNombreUsuario());
@@ -50,6 +54,7 @@ public class MensajeProducer {
         }
 
         mensajeAEnviar.setPrimeUser(isPrime);
+        mensajeRepository.save(mensajeAEnviar);
         sendMessage(mensajeAEnviar);
 
     }
