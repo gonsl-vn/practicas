@@ -1,0 +1,61 @@
+<div class="chat chat-start">
+  <div class="chat-image avatar">
+    <div class="w-10 rounded-full">
+      <img
+        alt="Tailwind CSS chat bubble component"
+        src="https://img.daisyui.com/images/profile/demo/kenobee@192.webp"
+      />
+    </div>
+  </div>
+  <div class="chat-header">
+    Obi-Wan Kenobi
+    <time class="text-xs opacity-50">12:45</time>
+  </div>
+  <div class="chat-bubble">You were the Chosen One!</div>
+  <div class="chat-footer opacity-50">Delivered</div>
+</div>
+<div class="chat chat-end">
+  <div class="chat-image avatar">
+    <div class="w-10 rounded-full">
+      <img
+        alt="Tailwind CSS chat bubble component"
+        src="https://img.daisyui.com/images/profile/demo/anakeen@192.webp"
+      />
+    </div>
+  </div>
+  <div class="chat-header">
+    Anakin
+    <time class="text-xs opacity-50">12:46</time>
+  </div>
+  <div class="chat-bubble">I hate you!</div>
+  <div class="chat-footer opacity-50">Seen at 12:46</div>
+</div>
+<ul>
+  @for (mensaje of mensajes(); track mensaje) {
+
+    <div class="chat chat-start">
+      <div class="chat-image avatar">
+        <div class="w-10 rounded-full">
+          <img
+            alt="Tailwind CSS chat bubble component"
+            src="https://img.daisyui.com/images/profile/demo/kenobee@192.webp"
+          />
+        </div>
+      </div>
+      <div class="chat-header">
+        {{nombre}}
+        <time class="text-xs opacity-50">12:45</time>
+      </div>
+      <div class="chat-bubble">{{mensaje.nombreUsuario}}</div>
+      <div class="chat-footer opacity-50">Delivered, {{mensaje.nombreUsuario}}</div>
+    </div>
+
+    <li>{{mensaje}}</li>
+  }
+</ul>
+<footer class="mt-10">
+  <app-barra-escritura></app-barra-escritura>
+</footer>
+<div class="flex flex-col h-screen justify-between">
+  <footer class="h-10 bg-blue-500">Footer</footer>
+</div>

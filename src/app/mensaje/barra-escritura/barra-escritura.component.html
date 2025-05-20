@@ -1,0 +1,7 @@
+<fieldset class="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
+  <legend class="fieldset-legend">Envia un Mensaje</legend>
+  <div class="join">
+    <input [(ngModel)]="contenidoMensaje" type="text" class="input join-item" placeholder="Escribe..." />
+    <button (click)="enviarMensaje()" class="btn join-item">Enviar</button>
+  </div>
+</fieldset>
