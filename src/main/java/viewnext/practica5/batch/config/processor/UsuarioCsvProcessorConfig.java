@@ -5,9 +5,17 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import viewnext.practica5.dto.UsuarioDTO;
 
+/**
+ * The type Usuario csv processor config.
+ */
 @Configuration
 public class UsuarioCsvProcessorConfig {
 
+    /**
+     * Usuario processor item processor.
+     *
+     * @return the item processor
+     */
     @Bean
     public ItemProcessor<UsuarioDTO, UsuarioDTO> usuarioProcessor() {
         // Este procesador toma un UsuarioDTO como entrada y devuelve un UsuarioDTO como salida

@@ -2,44 +2,75 @@ package viewnext.practica5.batch.config.listenerTest;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.MockitoAnnotations;
+import org.mockito.Spy;
 import viewnext.practica5.batch.config.listener.CalleSkipListener;
 import viewnext.practica5.dto.CalleDto;
 import viewnext.practica5.model.Calle;
 
-import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.mockito.ArgumentMatchers.*;
+import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.verify;
 
+/**
+ * The type Calle skip listener test.
+ */
 public class CalleSkipListenerTest {
 
-    private CalleSkipListener listener; // Instancia del listener a probar
+    @Spy
+    @InjectMocks
+    private CalleSkipListener listener;
 
+    /**
+     * Sets up.
+     */
     @BeforeEach
     void setUp() {
-        listener = new CalleSkipListener(); // Crea una instancia del listener
+        MockitoAnnotations.openMocks(this);
     }
 
+    /**
+     * Cuando hay error en lectura se registra error.
+     */
     @Test
-    void onSkipInRead_noLanzaErrores() {
-        // Prueba que el método onSkipInRead se ejecuta sin lanzar excepciones
-        Throwable error = new RuntimeException("Error de lectura"); // Simula una excepción de lectura
-        assertDoesNotThrow(
-                () -> listener.onSkipInRead(error)); // Asegura que la llamada al método no lanza ninguna excepción
+    void cuandoHayErrorEnLectura_seRegistraError() {
+        Throwable error = new RuntimeException("Error de lectura");
+
+        doNothing().when(listener).logToFile(anyString(), any(), any());
+
+        listener.onSkipInRead(error);
+
+        verify(listener).logToFile(eq("LECTURA"), isNull(), eq(error));
     }
 
+    /**
+     * Cuando hay error en procesamiento se registra error con item.
+     */
     @Test
-    void onSkipInProcess_noLanzaErrores() {
-        // Prueba que el método onSkipInProcess se ejecuta sin lanzar excepciones
-        CalleDto calleDto = new CalleDto(); // Crea un objeto CalleDto simulado
-        Throwable error = new RuntimeException("Error de procesamiento"); // Simula una excepción de procesamiento
-        assertDoesNotThrow(() -> listener.onSkipInProcess(calleDto,
-                error)); // Asegura que la llamada al método no lanza ninguna excepción
+    void cuandoHayErrorEnProcesamiento_seRegistraErrorConItem() {
+        CalleDto item = new CalleDto();
+        Throwable error = new RuntimeException("Error de procesamiento");
+
+        doNothing().when(listener).logToFile(anyString(), any(), any());
+
+        listener.onSkipInProcess(item, error);
+
+        verify(listener).logToFile(eq("PROCESAMIENTO"), eq(item), eq(error));
     }
 
+    /**
+     * Cuando hay error en escritura se registra error con item.
+     */
     @Test
-    void onSkipInWrite_noLanzaErrores() {
-        // Prueba que el método onSkipInWrite se ejecuta sin lanzar excepciones
-        Calle calle = new Calle(); // Crea un objeto Calle simulado
-        Throwable error = new RuntimeException("Error de escritura"); // Simula una excepción de escritura
-        assertDoesNotThrow(() -> listener.onSkipInWrite(calle,
-                error)); // Asegura que la llamada al método no lanza ninguna excepción
+    void cuandoHayErrorEnEscritura_seRegistraErrorConItem() {
+        Calle item = new Calle();
+        Throwable error = new RuntimeException("Error de escritura");
+
+        doNothing().when(listener).logToFile(anyString(), any(), any());
+
+        listener.onSkipInWrite(item, error);
+
+        verify(listener).logToFile(eq("ESCRITURA"), eq(item), eq(error));
     }
 }

@@ -5,6 +5,9 @@ import org.springframework.stereotype.Component;
 import viewnext.practica5.dto.CalleDto;
 import viewnext.practica5.model.Calle;
 
+/**
+ * The type Distrito este filter processor.
+ */
 @Component // Marca esta clase como un componente de Spring
 public class DistritoEsteFilterProcessor implements ItemProcessor<CalleDto, Calle> {
 

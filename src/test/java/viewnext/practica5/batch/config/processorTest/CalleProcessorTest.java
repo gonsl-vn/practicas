@@ -2,46 +2,72 @@ package viewnext.practica5.batch.config.processorTest;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.junit.jupiter.MockitoExtension;
 import viewnext.practica5.batch.config.processor.CalleProcessor;
 import viewnext.practica5.dto.CalleDto;
 import viewnext.practica5.model.Calle;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * The type Calle processor test.
+ */
+@ExtendWith(MockitoExtension.class)
 public class CalleProcessorTest {
 
-    private CalleProcessor processor; // Instancia del procesador a probar
+    @InjectMocks
+    private CalleProcessor processor;
 
+    private CalleDto dto;
+
+    /**
+     * Sets up.
+     */
     @BeforeEach
     void setUp() {
-        processor = new CalleProcessor(); // Crea una instancia del procesador
-    }
-
-    @Test
-    void procesaDtoCorrectamente() throws Exception {
-        // Prueba que un CalleDto con datos válidos se procesa correctamente
-        CalleDto dto = new CalleDto();
-        dto.setCodigoCalle(123);
-        dto.setTipoVia("Avenida");
-        dto.setNombreCalle("Gran Vía");
+        dto = new CalleDto();
+        dto.setCodigoCalle(100);
+        dto.setTipoVia("Calle");
+        dto.setNombreCalle("Mayor");
         dto.setPrimerNumTramo(1);
-        dto.setUltimoNumTramo(99);
+        dto.setUltimoNumTramo(50);
         dto.setBarrio("Centro");
-        dto.setCodigoDistrito(05);
-        dto.setNombreDistrito("CENTRO");
-
-        Calle calle = processor.process(dto); // Procesa el DTO
-
-        assertNotNull(calle); // Asegura que el resultado no es nulo
-        assertEquals(123, calle.getCodigoCalle()); // Verifica que el código de calle se mapeó correctamente
-        assertEquals("Gran Vía", calle.getNombreCalle()); // Verifica que el nombre de la calle se mapeó correctamente
-        assertEquals(99, calle.getUltimoNumTramo()); // Verifica que el último número de tramo se mapeó correctamente
+        dto.setCodigoDistrito(2);
+        dto.setNombreDistrito("SUR");
     }
 
+    /**
+     * Process con dto no nulo devuelve objeto calle con datos iguales.
+     *
+     * @throws Exception
+     *         the exception
+     */
     @Test
-    void retornaNullSiElDtoEsNull() throws Exception {
-        // Prueba que si el CalleDto de entrada es nulo, el procesador devuelve nulo
-        Calle calle = processor.process(null); // Procesa un DTO nulo
-        assertNull(calle); // Asegura que el resultado es nulo (no se procesó)
+    void process_conDtoNoNulo_devuelveObjetoCalleConDatosIguales() throws Exception {
+        Calle result = processor.process(dto);
+
+        assertNotNull(result);
+        assertEquals(dto.getCodigoCalle(), result.getCodigoCalle());
+        assertEquals(dto.getTipoVia(), result.getTipoVia());
+        assertEquals(dto.getNombreCalle(), result.getNombreCalle());
+        assertEquals(dto.getPrimerNumTramo(), result.getPrimerNumTramo());
+        assertEquals(dto.getUltimoNumTramo(), result.getUltimoNumTramo());
+        assertEquals(dto.getBarrio(), result.getBarrio());
+        assertEquals(dto.getCodigoDistrito(), result.getCodigoDistrito());
+        assertEquals(dto.getNombreDistrito(), result.getNombreDistrito());
+    }
+
+    /**
+     * Process con dto nulo devuelve null.
+     *
+     * @throws Exception
+     *         the exception
+     */
+    @Test
+    void process_conDtoNulo_devuelveNull() throws Exception {
+        Calle result = processor.process(null);
+        assertNull(result);
     }
 }

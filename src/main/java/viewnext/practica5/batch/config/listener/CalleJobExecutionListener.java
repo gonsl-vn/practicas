@@ -15,6 +15,9 @@ import viewnext.practica5.repository.DistritoResumenRepository;
 import java.time.LocalDateTime;
 import java.util.List;
 
+/**
+ * The type Calle job execution listener.
+ */
 @Slf4j
 @Component
 @RequiredArgsConstructor

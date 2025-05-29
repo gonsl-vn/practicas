@@ -8,12 +8,21 @@ import viewnext.practica5.repository.CalleRepository;
 import java.util.Iterator;
 import java.util.List;
 
+/**
+ * The type Distrito resumen reader.
+ */
 @Component
 public class DistritoResumenReader implements ItemReader<Distrito> {
 
     private final CalleRepository calleRepository; // Repositorio para acceder a la información de las Calles
     private Iterator<Object[]> data; // Iterador para recorrer los resultados de la consulta
 
+    /**
+     * Instantiates a new Distrito resumen reader.
+     *
+     * @param calleRepository
+     *         the calle repository
+     */
     public DistritoResumenReader(CalleRepository calleRepository) {
         this.calleRepository = calleRepository;
     }

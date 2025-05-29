@@ -7,6 +7,9 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
+/**
+ * The type Calle.
+ */
 @Data
 @Builder
 @NoArgsConstructor

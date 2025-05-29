@@ -9,6 +9,9 @@ import viewnext.practica5.batch.config.reader.UsuarioCsvReaderConfig;
 import viewnext.practica5.batch.config.writer.UsuarioCsvWriterConfig;
 import viewnext.practica5.dto.UsuarioDTO;
 
+/**
+ * The type Usuario batch step config.
+ */
 @Configuration
 public class UsuarioBatchStepConfig {
 
@@ -17,6 +20,18 @@ public class UsuarioBatchStepConfig {
     private final UsuarioCsvProcessorConfig usuarioCsvProcessorConfig; // Configuración del procesador de Usuarios
     private final UsuarioCsvWriterConfig usuarioCsvWriterConfig; // Configuración del escritor de Usuarios
 
+    /**
+     * Instantiates a new Usuario batch step config.
+     *
+     * @param stepBuilderFactory
+     *         the step builder factory
+     * @param usuarioCsvReaderConfig
+     *         the usuario csv reader config
+     * @param usuarioCsvProcessorConfig
+     *         the usuario csv processor config
+     * @param usuarioCsvWriterConfig
+     *         the usuario csv writer config
+     */
     public UsuarioBatchStepConfig(StepBuilderFactory stepBuilderFactory, UsuarioCsvReaderConfig usuarioCsvReaderConfig,
             UsuarioCsvProcessorConfig usuarioCsvProcessorConfig, UsuarioCsvWriterConfig usuarioCsvWriterConfig) {
         this.stepBuilderFactory = stepBuilderFactory;
@@ -25,6 +40,11 @@ public class UsuarioBatchStepConfig {
         this.usuarioCsvWriterConfig = usuarioCsvWriterConfig;
     }
 
+    /**
+     * Importar usuarios step step.
+     *
+     * @return the step
+     */
     @Bean
     public Step importarUsuariosStep() {
         // Define un nuevo Step llamado "importarUsuariosStep"

@@ -7,15 +7,29 @@ import viewnext.practica5.model.Calle;
 
 import javax.persistence.EntityManagerFactory;
 
+/**
+ * The type Calle reader.
+ */
 @Component
 public class CalleReader {
 
     private final EntityManagerFactory entityManagerFactory; // crear EntityManagers
 
+    /**
+     * Instantiates a new Calle reader.
+     *
+     * @param entityManagerFactory
+     *         the entity manager factory
+     */
     public CalleReader(EntityManagerFactory entityManagerFactory) {
         this.entityManagerFactory = entityManagerFactory;
     }
 
+    /**
+     * Reader jpa paging item reader.
+     *
+     * @return the jpa paging item reader
+     */
     public JpaPagingItemReader<Calle> reader() {
         // Configura un lector paginado de datos Calle desde la base de datos JPA
         return new JpaPagingItemReaderBuilder<Calle>().name("calleReader") // Nombre del lector

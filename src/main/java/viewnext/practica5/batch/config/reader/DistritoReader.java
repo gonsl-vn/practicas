@@ -8,6 +8,9 @@ import viewnext.practica5.repository.CalleRepository;
 import java.util.Iterator;
 import java.util.List;
 
+/**
+ * The type Distrito reader.
+ */
 @Component
 public class DistritoReader implements ItemReader<Distrito> {
 
@@ -15,6 +18,12 @@ public class DistritoReader implements ItemReader<Distrito> {
     private Iterator<Object[]> iterator; // Iterador para recorrer los resultados de la consulta
     private long idCounter = 1; // Contador para generar IDs únicos para los distritos
 
+    /**
+     * Instantiates a new Distrito reader.
+     *
+     * @param calleRepository
+     *         the calle repository
+     */
     public DistritoReader(CalleRepository calleRepository) {
         this.calleRepository = calleRepository;
     }

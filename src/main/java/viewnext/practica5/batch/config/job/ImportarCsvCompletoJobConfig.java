@@ -8,6 +8,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import viewnext.practica5.batch.config.step.ImportarCsvCompletoStepConfig;
 
+/**
+ * The type Importar csv completo job config.
+ */
 @Configuration
 @RequiredArgsConstructor
 public class ImportarCsvCompletoJobConfig {
@@ -15,6 +18,11 @@ public class ImportarCsvCompletoJobConfig {
     private final JobBuilderFactory jobBuilderFactory; // Jobs de Spring Batch
     private final ImportarCsvCompletoStepConfig importarCsvCompletoStepConfig; // Step para importar el CSV completo
 
+    /**
+     * Importar csv completo job job.
+     *
+     * @return the job
+     */
     @Bean
     public Job importarCsvCompletoJob() {
         return jobBuilderFactory.get("importarCsvCompletoJob")

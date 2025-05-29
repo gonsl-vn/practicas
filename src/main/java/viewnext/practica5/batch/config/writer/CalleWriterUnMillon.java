@@ -10,9 +10,19 @@ import javax.sql.DataSource;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+/**
+ * The type Calle writer un millon.
+ */
 @Component
 public class CalleWriterUnMillon {
 
+    /**
+     * Writer jdbc batch item writer.
+     *
+     * @param dataSource
+     *         the data source
+     * @return the jdbc batch item writer
+     */
     public JdbcBatchItemWriter<Calle> writer(DataSource dataSource) {
         // Configura un escritor JDBC por lotes para insertar objetos Calle en la base de datos
         String sql = "INSERT INTO calle (CODIGO_CALLE, TIPO_VIA, NOMBRE_CALLE, PRIMER_NUM_TRAMO, " + "ULTIMO_NUM_TRAMO, BARRIO, COD_DISTRITO, NOM_DISTRITO) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";

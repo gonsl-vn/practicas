@@ -11,6 +11,9 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.LocalDateTime;
 
+/**
+ * The type Calle skip listener.
+ */
 @Slf4j
 @Component
 public class CalleSkipListener implements SkipListener<CalleDto, Calle> {
@@ -35,7 +38,7 @@ public class CalleSkipListener implements SkipListener<CalleDto, Calle> {
         logToFile("ESCRITURA", item, t); // Registra el error de escritura en el archivo e incluye el item
     }
 
-    private void logToFile(String fase, Object item, Throwable t) {
+    public void logToFile(String fase, Object item, Throwable t) {
         // Método para escribir la información del error en el archivo indicado anteriormente
         try (PrintWriter writer = new PrintWriter(new FileWriter(LOG_FILE, true))) {
             // Abre el archivo en modo append (para añadir al final)

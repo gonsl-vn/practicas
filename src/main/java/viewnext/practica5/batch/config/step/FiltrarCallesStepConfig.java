@@ -11,6 +11,9 @@ import viewnext.practica5.batch.config.writer.CalleItemWriter;
 import viewnext.practica5.dto.CalleDto;
 import viewnext.practica5.model.Calle;
 
+/**
+ * The type Filtrar calles step config.
+ */
 @Configuration
 public class FiltrarCallesStepConfig {
 
@@ -19,6 +22,18 @@ public class FiltrarCallesStepConfig {
     private final DistritoEsteFilterProcessor distritoEsteFilterProcessor; // Procesador para filtrar Calles por el distrito "ESTE"
     private final CalleItemWriter calleItemWriter; // Escritor de objetos Calle a la base de datos
 
+    /**
+     * Instantiates a new Filtrar calles step config.
+     *
+     * @param stepBuilderFactory
+     *         the step builder factory
+     * @param calleCsvReader
+     *         the calle csv reader
+     * @param distritoEsteFilterProcessor
+     *         the distrito este filter processor
+     * @param calleItemWriter
+     *         the calle item writer
+     */
     public FiltrarCallesStepConfig(StepBuilderFactory stepBuilderFactory, CalleCsvReader calleCsvReader,
             DistritoEsteFilterProcessor distritoEsteFilterProcessor, CalleItemWriter calleItemWriter) {
         this.stepBuilderFactory = stepBuilderFactory;
@@ -27,6 +42,11 @@ public class FiltrarCallesStepConfig {
         this.calleItemWriter = calleItemWriter;
     }
 
+    /**
+     * Filtrar calles step step.
+     *
+     * @return the step
+     */
     @Bean
     public Step filtrarCallesStep() {
         // Define un nuevo Step llamado "filtrarCallesStep"

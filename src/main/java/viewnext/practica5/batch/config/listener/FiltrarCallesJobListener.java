@@ -5,6 +5,9 @@ import org.springframework.batch.core.JobExecution;
 import org.springframework.batch.core.JobExecutionListener;
 import org.springframework.stereotype.Component;
 
+/**
+ * The type Filtrar calles job listener.
+ */
 @Component
 public class FiltrarCallesJobListener implements JobExecutionListener {
 

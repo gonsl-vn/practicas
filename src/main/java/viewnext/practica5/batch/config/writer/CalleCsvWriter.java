@@ -13,15 +13,29 @@ import javax.sql.DataSource;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+/**
+ * The type Calle csv writer.
+ */
 @Component
 public class CalleCsvWriter {
 
     private final DataSource dataSource; // DataSource para la conexión a la base de datos
 
+    /**
+     * Instantiates a new Calle csv writer.
+     *
+     * @param dataSource
+     *         the data source
+     */
     public CalleCsvWriter(DataSource dataSource) {
         this.dataSource = dataSource;
     }
 
+    /**
+     * Writer flat file item writer.
+     *
+     * @return the flat file item writer
+     */
     public FlatFileItemWriter<Calle> writer() {
         // Configura un escritor de archivos planos para objetos Calle
         return new FlatFileItemWriterBuilder<Calle>().name("calleCsvWriter")
@@ -35,6 +49,11 @@ public class CalleCsvWriter {
                 .build(); // Construye el escritor
     }
 
+    /**
+     * Calle writer completo jdbc batch item writer.
+     *
+     * @return the jdbc batch item writer
+     */
     @Bean
     public JdbcBatchItemWriter<Calle> calleWriterCompleto() {
         // Configura un escritor JDBC por lotes para insertar objetos Calle en la base de datos

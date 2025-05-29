@@ -11,6 +11,9 @@ import viewnext.practica5.batch.config.writer.CalleItemWriter;
 import viewnext.practica5.dto.CalleDto;
 import viewnext.practica5.model.Calle;
 
+/**
+ * The type Cargar calles step config.
+ */
 @Configuration
 @RequiredArgsConstructor
 public class CargarCallesStepConfig {
@@ -20,6 +23,11 @@ public class CargarCallesStepConfig {
     private final CalleProcessor calleProcessor; // Procesador de objetos CalleDto a Calle
     private final CalleItemWriter calleItemWriter; // Escritor de objetos Calle a la base de datos
 
+    /**
+     * Cargar calles step step.
+     *
+     * @return the step
+     */
     @Bean
     public Step cargarCallesStep() {
         // Define un nuevo Step llamado "cargarCallesStep"

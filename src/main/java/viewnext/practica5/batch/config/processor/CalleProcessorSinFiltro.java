@@ -5,6 +5,9 @@ import org.springframework.stereotype.Component;
 import viewnext.practica5.dto.CalleDto;
 import viewnext.practica5.model.Calle;
 
+/**
+ * The type Calle processor sin filtro.
+ */
 @Component
 public class CalleProcessorSinFiltro implements ItemProcessor<CalleDto, Calle> {
 

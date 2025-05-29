@@ -16,6 +16,9 @@ import viewnext.practica5.model.Calle;
 import javax.sql.DataSource;
 import java.net.BindException;
 
+/**
+ * The type Importar calles un millon step config.
+ */
 @Configuration
 @RequiredArgsConstructor
 public class ImportarCallesUnMillonStepConfig {
@@ -28,6 +31,11 @@ public class ImportarCallesUnMillonStepConfig {
     private final CalleSkipListener calleSkipListener; // Listener para manejar registros omitidos durante el procesamiento
     private final TaskExecutor taskExecutor; // Executor de tareas para habilitar el procesamiento multihilo
 
+    /**
+     * Importar calles paso normal step.
+     *
+     * @return the step
+     */
     @Bean
     public Step importarCallesPasoNormal() {
         // Define un nuevo Step llamado "importarCallesPasoNormal"
@@ -52,6 +60,11 @@ public class ImportarCallesUnMillonStepConfig {
                 .build();
     }
 
+    /**
+     * Importar calles paso multihilo step.
+     *
+     * @return the step
+     */
     @Bean
     public Step importarCallesPasoMultihilo() {
         // Define un nuevo Step llamado "importarCallesPasoMultihilo"

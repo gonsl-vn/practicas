@@ -1,72 +1,111 @@
-package viewnext.practica5.batch.config.listenerTest;
+package viewnext.practica5.batch.config.listener;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.ArgumentCaptor;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 import org.springframework.batch.core.BatchStatus;
 import org.springframework.batch.core.JobExecution;
-import viewnext.practica5.batch.config.listener.CalleJobExecutionListener;
+import viewnext.practica5.model.Distrito;
+import viewnext.practica5.model.DistritoResumen;
 import viewnext.practica5.repository.CalleRepository;
 import viewnext.practica5.repository.DistritoRepository;
 import viewnext.practica5.repository.DistritoResumenRepository;
 
-import java.util.Collections;
+import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.*;
 
-public class CalleJobExecutionListenerTest {
+/**
+ * The type Calle job execution listener test.
+ */
+class CalleJobExecutionListenerTest {
 
-    private CalleRepository calleRepo; // Mock del repositorio de Calles
-    private DistritoResumenRepository resumenRepo; // Mock del repositorio de Resúmenes de Distritos
-    private DistritoRepository distritoRepo; // Mock del repositorio de Distritos
-    private CalleJobExecutionListener listener; // Instancia del listener a probar
+    @Mock
+    private CalleRepository calleRepository;
 
+    @Mock
+    private DistritoResumenRepository resumenRepository;
+
+    @Mock
+    private DistritoRepository distritoRepository;
+
+    @InjectMocks
+    private CalleJobExecutionListener listener;
+
+    @Mock
+    private JobExecution jobExecution;
+
+    /**
+     * Sets up.
+     */
     @BeforeEach
-    void preparar() {
-        calleRepo = mock(CalleRepository.class); // Crea un mock del repositorio de Calles
-        resumenRepo = mock(DistritoResumenRepository.class); // Crea un mock del repositorio de Resúmenes de Distritos
-        distritoRepo = mock(DistritoRepository.class); // Crea un mock del repositorio de Distritos
-        listener = new CalleJobExecutionListener(calleRepo, resumenRepo,
-                distritoRepo); // Crea una instancia del listener con los mocks
+    void setUp() {
+        MockitoAnnotations.openMocks(this);
     }
 
+    /**
+     * Before job logs execution id.
+     */
     @Test
-    void antesDelJob_noFalla() {
-        // Prueba que el método beforeJob se ejecuta sin lanzar excepciones
-        JobExecution job = new JobExecution(1L); // Crea un objeto JobExecution simulado
-        listener.beforeJob(job); // Llama al método beforeJob del listener
+    void beforeJob_logsExecutionId() {
+        when(jobExecution.getId()).thenReturn(123L);
+
+        listener.beforeJob(jobExecution);
+
+        verify(jobExecution).getId();
     }
 
+    /**
+     * After job when completed saves resumen and distritos.
+     */
     @Test
-        // Indica que este método es una prueba JUnit
-    void despuesDelJob_completado_guardarResumenYDistritos() {
-        // Prueba que después de un Job exitoso, se guardan el resumen y la información de los distritos
-        JobExecution job = new JobExecution(1L); // Crea un objeto JobExecution simulado
-        job.setStatus(BatchStatus.COMPLETED); // Simula que el Job se completó exitosamente
+    void afterJob_whenCompleted_savesResumenAndDistritos() {
+        when(jobExecution.getStatus()).thenReturn(BatchStatus.COMPLETED);
 
-        // Configura el comportamiento esperado de los mocks de los repositorios
-        when(calleRepo.countByNombreDistrito("ESTE")).thenReturn(5L); // Cuando se cuenta por distrito "ESTE"
-        when(calleRepo.countViviendasPorDistrito()).thenReturn(Collections.singletonList(new Object[] { "ESTE",
-                100L })); // Cuando se cuentan viviendas por distrito, devuelve una lista con un distrito "ESTE" y 100 viviendas
+        long totalCalles = 5L;
+        when(calleRepository.countByNombreDistrito("ESTE")).thenReturn(totalCalles);
 
-        listener.afterJob(job); // Llama al método afterJob del listener
+        // Mock para resultados del conteo de viviendas por distrito
+        List<Object[]> resultados = List.of(new Object[] { "Distrito1", 10L }, new Object[] { "Distrito2", 20L });
+        when(calleRepository.countViviendasPorDistrito()).thenReturn(resultados);
 
-        // Verifica que se llamó al método save del repositorio de resúmenes una vez
-        verify(resumenRepo, times(1)).save(any());
-        // Verifica que se llamó al método save del repositorio de distritos una vez
-        verify(distritoRepo, times(1)).save(any());
+        listener.afterJob(jobExecution);
+
+        ArgumentCaptor<DistritoResumen> resumenCaptor = ArgumentCaptor.forClass(DistritoResumen.class);
+        verify(resumenRepository).save(resumenCaptor.capture());
+        DistritoResumen resumenGuardado = resumenCaptor.getValue();
+
+        assertEquals("ESTE", resumenGuardado.getFiltroUsado());
+        assertEquals(totalCalles, resumenGuardado.getNumeroRegistros());
+        assertEquals(BatchStatus.COMPLETED.toString(), resumenGuardado.getEstadoBatch());
+        assertNotNull(resumenGuardado.getTimestamp());
+
+        ArgumentCaptor<Distrito> distritoCaptor = ArgumentCaptor.forClass(Distrito.class);
+        verify(distritoRepository, times(2)).save(distritoCaptor.capture());
+
+        List<Distrito> distritosGuardados = distritoCaptor.getAllValues();
+        assertEquals("Distrito1", distritosGuardados.get(0).getNombreDistrito());
+        assertEquals(10, distritosGuardados.get(0).getNumeroViviendas());
+        assertEquals("Distrito2", distritosGuardados.get(1).getNombreDistrito());
+        assertEquals(20, distritosGuardados.get(1).getNumeroViviendas());
     }
 
+    /**
+     * After job when not completed logs warning.
+     */
     @Test
-    void despuesDelJob_conError_noGuardaNada() {
-        // Prueba que después de un Job con error, no se guarda ningún resumen ni información de distritos
-        JobExecution job = new JobExecution(2L); // Crea un objeto JobExecution simulado
-        job.setStatus(BatchStatus.FAILED); // Simula que el Job falló
+    void afterJob_whenNotCompleted_logsWarning() {
+        when(jobExecution.getStatus()).thenReturn(BatchStatus.FAILED);
 
-        listener.afterJob(job); // Llama al método afterJob del listener
+        listener.afterJob(jobExecution);
 
-        // Verifica que el método save del repositorio de resúmenes nunca fue llamado
-        verify(resumenRepo, never()).save(any());
-        // Verifica que el método save del repositorio de distritos nunca fue llamado
-        verify(distritoRepo, never()).save(any());
+        verifyNoInteractions(calleRepository);
+        verifyNoInteractions(resumenRepository);
+        verifyNoInteractions(distritoRepository);
     }
 }

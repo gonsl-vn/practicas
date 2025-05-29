@@ -7,10 +7,18 @@ import org.springframework.context.annotation.Configuration;
 import viewnext.practica5.dto.CalleDto;
 import viewnext.practica5.model.Calle;
 
+/**
+ * The type Calle csv processor.
+ */
 @Slf4j
 @Configuration
 public class CalleCsvProcessor {
 
+    /**
+     * Processor csv item processor.
+     *
+     * @return the item processor
+     */
     @Bean
     public ItemProcessor<CalleDto, Calle> processorCsv() {
         // Este procesador transforma una CalleDto a una Calle
@@ -40,6 +48,11 @@ public class CalleCsvProcessor {
         };
     }
 
+    /**
+     * Csv completo processor item processor.
+     *
+     * @return the item processor
+     */
     @Bean
     public ItemProcessor<CalleDto, Calle> csvCompletoProcessor() {
         // Este procesador transforma una CalleDto a una Calle sin utilizar el filtro del distrito

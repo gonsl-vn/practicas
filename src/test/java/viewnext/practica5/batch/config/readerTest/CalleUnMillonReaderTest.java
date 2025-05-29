@@ -11,6 +11,9 @@ import viewnext.practica5.batch.config.reader.CalleUnMillonReader;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+/**
+ * The type Calle un millon reader test.
+ */
 class CalleUnMillonReaderTest {
 
     @InjectMocks
@@ -19,18 +22,20 @@ class CalleUnMillonReaderTest {
     @Mock
     private ExecutionContext executionContext;
 
+    /**
+     * Sets up.
+     */
     @BeforeEach
     void setUp() {
-        // Inicializa los mocks utilizando la anotación @Mock
         MockitoAnnotations.openMocks(this);
-        // En este caso, calleUnMillonReader tendrá su dependencia executionContext inyectada
     }
 
+    /**
+     * Test resource file loading.
+     */
     @Test
     void testResourceFileLoading() {
-        // Prueba que el archivo de recursos CSV para el lector de un millón de calles se carga correctamente
         ClassPathResource resource = new ClassPathResource("tramos_calle_BarrioDismuniOneMillion.csv");
-        // Verifica que el recurso existe en la ruta especificada dentro del classpath
         assertTrue(resource.exists(), "El archivo CSV debería existir en la ruta especificada");
     }
 }

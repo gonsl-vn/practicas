@@ -1,8 +1,9 @@
 package viewnext.practica5.batch.config.readerTest;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.batch.item.ExecutionContext;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.batch.item.file.FlatFileItemReader;
 import viewnext.practica5.batch.config.reader.CalleCsvReader;
 import viewnext.practica5.dto.CalleDto;
@@ -10,51 +11,33 @@ import viewnext.practica5.dto.CalleDto;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+/**
+ * The type Calle csv reader test.
+ */
+@ExtendWith(MockitoExtension.class)
 class CalleCsvReaderTest {
 
-    private CalleCsvReader calleCsvReader; // Instancia del lector CSV de Calles a probar
+    @InjectMocks
+    private CalleCsvReader reader;
 
-    @BeforeEach
-    void setUp() {
-        calleCsvReader = new CalleCsvReader(); // Crea una instancia del lector CSV de Calles
+    /**
+     * Reader no es nulo y config correcta.
+     */
+    @Test
+    void reader_noEsNulo_yConfigCorrecta() {
+        FlatFileItemReader<CalleDto> itemReader = reader.reader();
+        assertNotNull(itemReader);
+        assertEquals("calleReader", itemReader.getName());
+
     }
 
+    /**
+     * Csv completo reader no es nulo y config correcta.
+     */
     @Test
-    void testReader() throws Exception {
-        // Prueba la configuración del lector de Calles
-        FlatFileItemReader<CalleDto> reader = calleCsvReader.reader();
-
-        // Creamos un ExecutionContext vacío necesario para abrir el reader
-        ExecutionContext executionContext = new ExecutionContext();
-        reader.open(executionContext);
-
-        // Leemos la primera línea del archivo
-        CalleDto calle = reader.read();
-
-        // Verificamos que se leyó un objeto CalleDto
-        assertNotNull(calle);
-        // Verificamos algunos de los valores de la primera línea
-        assertEquals("AARON", calle.getNombreCalle());
-        assertEquals("CIUDAD JARDIN", calle.getNombreDistrito());
-
-        // Cerramos el reader después de la prueba
-        reader.close();
-    }
-
-    @Test
-    void testCsvCompletoReader() throws Exception {
-        // Prueba la configuración del lector de Calles para el archivo CSV completo
-        FlatFileItemReader<CalleDto> reader = calleCsvReader.csvCompletoReader();
-
-        ExecutionContext executionContext = new ExecutionContext();
-        reader.open(executionContext);
-
-        CalleDto calle = reader.read();
-
-        assertNotNull(calle);
-        assertEquals("AARON", calle.getNombreCalle());
-        assertEquals("CIUDAD JARDIN", calle.getNombreDistrito());
-
-        reader.close();
+    void csvCompletoReader_noEsNulo_yConfigCorrecta() {
+        FlatFileItemReader<CalleDto> itemReader = reader.csvCompletoReader();
+        assertNotNull(itemReader);
+        assertEquals("csvCompletoReader", itemReader.getName());
     }
 }

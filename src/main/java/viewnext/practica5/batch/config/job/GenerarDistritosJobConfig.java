@@ -13,6 +13,9 @@ import viewnext.practica5.batch.config.reader.DistritoResumenReader;
 import viewnext.practica5.batch.config.writer.DistritoWriter;
 import viewnext.practica5.model.Distrito;
 
+/**
+ * The type Generar distritos job config.
+ */
 @Configuration
 @RequiredArgsConstructor
 public class GenerarDistritosJobConfig {
@@ -23,6 +26,11 @@ public class GenerarDistritosJobConfig {
     private final DistritoPassthroughProcessor distritoPassthroughProcessor; // Procesador que pasa los datos sin procesar
     private final DistritoWriter distritoWriter; // Escritor de los datos de Distritos
 
+    /**
+     * Generar distritos step step.
+     *
+     * @return the step
+     */
     @Bean
     public Step generarDistritosStep() {
         return stepBuilderFactory.get("generarDistritosStep")
@@ -38,6 +46,11 @@ public class GenerarDistritosJobConfig {
                 .build();
     }
 
+    /**
+     * Generar distritos job job.
+     *
+     * @return the job
+     */
     @Bean
     public Job generarDistritosJob() {
         return jobBuilderFactory.get("generarDistritosJob")

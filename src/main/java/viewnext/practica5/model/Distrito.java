@@ -4,6 +4,9 @@ import lombok.Data;
 
 import javax.persistence.*;
 
+/**
+ * The type Distrito.
+ */
 @Data
 @Entity
 @Table(name = "distritos")

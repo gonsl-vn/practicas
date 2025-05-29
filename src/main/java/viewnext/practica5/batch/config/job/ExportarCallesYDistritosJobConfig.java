@@ -9,6 +9,9 @@ import org.springframework.context.annotation.Configuration;
 import viewnext.practica5.batch.config.step.ExportarCallesStepConfig;
 import viewnext.practica5.batch.config.step.ExportarDistritosStepConfig;
 
+/**
+ * The type Exportar calles y distritos job config.
+ */
 @Configuration
 @RequiredArgsConstructor
 public class ExportarCallesYDistritosJobConfig {
@@ -17,6 +20,11 @@ public class ExportarCallesYDistritosJobConfig {
     private final ExportarCallesStepConfig exportarCallesStepConfig; // Step para exportar calles
     private final ExportarDistritosStepConfig exportarDistritosStepConfig; // step para exportar distritos
 
+    /**
+     * Exportar calles y distritos job job.
+     *
+     * @return the job
+     */
     @Bean
     public Job exportarCallesYDistritosJob() {
         return jobBuilderFactory.get("exportarCallesYDistritosJob")

@@ -6,6 +6,9 @@ import org.springframework.stereotype.Component;
 import viewnext.practica5.dto.CalleDto;
 import viewnext.practica5.model.Calle;
 
+/**
+ * The type Calle item processor.
+ */
 @Slf4j
 @Component
 public class CalleItemProcessor implements ItemProcessor<CalleDto, Calle> {

@@ -8,9 +8,15 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Component;
 import viewnext.practica5.dto.CalleDto;
 
+/**
+ * The type Calle un millon reader.
+ */
 @Component
 public class CalleUnMillonReader extends FlatFileItemReader<CalleDto> {
 
+    /**
+     * Instantiates a new Calle un millon reader.
+     */
     public CalleUnMillonReader() {
         // Configura un lector de archivos planos para objetos CalleDto
         DelimitedLineTokenizer tokenizer = new DelimitedLineTokenizer(); // Define cómo se separan los campos en cada línea

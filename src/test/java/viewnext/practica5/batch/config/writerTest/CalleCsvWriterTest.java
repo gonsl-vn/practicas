@@ -2,6 +2,9 @@ package viewnext.practica5.batch.config.writerTest;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 import org.springframework.batch.item.database.JdbcBatchItemWriter;
 import org.springframework.batch.item.file.FlatFileItemWriter;
 import viewnext.practica5.batch.config.writer.CalleCsvWriter;
@@ -10,30 +13,40 @@ import viewnext.practica5.model.Calle;
 import javax.sql.DataSource;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.mockito.Mockito.mock;
 
+/**
+ * The type Calle csv writer test.
+ */
 class CalleCsvWriterTest {
 
-    private DataSource dataSource; // Mock del DataSource
-    private CalleCsvWriter calleCsvWriter; // Instancia del escritor CSV de Calles a probar
+    @Mock
+    private DataSource dataSource;
+    @InjectMocks
+    private CalleCsvWriter calleCsvWriter;
 
+    /**
+     * Sets up.
+     */
     @BeforeEach
     void setUp() {
-        dataSource = mock(DataSource.class); // Crea un mock del DataSource
-        calleCsvWriter = new CalleCsvWriter(dataSource); // Crea una instancia del escritor con el DataSource mockeado
+        MockitoAnnotations.openMocks(this);
     }
 
+    /**
+     * Test csv writer creates flat file item writer.
+     */
     @Test
-    void testCsvWriter() {
-        // Prueba la creación del FlatFileItemWriter para escribir a un archivo CSV
+    void testCsvWriter_createsFlatFileItemWriter() {
         FlatFileItemWriter<Calle> writer = calleCsvWriter.writer();
-        assertNotNull(writer); // Asegura que el escritor se creó correctamente
+        assertNotNull(writer, "El FlatFileItemWriter no debe ser null");
     }
 
+    /**
+     * Test jdbc writer creates jdbc batch item writer.
+     */
     @Test
-    void testJdbcWriter() {
-        // Prueba la creación del JdbcBatchItemWriter para escribir a la base de datos
+    void testJdbcWriter_createsJdbcBatchItemWriter() {
         JdbcBatchItemWriter<Calle> writer = calleCsvWriter.calleWriterCompleto();
-        assertNotNull(writer); // Asegura que el escritor se creó correctamente
+        assertNotNull(writer, "El JdbcBatchItemWriter no debe ser null");
     }
 }

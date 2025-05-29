@@ -8,6 +8,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.time.LocalDateTime;
 
+/**
+ * The type Distrito resumen.
+ */
 @Entity
 @Data
 public class DistritoResumen {

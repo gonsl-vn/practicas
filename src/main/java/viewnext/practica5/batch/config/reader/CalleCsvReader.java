@@ -10,9 +10,17 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Component;
 import viewnext.practica5.dto.CalleDto;
 
+/**
+ * The type Calle csv reader.
+ */
 @Component
 public class CalleCsvReader {
 
+    /**
+     * Reader flat file item reader.
+     *
+     * @return the flat file item reader
+     */
     public FlatFileItemReader<CalleDto> reader() {
         DelimitedLineTokenizer tokenizer = new DelimitedLineTokenizer(); // Define cómo se separan los campos en cada línea
         tokenizer.setDelimiter(","); // El delimitador es la coma
@@ -36,6 +44,11 @@ public class CalleCsvReader {
                 .build(); // Construye el lector
     }
 
+    /**
+     * Csv completo reader flat file item reader.
+     *
+     * @return the flat file item reader
+     */
     @Bean
     public FlatFileItemReader<CalleDto> csvCompletoReader() {
         // Configura otro lector de archivos planos para objetos CalleDto que es muy parecido al anterior

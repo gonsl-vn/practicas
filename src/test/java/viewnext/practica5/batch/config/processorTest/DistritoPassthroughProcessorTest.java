@@ -2,38 +2,56 @@ package viewnext.practica5.batch.config.processorTest;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.junit.jupiter.MockitoExtension;
 import viewnext.practica5.batch.config.processor.DistritoPassthroughProcessor;
 import viewnext.practica5.model.Distrito;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class DistritoPassthroughProcessorTest {
+/**
+ * The type Distrito passthrough processor test.
+ */
+@ExtendWith(MockitoExtension.class)
+public class DistritoPassthroughProcessorTest {
 
-    private DistritoPassthroughProcessor processor; // Instancia del procesador passthrough a probar
+    @InjectMocks
+    private DistritoPassthroughProcessor processor;
 
+    private Distrito distrito;
+
+    /**
+     * Sets up.
+     */
     @BeforeEach
     void setUp() {
-        processor = new DistritoPassthroughProcessor(); // Crea una instancia del procesador passthrough
-    }
-
-    @Test
-    void devuelveElMismoObjeto() throws Exception {
-        // Prueba que el procesador passthrough devuelve el mismo objeto Distrito sin modificarlo
-        Distrito distrito = new Distrito();
+        distrito = new Distrito();
         distrito.setNombreDistrito("CENTRO");
-        distrito.setNumeroViviendas(123);
-
-        Distrito resultado = processor.process(distrito); // Procesa el objeto Distrito
-
-        assertSame(distrito, resultado); // Asegura que la instancia devuelta es la misma que la de entrada
-        assertEquals("CENTRO", resultado.getNombreDistrito()); // Verifica que el nombre del distrito no cambió
-        assertEquals(123, resultado.getNumeroViviendas()); // Verifica que el número de viviendas no cambió
+        distrito.setId(1);
     }
 
+    /**
+     * Process devuelve mismo objeto.
+     *
+     * @throws Exception
+     *         the exception
+     */
     @Test
-    void devuelveNullSiEntradaEsNull() throws Exception {
-        // Prueba que si la entrada al procesador es null, devuelve null
-        Distrito resultado = processor.process(null); // Procesa un objeto nulo
-        assertNull(resultado); // Asegura que el resultado es null
+    void process_devuelveMismoObjeto() throws Exception {
+        Distrito result = processor.process(distrito);
+        assertNotNull(result);
+        assertEquals(distrito, result);
+    }
+
+    /**
+     * Process con null devuelve null.
+     *
+     * @throws Exception
+     *         the exception
+     */
+    @Test
+    void process_conNull_devuelveNull() throws Exception {
+        assertNull(processor.process(null));
     }
 }

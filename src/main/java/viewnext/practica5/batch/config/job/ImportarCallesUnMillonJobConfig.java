@@ -8,6 +8,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import viewnext.practica5.batch.config.step.ImportarCallesUnMillonStepConfig;
 
+/**
+ * The type Importar calles un millon job config.
+ */
 @Configuration
 @RequiredArgsConstructor
 public class ImportarCallesUnMillonJobConfig {
@@ -15,6 +18,11 @@ public class ImportarCallesUnMillonJobConfig {
     private final JobBuilderFactory jobBuilderFactory; // Jobs de Spring Batch
     private final ImportarCallesUnMillonStepConfig importarCallesUnMillonStepConfig; // Step para importar calles
 
+    /**
+     * Importar calles un millon job job.
+     *
+     * @return the job
+     */
     @Bean
     public Job importarCallesUnMillonJob() {
         return jobBuilderFactory.get("importarCallesUnMillonJob")

@@ -10,6 +10,9 @@ import viewnext.practica5.batch.config.writer.CalleCsvWriter;
 import viewnext.practica5.dto.CalleDto;
 import viewnext.practica5.model.Calle;
 
+/**
+ * The type Importar csv completo step config.
+ */
 @Configuration
 public class ImportarCsvCompletoStepConfig {
 
@@ -18,6 +21,18 @@ public class ImportarCsvCompletoStepConfig {
     private final CalleCsvProcessor calleCsvProcessor; // Procesador de objetos CalleDto a Calle
     private final CalleCsvWriter calleCsvWriter; // Escritor de objetos Calle a un archivo CSV
 
+    /**
+     * Instantiates a new Importar csv completo step config.
+     *
+     * @param stepBuilderFactory
+     *         the step builder factory
+     * @param calleCsvReader
+     *         the calle csv reader
+     * @param calleCsvProcessor
+     *         the calle csv processor
+     * @param calleCsvWriter
+     *         the calle csv writer
+     */
     public ImportarCsvCompletoStepConfig(StepBuilderFactory stepBuilderFactory, CalleCsvReader calleCsvReader,
             CalleCsvProcessor calleCsvProcessor, CalleCsvWriter calleCsvWriter) {
         this.stepBuilderFactory = stepBuilderFactory;
@@ -26,6 +41,11 @@ public class ImportarCsvCompletoStepConfig {
         this.calleCsvWriter = calleCsvWriter;
     }
 
+    /**
+     * Importar csv completo step step.
+     *
+     * @return the step
+     */
     @Bean
     public Step importarCsvCompletoStep() {
         // Define un nuevo Step llamado "importarCsvCompletoStep"

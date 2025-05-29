@@ -1,36 +1,80 @@
 package viewnext.practica5.batch.config.jobTest;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.batch.core.Job;
+import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
+import org.springframework.batch.core.job.builder.JobBuilder;
+import org.springframework.batch.core.job.builder.SimpleJobBuilder;
+import org.springframework.batch.core.launch.support.RunIdIncrementer;
 import viewnext.practica5.batch.config.job.ImportarCallesUnMillonJobConfig;
 import viewnext.practica5.batch.config.step.ImportarCallesUnMillonStepConfig;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.*;
 
-public class ImportarCallesUnMillonJobConfigTest {
+/**
+ * The type Importar calles un millon job config test.
+ */
+@ExtendWith(MockitoExtension.class)
+class ImportarCallesUnMillonJobConfigTest {
 
+    @Mock
+    private JobBuilderFactory jobBuilderFactory;
+
+    @Mock
+    private ImportarCallesUnMillonStepConfig importarCallesUnMillonStepConfig;
+
+    @Mock
+    private JobBuilder jobBuilder;
+
+    @Mock
+    private SimpleJobBuilder simpleJobBuilder;
+
+    @Mock
+    private Step stepNormal;
+
+    @Mock
+    private Step stepMultihilo;
+
+    @InjectMocks
+    private ImportarCallesUnMillonJobConfig jobConfig;
+
+    /**
+     * Sets up.
+     */
+    @BeforeEach
+    void setUp() {
+        when(jobBuilderFactory.get("importarCallesUnMillonJob")).thenReturn(jobBuilder);
+        when(jobBuilder.incrementer(any(RunIdIncrementer.class))).thenReturn(jobBuilder);
+        when(importarCallesUnMillonStepConfig.importarCallesPasoNormal()).thenReturn(stepNormal);
+        when(importarCallesUnMillonStepConfig.importarCallesPasoMultihilo()).thenReturn(stepMultihilo);
+
+        when(jobBuilder.start(stepNormal)).thenReturn(simpleJobBuilder);
+        when(simpleJobBuilder.next(stepMultihilo)).thenReturn(simpleJobBuilder);
+        when(simpleJobBuilder.build()).thenReturn(mock(Job.class));
+    }
+
+    /**
+     * Test importar calles un millon job.
+     */
     @Test
-    void testImportarCallesUnMillonJobSimple() {
-        // Construye Jobs de Spring Batch
-        JobBuilderFactory jobBuilderFactory = mock(JobBuilderFactory.class);
-        // Step para importar un millón de calles
-        ImportarCallesUnMillonStepConfig stepConfig = mock(ImportarCallesUnMillonStepConfig.class);
+    void testImportarCallesUnMillonJob() {
+        Job job = jobConfig.importarCallesUnMillonJob();
+        assertNotNull(job);
 
-        // Simula los Steps individuales definidos en ImportarCallesUnMillonStepConfig
-        var pasoNormal = mock(org.springframework.batch.core.Step.class);
-        var pasoMultihilo = mock(org.springframework.batch.core.Step.class);
-
-        // Configura el mock de ImportarCallesUnMillonStepConfig para que devuelva los Steps simulados
-        when(stepConfig.importarCallesPasoNormal()).thenReturn(pasoNormal);
-        when(stepConfig.importarCallesPasoMultihilo()).thenReturn(pasoMultihilo);
-
-        // Crea una instancia de la clase de configuración del Job a probar,
-        // pasando las dependencias mockeadas en el constructor
-        ImportarCallesUnMillonJobConfig config = new ImportarCallesUnMillonJobConfig(jobBuilderFactory, stepConfig);
-
-        // Asegura que la instancia de la configuración se ha creado correctamente (no es nula)
-        assertNotNull(config);
+        verify(jobBuilderFactory).get("importarCallesUnMillonJob");
+        verify(jobBuilder).incrementer(any(RunIdIncrementer.class));
+        verify(importarCallesUnMillonStepConfig).importarCallesPasoNormal();
+        verify(importarCallesUnMillonStepConfig).importarCallesPasoMultihilo();
+        verify(jobBuilder).start(stepNormal);
+        verify(simpleJobBuilder).next(stepMultihilo);
+        verify(simpleJobBuilder).build();
     }
 }

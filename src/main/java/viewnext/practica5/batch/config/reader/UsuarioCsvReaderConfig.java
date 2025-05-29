@@ -10,9 +10,17 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
 import viewnext.practica5.dto.UsuarioDTO;
 
+/**
+ * The type Usuario csv reader config.
+ */
 @Configuration
 public class UsuarioCsvReaderConfig {
 
+    /**
+     * Usuario reader flat file item reader.
+     *
+     * @return the flat file item reader
+     */
     @Bean
     public FlatFileItemReader<UsuarioDTO> usuarioReader() {
         // Configura un lector de archivos planos para objetos UsuarioDTO

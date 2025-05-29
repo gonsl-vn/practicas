@@ -2,38 +2,50 @@ package viewnext.practica5.batch.config.readerTest;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.batch.item.ExecutionContext;
 import org.springframework.batch.item.file.FlatFileItemReader;
-import org.springframework.core.io.ClassPathResource;
 import viewnext.practica5.batch.config.reader.UsuarioCsvReaderConfig;
 import viewnext.practica5.dto.UsuarioDTO;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+/**
+ * The type Usuario csv reader config test.
+ */
+@ExtendWith(MockitoExtension.class)
 class UsuarioCsvReaderConfigTest {
 
-    private FlatFileItemReader<UsuarioDTO> reader; // Instancia del lector CSV de Usuarios a probar
+    @InjectMocks
+    private UsuarioCsvReaderConfig usuarioCsvReaderConfig;
 
+    private FlatFileItemReader<UsuarioDTO> reader;
+
+    /**
+     * Sets up.
+     */
     @BeforeEach
     void setUp() {
-        UsuarioCsvReaderConfig config = new UsuarioCsvReaderConfig(); // Crea una instancia de la configuración del lector de Usuarios
-        reader = config.usuarioReader(); // Obtiene el lector de Usuarios
-
-        // Configura el recurso del lector para que lea desde el archivo "ficheroUsuarios.csv"
-        reader.setResource(new ClassPathResource("ficheroUsuarios.csv"));
+        reader = usuarioCsvReaderConfig.usuarioReader();
     }
 
+    /**
+     * Test usuario reader reads first record.
+     *
+     * @throws Exception
+     *         the exception
+     */
     @Test
-    void testUsuarioReader_readsCorrectly() throws Exception {
-        // Prueba que el lector de Usuarios lee correctamente los datos del archivo CSV
-        reader.open(new ExecutionContext()); // Abre el lector con un contexto de ejecución vacío
+    void testUsuarioReader_readsFirstRecord() throws Exception {
+        reader.open(new ExecutionContext());
 
-        UsuarioDTO usuario = reader.read(); // Lee la primera línea del archivo
+        UsuarioDTO usuario = reader.read();
 
-        // Verifica que se leyó un objeto UsuarioDTO
         assertNotNull(usuario);
-        // Verifica los valores de los campos del objeto UsuarioDTO leído (dependiendo del contenido de "ficheroUsuarios.csv")
+
         assertEquals("Juan Pérez", usuario.getNombre());
         assertEquals("12345678A", usuario.getDni());
         assertEquals("Calle Falsa 123", usuario.getDireccion());
@@ -42,5 +54,6 @@ class UsuarioCsvReaderConfigTest {
         assertEquals(100.0, usuario.getImporte());
         assertEquals(1, usuario.getNumPedido());
 
+        reader.close();
     }
 }

@@ -2,6 +2,9 @@ package viewnext.practica5.batch.config.writerTest;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 import org.springframework.batch.item.database.JdbcBatchItemWriter;
 import viewnext.practica5.batch.config.writer.CalleWriterUnMillon;
 import viewnext.practica5.model.Calle;
@@ -9,25 +12,32 @@ import viewnext.practica5.model.Calle;
 import javax.sql.DataSource;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.mockito.Mockito.mock;
 
+/**
+ * The type Calle writer un millon test.
+ */
 class CalleWriterUnMillonTest {
 
-    private DataSource dataSource; // Mock del DataSource
-    private CalleWriterUnMillon calleWriterUnMillon; // Instancia del escritor de Calles para un millón de registros a probar
+    @Mock
+    private DataSource dataSource;
 
+    @InjectMocks
+    private CalleWriterUnMillon calleWriterUnMillon;
+
+    /**
+     * Sets up.
+     */
     @BeforeEach
     void setUp() {
-        dataSource = mock(DataSource.class); // Crea un mock del DataSource
-        calleWriterUnMillon = new CalleWriterUnMillon(); // Crea una instancia del escritor
+        MockitoAnnotations.openMocks(this);
     }
 
+    /**
+     * Test writer creation.
+     */
     @Test
     void testWriterCreation() {
-        // Prueba la creación del JdbcBatchItemWriter para escribir un millón de objetos Calle a la base de datos
         JdbcBatchItemWriter<Calle> writer = calleWriterUnMillon.writer(dataSource);
-
-        assertNotNull(writer,
-                "El writer no debería ser null"); // Asegura que el escritor se creó correctamente (no es nulo)
+        assertNotNull(writer, "El writer no debería ser null");
     }
 }

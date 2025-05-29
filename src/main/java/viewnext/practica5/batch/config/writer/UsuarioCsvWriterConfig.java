@@ -8,15 +8,29 @@ import viewnext.practica5.dto.UsuarioDTO;
 
 import javax.sql.DataSource;
 
+/**
+ * The type Usuario csv writer config.
+ */
 @Configuration
 public class UsuarioCsvWriterConfig {
 
     private final DataSource dataSource; // DataSource para la conexión a la base de datos
 
+    /**
+     * Instantiates a new Usuario csv writer config.
+     *
+     * @param dataSource
+     *         the data source
+     */
     public UsuarioCsvWriterConfig(DataSource dataSource) {
         this.dataSource = dataSource;
     }
 
+    /**
+     * Usuario writer jdbc batch item writer.
+     *
+     * @return the jdbc batch item writer
+     */
     @Bean
     public JdbcBatchItemWriter<UsuarioDTO> usuarioWriter() {
         // Configura un escritor JDBC por lotes para insertar objetos UsuarioDTO en la base de datos

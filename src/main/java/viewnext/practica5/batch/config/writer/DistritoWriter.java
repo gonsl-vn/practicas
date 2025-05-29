@@ -7,11 +7,20 @@ import viewnext.practica5.repository.DistritoRepository;
 
 import java.util.List;
 
+/**
+ * The type Distrito writer.
+ */
 @Component
 public class DistritoWriter implements ItemWriter<Distrito> {
 
     private final DistritoRepository distritoRepository; // Repositorio para interactuar con la entidad Distrito en la base de datos
 
+    /**
+     * Instantiates a new Distrito writer.
+     *
+     * @param distritoRepository
+     *         the distrito repository
+     */
     public DistritoWriter(DistritoRepository distritoRepository) {
         this.distritoRepository = distritoRepository;
     }

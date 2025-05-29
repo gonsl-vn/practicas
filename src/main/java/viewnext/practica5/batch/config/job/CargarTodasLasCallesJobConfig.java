@@ -8,6 +8,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import viewnext.practica5.batch.config.step.CargarCallesStepConfig;
 
+/**
+ * The type Cargar todas las calles job config.
+ */
 @Configuration
 @RequiredArgsConstructor
 public class CargarTodasLasCallesJobConfig {
@@ -15,6 +18,11 @@ public class CargarTodasLasCallesJobConfig {
     private final JobBuilderFactory jobBuilderFactory; // Construir jobs de Spring Batch
     private final CargarCallesStepConfig cargarCallesStepConfig; // Step para cargar calles
 
+    /**
+     * Cargar todas las calles job job.
+     *
+     * @return the job
+     */
     @Bean
     public Job cargarTodasLasCallesJob() {
         return jobBuilderFactory.get("cargarTodasLasCallesJob")

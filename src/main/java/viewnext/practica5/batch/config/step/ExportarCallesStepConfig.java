@@ -8,6 +8,9 @@ import viewnext.practica5.batch.config.reader.CalleReader;
 import viewnext.practica5.batch.config.writer.CalleCsvWriter;
 import viewnext.practica5.model.Calle;
 
+/**
+ * The type Exportar calles step config.
+ */
 @Configuration
 public class ExportarCallesStepConfig {
 
@@ -15,6 +18,16 @@ public class ExportarCallesStepConfig {
     private final CalleReader calleReader; // Lector de objetos Calle desde la base de datos
     private final CalleCsvWriter calleCsvWriter; // Escritor de objetos Calle a un archivo CSV
 
+    /**
+     * Instantiates a new Exportar calles step config.
+     *
+     * @param stepBuilderFactory
+     *         the step builder factory
+     * @param calleReader
+     *         the calle reader
+     * @param calleCsvWriter
+     *         the calle csv writer
+     */
     public ExportarCallesStepConfig(StepBuilderFactory stepBuilderFactory, CalleReader calleReader,
             CalleCsvWriter calleCsvWriter) {
         this.stepBuilderFactory = stepBuilderFactory;
@@ -22,6 +35,11 @@ public class ExportarCallesStepConfig {
         this.calleCsvWriter = calleCsvWriter;
     }
 
+    /**
+     * Exportar calles step step.
+     *
+     * @return the step
+     */
     @Bean
     public Step exportarCallesStep() {
         // Define un nuevo Step llamado "exportarCallesStep"

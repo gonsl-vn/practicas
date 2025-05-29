@@ -2,6 +2,8 @@ package viewnext.practica5.batch.config.writerTest;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.MockitoAnnotations;
 import org.springframework.batch.item.file.FlatFileItemWriter;
 import viewnext.practica5.batch.config.writer.DistritoCsvWriter;
 import viewnext.practica5.model.Distrito;
@@ -9,24 +11,30 @@ import viewnext.practica5.model.Distrito;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+/**
+ * The type Distrito csv writer test.
+ */
 class DistritoCsvWriterTest {
 
-    private DistritoCsvWriter distritoCsvWriter; // Instancia del escritor CSV de Distritos a probar
+    @InjectMocks
+    private DistritoCsvWriter distritoCsvWriter;
 
+    /**
+     * Sets up.
+     */
     @BeforeEach
     void setUp() {
-        distritoCsvWriter = new DistritoCsvWriter(); // Crea una instancia del escritor CSV de Distritos
+        MockitoAnnotations.openMocks(this);
     }
 
+    /**
+     * Test writer creation.
+     */
     @Test
     void testWriterCreation() {
-        // Prueba la creación del FlatFileItemWriter para escribir objetos Distrito a un archivo CSV
         FlatFileItemWriter<Distrito> writer = distritoCsvWriter.writer();
 
-        assertNotNull(writer,
-                "El writer no debe ser null"); // Asegura que el escritor se creó correctamente (no es nulo)
-        assertEquals("distritoCsvWriter", writer.getName(),
-                "El nombre del writer no es el esperado"); // Verifica que el nombre del writer sea el configurado
-
+        assertNotNull(writer, "El writer no debe ser null");
+        assertEquals("distritoCsvWriter", writer.getName(), "El nombre del writer no es el esperado");
     }
 }

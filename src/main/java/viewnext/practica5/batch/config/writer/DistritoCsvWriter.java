@@ -6,9 +6,17 @@ import org.springframework.core.io.FileSystemResource;
 import org.springframework.stereotype.Component;
 import viewnext.practica5.model.Distrito;
 
+/**
+ * The type Distrito csv writer.
+ */
 @Component
 public class DistritoCsvWriter {
 
+    /**
+     * Writer flat file item writer.
+     *
+     * @return the flat file item writer
+     */
     public FlatFileItemWriter<Distrito> writer() {
         // Configura un escritor de archivos planos para objetos Distrito
         return new FlatFileItemWriterBuilder<Distrito>().name("distritoCsvWriter") // Nombre del escritor
